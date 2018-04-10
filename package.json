@@ -2,7 +2,7 @@
   "name": "carpnd-webapp",
   "version": "0.0.0",
   "engines": {
-    "node": "8.9.4"
+    "node": ">=0.10.0"
   },
   "license": "MIT",
   "scripts": {
