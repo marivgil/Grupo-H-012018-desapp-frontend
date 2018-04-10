@@ -1,0 +1,11 @@
+language: node_js
+
+sudo: required
+
+notifications:
+  email:
+    recipients:
+      - a.redonda89@gmail.com
+      - gil.maricruz@gmail.com
+    on_success: always # default: change
+on_failure: always # default: always
