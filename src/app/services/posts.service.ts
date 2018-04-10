@@ -5,7 +5,7 @@ import { Coord } from "../interfaces/coord.interface";
 
 @Injectable()
 export class PostsService {
-    private coord1:Coord={lat:0, lng:0};
+    private coord1: Coord={lat: 0, lng: 0};
 
     private posts: Post[] = [
         {
@@ -18,7 +18,7 @@ export class PostsService {
             rentalDate: "05-09-2018",
             costPerDay: "80",
             photos: "assets/img/pedropicapiedrasauto.jpg",
-            coordPickUp: {lat:-34.705857, lng:-58.278498}
+            coordPickUp: {lat: -34.705857, lng: -58.278498}
         },
         {
             id: 1,
@@ -55,7 +55,7 @@ export class PostsService {
          return this.posts;
      }
 
-     getPost(idx:string): Post {
+     getPost (idx:string): Post {
          return this.posts[idx];
      }
 

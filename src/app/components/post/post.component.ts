@@ -37,7 +37,7 @@ export class PostComponent implements OnInit {
   ngOnInit() {
     this.lat = this.post.coordPickUp.lat;
     this.lng = this.post.coordPickUp.lng;
-    let marker: marker = {name:"Lugar de Retiro",lat: this.lat, lng: this.lng,draggable:false};
+    let marker: marker = {name: "Lugar de Retiro",lat: this.lat, lng: this.lng,draggable:false};
     this.markers.push(marker);
   }
 
@@ -49,7 +49,7 @@ export class PostComponent implements OnInit {
 }
 
 interface marker {
-  name?:string;
+  name?: string;
   lat: number;
   lng: number;
   draggable: boolean;
