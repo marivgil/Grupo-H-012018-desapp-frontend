@@ -1,7 +1,5 @@
-language: java
+language: node_js
 sudo: required
-jdk:
-  - oraclejdk8
 
 notifications:
   email:
