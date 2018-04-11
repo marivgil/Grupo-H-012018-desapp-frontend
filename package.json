@@ -1,18 +1,14 @@
 {
   "name": "carpnd-webapp",
   "version": "0.0.0",
-  "engines": {
-    "node": "4.4.3"
-  },
   "license": "MIT",
   "scripts": {
     "ng": "ng",
+    "start": "ng serve",
     "build": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e",
-    "postinstall": "grunt uglify",
-    "start": "node server.js"
+    "e2e": "ng e2e"
   },
   "private": true,
   "dependencies": {
@@ -28,8 +24,6 @@
     "@angular/router": "^5.2.0",
     "bootstrap": "^4.0.0",
     "core-js": "^2.4.1",
-    "grunt-build": "^0.1.1",
-    "grunt-contrib-uglify": "^0.7.0",
     "jquery": "^3.3.1",
     "rxjs": "^5.5.6",
     "tether": "^1.4.3",
@@ -53,7 +47,6 @@
     "protractor": "~5.1.2",
     "ts-node": "~4.1.0",
     "tslint": "~5.9.1",
-    "typescript": "~2.5.3",
-    "uglifyjs-webpack-plugin": "^1.0.0-rc.0"
+    "typescript": "~2.5.3"
   }
 }

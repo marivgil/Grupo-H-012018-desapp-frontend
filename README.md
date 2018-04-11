@@ -1,7 +1,5 @@
 # CarpndWebapp
 
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/0d40e719ec8f47e0adf34a17135a0daa)](https://app.codacy.com/app/marivgil/Grupo-H-012018-desapp-frontend?utm_source=github.com&utm_medium=referral&utm_content=marivgil/Grupo-H-012018-desapp-frontend&utm_campaign=badger)
-
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.4.
 
 ## Development server
