@@ -8,9 +8,6 @@ app.use(express.static(__dirname + '/dist'));
 // Heroku port
 app.listen(process.env.PORT || 8080);
 
-// server.js
-const express = require('express');
-const app = express();
 // If an incoming request uses
 // a protocol other than HTTPS,
 // redirect that request to the
