@@ -13,7 +13,7 @@ import { PostsService } from '../../services/posts.service';
 
 export class PostComponent implements OnInit {
 
-  private post:Post;
+  post:Post;
   zoom: number= 15;
   //Start position
   lat: number = -34.603418;
