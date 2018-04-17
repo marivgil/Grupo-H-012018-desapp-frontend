@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { APP_ROUTING} from './app.routes';
 
 import { PostsService } from './services/posts.service';
+import { AuthService } from './services/auth.service';
 
 import { AgmCoreModule } from '@agm/core';
 
@@ -31,7 +32,9 @@ import { PostComponent } from './components/post/post.component';
       apiKey: 'AIzaSyAx82m7KSQg0obJQYw7L5tGcEXcoM1u9sE'
     })
   ],
-  providers: [PostsService],
+  providers: [
+    PostsService, 
+    AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
