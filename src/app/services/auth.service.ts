@@ -13,7 +13,7 @@ export class AuthService {
     responseType: 'token id_token',
     audience: 'https://carpnd.auth0.com/userinfo',
     redirectUri: 'http://localhost:4200/home',
-    scope: 'openid'
+    scope: 'openid profile email'
   });
 
   constructor(public router: Router) {}

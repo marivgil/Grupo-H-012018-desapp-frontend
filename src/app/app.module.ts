@@ -14,6 +14,7 @@ import { HomeComponent } from './components/home/home.component';
 import { PostsComponent } from './components/posts/posts.component';
 import { YourOwnCarsComponent } from './components/your-own-cars/your-own-cars.component';
 import { PostComponent } from './components/post/post.component';
+import { AuthGuardService } from './services/auth-guard.service';
 
 
 @NgModule({
@@ -34,7 +35,9 @@ import { PostComponent } from './components/post/post.component';
   ],
   providers: [
     PostsService, 
-    AuthService],
+    AuthService,
+    AuthGuardService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
