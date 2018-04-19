@@ -18,6 +18,23 @@ export class AuthService {
 
   constructor(public router: Router) {}
 
+  userProfile: any;
+
+    public getProfile(cb): void {
+    const accessToken = localStorage.getItem('access_token');
+    if (!accessToken) {
+      throw new Error('Access Token must exist to fetch profile');
+    }
+
+    const self = this;
+    this.auth0.client.userInfo(accessToken, (err, profile) => {
+      if (profile) {
+        self.userProfile = profile;
+      }
+      cb(err, profile);
+    });
+}
+
   public login(): void {
     this.auth0.authorize();
   }
@@ -41,7 +58,10 @@ export class AuthService {
     localStorage.setItem('access_token', authResult.accessToken);
     localStorage.setItem('id_token', authResult.idToken);
     localStorage.setItem('expires_at', expiresAt);
-  }
+    this.getProfile((err, profile) => {
+      this.userProfile = profile;
+      });
+    }    
 
   public logout(): void {
     // Remove tokens and expiry time from localStorage
@@ -58,5 +78,7 @@ export class AuthService {
     const expiresAt = JSON.parse(localStorage.getItem('expires_at'));
     return new Date().getTime() < expiresAt;
   }
+
+
 
 }

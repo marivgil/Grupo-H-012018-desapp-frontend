@@ -15,7 +15,8 @@ import { PostsComponent } from './components/posts/posts.component';
 import { YourOwnCarsComponent } from './components/your-own-cars/your-own-cars.component';
 import { PostComponent } from './components/post/post.component';
 import { AuthGuardService } from './services/auth-guard.service';
-
+import { ProfileComponent } from './components/profile/profile.component';
+import { UserService } from './services/user.service';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { AuthGuardService } from './services/auth-guard.service';
     HomeComponent,
     PostsComponent,
     YourOwnCarsComponent,
-    PostComponent
+    PostComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +38,8 @@ import { AuthGuardService } from './services/auth-guard.service';
   providers: [
     PostsService, 
     AuthService,
-    AuthGuardService
+    AuthGuardService,
+    UserService
   ],
   bootstrap: [AppComponent]
 })

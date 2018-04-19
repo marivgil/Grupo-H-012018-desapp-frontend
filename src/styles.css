@@ -2,13 +2,22 @@
     width: 90px;
   }
 
+.img-boton{
+  width: 40px;
+}
+
 .img-post{
     width: 10cm;
 }
 
-  .main-container{
-    margin-top: 10px;
+.main-container{
+    margin-top: 40px;
     margin-left: 20px;
+}
+
+.img-perfil{
+  width: 200px;
+  padding-left: 20px;
 }
 
 body{

@@ -10,6 +10,16 @@ import { AuthService } from '../../services/auth.service';
 
 export class NavbarComponent {
 
-  constructor( private auth:AuthService) { }
+  profile:any;
+
+  constructor( private auth:AuthService) { 
+    if (this.auth.userProfile) {
+      this.profile = this.auth.userProfile;
+    } else {
+      this.auth.getProfile((err, profile) => {
+        this.profile = profile;
+      });
+    }    
+  }
 
 }
