@@ -22,4 +22,16 @@ export class NavbarComponent {
     }    
   }
 
+  isAuthenticated():boolean{
+    return this.auth.isAuthenticated();
+  }
+
+  logout(){
+    this.auth.logout();
+  }
+
+  login(){
+    this.auth.login();
+  }
+
 }
