@@ -24,8 +24,7 @@
     <div class="btn-group btn-margin btn-dark" role="group" *ngIf="isAuthenticated()">
       <button id="btnGroupDrop1" type="button" class="btn btn-secondary" 
         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <img class= "rounded-circle img-boton" [src]="profile.picture">
-       {{profile.name}}
+       Bienvenido
       </button>
       <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
         <a class="dropdown-item" [routerLink]="['perfil']">Mi perfil</a>
