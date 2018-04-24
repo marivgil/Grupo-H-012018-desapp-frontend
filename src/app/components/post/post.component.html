@@ -25,29 +25,34 @@
   </div>
 
 
-<h1 class=fadeIn>{{post.vehicleType | uppercase}} en {{post.location | uppercase}} <br>
+<h1 class="main-container">{{post.vehicleType | uppercase}} en {{post.location | uppercase}} <br>
   <small>Se alquila el dia: ({{post.rentalDate}})</small></h1>
 <hr>
 
 <div class= "row animated fadeIn fast">
   <div class="col-md-6">
-    <img src={{post.photos}} class="img fluid img-post" alt="">
+      <div class="row">
+          <div class="col-md-12">
+              
+              <carousel-component [mode]="'horizontal'" [autoPlay]="true" #topCarousel >
+                <div class="item-carousel" *ngFor="let p of post.photos"><img [src]="p"></div>
+              </carousel-component>
+          </div>
+
+          <div class="col-md-12">
+          </div>
+        </div>
     <br><br>
 
   </div>
-  <div class="col-md-6">
+  <div class="col-md-6 main-container">
     <h3>{{post.vehicleType | uppercase}} en {{post.location | uppercase}} <small>{{post.costPerDay | currency}}/day</small></h3>
     <hr>
     <p>
       {{post.description}}
     </p>
 
- <!--   <div *ngIf="heroe.casa!=DC">
-      <img *ngIf="heroe.casa=='Marvel'" class= "img-logo" src="../../../assets/img/Marvel.png" alt="Marvel">
-      <img *ngIf="heroe.casa=='DC'" class= "img-logo" src="../../../assets/img/DC.png" alt="DC">
-    </div>
-  -->
-      <button (click)= "reservar(post.id)" class="btn btn-success btn-block">Reservar!</button>
+    <button (click)= "reservar(post.id)" class="btn btn-success btn-block">Reservar!</button>
   </div>
 
 </div> 

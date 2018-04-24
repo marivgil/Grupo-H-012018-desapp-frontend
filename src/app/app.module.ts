@@ -7,6 +7,7 @@ import { PostsService } from './services/posts.service';
 import { AuthService } from './services/auth.service';
 
 import { AgmCoreModule } from '@agm/core';
+import { CarouselModule } from '../../node_modules/angular2-carousel'
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -17,6 +18,7 @@ import { PostComponent } from './components/post/post.component';
 import { AuthGuardService } from './services/auth-guard.service';
 import { ProfileComponent } from './components/profile/profile.component';
 import { UserService } from './services/user.service';
+
 
 @NgModule({
   declarations: [
@@ -33,7 +35,8 @@ import { UserService } from './services/user.service';
     APP_ROUTING,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyAx82m7KSQg0obJQYw7L5tGcEXcoM1u9sE'
-    })
+    }),
+    CarouselModule
   ],
   providers: [
     PostsService, 

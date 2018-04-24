@@ -1,8 +1,9 @@
 
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,  ViewChild } from '@angular/core';
 import { Post } from '../../interfaces/post.interface';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PostsService } from '../../services/posts.service';
+import {CarouselComponent} from "angular2-carousel";
 
 
 @Component({
@@ -45,6 +46,12 @@ export class PostComponent implements OnInit {
     this._router.navigate(['/home']);
   }
 
+
+  @ViewChild('topCarousel') topCarousel: CarouselComponent;
+
+  toggle(){
+    this.topCarousel.toggleMode();
+  }
 
 }
 

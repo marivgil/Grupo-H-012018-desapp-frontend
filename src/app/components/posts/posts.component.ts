@@ -22,7 +22,6 @@ export class PostsComponent implements OnInit {
   //Esto se ejecuta una vez que la pagina ya esta renderizada.
   ngOnInit() {
     this.posts=this._postsService.getPosts();
-    //console.log(this.heroes);
   }
 
   verPost( idx:number ){

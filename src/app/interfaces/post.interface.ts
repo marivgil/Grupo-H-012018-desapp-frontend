@@ -11,6 +11,6 @@ export interface Post{
     phone:number;
     rentalDate:string;
     costPerDay:string;
-    photos:string;
+    photos:string[];
     coordPickUp:Coord;    
 };
