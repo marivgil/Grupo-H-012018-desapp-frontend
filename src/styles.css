@@ -2,6 +2,11 @@
     width: 90px;
   }
 
+.img-preview{
+    width: 10cm;
+    align-items: center;
+  }
+
 .img-boton{
   width: 40px;
 }
