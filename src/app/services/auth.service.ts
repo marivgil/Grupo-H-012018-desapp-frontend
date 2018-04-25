@@ -12,7 +12,7 @@ export class AuthService {
     domain: 'carpnd.auth0.com',
     responseType: 'token id_token',
     audience: 'https://carpnd.auth0.com/userinfo',
-    redirectUri: 'http://localhost:4200/home',
+  //  redirectUri: 'http://localhost:4200/home',
     scope: 'openid profile email'
   });
 
