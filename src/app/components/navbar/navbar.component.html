@@ -16,13 +16,28 @@
         <a class="nav-link" [routerLink]="['encontraTuAutoIdeal']">Encontra tu auto</a>
       </li>
       <li class="nav-item" >
-          <a class="nav-link"[routerLink]="['tusAutos']">Mis Autos</a>
+          <a class="nav-link"[routerLink]="['tusAutos']" *ngIf="isAuthenticated()">Mis Autos</a>
       </li>
   
     </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Buscar auto" >
-      <button class="btn btn-outline-primary my-2 my-sm-0" type="button">Buscar</button>
-    </form>
+
+    <div class="btn-group btn-margin btn-dark" role="group" *ngIf="isAuthenticated()">
+      <button id="btnGroupDrop1" type="button" class="btn btn-secondary" 
+        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+       Bienvenido
+      </button>
+      <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+        <a class="dropdown-item" [routerLink]="['perfil']">Mi perfil</a>
+        <a class="dropdown-item" (click)="logout()">Log Out</a>
+      </div>
+    </div>
+    
+    <button
+        class="btn btn-dark btn-margin"
+        *ngIf="!isAuthenticated()"
+        (click)="login()">
+          Log In
+      </button>
+
   </div>
 </nav>

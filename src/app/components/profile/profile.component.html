@@ -1,0 +1,59 @@
+<div class= "main-container  animated fadeIn fast" *ngIf= "profile">
+<h3>{{profile.name}}</h3>
+<hr>
+
+<div class= "row">
+
+  <div class= "col-md-4">
+    <img [src]="profile.picture" class= "rounded-circle img-fluid">
+  </div>
+  <div class= "col-md-1">
+  </div>
+
+  <div class= "col-md-6">
+    <h3>{{profile.email}}</h3>
+    <ul class="list-group">
+      <li class="list-group-item">
+        Credito: {{user.credit | currency}}
+        <i class="fas fa-plus-square fa-lg"></i>
+      </li>
+      <li class="list-group-item">
+        Reputación: {{user.reputation}}
+      </li>
+      <li class="list-group-item" *ngIf= "user.isEnable">
+        Estado de la cuenta: Activo
+      </li>
+      <li class="list-group-item" *ngIf= "!user.isEnable">
+        Estado de la cuenta: Bloqueado
+      </li>
+    </ul>
+  </div>
+</div>
+</div>
+
+<!--{
+  "sub": "google-oauth2|106572254188915518115",
+  "given_name": "Analía",
+  "family_name": "Redonda",
+  "nickname": "a.redonda89",
+  "name": "Analía Redonda",
+  "picture": "https://lh3.googleusercontent.com/-UlZYyw3K9fk/AAAAAAAAAAI/AAAAAAAAAz4/pcNGPnRW1BE/photo.jpg",
+  "gender": "female",
+  "locale": "es-419",
+  "updated_at": "2018-04-18T20:17:27.397Z",
+  "email": "a.redonda89@gmail.com",
+  "email_verified": true
+}-->
+
+<!-- {
+  "sub": "facebook|929979343832255",
+  "given_name": "Anita",
+  "family_name": "Peque",
+  "nickname": "Anita Peque",
+  "name": "Anita Peque",
+  "picture": "https://lookaside.facebook.com/platform/profilepic/?asid=929979343832255&height=50&width=50&ext=1524347627&hash=AeStDvjKTYZX0YYg",
+  "gender": "female",
+  "locale": "es-LA",
+  "updated_at": "2018-04-18T21:53:47.714Z",
+  "email_verified": true
+}-->

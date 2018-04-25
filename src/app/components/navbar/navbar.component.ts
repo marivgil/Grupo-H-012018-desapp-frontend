@@ -1,5 +1,6 @@
 
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-navbar',
@@ -9,6 +10,19 @@ import { Component, OnInit } from '@angular/core';
 
 export class NavbarComponent {
 
-  constructor() { }
+  constructor( private auth:AuthService) { 
+  }
+
+  isAuthenticated():boolean{
+    return this.auth.isAuthenticated();
+  }
+
+  logout(){
+    this.auth.logout();
+  }
+
+  login(){
+    this.auth.login();
+  }
 
 }
