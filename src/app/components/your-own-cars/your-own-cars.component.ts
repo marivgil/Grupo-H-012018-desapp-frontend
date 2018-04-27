@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Vehicle } from '../../interfaces/vehicle.interface';
 import { UserService } from '../../services/user.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -11,14 +12,15 @@ export class YourOwnCarsComponent implements OnInit {
 
   cars: Vehicle[];
 
-  constructor(private _userService:UserService) { }
+  constructor(private _userService:UserService,
+              private _router:Router) { }
 
   ngOnInit() {
     this.cars= this._userService.getUserWithCar().vehicles;
   }
 
   addCar(){
-    console.log("TODO: Hacer modal de agregado de auto");
+    this._router.navigate(['nuevo']);
   }
 
   editCar(){

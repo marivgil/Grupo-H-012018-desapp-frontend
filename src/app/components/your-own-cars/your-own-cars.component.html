@@ -1,7 +1,7 @@
 <div class="main-container">
 
   <h1>Tus Autos
-    <button class="btn btn-link btn-right" (click)= addCar()>
+    <button class="btn btn-link btn-padding-right" (click)= addCar()>
      <i class="fas fa-plus-circle fa-3x btn-left "></i>
     </button>
   </h1>
@@ -13,7 +13,7 @@
       <div class="main-container">
           <h5 class="card-title">{{cars[0].vehicleType}} para {{cars[0].capacity}} personas </h5>
           <p class="card-text">{{cars[0].description}}
-              <button (click)= editCar() class="btn btn-link btn-right">
+              <button (click)= editCar() class="btn btn-link btn-padding-right">
                   <i class="fas fa-pencil-alt fa-2x" ></i>
                   </button>
                   <button (click)= deleteCar() class="btn btn-link btn-right">

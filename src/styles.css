@@ -1,3 +1,8 @@
+  .form{
+    padding-right: 200px;
+    padding-left: 100px;
+  }
+
 .img-navbar{
     width: 90px;
   }
@@ -15,8 +20,14 @@
     width: 10cm;
 }
 
+.btn-padding-right{
+  float: right;
+  padding-right: 40px;
+}
+
 .btn-right{
   float: right;
+  padding-right: 0px;
 }
 
 .main-container{

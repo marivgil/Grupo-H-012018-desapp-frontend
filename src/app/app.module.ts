@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { APP_ROUTING} from './app.routes';
 
@@ -18,6 +19,7 @@ import { PostComponent } from './components/post/post.component';
 import { AuthGuardService } from './services/auth-guard.service';
 import { ProfileComponent } from './components/profile/profile.component';
 import { UserService } from './services/user.service';
+import { NewCarComponent } from './components/new-car/new-car.component';
 
 
 @NgModule({
@@ -28,11 +30,14 @@ import { UserService } from './services/user.service';
     PostsComponent,
     YourOwnCarsComponent,
     PostComponent,
-    ProfileComponent
+    ProfileComponent,
+    NewCarComponent
   ],
   imports: [
     BrowserModule,
     APP_ROUTING,
+    FormsModule,
+    ReactiveFormsModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyAx82m7KSQg0obJQYw7L5tGcEXcoM1u9sE'
     }),
