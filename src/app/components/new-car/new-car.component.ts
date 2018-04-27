@@ -8,6 +8,12 @@ import { CustomValidators } from 'ng2-validation';
 })
 export class NewCarComponent {
 
+  usuario:any={
+    capacity:20,
+    type:"AUTO",
+    description:"Es un auto de carroceria muy nueva. Impecable y digno de ver"
+  }
+
   forma:FormGroup;
 
   constructor() {
@@ -23,10 +29,13 @@ export class NewCarComponent {
                                         ,CustomValidators.rangeLength([30, 200])]
                                     )
     })
+
+    this.forma.setValue( this.usuario );
    }
 
    guardarCambios(){
-     console.log(this.forma);     
+     console.log(this.forma); 
+     this.forma.reset();    
    }
 
 

@@ -10,11 +10,13 @@
         <label for="exampleFormControlInput1">Capacidad</label>
         <input type="number" min="1" max="25" 
                class="form-control" 
-               [ngClass]="{'is-invalid': !forma.get('capacity').valid && forma.get('capacity').dirty}"
+               [ngClass]="{'is-invalid': !forma.get('capacity').valid 
+                        && forma.get('capacity').dirty}"
                formControlName="capacity">        
       </div>
       <div class="alert alert-danger" 
-           *ngIf="forma.controls['capacity'].errors?.required">
+           *ngIf="forma.controls['capacity'].errors?.required
+                  && forma.get('capacity').dirty">
             Es necesario indicar la capacidad.
       </div>
 
@@ -26,7 +28,9 @@
       <div class="form-group">
         <label for="exampleFormControlSelect1">Tipo de vehiculo</label>
         <select class="form-control" id="exampleFormControlSelect1" 
-               formControlName="type" [ngClass]="{'is-invalid': !forma.get('type').valid && forma.get('type').dirty}">
+               formControlName="type" 
+               [ngClass]="{'is-invalid': !forma.get('type').valid 
+                        && forma.get('type').dirty}">
           <option>AUTO</option>
           <option>MOTOCICLETA</option>
           <option>VEHICULO</option>
@@ -36,23 +40,32 @@
       <div class="form-group">
         <label for="exampleFormControlTextarea1">Descripcion</label>
         <textarea class="form-control" id="exampleFormControlTextarea1" 
-                  formControlName="description" [ngClass]="{'is-invalid': !forma.get('description').valid && forma.get('description').dirty}">
+                  formControlName="description" 
+                  [ngClass]="{'is-invalid': !forma.get('description').valid 
+                            && forma.get('description').dirty}">
         </textarea>         
       </div>
 
       <div class="alert alert-danger" 
-            *ngIf="(forma.controls['description'].errors?.rangeLength || forma.controls['description'].errors?.required)&& forma.get('description').dirty">
+            *ngIf="(forma.controls['description'].errors?.rangeLength 
+                                    || forma.controls['description'].errors?.required)
+                 && forma.get('description').dirty">
          La descripcion debe tener entre 30 y 200 caracteres.
       </div> 
 
       <div class="form-group">
-          <label for="exampleFormControlInput1">Fotos</label>
-          <button class="btn btn-link btn-right">Insertar otra foto</button>
+          <label for="exampleFormControlInput1">
+            Fotos
+          </label>
+          <button class="btn btn-link btn-right">
+            Insertar otra foto
+          </button>
           <input type="number" class="form-control" id="exampleFormControlInput1">
       </div>
 
-      <button type="submit" class="btn btn-primary btn-right">Agregar Auto</button>
-{{forma.valid}}
-{{forma.get('capacity').valid}}
+
+      <button type="submit" class="btn btn-primary btn-right">
+        Agregar Auto
+      </button>
   </form>
 </div>
