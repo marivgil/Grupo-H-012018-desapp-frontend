@@ -22,17 +22,27 @@
 
 .btn-padding-right{
   float: right;
-  padding-right: 40px;
+  margin-right: 20px;
 }
 
 .btn-right{
   float: right;
-  padding-right: 0px;
+  text-align: center;
+  
 }
 
 .main-container{
     margin-top: 40px;
     margin-left: 20px;
+}
+
+.bigger-bold{
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.margin-top-40{
+  margin-top:40px;
 }
 
 .img-perfil{

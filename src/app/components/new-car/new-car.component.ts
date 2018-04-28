@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
 import { CustomValidators } from 'ng2-validation';
+import { Router } from '@angular/router';
 
 import { Vehicle } from "../../interfaces/vehicle.interface"
 
@@ -14,7 +15,7 @@ export class NewCarComponent {
 
   forma:FormGroup;
 
-  constructor() {
+  constructor(private router:Router) {
 
     this.forma= new FormGroup({
       'capacity': new FormControl('2',  [Validators.required
@@ -50,7 +51,8 @@ export class NewCarComponent {
   }
 
    saveChanges(){
-     console.log(this.forma); 
+     console.log(this.forma);
+     this.router.navigate(['/tusAutos']);
      //this.forma.reset();    
    }
 

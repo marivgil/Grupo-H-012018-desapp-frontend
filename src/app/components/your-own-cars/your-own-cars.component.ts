@@ -20,7 +20,7 @@ export class YourOwnCarsComponent implements OnInit {
   }
 
   addCar(){
-    this._router.navigate(['nuevo']);
+    this._router.navigate(['nuevoAuto']);
   }
 
   editCar(){

@@ -6,6 +6,7 @@ import { PostComponent } from './components/post/post.component';
 import { AuthGuardService } from './services/auth-guard.service';
 import { ProfileComponent } from './components/profile/profile.component';
 import { NewCarComponent } from './components/new-car/new-car.component';
+import { NewUserComponent } from './components/new-user/new-user.component'
 
 const APP_ROUTES: Routes = [
     { path: 'home', component: HomeComponent },
@@ -17,8 +18,12 @@ const APP_ROUTES: Routes = [
     { path: 'post/:id', component: PostComponent },
     { path: 'perfil', component: ProfileComponent},
     { 
-        path: 'nuevo', 
+        path: 'nuevoAuto', 
         component: NewCarComponent,
+        canActivate: [AuthGuardService]},
+    { 
+        path: 'nuevoUsuario', 
+        component: NewUserComponent,
         canActivate: [AuthGuardService]},
     { path: '**', pathMatch: 'full', redirectTo:'home' }
 ] ;

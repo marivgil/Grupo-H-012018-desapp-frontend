@@ -20,6 +20,7 @@ import { AuthGuardService } from './services/auth-guard.service';
 import { ProfileComponent } from './components/profile/profile.component';
 import { UserService } from './services/user.service';
 import { NewCarComponent } from './components/new-car/new-car.component';
+import { NewUserComponent } from './components/new-user/new-user.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { NewCarComponent } from './components/new-car/new-car.component';
     YourOwnCarsComponent,
     PostComponent,
     ProfileComponent,
-    NewCarComponent
+    NewCarComponent,
+    NewUserComponent
   ],
   imports: [
     BrowserModule,
