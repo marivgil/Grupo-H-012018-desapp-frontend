@@ -4,7 +4,7 @@
 <form class="main-container">
   <div>
 
-    <form [formGroup]="forma" (ngSubmit)="guardarCambios()" novalidate="novalidate">
+    <form [formGroup]="forma" (ngSubmit)="saveChanges()" novalidate="novalidate">
 
       <div class="form-group" >
         <label for="exampleFormControlInput1">Capacidad</label>
@@ -14,16 +14,19 @@
                         && forma.get('capacity').dirty}"
                formControlName="capacity">        
       </div>
+
+
       <div class="alert alert-danger" 
            *ngIf="forma.controls['capacity'].errors?.required
                   && forma.get('capacity').dirty">
             Es necesario indicar la capacidad.
       </div>
-
       <div class="alert alert-danger" 
            *ngIf="forma.controls['capacity'].errors?.range">
             La capacidad es incorrecta
       </div>
+
+
 
       <div class="form-group">
         <label for="exampleFormControlSelect1">Tipo de vehiculo</label>
@@ -36,6 +39,8 @@
           <option>VEHICULO</option>
         </select>
       </div>
+
+
 
       <div class="form-group">
         <label for="exampleFormControlTextarea1">Descripcion</label>
@@ -53,14 +58,30 @@
          La descripcion debe tener entre 30 y 200 caracteres.
       </div> 
 
+
       <div class="form-group">
           <label for="exampleFormControlInput1">
             Fotos
           </label>
-          <button class="btn btn-link btn-right">
+          <button (click)="addPhoto()"
+                  class="btn btn-link btn-right"
+                  type="button">
             Insertar otra foto
           </button>
-          <input type="number" class="form-control" id="exampleFormControlInput1">
+          <div formArrayName="photos">
+            <div class="input-group mb-3"
+                 *ngFor="let photo of forma.controls['photos'].controls; let i=index"
+                 >
+                <input type="url" [formControlName]="i" class="form-control" aria-describedby="basic-addon2">
+                <div class="input-group-append">
+                  <button (click)="deletePhoto(i)"
+                          class="btn btn-danger" 
+                          type="button">
+                  Eliminar
+                </button>
+                </div>
+            </div>
+          </div>
       </div>
 
 
