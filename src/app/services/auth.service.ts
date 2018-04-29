@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { UserService } from "./user.service";
 import { filter } from 'rxjs/operators';
 import * as auth0 from 'auth0-js';
 
@@ -16,9 +17,11 @@ export class AuthService {
     scope: 'openid profile email'
   });
 
-  constructor(public router: Router) {}
+  constructor(public router: Router,
+              private _userService: UserService) {}
 
   userProfile: any;
+  userBD:any;
 
     public getProfile(cb): void {
     const accessToken = localStorage.getItem('access_token');
@@ -32,6 +35,8 @@ export class AuthService {
       }
       cb(err, profile);
     });
+
+    this.userBD=this._userService.getUser;
 }
 
   public login(): void {
