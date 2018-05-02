@@ -27,6 +27,10 @@ export class YourOwnCarsComponent implements OnInit {
     console.log("TODO: Hacer modal de edicion de auto");
   }
 
+  makeAPost(){
+    this._router.navigate(['nuevoPost']);
+  }
+
   deleteCar(){
     console.log("TODO: Hacer modal de confirmacion de eliminacion de auto");
   }

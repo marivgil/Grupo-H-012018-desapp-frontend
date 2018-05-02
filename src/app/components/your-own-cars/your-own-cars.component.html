@@ -13,12 +13,15 @@
       <div class="main-container">
           <h5 class="card-title">{{cars[0].vehicleType}} para {{cars[0].capacity}} personas </h5>
           <p class="card-text">{{cars[0].description}}
+              <button (click)= makeAPost() class="btn btn-link btn-padding-right">
+                  <i class="fas fa-money-bill-alt fa-2x"></i>
+              </button>
               <button (click)= editCar() class="btn btn-link btn-padding-right">
                   <i class="fas fa-pencil-alt fa-2x" ></i>
-                  </button>
-                  <button (click)= deleteCar() class="btn btn-link btn-right">
+              </button>
+              <button (click)= deleteCar() class="btn btn-link btn-right">
                   <i class="fas fa-trash-alt fa-2x"></i>
-                  </button>
+              </button>
           </p>    
           
           

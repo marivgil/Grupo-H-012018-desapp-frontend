@@ -5,6 +5,7 @@ import { UserService } from "../../services/user.service"
 import { AuthService } from '../../services/auth.service';
 import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
 import { CustomValidators } from 'ng2-validation';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-new-post',
@@ -25,19 +26,20 @@ export class NewPostComponent implements OnInit {
   returnMarkers:any[]=[];
 
   constructor( private _userService: UserService,
-              private _authService: AuthService) {
+              private _authService: AuthService,
+              private _router: Router) {
 
     this.vehicle= this._userService.getUserWithCar().vehicles[0];
     this.user= this._authService.userBD;
 
     this.forma= new FormGroup({
-      'phone': new FormControl('',[Validators.required]),
+      'phone': new FormControl('',      [Validators.required]),
       'costPerDay': new FormControl('', [Validators.required]),
       'pickUpCoord': new FormGroup({
-        'lat': new FormControl(),
-        'lng': new FormControl()
-      }),
-      'returnMarkers': new FormArray([])
+                                    'lat': new FormControl(),
+                                    'lng': new FormControl()
+                                  },    Validators.required),
+      'returnMarkers': new FormArray([],Validators.required)
     })
    }
 
@@ -75,12 +77,8 @@ export class NewPostComponent implements OnInit {
     };
     this.returnMarkers.push(m);
   }
-  /**
-   * var newMarker = {
-      name:'Untitled',
-      lat: $event.coords.lat,
-      lng: $event.coords.lng,
-      draggable: false,
-    }
-   */
+
+  volverAHome(){
+    this._router.navigate(['/home']);
+  }
 }
