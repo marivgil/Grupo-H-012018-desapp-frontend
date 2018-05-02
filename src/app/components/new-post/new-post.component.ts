@@ -23,12 +23,17 @@ export class NewPostComponent implements OnInit {
 
   constructor( private _userService: UserService,
               private _authService: AuthService) {
+
     this.vehicle= this._userService.getUserWithCar().vehicles[0];
     this.user= this._authService.userBD;
 
     this.forma= new FormGroup({
       'phone': new FormControl('',[Validators.required]),
-      'costPerDay': new FormControl('', [Validators.required])
+      'costPerDay': new FormControl('', [Validators.required]),
+      'pickUpCord': new FormGroup({
+        'lat': new FormControl(),
+        'lng': new FormControl()
+      })
     })
    }
 
@@ -37,7 +42,18 @@ export class NewPostComponent implements OnInit {
 
   post(){
     console.log(this.forma);
-    
   }
 
+  mapClicked($event:any){
+    this.forma.get('pickUpCoord').get('lat').setValue= $event.coords.lat,
+    this.forma.get('pickUpCoord').get('lng').setValue= $event.coords.lng
+  }
+  /**
+   * var newMarker = {
+      name:'Untitled',
+      lat: $event.coords.lat,
+      lng: $event.coords.lng,
+      draggable: false,
+    }
+   */
 }

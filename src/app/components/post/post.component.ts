@@ -24,6 +24,10 @@ export class PostComponent implements OnInit {
     
   ];
 
+  duration:string;
+  distance:string;
+  
+
   constructor(private activatedRoute: ActivatedRoute, 
               private _postsService: PostsService,
               private _router:Router) { 
@@ -52,6 +56,52 @@ export class PostComponent implements OnInit {
   toggle(){
     this.topCarousel.toggleMode();
   }
+
+  cb=(response,status)=>{
+    if (status == 'OK') {
+      this.distance=response.rows[0].elements[0].distance.text;
+      this.duration=response.rows[0].elements[0].duration.text;  
+    }
+    console.log(this.distance);
+    console.log(this.duration);
+    
+  }
+
+  mapClicked($event:any){
+    let marker:marker={name:"Mi partida",lat:$event.coords.lat, lng:$event.coords.lng,draggable:false};
+    this.markers.push(marker);
+    
+    var service = new google.maps.DistanceMatrixService();
+    var origin1 = new google.maps.LatLng(marker.lat,marker.lng);
+    var destinationA = new google.maps.LatLng(this.post.coordPickUp.lat,this.post.coordPickUp.lng);
+    
+    service.getDistanceMatrix(
+      {
+        origins: [origin1],
+        destinations: [destinationA],
+        travelMode: 'WALKING'
+      }, this.cb);
+  }
+
+  markerClicked(m){
+    var service = new google.maps.DistanceMatrixService();
+    var origin1 = new google.maps.LatLng(m.lat, m.lng);
+    var destinationA = new google.maps.LatLng(this.post.coordPickUp.lat,this.post.coordPickUp.lng);
+    
+    service.getDistanceMatrix(
+      {
+        origins: [origin1],
+        destinations: [destinationA],
+        travelMode: 'WALKING'
+      }, this.cb);
+
+  }
+  // var newMarker = {
+  //   name:'Untitled',
+  //   lat: $event.coords.lat,
+  //   lng: $event.coords.lng,
+  //   draggable: false,
+  // }
 
 }
 

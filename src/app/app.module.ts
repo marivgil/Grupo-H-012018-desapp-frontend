@@ -7,7 +7,7 @@ import { APP_ROUTING} from './app.routes';
 import { PostsService } from './services/posts.service';
 import { AuthService } from './services/auth.service';
 
-import { AgmCoreModule } from '@agm/core';
+import { AgmCoreModule} from '@agm/core';
 import { CarouselModule } from '../../node_modules/angular2-carousel'
 
 import { AppComponent } from './app.component';

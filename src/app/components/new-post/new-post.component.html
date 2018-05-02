@@ -11,11 +11,18 @@
       <label>Indica en el mapa el punto donde deben retirar el vehiculo:</label>
         <div class="map">
             <agm-map 
-            [latitude]="lat" 
-            [longitude]="lng"
-            [zoom]="zoom"
-            [disableDefaultUI]=false
-            [zoomControl]=true>
+              [latitude]="lat" 
+              [longitude]="lng"
+              [zoom]="zoom"
+              [disableDefaultUI]=false
+              [zoomControl]=true
+              (mapClick)= "mapClicked($event)">
+                <agm-marker 
+                  [latitude]="this.forma.controls['pickUpCoord'].controls['lat'].value" 
+                  [longitude]="this.forma.controls['pickUpCoord'].controls['lng'].value"
+                  markerDraggable= "false"
+                  >
+                </agm-marker>
               </agm-map>
         </div>
 
