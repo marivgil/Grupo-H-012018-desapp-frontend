@@ -21,6 +21,8 @@ export class NewPostComponent implements OnInit {
   lat: number = -34.603418;
   lng: number = -58.381592;
 
+  marker:any;
+
   constructor( private _userService: UserService,
               private _authService: AuthService) {
 
@@ -30,7 +32,7 @@ export class NewPostComponent implements OnInit {
     this.forma= new FormGroup({
       'phone': new FormControl('',[Validators.required]),
       'costPerDay': new FormControl('', [Validators.required]),
-      'pickUpCord': new FormGroup({
+      'pickUpCoord': new FormGroup({
         'lat': new FormControl(),
         'lng': new FormControl()
       })
@@ -45,6 +47,12 @@ export class NewPostComponent implements OnInit {
   }
 
   mapClicked($event:any){
+    this.marker = {
+      name:'Untitled',
+      lat: $event.coords.lat,
+      lng: $event.coords.lng,
+      draggable: false
+    }
     this.forma.get('pickUpCoord').get('lat').setValue= $event.coords.lat,
     this.forma.get('pickUpCoord').get('lng').setValue= $event.coords.lng
   }

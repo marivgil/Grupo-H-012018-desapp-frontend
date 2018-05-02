@@ -17,10 +17,10 @@
               [disableDefaultUI]=false
               [zoomControl]=true
               (mapClick)= "mapClicked($event)">
-                <agm-marker 
-                  [latitude]="this.forma.controls['pickUpCoord'].controls['lat'].value" 
-                  [longitude]="this.forma.controls['pickUpCoord'].controls['lng'].value"
-                  markerDraggable= "false"
+                <agm-marker *ngIf="marker"
+                  [latitude]="marker.lat" 
+                  [longitude]="marker.lng"
+                  [markerDraggable]="marker.draggable"
                   >
                 </agm-marker>
               </agm-map>
