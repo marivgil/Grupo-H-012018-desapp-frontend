@@ -3,7 +3,7 @@ import { Vehicle } from "../../interfaces/vehicle.interface";
 import { User } from '../../interfaces/user.interface';
 import { UserService } from "../../services/user.service"
 import { AuthService } from '../../services/auth.service';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
 import { CustomValidators } from 'ng2-validation';
 
 @Component({
@@ -22,6 +22,7 @@ export class NewPostComponent implements OnInit {
   lng: number = -58.381592;
 
   marker:any;
+  returnMarkers:any[]=[];
 
   constructor( private _userService: UserService,
               private _authService: AuthService) {
@@ -35,7 +36,8 @@ export class NewPostComponent implements OnInit {
       'pickUpCoord': new FormGroup({
         'lat': new FormControl(),
         'lng': new FormControl()
-      })
+      }),
+      'returnMarkers': new FormArray([])
     })
    }
 
@@ -43,6 +45,7 @@ export class NewPostComponent implements OnInit {
   }
 
   post(){
+
     console.log(this.forma);
   }
 
@@ -55,6 +58,22 @@ export class NewPostComponent implements OnInit {
     }
     this.forma.get('pickUpCoord').get('lat').setValue= $event.coords.lat,
     this.forma.get('pickUpCoord').get('lng').setValue= $event.coords.lng
+  }
+
+  mapReturnClicked($event){
+    
+    let marker= new FormGroup({
+      'lat': new FormControl($event.coords.lat),
+      'lng': new FormControl($event.coords.lng)
+    });
+    (<FormArray>this.forma.controls['returnMarkers']).push(marker);
+    let m = {
+      name:'Untitled',
+      lat: $event.coords.lat,
+      lng: $event.coords.lng,
+      draggable: false
+    };
+    this.returnMarkers.push(m);
   }
   /**
    * var newMarker = {
