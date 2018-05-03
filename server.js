@@ -1,16 +1,8 @@
 // server.js
-
-
 const express = require('express');
-const cors = require('cors')
+var cors= require('cors');
+
 const app = express();
-
-app.use(cors());
- 
-app.listen(80, function () {
-  console.log('CORS-enabled web server listening on port 80')
-})
-
 // Run the app by serving the static files
 // in the dist directory
 app.use(express.static(__dirname + '/dist'));
@@ -38,6 +30,14 @@ const forceSSL = function() {
 app.use(forceSSL());
 // ...
 
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", '*');
+  res.header("Access-Control-Allow-Credentials", true);
+  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
+  res.header("Access-Control-Allow-Headers", 'Origin,X-Requested-With,Content-Type,Accept,content-type,application/json');
+  next();
+});
+
 // server.js
 const path = require('path');
 // ...
@@ -46,6 +46,3 @@ const path = require('path');
 app.get('/*', function(req, res) {
   res.sendFile(path.join(__dirname + '/dist/index.html'));
 });
-
-
-
