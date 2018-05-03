@@ -13,6 +13,8 @@ import { Router } from '@angular/router';
 })
 export class NewPostComponent implements OnInit {
 
+  
+
   forma: FormGroup;
   vehicle:Vehicle;
   user:User;

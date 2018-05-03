@@ -7,7 +7,22 @@
 
   <div class="row">
 
-    <div class="col-md-8">
+      <div class="col-md-3 margin-top-20">
+          <div class="card center container-fluid" style="width: 18rem;">
+              <img class="card-img-top" [src]="vehicle.photos[0]" alt="Card image cap">
+              <div class="card-body">
+                <h5 class="card-title">{{vehicle.vehicleType}} para {{vehicle.capacity}} personas. </h5>
+                <p class="card-text">{{vehicle.description}}</p>
+              </div>
+              <div class="card-body">
+                <a href="#" class="card-link text-center">Editar Auto</a>
+                <a href="#" class="card-link btn-right">Cambiar Auto</a>
+              </div>
+            </div>
+        
+      </div>
+
+    <div class="col-md-8 padding-right container-fluid">
       <label><strong>Indica en el mapa el punto donde deberian retirar el vehiculo:</strong></label>
         <div class="map">
             <agm-map 
@@ -56,23 +71,10 @@
                 </div>
                 </agm-map>
           </div>
-        <button type="submit" class="btn btn-primary btn-right main-container" [disabled]="!forma.valid">Publicar</button>
+          <footer class="container py-5">
+          <button type="submit" class="btn btn-primary btn-right main-container" [disabled]="!forma.valid">Publicar</button>
+          </footer>
       </form>
-    </div>
-
-    <div class="col-md-4">
-        <div class="card" style="width: 18rem;">
-            <img class="card-img-top" [src]="vehicle.photos[0]" alt="Card image cap">
-            <div class="card-body">
-              <h5 class="card-title">{{vehicle.vehicleType}} para {{vehicle.capacity}} personas. </h5>
-              <p class="card-text">{{vehicle.description}}</p>
-            </div>
-            <div class="card-body">
-              <a href="#" class="card-link btn-right">Editar Auto</a>
-              <a href="#" class="card-link btn-padding-right">Cambiar Auto</a>
-            </div>
-          </div>
-      
     </div>
   </div>
 
