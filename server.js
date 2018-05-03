@@ -2,8 +2,10 @@
 
 
 const express = require('express');
-const cors= require('cors');
+const cors = require('cors')
 const app = express();
+
+app.use(cors());
 
 app.get('/products/:id', function (req, res, next) {
   res.json({msg: 'This is CORS-enabled for all origins!'})
@@ -13,11 +15,9 @@ app.listen(80, function () {
   console.log('CORS-enabled web server listening on port 80')
 })
 
-
 // Run the app by serving the static files
 // in the dist directory
 app.use(express.static(__dirname + '/dist'));
-
 // Start the app by listening on the default
 // Heroku port
 app.listen(process.env.PORT || 8080);
@@ -43,4 +43,13 @@ app.use(forceSSL());
 // ...
 
 // server.js
-const path = require('path')
+const path = require('path');
+// ...
+// For all GET requests, send back index.html
+// so that PathLocationStrategy can be used
+app.get('/*', function(req, res) {
+  res.sendFile(path.join(__dirname + '/dist/index.html'));
+});
+
+
+
