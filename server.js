@@ -26,11 +26,15 @@ const path = require('path');
 // For all GET requests, send back index.html
 // so that PathLocationStrategy can be used
 app.get('/*', function(req, res, next) {
+  if(req.get('origin')== res.get('origin')){
+    res.sendFile(path.join(__dirname + '/dist/index.html'));
+  } else{
   var origin = req.get('origin'); 
   res.header('Access-Control-Allow-Origin', origin);
   res.header("Access-Control-Allow-Headers", "X-Requested-With");
   res.header('Access-Control-Allow-Headers', 'Content-Type');
-  res.sendFile(path.join(__dirname + '/dist/index.html'));
+ 
   next();
-});
+  }
+  });
 
