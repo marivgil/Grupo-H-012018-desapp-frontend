@@ -27,8 +27,10 @@ const path = require('path');
 // so that PathLocationStrategy can be used
 app.get('/*', function(req, res, next) {
   if(req.get('origin')== res.get('origin')){
+    console.log("entre al if");
     res.sendFile(path.join(__dirname + '/dist/index.html'));
   } else{
+    console.log("no entre al if");
   var origin = req.get('origin'); 
   res.header('Access-Control-Allow-Origin', origin);
   res.header("Access-Control-Allow-Headers", "X-Requested-With");
