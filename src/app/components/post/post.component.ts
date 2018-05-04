@@ -4,14 +4,16 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { PostsService } from '../../services/posts.service';
 import {CarouselComponent} from "angular2-carousel";
 
-
+declare var google:any;
 @Component({
   selector: 'app-post',
   templateUrl: './post.component.html',
 })
 
 
-export class PostComponent implements OnInit {
+
+export class PostComponent {
+ 
 
   post:Post;
   zoom: number= 15;
@@ -38,12 +40,15 @@ export class PostComponent implements OnInit {
       })
   }
 
+
+
   ngOnInit(){
     this.lat= this.post.coordPickUp.lat;
     this.lng= this.post.coordPickUp.lng;
     let marker:marker={name:"Lugar de Retiro",lat: this.lat, lng: this.lng,draggable:false};
     this.markers.push(marker);
   }
+
 
   reservar(id:number){
     this._router.navigate(['/home']);
@@ -66,7 +71,7 @@ export class PostComponent implements OnInit {
     
   }
 
-  google:any;
+  
 
   mapClicked($event:any){
     let marker:marker={name:"Mi partida",lat:$event.coords.lat, lng:$event.coords.lng,draggable:false};
