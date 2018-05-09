@@ -11,6 +11,7 @@ export class ProfileComponent {
 
   profile: any;
   user:User;
+  editar:boolean=false;
 
   constructor(public auth: AuthService,
               public _user:UserService) { 

@@ -24,11 +24,19 @@
     <div class="btn-group btn-margin btn-dark" role="group" *ngIf="isAuthenticated()">
       <button id="btnGroupDrop1" type="button" class="btn btn-secondary" 
         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <img *ngIf="auth.userProfile.picture" [src]="auth.userProfile.picture" class="rounded-circle img-fluid img-boton">
        Bienvenido
+       <i class="fas fa-caret-down"></i>
       </button>
       <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-        <a class="dropdown-item" [routerLink]="['perfil']">Mi perfil</a>
-        <a class="dropdown-item" (click)="logout()">Log Out</a>
+        <a class="dropdown-item" [routerLink]="['perfil']">
+            <i class="fas fa-user"></i>
+            Mi perfil
+        </a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" (click)="logout()">
+          <i class="fas fa-sign-out-alt"></i>
+          Log Out</a>
       </div>
     </div>
     
@@ -37,6 +45,7 @@
         *ngIf="!isAuthenticated()"
         (click)="login()">
           Log In
+        <i class="fas fa-chevron-circle-right"></i>
       </button>
 
   </div>
