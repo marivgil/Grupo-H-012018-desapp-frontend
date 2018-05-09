@@ -6,6 +6,7 @@ import { AuthService } from '../../services/auth.service';
 import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
 import { CustomValidators } from 'ng2-validation';
 import { Router } from '@angular/router';
+import { IMyDrpOptions } from 'mydaterangepicker';
 
 @Component({
   selector: 'app-new-post',
@@ -13,8 +14,10 @@ import { Router } from '@angular/router';
 })
 export class NewPostComponent implements OnInit {
 
-  
-
+  myDateRangePickerOptions: IMyDrpOptions={
+    dateFormat: 'dd.mm.yyyy',
+  }
+  date= new Date();
   forma: FormGroup;
   vehicle:Vehicle;
   user:User;
@@ -41,7 +44,19 @@ export class NewPostComponent implements OnInit {
                                     'lat': new FormControl(),
                                     'lng': new FormControl()
                                   },    Validators.required),
-      'returnMarkers': new FormArray([],Validators.required)
+      'returnMarkers': new FormArray([],Validators.required),
+      'dateRange':new FormControl({myDateRange: {
+        beginDate: {
+            year: this.date.getFullYear(),
+            month: this.date.getMonth() + 1,
+            day: this.date.getDate()
+        },
+        endDate: {
+            year: this.date.getFullYear(),
+            month: this.date.getMonth() + 1,
+            day: this.date.getDate()
+        }
+    }})
     })
    }
 

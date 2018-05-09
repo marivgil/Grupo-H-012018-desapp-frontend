@@ -24,7 +24,7 @@
     <div class="btn-group btn-margin btn-dark" role="group" *ngIf="isAuthenticated()">
       <button id="btnGroupDrop1" type="button" class="btn btn-secondary" 
         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <img *ngIf="auth.userProfile.picture" [src]="auth.userProfile.picture" class="rounded-circle img-fluid img-boton">
+        <img *ngIf="auth.userProfile" [src]="auth.userProfile.picture" class="rounded-circle img-fluid img-boton">
        Bienvenido
        <i class="fas fa-caret-down"></i>
       </button>
