@@ -1,5 +1,5 @@
 <div class="main-container">
-    <form [formGroup]="forma" class="form .flex-nowrap" (ngSubmit)="registerMe()" novalidate="novalidate">
+    <form [formGroup]="forma" class="form" (ngSubmit)="registerMe()" novalidate="novalidate">
         <div class="form-row">
 
             <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
@@ -22,12 +22,12 @@
         </div>
 
         <div class="form-row" formGroupName="address">
-            <div class="form-group col-md-9 px-0">
+            <div class="form-group col-9 px-0">
                 <label for="inputPassword4"><strong>Direccion</strong><small> -Calle</small></label>
                 <input formControlName="street" placeholder="Calle" type="text" class="form-control " id="inputPassword4">
             </div>
 
-            <div class="form-group col-md-3">
+            <div class="form-group col-3">
                 <label for="inputAddress2"> <small>Número</small> </label>
                 <input formControlName="number" placeholder="Nro" type="text" class="form-control" id="inputAddress2">
             </div>
@@ -38,13 +38,13 @@
                 <label for="inputPassword4" class="p-0"><strong>CUIL</strong></label>
 
                 <div class="form-row">
-                    <div class="form-group col-sm-2 px-0 py-0">
+                    <div class="form-group col-2 px-0 py-0">
                         <input formControlName="prefix" type="number" placeholder="27" class="form-control" id="inputPassword4">
                     </div>
-                    <div class=" form-group col-sm-8 py-0">
+                    <div class=" form-group col-7 py-0">
                         <input formControlName="DNI" type="number" placeholder="85960697" class="form-control" id="inputPassword4">
                     </div>
-                    <div class="form-group col-sm-1 px-0 py-0">
+                    <div class="form-group col-2 px-0 py-0">
                         <input formControlName="suffix" type="number" placeholder="3" class="form-control" id="inputPassword4">
                     </div>
                 </div>

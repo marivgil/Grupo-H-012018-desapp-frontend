@@ -10,7 +10,18 @@ import { AuthService } from '../../services/auth.service';
 
 export class NavbarComponent {
 
+  user: any;
+
   constructor( public auth:AuthService) { 
+    if(localStorage.getItem('access_token')){
+       if (this.auth.userProfile) {
+         this.user = this.auth.userProfile;
+      } else {
+         this.auth.getProfile((err, profile) => {
+         this.user = profile;
+        });
+      }   
+     }
   }
 
   isAuthenticated():boolean{

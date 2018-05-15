@@ -21,7 +21,7 @@ export class AuthService {
               private _userService: UserService) {}
 
   userProfile: any;
-  userBD:any;
+  userBD: any;
 
     public getProfile(cb): void {
     const accessToken = localStorage.getItem('access_token');
@@ -36,7 +36,7 @@ export class AuthService {
       cb(err, profile);
     });
 
-    this.userBD=this._userService.getUser;
+    this.userBD = this._userService.getUser;
 }
 
   public login(): void {
@@ -62,7 +62,7 @@ export class AuthService {
     localStorage.setItem('access_token', authResult.accessToken);
     localStorage.setItem('id_token', authResult.idToken);
     localStorage.setItem('expires_at', expiresAt);
-    }    
+    }
 
   public logout(): void {
     // Remove tokens and expiry time from localStorage

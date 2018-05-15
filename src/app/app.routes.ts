@@ -17,7 +17,10 @@ const APP_ROUTES: Routes = [
         component: YourOwnCarsComponent,
         canActivate: [AuthGuardService]},
     { path: 'post/:id', component: PostComponent },
-    { path: 'perfil', component: ProfileComponent},
+    {
+         path: 'perfil', 
+         component: ProfileComponent,
+         canActivate: [AuthGuardService]},
     { 
         path: 'nuevoAuto', 
         component: NewCarComponent,
