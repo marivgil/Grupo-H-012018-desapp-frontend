@@ -3,7 +3,7 @@ import { Vehicle } from '../../interfaces/vehicle.interface';
 import { UserService } from '../../services/user.service';
 import { Router } from '@angular/router';
 
-
+declare var $;
 @Component({
   selector: 'app-your-own-cars',
   templateUrl: './your-own-cars.component.html'
@@ -32,7 +32,10 @@ export class YourOwnCarsComponent implements OnInit {
   }
 
   deleteCar(){
-    console.log("TODO: Hacer modal de confirmacion de eliminacion de auto");
+      $('#eliminationModal').modal({
+   //     backdrop: 'static',
+   //     keyboard: false
+      }) 
   }
 
 }

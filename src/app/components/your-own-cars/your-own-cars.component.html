@@ -1,32 +1,52 @@
 <div class="main-container">
 
-  <h1>Tus Autos
-    <button class="btn btn-link btn-padding-right" (click)= addCar()>
-     <i class="fas fa-plus-circle fa-3x btn-left "></i>
+    <button class="btn btn-link btn-padding-right" (click)="addCar()">
+        <i class="fas fa-plus-circle fa-3x btn-left "></i>
     </button>
-  </h1>
-  <hr>
+    <h1>Tus Autos
+    </h1>
+    <hr>
 
     <div class="card mb-3">
         <img class="img-preview img-fluid" [src]="cars[0].photos[0]" alt="Card image cap">
-        
-      <div class="main-container">
-          <h5 class="card-title">{{cars[0].vehicleType}} para {{cars[0].capacity}} personas </h5>
-          <p class="card-text">{{cars[0].description}}
-              <button (click)= makeAPost() class="btn btn-link btn-padding-right">
+
+        <div class="main-container">
+            <h5 class="card-title">{{cars[0].vehicleType}} para {{cars[0].capacity}} personas </h5>
+            <p class="card-text">{{cars[0].description}}
+                <button (click)="makeAPost()" class="btn btn-link btn-padding-right">
                   <i class="fas fa-money-bill-alt fa-2x"></i>
               </button>
-              <button (click)= editCar() class="btn btn-link btn-padding-right">
+                <button (click)="editCar()" class="btn btn-link btn-padding-right">
                   <i class="fas fa-pencil-alt fa-2x" ></i>
               </button>
-              <button (click)= deleteCar() class="btn btn-link btn-right">
+                <button (click)="deleteCar()" class="btn btn-link btn-right">
                   <i class="fas fa-trash-alt fa-2x"></i>
               </button>
-          </p>    
-          
-          
-        </div>
-      </div>
+            </p>
 
-      
-  </div>
+
+        </div>
+    </div>
+
+
+</div>
+
+<div class="modal fade" id="eliminationModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Confirmación</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+            </div>
+            <div class="modal-body">
+                <h6>¿Está seguro que desea eliminar el vehiculo? Esta accion no se podrá deshacer.</h6>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">CANCELAR</button>
+                <button type="button" class="btn btn-danger">ELIMINAR</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -13,7 +13,6 @@ import { PostsService } from './services/posts.service';
 import { AuthService } from './services/auth.service';
 import { UserService } from './services/user.service';
 import { AuthGuardService } from './services/auth-guard.service';
-import { GoogleMapsService } from './services/google-maps.service'
 
 // Extern Modules
 import { AgmCoreModule } from '@agm/core';
@@ -62,8 +61,7 @@ import { NewPostComponent } from './components/new-post/new-post.component';
     PostsService, 
     AuthService,
     AuthGuardService,
-    UserService,
-    GoogleMapsService
+    UserService
   ],
   bootstrap: [AppComponent]
 })
