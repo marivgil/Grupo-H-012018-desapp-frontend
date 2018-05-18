@@ -1,0 +1,12 @@
+{
+    "HomeLink": "Home",
+    "FindYourCarLink": "Find your ideal car",
+    "MyCarsLink": "My Cars",
+    "WelcomeButton": "Welcome",
+    "LoginButton": "Log In",
+    "ProfileButton": "My profile",
+    "LogoutButton": "Log Out",
+    "Home": {
+        "MainTitleTxt": "Publish Your Car!"
+    }
+}

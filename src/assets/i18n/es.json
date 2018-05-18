@@ -1,0 +1,13 @@
+{
+    "HomeLink": "Inicio",
+    "FindYourCarLink": "Encontrá tu auto ideal",
+    "MyCarsLink": "Mis Autos",
+    "WelcomeButton": "Bienvenido",
+    "LoginButton": "Iniciar Sesión",
+    "ProfileButton": "Mi Perfil",
+    "LogoutButton": "Cerrar sesión",
+    "Home": {
+        "MainTitleTxt": "Publica tu auto!"
+    }
+
+}
