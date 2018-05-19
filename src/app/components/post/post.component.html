@@ -6,10 +6,12 @@
           [longitude]="lng"
           [zoom]="zoom"
           [disableDefaultUI]=false
-          [zoomControl]=true>
+          [zoomControl]=true
+          (mapClick)= "mapClicked($event)">
 
               <agm-marker 
               *ngFor= "let m of markers; let i= index"
+              (markerClick)="markerClicked(m)"
               [latitude]="m.lat" 
               [longitude]="m.lng"
               [markerDraggable]="m.draggable"
@@ -23,31 +25,43 @@
       
     </div>
   </div>
+  
+  <div class="alert alert-light btn-right" *ngIf="distance" role="alert">
+      Estas a {{distance}} del lugar de retiro ({{duration}} a pie).
+  </div>
+  <div class="alert alert-light btn-right" *ngIf="!distance" role="alert">
+      Hace click en el lugar desde donde salis para saber a cuanto estas de tu proximo auto!
+  </div>
 
-
-<h1 class=fadeIn>{{post.vehicleType | uppercase}} en {{post.location | uppercase}} <br>
-  <small>Se alquila el dia: ({{post.rentalDate}})</small></h1>
+<h1 class="main-container">{{post.vehicleType | uppercase}} en {{post.location | uppercase}} 
+  <br>
+  <small>Se alquila el dia: ({{post.rentalDate}})</small>
+</h1>
+ 
 <hr>
 
-<div class= "row animated fadeIn fast">
-  <div class="col-md-6">
-    <img src={{post.photos}} class="img fluid img-post" alt="">
+<div class= "animated fadeIn fast">
+      <div class="row">
+          <div class="col-md-4">
+              
+              <carousel-component [mode]="'horizontal'" [autoPlay]="true" #topCarousel >
+                <div class="item-carousel" *ngFor="let p of post.photos"><img [src]="p"></div>
+              </carousel-component>
+          </div>
+          <div class="col-md-2">
+
+          </div>
+          <div class="col-md-4">
+            <h3>{{post.vehicleType | uppercase}} en {{post.location | uppercase}} <small>{{post.costPerDay | currency}}/day</small></h3>
+            <hr>
+            <p>
+              {{post.description}}
+            </p>
+        
+            <button (click)= "reservar(post.id)" class="btn btn-success btn-block">Reservar!</button>
+          </div>
+
+      </div>
     <br><br>
-
-  </div>
-  <div class="col-md-6">
-    <h3>{{post.vehicleType | uppercase}} en {{post.location | uppercase}} <small>{{post.costPerDay | currency}}/day</small></h3>
-    <hr>
-    <p>
-      {{post.description}}
-    </p>
-
- <!--   <div *ngIf="heroe.casa!=DC">
-      <img *ngIf="heroe.casa=='Marvel'" class= "img-logo" src="../../../assets/img/Marvel.png" alt="Marvel">
-      <img *ngIf="heroe.casa=='DC'" class= "img-logo" src="../../../assets/img/DC.png" alt="DC">
-    </div>
-  -->
-      <button (click)= "reservar(post.id)" class="btn btn-success btn-block">Reservar!</button>
-  </div>
 
 </div> 

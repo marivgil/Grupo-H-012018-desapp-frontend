@@ -1,65 +1,253 @@
-.img-navbar{
-    width: 90px;
+  .form {
+      padding-right: 5%;
+      padding-left: 5%;
   }
-
-.img-boton{
-  width: 40px;
-}
-
-.img-post{
-    width: 10cm;
-}
-
-.main-container{
-    margin-top: 40px;
-    margin-left: 20px;
-}
-
-.img-perfil{
-  width: 200px;
-  padding-left: 20px;
-}
-
-body{
-  padding-bottom:50px;
-}
-
-.img-logo{
-  width: 120px;
-}
-
-agm-map {
-  height: 300px;
-}
-
-
-
-/* Animaciones */
-
-.animated {
-    -webkit-animation-duration: 1s;
-    animation-duration: 1s;
-    -webkit-animation-fill-mode: both;
-    animation-fill-mode: both;
+  
+  .img-navbar {
+      width: 90px;
+  }
+  
+  #form label {
+      text-align: left;
+  }
+  
+  .img-preview {
+      width: 10cm;
+      align-items: center;
+  }
+  
+  .img-boton {
+      width: 40px;
+  }
+  
+  .img-post {
+      width: 10cm;
+  }
+  
+  .pl-ziro {
+      padding-left: 0px;
+  }
+  
+  .btn-padding-right {
+      float: right;
+      margin-right: 20px;
+  }
+  
+  .margin-right-40 {
+      margin-right: 40px;
+  }
+  
+  .margin-top-40 {
+      margin-top: 40px;
+  }
+  
+  .btn-right {
+      float: right;
+      text-align: center;
+  }
+  
+  .padding-right {
+      margin-right: 10px;
+  }
+  
+  .main-container {
+      margin-top: 40px;
+      margin-left: 20px;
+  }
+  
+  .bigger-bold {
+      font-size: 20px;
+      font-weight: bold;
+  }
+  
+  .margin-top-40 {
+      margin-top: 40px;
+  }
+  
+  .margin-top-20 {
+      margin-top: 20px;
+  }
+  
+  .img-perfil {
+      width: 200px;
+      padding-left: 20px;
+  }
+  
+  body {
+      padding-bottom: 50px;
+  }
+  
+  .img-logo {
+      width: 120px;
+  }
+  
+  agm-map {
+      height: 300px;
+  }
+  /* Animaciones */
+  
+  .animated {
+      -webkit-animation-duration: 1s;
+      animation-duration: 1s;
+      -webkit-animation-fill-mode: both;
+      animation-fill-mode: both;
   }
   
   .fast {
-    -webkit-animation-duration: 0.4s;
-    animation-duration: 0.4s;
-    -webkit-animation-fill-mode: both;
-    animation-fill-mode: both;
+      -webkit-animation-duration: 0.4s;
+      animation-duration: 0.4s;
+      -webkit-animation-fill-mode: both;
+      animation-fill-mode: both;
   }
   
   @keyframes fadeIn {
-    from {
-      opacity: 0;
-    }
-  
-    to {
-      opacity: 1;
-    }
+      from {
+          opacity: 0;
+      }
+      to {
+          opacity: 1;
+      }
   }
   
   .fadeIn {
-    animation-name: fadeIn;
+      animation-name: fadeIn;
+  }
+  
+  .carousel-inner>.item>img {
+      object-fit: scale-down;
+      height: 50vh;
+  }
+  /*CAROUSEL!*/
+  
+   :host carousel-component {
+      border: 1px solid black;
+      display: block;
+      overflow: hidden;
+      padding: 8vh 6vh;
+      width: 75%;
+      margin: 0 auto;
+      margin-top: 2vh;
+  }
+  
+  .button-toggle {
+      font-size: 1.8vh;
+      padding: 1vh;
+      margin-bottom: 1vh;
+  }
+  
+  .item-carousel {
+      background-color: white;
+      display: -ms-flexbox!important;
+      display: -webkit-flex!important;
+      display: flex!important;
+      -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+      flex-direction: row;
+      -webkit-flex-wrap: nowrap;
+      -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+      -webkit-justify-content: center;
+      -ms-flex-pack: center;
+      justify-content: center;
+      -webkit-align-content: stretch;
+      -ms-flex-line-pack: stretch;
+      align-content: stretch;
+      -webkit-align-items: center;
+      -ms-flex-align: center;
+      align-items: center;
+      width: 23vh!important;
+      height: 20vh!important;
+      top: 0vh;
+  }
+  
+  .item-carousel img {
+      height: 80%;
+      width: auto;
+  }
+  
+  .parameter-option {
+      margin-right: 2vh;
+  }
+  
+  .parameters-content {
+      font-size: 1.8vh;
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+      flex-direction: row;
+      -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+      -webkit-justify-content: flex-start;
+      -ms-flex-pack: start;
+      justify-content: flex-start;
+      -webkit-align-content: stretch;
+      -ms-flex-line-pack: stretch;
+      align-content: stretch;
+      -webkit-align-items: center;
+      -ms-flex-align: center;
+      align-items: center;
+  }
+  
+  .parameters-content button,
+  .parameters-content select,
+  .parameters-content input {
+      font-size: 1.5vh;
+  }
+  
+  p.show-code {
+      color: #ab2300;
+  }
+  
+  p {
+      font-size: 1.8vh;
+  }
+  
+   :host carousel-component.style-carousel.ready .item-carousel {
+      -webkit-transition: all 500ms !important;
+      -moz-transition: all 500ms!important;
+      -o-transition: all 500ms!important;
+      transition: all 500ms!important;
+  }
+  
+   :host carousel-component.style-carousel.ready .item-carousel.actual {
+      height: 30vh!important;
+      top: -2.5vh;
+  }
+  
+   :host carousel-component.cube-mode.ready>>>.container {
+      perspective: 10vh!important;
+  }
+  /* Small devices (tablets, 768px and up) */
+  
+  @media (min-width: 768px) {
+      .button-toggle,
+      p {
+          font-size: 1.7vh;
+      }
+      .parameters-content {
+          font-size: 1.7vh;
+      }
+  }
+  /* Large devices (large desktops, 1200px and up) */
+  
+  @media (min-width: 1200px) {
+       :host carousel-component {
+          width: 60%;
+      }
+      .item-carousel {
+          width: 28vh!important;
+          height: 25vh!important;
+      }
+      .button-toggle {
+          font-size: 1.6vh;
+      }
+  }
+  
+  @media (min-width: 2000px) {
+       :host carousel-component.cube-mode.ready>>>.container {
+          perspective: 15vh!important;
+      }
   }

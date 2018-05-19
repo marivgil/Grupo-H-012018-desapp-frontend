@@ -3,6 +3,7 @@ import { AuthService } from '../../services/auth.service';
 import { User } from '../../interfaces/user.interface';
 import { UserService } from '../../services/user.service';
 
+declare var $;
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html'
@@ -10,11 +11,12 @@ import { UserService } from '../../services/user.service';
 export class ProfileComponent {
 
   profile: any;
-  user:User;
+  user: User;
+  editar: boolean = false;
 
   constructor(public auth: AuthService,
-              public _user:UserService) { 
-    if (this.auth.userProfile) {
+              public _user: UserService) {
+                if (this.auth.userProfile) {
       this.profile = this.auth.userProfile;
     } else {
       this.auth.getProfile((err, profile) => {
@@ -24,6 +26,25 @@ export class ProfileComponent {
     this.user= _user.getUser();
   }
 
+  changeEdit(){
+    this.editar= !this.editar;
+    console.log(this.editar);
+  }
+  
+  doChanges(){
+    this.changeEdit();
+  }
+
+  changeName(){
+    
+  }
+
+  openModalName(){
+    $('#nameModal').modal({
+ //     backdrop: 'static',
+ //     keyboard: false
+    }) 
+  }
 
 /*{
   "sub": "google-oauth2|106572254188915518115",

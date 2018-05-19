@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { UserService } from "./user.service";
 import { filter } from 'rxjs/operators';
 import * as auth0 from 'auth0-js';
 
@@ -12,13 +13,15 @@ export class AuthService {
     domain: 'carpnd.auth0.com',
     responseType: 'token id_token',
     audience: 'https://carpnd.auth0.com/userinfo',
-    redirectUri: 'http://localhost:4200/home',
+    redirectUri: this.router.navigate['home'],
     scope: 'openid profile email'
   });
 
-  constructor(public router: Router) {}
+  constructor(public router: Router,
+              private _userService: UserService) {}
 
   userProfile: any;
+  userBD: any;
 
     public getProfile(cb): void {
     const accessToken = localStorage.getItem('access_token');
@@ -32,6 +35,8 @@ export class AuthService {
       }
       cb(err, profile);
     });
+
+    this.userBD = this._userService.getUser;
 }
 
   public login(): void {
@@ -57,10 +62,7 @@ export class AuthService {
     localStorage.setItem('access_token', authResult.accessToken);
     localStorage.setItem('id_token', authResult.idToken);
     localStorage.setItem('expires_at', expiresAt);
-    this.getProfile((err, profile) => {
-      this.userProfile = profile;
-      });
-    }    
+    }
 
   public logout(): void {
     // Remove tokens and expiry time from localStorage
