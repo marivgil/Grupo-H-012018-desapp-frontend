@@ -10,6 +10,10 @@
         "MainTitleTxt": "Publica tu auto!",
         "SubTxt": "Elegi el auto que queres publicar, ponele precio, elegi los puntos de retiro y devolucion,selecciona las fechas disponibles... y ya esta!",
         "BtnTxt": "Publica tu auto!"
+    },
+    "Footer": {
+        "LanguageBtn": "Selecciona tu lenguaje",
+        "Sign":"2018 12C, Inc."
     }
 
 }

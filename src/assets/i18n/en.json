@@ -10,5 +10,9 @@
         "MainTitleTxt": "Publish Your Car!",
         "SubTxt": "Choose the car you want to publish, price it, choose the withdrawal and return points, select the available dates ... and that's it!",
         "BtnTxt": "Publish Your Car!"
+    },
+    "Footer": {
+        "LanguageBtn": "Choose your language",
+        "Sign":"2018 12C, Inc."
     }
 }
