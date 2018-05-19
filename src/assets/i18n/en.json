@@ -14,5 +14,25 @@
     "Footer": {
         "LanguageBtn": "Choose your language",
         "Sign":"2018 12C, Inc."
+    },
+    "NewCar":{
+        "MainTitleTxt": "New Car",
+        "Capacity": "Capacity",
+        "VehicleType": "Vehicle Type",
+        "Description": "Description",
+        "Photos": "Photos",
+        "InsertPhoto": "Insert another photo",
+        "Delete": "Delete",
+        "AddCar": "Add Car"
+    },
+    "VehicleType":{
+        "Car": "Car",
+        "Motorcycle": "Motorcycle",
+        "Van": "Van"
+    },
+    "Errors":{
+        "NoCapacity": "Please, insert vehicle capacity.",
+        "WrongCapacity": "Incorrect capacity.",
+        "WrongDescription": "The description must have between 30 and 200 characters."
     }
 }

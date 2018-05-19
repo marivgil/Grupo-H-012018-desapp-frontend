@@ -14,6 +14,26 @@
     "Footer": {
         "LanguageBtn": "Selecciona tu lenguaje",
         "Sign":"2018 12C, Inc."
+    },
+    "NewCar":{
+        "MainTitleTxt": "Nuevo Auto",
+        "Capacity": "Capacidad",
+        "VehicleType": "Tipo de vehículo",
+        "Description": "Descripción",
+        "Photos": "Fotos",
+        "InsertPhoto": "Insertar otra foto",
+        "Delete": "Eliminar",
+        "AddCar": "Agregar Auto"
+    },
+    "VehicleType":{
+        "Car": "Auto",
+        "Motorcycle": "Moto",
+        "Van": "Camioneta"
+    },
+    "Errors":{
+        "NoCapacity": "Inserte la capacidad del vehículo.",
+        "WrongCapacity": "La capacidad es incorrecta.",
+        "WrongDescription": "La descripcion debe tener entre 30 y 200 caracteres."
     }
 
 }
