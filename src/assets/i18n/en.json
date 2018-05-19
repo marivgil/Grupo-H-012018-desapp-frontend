@@ -7,6 +7,8 @@
     "ProfileButton": "My profile",
     "LogoutButton": "Log Out",
     "Home": {
-        "MainTitleTxt": "Publish Your Car!"
+        "MainTitleTxt": "Publish Your Car!",
+        "SubTxt": "Choose the car you want to publish, price it, choose the withdrawal and return points, select the available dates ... and that's it!",
+        "BtnTxt": "Publish Your Car!"
     }
 }
