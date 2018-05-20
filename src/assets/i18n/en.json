@@ -9,6 +9,7 @@
     "CloseButton": "Close",
     "SaveButton": "Save Changes",
     "MoreButton": "More...",
+    "ReserveButton": "Reserve it!",
     "Home": {
         "MainTitleTxt": "Publish Your Car!",
         "SubTxt": "Choose the car you want to publish, price it, choose the withdrawal and return points, select the available dates ... and that's it!",
@@ -22,6 +23,9 @@
         "MainTitleTxt": " All Posts",
         "AllCategoriesTxt": "All categories",
         "AvailableDaysTxt": "Available on:"
+    },
+    "Post":{
+        "PlaceholderDistance": "Click on the map from where you go to know how far you are from your next car!"
     },
     "NewCar":{
         "MainTitleTxt": "New Car",
@@ -56,5 +60,8 @@
     "For": "for",
     "Persons": "persons",
     "In": "in",
-    "PerDayTxt": "per day"
+    "PerDayTxt": "per day",
+    "WalkingTxt": "walking",
+    "YoureTxt": "You're",
+    "FromPickUpPlaceTxt": " from pick up place"
 }
