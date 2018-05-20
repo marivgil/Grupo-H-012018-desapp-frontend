@@ -26,14 +26,16 @@
         "AddCar": "Agregar Auto"
     },
     "VehicleType":{
-        "Car": "Auto",
-        "Motorcycle": "Moto",
-        "Van": "Camioneta"
+        "AUTO": "Auto",
+        "MOTO": "Moto",
+        "CAMIONETA": "Camioneta"
     },
     "Errors":{
         "NoCapacity": "Inserte la capacidad del vehículo.",
         "WrongCapacity": "La capacidad es incorrecta.",
         "WrongDescription": "La descripcion debe tener entre 30 y 200 caracteres."
-    }
+    },
+    "For": "para",
+    "Persons": "personas"
 
 }

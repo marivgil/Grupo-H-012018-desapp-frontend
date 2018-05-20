@@ -26,13 +26,15 @@
         "AddCar": "Add Car"
     },
     "VehicleType":{
-        "Car": "Car",
-        "Motorcycle": "Motorcycle",
-        "Van": "Van"
+        "AUTO": "Car",
+        "MOTO": "Motorcycle",
+        "CAMIONETA": "Van"
     },
     "Errors":{
         "NoCapacity": "Please, insert vehicle capacity.",
         "WrongCapacity": "Incorrect capacity.",
         "WrongDescription": "The description must have between 30 and 200 characters."
-    }
+    },
+    "For": "for",
+    "Persons": "persons"
 }
