@@ -6,6 +6,8 @@
     "LoginButton": "Iniciar Sesión",
     "ProfileButton": "Mi Perfil",
     "LogoutButton": "Cerrar sesión",
+    "CloseButton": " Cerrar ",
+    "SaveButton": "Guardar Cambios",
     "Home": {
         "MainTitleTxt": "Publica tu auto!",
         "SubTxt": "Elegi el auto que queres publicar, ponele precio, elegi los puntos de retiro y devolucion,selecciona las fechas disponibles... y ya esta!",
@@ -43,6 +45,8 @@
         "EnabledStatus": "Activo",
         "CreditTxt": "Crédito",
         "ReputationTxt": "Reputación:"        
+    },
+    "Modal":{
+        "FullNameTxt": "Nombre y Apellido"
     }
-
 }

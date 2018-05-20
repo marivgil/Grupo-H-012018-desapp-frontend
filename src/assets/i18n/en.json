@@ -6,6 +6,8 @@
     "LoginButton": "Log In",
     "ProfileButton": "My profile",
     "LogoutButton": "Log Out",
+    "CloseButton": "Close",
+    "SaveButton": "Save Changes",
     "Home": {
         "MainTitleTxt": "Publish Your Car!",
         "SubTxt": "Choose the car you want to publish, price it, choose the withdrawal and return points, select the available dates ... and that's it!",
@@ -43,5 +45,8 @@
         "EnabledStatus": "Enabled",
         "CreditTxt": "Credit:",
         "ReputationTxt": "Reputation:"
+    },
+    "Modal":{
+        "FullNameTxt": "Full Name"
     }
 }

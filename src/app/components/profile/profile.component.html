@@ -55,7 +55,7 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">Nombre y Apellido</h5>
+                <h5 class="modal-title" id="exampleModalLongTitle">{{'Modal.FullNameTxt' | translate}}</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -64,12 +64,12 @@
                 <input type="text" class="form-control">
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                <button type="button" class="btn btn-primary" (click)="changeName()">Guardar Cambios</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ 'CloseButton' | translate}} </button>
+                <button type="button" class="btn btn-primary" (click)="changeName()">{{ 'SaveButton' | translate}} </button>
             </div>
         </div>
     </div>
-</div>
+</div> 
 
 <!--{
   "sub": "google-oauth2|106572254188915518115",
