@@ -36,5 +36,12 @@
         "WrongDescription": "The description must have between 30 and 200 characters."
     },
     "For": "for",
-    "Persons": "persons"
+    "Persons": "persons",
+    "Profile":{
+        "AccountStatusTxt": "Account Status:",
+        "DisabledStatus": "Disabled",
+        "EnabledStatus": "Enabled",
+        "CreditTxt": "Credit:",
+        "ReputationTxt": "Reputation:"
+    }
 }

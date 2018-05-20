@@ -32,18 +32,18 @@
             <h3>{{profile.email}}</h3>
             <ul class="list-group">
                 <li class="list-group-item" *ngIf="!user.isEnable">
-                    <strong>Estado de la cuenta:</strong> Bloqueado
+                    <strong>{{"Profile.AccountStatusTxt"| translate}}</strong> {{ 'Profile.DisabledStatus' | translate}}
                     <i class="fas fa-times-circle fa-lg btn-right" style="color: #FF0000"></i>
                 </li>
                 <li class="list-group-item">
-                    <strong>Crédito: </strong> {{user.credit | currency}}
+                    <strong>{{'Profile.CreditTxt'| translate}} </strong> {{user.credit | currency}}
                     <i class="btn-right fas fa-plus-square fa-lg "></i>
                 </li>
                 <li class="list-group-item">
-                    <strong>Reputación: </strong>{{user.reputation}}
+                    <strong>{{'Profile.ReputationTxt' | translate}} </strong>{{user.reputation}}
                 </li>
                 <li class="list-group-item" *ngIf="user.isEnable">
-                    <strong>Estado de la cuenta:</strong> Activo
+                    <strong>{{"Profile.AccountStatusTxt"| translate}}</strong> {{ 'Profile.EnabledStatus' | translate}}
                     <i class="fas fa-check-circle fa-lg btn-right" style="color:#00FF00;"></i>
                 </li>
             </ul>

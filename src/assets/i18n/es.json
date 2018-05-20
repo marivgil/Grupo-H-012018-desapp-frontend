@@ -33,9 +33,16 @@
     "Errors":{
         "NoCapacity": "Inserte la capacidad del vehículo.",
         "WrongCapacity": "La capacidad es incorrecta.",
-        "WrongDescription": "La descripcion debe tener entre 30 y 200 caracteres."
+        "WrongDescription": "La descripción debe tener entre 30 y 200 caracteres."
     },
     "For": "para",
-    "Persons": "personas"
+    "Persons": "personas",
+    "Profile":{
+        "AccountStatusTxt": "Estado de la cuenta:",
+        "DisabledStatus": "Bloqueado",
+        "EnabledStatus": "Activo",
+        "CreditTxt": "Crédito",
+        "ReputationTxt": "Reputación:"        
+    }
 
 }
