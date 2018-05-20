@@ -8,6 +8,7 @@
     "LogoutButton": "Log Out",
     "CloseButton": "Close",
     "SaveButton": "Save Changes",
+    "MoreButton": "More...",
     "Home": {
         "MainTitleTxt": "Publish Your Car!",
         "SubTxt": "Choose the car you want to publish, price it, choose the withdrawal and return points, select the available dates ... and that's it!",
@@ -16,6 +17,11 @@
     "Footer": {
         "LanguageBtn": "Choose your language",
         "Sign":"2018 12C, Inc."
+    },
+    "Posts":{
+        "MainTitleTxt": " All Posts",
+        "AllCategoriesTxt": "All categories",
+        "AvailableDaysTxt": "Available on:"
     },
     "NewCar":{
         "MainTitleTxt": "New Car",
@@ -37,8 +43,6 @@
         "WrongCapacity": "Incorrect capacity.",
         "WrongDescription": "The description must have between 30 and 200 characters."
     },
-    "For": "for",
-    "Persons": "persons",
     "Profile":{
         "AccountStatusTxt": "Account Status:",
         "DisabledStatus": "Disabled",
@@ -48,5 +52,9 @@
     },
     "Modal":{
         "FullNameTxt": "Full Name"
-    }
+    },
+    "For": "for",
+    "Persons": "persons",
+    "In": "in",
+    "PerDayTxt": "per day"
 }

@@ -8,6 +8,7 @@
     "LogoutButton": "Cerrar sesión",
     "CloseButton": " Cerrar ",
     "SaveButton": "Guardar Cambios",
+    "MoreButton": "Ver mas...",
     "Home": {
         "MainTitleTxt": "Publica tu auto!",
         "SubTxt": "Elegi el auto que queres publicar, ponele precio, elegi los puntos de retiro y devolucion,selecciona las fechas disponibles... y ya esta!",
@@ -16,6 +17,11 @@
     "Footer": {
         "LanguageBtn": "Selecciona tu lenguaje",
         "Sign":"2018 12C, Inc."
+    },
+    "Posts":{
+        "MainTitleTxt": " Todas las publicaciones",
+        "AllCategoriesTxt": "Todas las categorías",
+        "AvailableDaysTxt": "Disponible en: "  
     },
     "NewCar":{
         "MainTitleTxt": "Nuevo Auto",
@@ -37,16 +43,19 @@
         "WrongCapacity": "La capacidad es incorrecta.",
         "WrongDescription": "La descripción debe tener entre 30 y 200 caracteres."
     },
-    "For": "para",
-    "Persons": "personas",
     "Profile":{
         "AccountStatusTxt": "Estado de la cuenta:",
         "DisabledStatus": "Bloqueado",
         "EnabledStatus": "Activo",
         "CreditTxt": "Crédito",
-        "ReputationTxt": "Reputación:"        
+        "ReputationTxt": "Reputación:"
+              
     },
     "Modal":{
         "FullNameTxt": "Nombre y Apellido"
-    }
+    },
+    "For": "para",
+    "Persons": "personas",
+    "In": "en",
+    "PerDayTxt": "por día"
 }
