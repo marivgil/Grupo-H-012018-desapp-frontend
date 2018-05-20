@@ -42,6 +42,13 @@
         "MOTO": "Moto",
         "CAMIONETA": "Camioneta"
     },
+    "NewUser":{
+        "Name": "Nombre",
+        "LastName": "Apellido",
+        "Address": "Dirección",
+        "Street": "Calle",
+        "Number": "Nro."
+    },
     "Errors":{
         "NoCapacity": "Inserte la capacidad del vehículo.",
         "WrongCapacity": "La capacidad es incorrecta.",
@@ -64,5 +71,6 @@
     "PerDayTxt": "por día",
     "WalkingTxt": "a pie",
     "YoureTxt": "Estas a ",
-    "FromPickUpPlaceTxt": " del lugar de retiro"
+    "FromPickUpPlaceTxt": " del lugar de retiro",
+    "EmailTxt": "Correo electrónico"
 }
