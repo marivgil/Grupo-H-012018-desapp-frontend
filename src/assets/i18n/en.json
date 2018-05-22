@@ -2,6 +2,8 @@
     "HomeLink": "Home",
     "FindYourCarLink": "Find your ideal car",
     "MyCarsLink": "My Cars",
+    "EditCarLink": "Edit Car",
+    "ChangeCarLink": "Change Car",
     "WelcomeButton": "Welcome",
     "LoginButton": "Log In",
     "ProfileButton": "My profile",
@@ -9,6 +11,7 @@
     "CloseButton": "Close",
     "SaveButton": "Save Changes",
     "MoreButton": "More...",
+    "BackToHomeLink": "< Back To Home",
     "ReserveButton": "Reserve it!",
     "Home": {
         "MainTitleTxt": "Publish Your Car!",
@@ -17,17 +20,17 @@
     },
     "Footer": {
         "LanguageBtn": "Choose your language",
-        "Sign":"2018 12C, Inc."
+        "Sign": "2018 12C, Inc."
     },
-    "Posts":{
+    "Posts": {
         "MainTitleTxt": " All Posts",
         "AllCategoriesTxt": "All categories",
         "AvailableDaysTxt": "Available on:"
     },
-    "Post":{
+    "Post": {
         "PlaceholderDistance": "Click on the map from where you go to know how far you are from your next car!"
     },
-    "NewCar":{
+    "NewCar": {
         "MainTitleTxt": "New Car",
         "Capacity": "Capacity",
         "VehicleType": "Vehicle Type",
@@ -37,31 +40,40 @@
         "Delete": "Delete",
         "AddCar": "Add Car"
     },
-    "VehicleType":{
+    "VehicleType": {
         "AUTO": "Car",
         "MOTO": "Motorcycle",
         "CAMIONETA": "Van"
     },
-    "NewUser":{
+    "NewUser": {
         "Name": "First Name",
         "LastName": "Last name",
         "Address": "Address",
         "Street": "Street",
         "Number": "No."
     },
-    "Errors":{
+    "NewPost": {
+        "MainTitleTxt": "New Post",
+        "PickUpPoint": "Choose the pickup's point",
+        "ContactNumber": "Contact Number",
+        "PhoneHolder": "Phone number",
+        "AvailableDates": "Choose the availability of the car",
+        "CostPerDay": "Cost per day",
+        "ReturnsPoint": "Choose the possible points of return"
+    },
+    "Errors": {
         "NoCapacity": "Please, insert vehicle capacity.",
         "WrongCapacity": "Incorrect capacity.",
         "WrongDescription": "The description must have between 30 and 200 characters."
     },
-    "Profile":{
+    "Profile": {
         "AccountStatusTxt": "Account Status:",
         "DisabledStatus": "Disabled",
         "EnabledStatus": "Enabled",
         "CreditTxt": "Credit:",
         "ReputationTxt": "Reputation:"
     },
-    "Modal":{
+    "Modal": {
         "FullNameTxt": "Full Name"
     },
     "For": "for",

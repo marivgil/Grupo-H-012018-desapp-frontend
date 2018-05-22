@@ -2,12 +2,15 @@
     "HomeLink": "Inicio",
     "FindYourCarLink": "Encontrá tu auto ideal",
     "MyCarsLink": "Mis Autos",
+    "EditCarLink": "Editar Auto",
+    "ChangeCarLink": "Cambiar Auto",
     "WelcomeButton": "Bienvenido",
     "LoginButton": "Iniciar Sesión",
     "ProfileButton": "Mi Perfil",
     "LogoutButton": "Cerrar sesión",
     "CloseButton": " Cerrar ",
     "SaveButton": "Guardar Cambios",
+    "BackToHomeLink": "< Volver al inicio",
     "MoreButton": "Ver mas...",
     "ReserveButton": "Reservar!",
     "Home": {
@@ -17,17 +20,17 @@
     },
     "Footer": {
         "LanguageBtn": "Selecciona tu lenguaje",
-        "Sign":"2018 12C, Inc."
+        "Sign": "2018 12C, Inc."
     },
-    "Post":{
+    "Post": {
         "PlaceholderDistance": "Hace click en el lugar desde donde salis para saber a que distancia estas de tu proximo auto!"
     },
-    "Posts":{
+    "Posts": {
         "MainTitleTxt": " Todas las publicaciones",
         "AllCategoriesTxt": "Todas las categorías",
-        "AvailableDaysTxt": "Disponible en: "  
+        "AvailableDaysTxt": "Disponible en: "
     },
-    "NewCar":{
+    "NewCar": {
         "MainTitleTxt": "Nuevo Auto",
         "Capacity": "Capacidad",
         "VehicleType": "Tipo de vehículo",
@@ -37,32 +40,41 @@
         "Delete": "Eliminar",
         "AddCar": "Agregar Auto"
     },
-    "VehicleType":{
+    "VehicleType": {
         "AUTO": "Auto",
         "MOTO": "Moto",
         "CAMIONETA": "Camioneta"
     },
-    "NewUser":{
+    "NewUser": {
         "Name": "Nombre",
         "LastName": "Apellido",
         "Address": "Dirección",
         "Street": "Calle",
         "Number": "Nro."
     },
-    "Errors":{
+    "NewPost": {
+        "MainTitleTxt": "Nueva Publicación",
+        "PickUpPoint": "Elige el punto de entrega",
+        "ContactNumber": "Teléfono de Contacto",
+        "PhoneHolder": "Teléfono de contacto",
+        "AvailableDates": "Indica los días en los que el auto está disponible",
+        "CostPerDay": "Costo por día",
+        "ReturnsPoint": "Elige los puntos posibles de devolución"
+    },
+    "Errors": {
         "NoCapacity": "Inserte la capacidad del vehículo.",
         "WrongCapacity": "La capacidad es incorrecta.",
         "WrongDescription": "La descripción debe tener entre 30 y 200 caracteres."
     },
-    "Profile":{
+    "Profile": {
         "AccountStatusTxt": "Estado de la cuenta:",
         "DisabledStatus": "Bloqueado",
         "EnabledStatus": "Activo",
         "CreditTxt": "Crédito",
         "ReputationTxt": "Reputación:"
-              
+
     },
-    "Modal":{
+    "Modal": {
         "FullNameTxt": "Nombre y Apellido"
     },
     "For": "para",
