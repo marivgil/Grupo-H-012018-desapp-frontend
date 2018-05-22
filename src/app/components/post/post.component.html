@@ -27,15 +27,15 @@
   </div>
   
   <div class="alert alert-light btn-right" *ngIf="distance" role="alert">
-      Estas a {{distance}} del lugar de retiro ({{duration}} a pie).
+      {{'YoureTxt'| translate}} {{distance}} {{'FromPickUpPlaceTxt' | translate}} ({{duration}} {{'WalkingTxt' | translate}}).
   </div>
   <div class="alert alert-light btn-right" *ngIf="!distance" role="alert">
-      Hace click en el lugar desde donde salis para saber a cuanto estas de tu proximo auto!
+      {{'Post.PlaceholderDistance' | translate}}   
   </div>
 
-<h1 class="main-container">{{post.vehicleType | uppercase}} en {{post.location | uppercase}} 
+<h1 class="main-container">{{'VehicleType.'+post.vehicleType | translate}} {{"In" | translate}} {{post.location | uppercase}} 
   <br>
-  <small>Se alquila el dia: ({{post.rentalDate}})</small>
+  <small>{{'Posts.AvailableDaysTxt' | translate}} ({{post.rentalDate}})</small>
 </h1>
  
 <hr>
@@ -52,13 +52,13 @@
 
           </div>
           <div class="col-md-4">
-            <h3>{{post.vehicleType | uppercase}} en {{post.location | uppercase}} <small>{{post.costPerDay | currency}}/day</small></h3>
+            <h3>{{'VehicleType.'+post.vehicleType | translate}} {{'In' | translate}} {{post.location | uppercase}} <small>{{post.costPerDay | currency}} {{'PerDayTxt'| translate}}</small></h3>
             <hr>
             <p>
               {{post.description}}
             </p>
         
-            <button (click)= "reservar(post.id)" class="btn btn-success btn-block">Reservar!</button>
+            <button (click)= "reservar(post.id)" class="btn btn-success btn-block">{{'ReserveButton' | translate}}</button>
           </div>
 
       </div>

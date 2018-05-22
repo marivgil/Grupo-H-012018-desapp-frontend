@@ -10,13 +10,13 @@
         <ul class="navbar-nav mr-auto">
             <!--active -->
             <li class="nav-item">
-                <a class="nav-link" [routerLink]="['home']">Home </a>
+                <a class="nav-link" [routerLink]="['home']">{{'HomeLink' | translate}} </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" [routerLink]="['encontraTuAutoIdeal']">Encontra tu auto</a>
+                <a class="nav-link" [routerLink]="['encontraTuAutoIdeal']">{{'FindYourCarLink' | translate}}</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" [routerLink]="['tusAutos']" *ngIf="isAuthenticated()">Mis Autos</a>
+                <a class="nav-link" [routerLink]="['tusAutos']" *ngIf="isAuthenticated()">{{ 'MyCarsLink' | translate}}</a>
             </li>
 
         </ul>
@@ -24,21 +24,21 @@
         <div class="btn-group btn-margin btn-dark" role="group" *ngIf="isAuthenticated()">
             <button id="btnGroupDrop1" type="button" class="btn btn-secondary" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <img *ngIf="auth.userProfile" [src]="auth.userProfile.picture" class="rounded-circle img-fluid img-boton">
-       Bienvenido {{auth.userProfile.given_name}}
+       {{'WelcomeButton' | translate}} {{auth.userProfile?.given_name}}
        <i class="fas fa-caret-down"></i>
       </button>
             <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
                 <a class="dropdown-item" [routerLink]="['perfil']">
-                    <i class="fas fa-user"></i> Mi perfil
+                    <i class="fas fa-user"></i> {{'ProfileButton' | translate}}
                 </a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" (click)="logout()">
-                    <i class="fas fa-sign-out-alt"></i> Log Out</a>
+                    <i class="fas fa-sign-out-alt"></i> {{'LogoutButton' | translate}}</a>
             </div>
         </div>
 
         <button class="btn btn-dark btn-margin" *ngIf="!isAuthenticated()" (click)="login()">
-          Log In
+          {{'LoginButton' | translate}}
         <i class="fas fa-chevron-circle-right"></i>
       </button>
 
