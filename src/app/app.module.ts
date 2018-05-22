@@ -16,7 +16,7 @@ import { AuthGuardService } from './services/auth-guard.service';
 
 // Extern Modules
 import { CarouselModule } from '../../node_modules/angular2-carousel';
-import { TranslateModule } from 'ng2-translate';
+import { TranslateModule, MissingTranslationHandler } from 'ng2-translate';
 import { APP_TRANSLATE } from './app.translator';
 import { APP_MAPS } from './app.maps';
 
@@ -32,6 +32,7 @@ import { NewCarComponent } from './components/new-car/new-car.component';
 import { NewUserComponent } from './components/new-user/new-user.component';
 import { NewPostComponent } from './components/new-post/new-post.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { MyMissingTranslationHandler } from './handlers/missingtemplate.component';
 
 
 
@@ -65,7 +66,9 @@ import { FooterComponent } from './components/footer/footer.component';
     PostsService, 
     AuthService,
     AuthGuardService,
-    UserService
+    UserService,
+    { provide: MissingTranslationHandler, 
+      useClass: MyMissingTranslationHandler}
   ],
   bootstrap: [AppComponent]
 })
