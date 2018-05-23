@@ -56,7 +56,7 @@ export class NewCarComponent {
      //this.forma.reset();    
    }
 
-   
+   lala(){}
 
 
 

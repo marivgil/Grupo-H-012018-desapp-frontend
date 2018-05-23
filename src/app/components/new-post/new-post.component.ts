@@ -14,14 +14,24 @@ import { IMyDrpOptions } from 'mydaterangepicker';
 })
 export class NewPostComponent implements OnInit {
 
-  myDateRangePickerOptions: IMyDrpOptions={
-    dateFormat: 'dd.mm.yyyy',
-  }
-  date= new Date();
-  forma: FormGroup;
   vehicle:Vehicle;
   user:User;
+  forma: FormGroup;
 
+//Inicializaciones para calendario
+date= new Date();
+   
+myDateRangePickerOptions: IMyDrpOptions={
+    dateFormat: 'dd.mm.yyyy',
+    disableUntil:{
+          year: this.date.getFullYear(),
+            month: this.date.getMonth() + 1,
+            day: this.date.getDate()
+    }
+  }
+ 
+
+//Inicializaciones para mapas
   zoom: number= 15;
   //Start position
   lat: number = -34.603418;
@@ -29,6 +39,7 @@ export class NewPostComponent implements OnInit {
 
   marker:any;
   returnMarkers:any[]=[];
+
 
   constructor( private _userService: UserService,
               private _authService: AuthService,
@@ -45,18 +56,7 @@ export class NewPostComponent implements OnInit {
                                     'lng': new FormControl()
                                   },    Validators.required),
       'returnMarkers': new FormArray([],Validators.required),
-      'dateRange':new FormControl({myDateRange: {
-        beginDate: {
-            year: this.date.getFullYear(),
-            month: this.date.getMonth() + 1,
-            day: this.date.getDate()
-        },
-        endDate: {
-            year: this.date.getFullYear(),
-            month: this.date.getMonth() + 1,
-            day: this.date.getDate()
-        }
-    }})
+      'dateRange':new FormControl()
     })
    }
 
@@ -98,4 +98,22 @@ export class NewPostComponent implements OnInit {
   volverAHome(){
     this._router.navigate(['/home']);
   }
+
+  setDateRange(): void {
+    // Set date range (today) using the patchValue function
+    let date = new Date();
+    this.forma.patchValue({dateRange: {
+        beginDate: {
+            year: date.getFullYear(),
+            month: date.getMonth() + 1,
+            day: date.getDate()
+        },
+        endDate: {
+            year: date.getFullYear(),
+            month: date.getMonth() + 1,
+            day: date.getDate()
+        }
+    }});
+}
+
 }
