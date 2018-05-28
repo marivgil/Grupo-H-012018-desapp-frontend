@@ -1,92 +1,76 @@
 <div class="main-container form animated fadeIn fast">
-  <h1>Nuevo Auto</h1>
-<hr>
-<form class="main-container">
-  <div>
+    <h1>{{ 'NewCar.MainTitleTxt' | translate}}</h1>
+    <hr>
+    <form class="main-container">
+        <div>
 
-    <form [formGroup]="forma" (ngSubmit)="saveChanges()" novalidate="novalidate">
+            <form [formGroup]="forma" (ngSubmit)="saveChanges()" novalidate="novalidate">
 
-      <div class="form-group" >
-        <label for="exampleFormControlInput1">Capacidad</label>
-        <input type="number" min="1" max="25" 
-               class="form-control" 
-               [ngClass]="{'is-invalid': !forma.get('capacity').valid 
-                        && forma.get('capacity').dirty}"
-               formControlName="capacity">        
-      </div>
+                <div class="form-group">
+                    <label for="exampleFormControlInput1">{{'NewCar.Capacity' | translate}}</label>
+                    <input type="number" min="1" max="25" class="form-control" [ngClass]="{'is-invalid': !forma.get('capacity').valid 
+                        && forma.get('capacity').dirty}" formControlName="capacity">
+                </div>
 
 
-      <div class="alert alert-danger" 
-           *ngIf="forma.controls['capacity'].errors?.required
+                <div class="alert alert-danger" *ngIf="forma.controls['capacity'].errors?.required
                   && forma.get('capacity').dirty">
-            Es necesario indicar la capacidad.
-      </div>
-      <div class="alert alert-danger" 
-           *ngIf="forma.controls['capacity'].errors?.range">
-            La capacidad es incorrecta
-      </div>
+                    {{'Errors.NoCapacity' | translate}}
+                </div>
+                <div class="alert alert-danger" *ngIf="forma.controls['capacity'].errors?.range">
+                    {{'Errors.WrongCapacity' | translate}}
+                </div>
 
 
 
-      <div class="form-group">
-        <label for="exampleFormControlSelect1">Tipo de vehiculo</label>
-        <select class="form-control" id="exampleFormControlSelect1" 
-               formControlName="type" 
-               [ngClass]="{'is-invalid': !forma.get('type').valid 
+                <div class="form-group">
+                    <label for="exampleFormControlSelect1">{{'NewCar.VehicleType'| translate}}</label>
+                    <select class="form-control" id="exampleFormControlSelect1" formControlName="type" [ngClass]="{'is-invalid': !forma.get('type').valid 
                         && forma.get('type').dirty}">
-          <option>AUTO</option>
-          <option>MOTOCICLETA</option>
-          <option>VEHICULO</option>
+          <option>{{'VehicleType.AUTO' | translate}}</option>
+          <option>{{'VehicleType.MOTO' | translate}}</option>
+          <option>{{'VehicleType.CAMIONETA' | translate}}</option>
         </select>
-      </div>
+                </div>
 
 
 
-      <div class="form-group">
-        <label for="exampleFormControlTextarea1">Descripcion</label>
-        <textarea class="form-control" id="exampleFormControlTextarea1" 
-                  formControlName="description" 
-                  [ngClass]="{'is-invalid': !forma.get('description').valid 
+                <div class="form-group">
+                    <label for="exampleFormControlTextarea1">{{'NewCar.Description' | translate}}</label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" formControlName="description" [ngClass]="{'is-invalid': !forma.get('description').valid 
                             && forma.get('description').dirty}">
-        </textarea>         
-      </div>
+        </textarea>
+                </div>
 
-      <div class="alert alert-danger" 
-            *ngIf="(forma.controls['description'].errors?.rangeLength 
+                <div class="alert alert-danger" *ngIf="(forma.controls['description'].errors?.rangeLength 
                                     || forma.controls['description'].errors?.required)
                  && forma.get('description').dirty">
-         La descripcion debe tener entre 30 y 200 caracteres.
-      </div> 
-
-
-      <div class="form-group">
-          <label for="exampleFormControlInput1">
-            Fotos
-          </label>
-          <button (click)="addPhoto()"
-                  class="btn btn-link btn-right"
-                  type="button">
-            Insertar otra foto
-          </button>
-          <div formArrayName="photos">
-            <div class="input-group mb-3"
-                 *ngFor="let photo of forma.controls['photos']; let i=index"
-                 >
-                <input type="url" [formControlName]="i" class="form-control" aria-describedby="basic-addon2">
-                <div class="input-group-append">
-                  <button (click)="deletePhoto(i)"
-                          class="btn btn-danger" 
-                          type="button">
-                  Eliminar
-                </button>
+                    {{'Errors.WrongDescription' | translate}}
                 </div>
-            </div>
-          </div>
-      </div>
 
 
-      <button type="submit" [disabled]="!forma.valid" class="btn btn-primary btn-right">
-        Agregar Auto
+                <div class="form-group">
+                    <label for="exampleFormControlInput1">
+            {{'NewCar.Photos' | translate}}
+          </label>
+                    <button (click)="addPhoto()" class="btn btn-link btn-right" type="button">
+            {{'NewCar.InsertPhoto' | translate}}
+          </button>
+                    <div formArrayName="photos">
+                        <div class="input-group mb-3">
+                            <input type="url" class="form-control" aria-describedby="basic-addon2">
+                            <div class="input-group-append">
+                                <button (click)="lala()" class="btn btn-danger" type="button">
+                  {{'NewCar.Delete' | translate}}
+                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <button type="submit" [disabled]="!forma.valid" class="btn btn-primary btn-right">
+        {{'NewCar.AddCar' | translate}}
       </button>
-  </form>
-</div>
+            </form>
+        </div>

@@ -15,8 +15,10 @@ import { UserService } from './services/user.service';
 import { AuthGuardService } from './services/auth-guard.service';
 
 // Extern Modules
-import { AgmCoreModule } from '@agm/core';
-import { CarouselModule } from '../../node_modules/angular2-carousel'
+import { CarouselModule } from '../../node_modules/angular2-carousel';
+import { TranslateModule, MissingTranslationHandler } from 'ng2-translate';
+import { APP_TRANSLATE } from './app.translator';
+import { APP_MAPS } from './app.maps';
 
 // Components
 import { AppComponent } from './app.component';
@@ -29,6 +31,9 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { NewCarComponent } from './components/new-car/new-car.component';
 import { NewUserComponent } from './components/new-user/new-user.component';
 import { NewPostComponent } from './components/new-post/new-post.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { MyMissingTranslationHandler } from './handlers/missingtemplate.component';
+
 
 
 @NgModule({
@@ -42,26 +47,28 @@ import { NewPostComponent } from './components/new-post/new-post.component';
     ProfileComponent,
     NewCarComponent,
     NewUserComponent,
-    NewPostComponent
+    NewPostComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
     APP_ROUTING,
     FormsModule,
     ReactiveFormsModule,
-    AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyAx82m7KSQg0obJQYw7L5tGcEXcoM1u9sE'
-    }),
+    APP_MAPS,
     CarouselModule,
     HttpModule,
     JsonpModule,
-    MyDateRangePickerModule
+    MyDateRangePickerModule,
+    APP_TRANSLATE
   ],
   providers: [
     PostsService, 
     AuthService,
     AuthGuardService,
-    UserService
+    UserService,
+    { provide: MissingTranslationHandler, 
+      useClass: MyMissingTranslationHandler}
   ],
   bootstrap: [AppComponent]
 })
