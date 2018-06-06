@@ -3,6 +3,7 @@ import { Vehicle } from '../../interfaces/vehicle.interface';
 import { UserService } from '../../services/user.service';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
+import { VehicleService } from '../../services/vehicle.service';
 
 declare var $;
 @Component({
@@ -11,14 +12,14 @@ declare var $;
 })
 export class YourOwnCarsComponent implements OnInit {
 
-  cars: Vehicle[];
+  idSeleccionado: number;
 
-  constructor(private _auth: AuthService,
-              private _router: Router) { }
+  constructor(public _auth: AuthService,
+              private _router: Router,
+              private _vehicle: VehicleService,
+              private _user: UserService) { }
 
   ngOnInit() {
-    this.cars = this._auth.userBD.vehicles;
-    console.log(this.cars);
   }
 
   addCar() {
@@ -33,11 +34,21 @@ export class YourOwnCarsComponent implements OnInit {
     this._router.navigate(['nuevoPost']);
   }
 
-  deleteCar() {
+
+  confirmDeleteCar(id: number) {
+      this.idSeleccionado = id;
+      console.log(id);
       $('#eliminationModal').modal({
    //     backdrop: 'static',
    //     keyboard: false
       });
+  }
+
+  deleteCar() {
+    this._vehicle.deleteCar(this.idSeleccionado).subscribe( res => {
+      this._auth.userBD = res;
+      this._router.navigate(['tusAutos']);
+    });
   }
 
 }

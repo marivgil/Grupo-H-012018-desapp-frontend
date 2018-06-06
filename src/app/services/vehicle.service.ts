@@ -28,7 +28,7 @@ export class VehicleService {
   }
 
   editCar(vehicle: Vehicle): Observable<Response> {
-    let url = this.baseUrl + this.extensionUrl + 'createVehicle';
+     let url = this.baseUrl + this.extensionUrl + 'createVehicle';
      let header = new Headers({ 'Content-Type': 'application/json' });
      let options = new RequestOptions ( { headers: header });
 
@@ -37,5 +37,17 @@ export class VehicleService {
                         return res._body;
                       });
   }
+
+  deleteCar(id: number): Observable<Response> {
+    let url = this.baseUrl + this.extensionUrl + 'deleteVehicle/' + id;
+    let header = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions ( { headers: header });
+
+     return this._http.delete(url, options)
+                      .map((res: any) => {
+                        return res._body;
+                      });
+  }
+
 
 }
