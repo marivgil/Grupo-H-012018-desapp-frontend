@@ -6,12 +6,13 @@
     <h1>{{ 'MyCarsLink' | translate}}</h1>
     <hr>
 
-    <div class="card mb-3">
-        <img class="img-preview img-fluid" [src]="cars[0].photos[0]" alt="Card image cap">
-
+    <div *ngFor="let car of cars" class="card mb-3">
+        <img *ngIf="car.photos.length >= 1"class="img-preview img-fluid" [src]="car.photos[0]" alt="Card image cap">
+        <img *ngIf="car.photos.length === 0"class="img-preview img-fluid" src="../../../assets/img/Foto-no-disponible.png" alt="Card image cap">
+        
         <div class="main-container">
-            <h5 class="card-title">{{ 'VehicleType.'+cars[0].vehicleType | translate}} {{'For' | translate}} {{cars[0].capacity}} {{'Persons' | translate}} </h5>
-            <p class="card-text">{{cars[0].description}}
+            <h5 class="card-title">{{ 'VehicleType.'+car.type | translate}} {{'For' | translate}} {{cars[0].capacity}} {{'Persons' | translate}} </h5>
+            <p class="card-text">{{car.description}}
                 <button (click)="makeAPost()" class="btn btn-link btn-padding-right">
                   <i class="fas fa-money-bill-alt fa-2x"></i>
               </button>

@@ -9,10 +9,10 @@ export class VehicleService {
   constructor(private _http: Http) { }
 
   baseUrl: string = 'http://localhost:8080/';
-  extensionUrl: string = 'desapp-grouph-backend/rest/';
+  extensionUrl: string = 'desapp-grouph-backend/rest/servicesVehicle/';
 
   addCar(vehicle: Vehicle): Observable<Response> {
-     let url = this.baseUrl + this.extensionUrl + 'servicesVehicle/createVehicle';
+     let url = this.baseUrl + this.extensionUrl + 'createVehicle';
      let header = new Headers({ 'Content-Type': 'application/json' });
      let options = new RequestOptions ( { headers: header });
 
@@ -25,6 +25,17 @@ export class VehicleService {
    handleErrorObservable (error: Response | any) {
     console.error(error.message || error);
     return Observable.throw(error.message || error);
+  }
+
+  editCar(vehicle: Vehicle): Observable<Response> {
+    let url = this.baseUrl + this.extensionUrl + 'createVehicle';
+     let header = new Headers({ 'Content-Type': 'application/json' });
+     let options = new RequestOptions ( { headers: header });
+
+     return this._http.put(url, vehicle, options)
+                      .map((res: any) => {
+                        return res._body;
+                      });
   }
 
 }

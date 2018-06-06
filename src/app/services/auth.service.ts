@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from "./user.service";
 import { filter } from 'rxjs/operators';
+import {Observable} from 'rxjs/Observable';
 import * as auth0 from 'auth0-js';
 
 @Injectable()
@@ -19,18 +20,24 @@ export class AuthService {
   constructor(public router: Router,
               private _userService: UserService) {}
 
-  userProfile: any;
+  userProfile ;
   userBD: any;
 
-    public getProfile(cb): void {
+    public getProfile(cb): any {
     const accessToken = localStorage.getItem('access_token');
     if (!accessToken) {
+      console.log("No hay token");
       }
 
     const self = this;
     this.auth0.client.userInfo(accessToken, (err, profile) => {
       if (profile) {
         self.userProfile = profile;
+        console.log("USER AUTH0", profile);
+        this._userService.getUser(profile.email).subscribe( res => {
+          this.userBD = res.json();
+          console.log("USERBD:", this.userBD);
+        });
       }
       cb(err, profile);
     });
@@ -48,6 +55,7 @@ export class AuthService {
         window.location.hash = '';
         this.setSession(authResult);
         this.router.navigate(['/home']);
+        console.log(this.userProfile);
       } else if (err) {
         this.router.navigate(['/home']);
         console.log(err);
@@ -61,6 +69,9 @@ export class AuthService {
     localStorage.setItem('access_token', authResult.accessToken);
     localStorage.setItem('id_token', authResult.idToken);
     localStorage.setItem('expires_at', expiresAt);
+    this.getProfile((err , res) => {
+      this.userProfile = res;
+    });
     }
 
   public logout(): void {

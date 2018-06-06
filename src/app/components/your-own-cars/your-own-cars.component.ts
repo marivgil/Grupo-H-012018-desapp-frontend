@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Vehicle } from '../../interfaces/vehicle.interface';
 import { UserService } from '../../services/user.service';
 import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 
 declare var $;
 @Component({
@@ -12,30 +13,31 @@ export class YourOwnCarsComponent implements OnInit {
 
   cars: Vehicle[];
 
-  constructor(private _userService:UserService,
-              private _router:Router) { }
+  constructor(private _auth: AuthService,
+              private _router: Router) { }
 
   ngOnInit() {
-    this.cars= this._userService.getUserWithCar().vehicles;
+    this.cars = this._auth.userBD.vehicles;
+    console.log(this.cars);
   }
 
-  addCar(){
+  addCar() {
     this._router.navigate(['nuevoAuto']);
   }
 
-  editCar(){
+  editCar() {
     console.log("TODO: Hacer modal de edicion de auto");
   }
 
-  makeAPost(){
+  makeAPost() {
     this._router.navigate(['nuevoPost']);
   }
 
-  deleteCar(){
+  deleteCar() {
       $('#eliminationModal').modal({
    //     backdrop: 'static',
    //     keyboard: false
-      }) 
+      });
   }
 
 }

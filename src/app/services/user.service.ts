@@ -1,10 +1,14 @@
 import { Injectable } from '@angular/core';
 import { User } from '../interfaces/user.interface';
+import { Http } from '@angular/http';
 
 @Injectable()
 export class UserService {
 
-  users: User[] = [{
+  baseUrl = "http://localhost:8080/";
+  extensionUrl = "desapp-grouph-backend/rest/servicesUsers/";
+
+  user: User; /* = [{
       cuil: 27654783980,
       isEnable: false,
       reputation: 4.5,
@@ -23,18 +27,14 @@ export class UserService {
         photos: ["https://cdn.tn.com.ar/sites/default/files/styles/1366x765/public/2016/10/20/delorean-apertura_0.jpg"]
       }]
     }];
+*/
+  constructor(private http: Http) { }
 
-  constructor() { }
+  getUser(mail: string) {
+    let url: string = this.baseUrl + this.extensionUrl + "findUserByEmail/" + mail ;
 
-  getUsers() {
-    return this.users;
+   return this.http.get(url);
   }
 
-  getUser() {
-    return this.users[0];
-  }
-
-  getUserWithCar() {
-    return this.users[1];
-  }
+//  http://localhost:8080/desapp-grouph-backend/rest/servicesUsers/findUserByEmail/a.redonda89@gmail.com
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
 import { CustomValidators } from 'ng2-validation';
 import { Router } from '@angular/router';
@@ -11,7 +11,7 @@ import { AuthService } from '../../services/auth.service';
   selector: 'app-new-car',
   templateUrl: './new-car.component.html'
 })
-export class NewCarComponent implements OnInit {
+export class NewCarComponent implements OnInit, OnChanges {
 
   vehicle: Vehicle;
   user: any;
@@ -21,15 +21,23 @@ export class NewCarComponent implements OnInit {
 
   constructor(private router: Router,
               private _vehicle: VehicleService,
-              private _auth: AuthService) {
+              private _auth: AuthService) { 
+                
+                }
 
-                this._auth.getProfile((err, res) => {
-                  this.user = res;
-                });
-              }
+ ngOnChanges(changes: SimpleChanges) {
+  this._auth.getProfile((err, res) => {
+    console.log(res);
+    this.user = res;
+  });
 
+}
 
   ngOnInit() {
+    this._auth.getProfile((err, res) => {
+      console.log(res);
+      this.user = res;
+    });
 
     this.forma = new FormGroup({
       'capacity': new FormControl('2',  [Validators.required
@@ -74,8 +82,8 @@ export class NewCarComponent implements OnInit {
      this._vehicle.addCar(vehicle).subscribe(res => {
        this.userBD = res;
        console.log(res);
-     });
-//     this.router.navigate(['/tusAutos']);
+       this.router.navigate(['/tusAutos']);
+      });
      // this.forma.reset();
    }
 }
