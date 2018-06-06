@@ -1,8 +1,9 @@
 
 
-export interface Vehicle{
-    vehicleType: string;
+export interface Vehicle {
+    type: string;
     capacity: number;
     description: string;
-    photos:string[];
+    photos: string[];
+    owner: string;
 }

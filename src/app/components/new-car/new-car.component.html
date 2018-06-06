@@ -27,10 +27,10 @@
                     <label for="exampleFormControlSelect1">{{'NewCar.VehicleType'| translate}}</label>
                     <select class="form-control" id="exampleFormControlSelect1" formControlName="type" [ngClass]="{'is-invalid': !forma.get('type').valid 
                         && forma.get('type').dirty}">
-          <option>{{'VehicleType.AUTO' | translate}}</option>
-          <option>{{'VehicleType.MOTO' | translate}}</option>
-          <option>{{'VehicleType.CAMIONETA' | translate}}</option>
-        </select>
+                        <option value="AUTO">{{'VehicleType.AUTO' | translate}}</option>
+                        <option value="MOTO">{{'VehicleType.MOTO' | translate}}</option>
+                        <option value="CAMIONETA">{{'VehicleType.CAMIONETA' | translate}}</option>
+                    </select>
                 </div>
 
 

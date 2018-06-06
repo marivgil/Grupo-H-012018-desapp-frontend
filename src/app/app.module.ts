@@ -13,6 +13,7 @@ import { PostsService } from './services/posts.service';
 import { AuthService } from './services/auth.service';
 import { UserService } from './services/user.service';
 import { AuthGuardService } from './services/auth-guard.service';
+import { VehicleService } from './services/vehicle.service';
 
 // Extern Modules
 import { CarouselModule } from '../../node_modules/angular2-carousel';
@@ -66,8 +67,9 @@ import { MyMissingTranslationHandler } from './handlers/missingtemplate.componen
     PostsService,
     AuthService,
     AuthGuardService,
+    VehicleService,
     UserService,
-    { provide: MissingTranslationHandler, 
+    { provide: MissingTranslationHandler,
       useClass: MyMissingTranslationHandler}
   ],
   bootstrap: [AppComponent]
