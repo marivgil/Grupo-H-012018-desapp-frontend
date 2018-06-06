@@ -18,7 +18,7 @@ export class VehicleService {
 
      return this._http.post(url, vehicle, options)
                       .map((res: any) => {
-                        return res._body;
+                        return res.json();
                       });
    }
 

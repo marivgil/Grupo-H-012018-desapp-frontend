@@ -21,9 +21,7 @@ export class NewCarComponent implements OnInit, OnChanges {
 
   constructor(private router: Router,
               private _vehicle: VehicleService,
-              private _auth: AuthService) { 
-                
-                }
+              private _auth: AuthService) {  }
 
  ngOnChanges(changes: SimpleChanges) {
   this._auth.getProfile((err, res) => {
@@ -44,7 +42,7 @@ export class NewCarComponent implements OnInit, OnChanges {
                                         , CustomValidators.range([2, 25])
                                         , Validators.pattern("[0-9]*")]
                                   ),
-      'type': new FormControl('AUTO',       Validators.required),
+      'type': new FormControl('AUTO',     Validators.required),
 
       'description': new FormControl('', [ Validators.required
                                         , CustomValidators.rangeLength([30, 200])]
@@ -80,7 +78,7 @@ export class NewCarComponent implements OnInit, OnChanges {
       owner: this.user.email
      };
      this._vehicle.addCar(vehicle).subscribe(res => {
-       this.userBD = res;
+       this._auth.userBD = res;
        console.log(res);
        this.router.navigate(['/tusAutos']);
       });
