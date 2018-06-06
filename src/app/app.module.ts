@@ -63,7 +63,7 @@ import { MyMissingTranslationHandler } from './handlers/missingtemplate.componen
     APP_TRANSLATE
   ],
   providers: [
-    PostsService, 
+    PostsService,
     AuthService,
     AuthGuardService,
     UserService,

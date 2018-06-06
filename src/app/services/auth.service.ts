@@ -7,7 +7,6 @@ import * as auth0 from 'auth0-js';
 @Injectable()
 export class AuthService {
 
-  
   auth0 = new auth0.WebAuth({
     clientID: '72SUiqt2QlHDSSXclNVJA9LuOkZ3vgiu',
     domain: 'carpnd.auth0.com',

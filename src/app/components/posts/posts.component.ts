@@ -9,23 +9,27 @@ import { Router } from '@angular/router';
 })
 export class PostsComponent implements OnInit {
 
-  posts:Post[]=[];
+  posts: Post[] = [];
 
 
-  constructor( private _postsService:PostsService,
-               private _router:Router
-              ) {
+  constructor( private _postsService: PostsService,
+               private _router: Router) {
 
 
   }
 
-  //Esto se ejecuta una vez que la pagina ya esta renderizada.
+  // Esto se ejecuta una vez que la pagina ya esta renderizada.
   ngOnInit() {
-    this.posts=this._postsService.getPosts();
+    this._postsService.obtenerPosts().subscribe(res => {
+     console.log(res.json());
+     this.posts = res.json();
+     console.log(this.posts.length);
+    });
+
   }
 
-  verPost( idx:number ){
-    this._router.navigate(['/post',idx]);
+  verPost( idx: number ) {
+    this._router.navigate(['/post', idx]);
   }
 
 }
