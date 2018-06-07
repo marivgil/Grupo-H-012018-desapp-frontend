@@ -16,7 +16,7 @@
                 <button (click)="makeAPost()" class="btn btn-link btn-padding-right">
                   <i class="fas fa-money-bill-alt fa-2x"></i>
               </button>
-                <button (click)="editCar()" class="btn btn-link btn-padding-right">
+                <button (click)="editCar(car)" class="btn btn-link btn-padding-right">
                   <i class="fas fa-pencil-alt fa-2x" ></i>
               </button>
                 <button (click)="confirmDeleteCar(car.id)" class="btn btn-link btn-right">
@@ -35,7 +35,7 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">Confirmación</h5>
+                <h5 class="modal-title">Confirmación</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>

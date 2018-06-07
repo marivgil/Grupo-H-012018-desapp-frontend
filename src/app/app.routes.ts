@@ -12,28 +12,32 @@ import { NewPostComponent } from './components/new-post/new-post.component';
 const APP_ROUTES: Routes = [
     { path: 'home', component: HomeComponent },
     { path: 'encontraTuAutoIdeal', component: PostsComponent},
-    { 
-        path: 'tusAutos', 
+    {
+        path: 'tusAutos',
         component: YourOwnCarsComponent,
         canActivate: [AuthGuardService]},
     { path: 'post/:id', component: PostComponent },
     {
-         path: 'perfil', 
+         path: 'perfil',
          component: ProfileComponent,
          canActivate: [AuthGuardService]},
-    { 
-        path: 'nuevoAuto', 
+    {
+        path: 'nuevoAuto',
         component: NewCarComponent,
         canActivate: [AuthGuardService]},
-    { 
-        path: 'nuevoUsuario', 
+    {
+        path: 'editarAuto',
+        component: NewCarComponent,
+        canActivate: [AuthGuardService]},
+    {
+        path: 'nuevoUsuario',
         component: NewUserComponent,
         canActivate: [AuthGuardService]},
-    { 
-        path: 'nuevoPost', 
+    {
+        path: 'nuevoPost',
         component: NewPostComponent,
         canActivate: [AuthGuardService]},
-    { path: '**', pathMatch: 'full', redirectTo:'home' }
+    { path: '**', pathMatch: 'full', redirectTo: 'home' }
 ] ;
 
 export const APP_ROUTING = RouterModule.forRoot(APP_ROUTES);

@@ -13,6 +13,7 @@ declare var $;
 export class YourOwnCarsComponent implements OnInit {
 
   idSeleccionado: number;
+  editedCar;
 
   constructor(public _auth: AuthService,
               private _router: Router,
@@ -26,8 +27,9 @@ export class YourOwnCarsComponent implements OnInit {
     this._router.navigate(['nuevoAuto']);
   }
 
-  editCar() {
-    console.log("TODO: Hacer modal de edicion de auto");
+  editCar(car) {
+    this._vehicle.editedCar = car;
+    this._router.navigate(['editarAuto']);
   }
 
   makeAPost() {

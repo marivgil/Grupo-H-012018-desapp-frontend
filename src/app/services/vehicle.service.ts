@@ -8,6 +8,8 @@ export class VehicleService {
 
   constructor(private _http: Http) { }
 
+  editedCar;
+
   baseUrl: string = 'http://localhost:8080/';
   extensionUrl: string = 'desapp-grouph-backend/rest/servicesVehicle/';
 
@@ -28,7 +30,7 @@ export class VehicleService {
   }
 
   editCar(vehicle: Vehicle): Observable<Response> {
-     let url = this.baseUrl + this.extensionUrl + 'createVehicle';
+     let url = this.baseUrl + this.extensionUrl + 'updateVehicle';
      let header = new Headers({ 'Content-Type': 'application/json' });
      let options = new RequestOptions ( { headers: header });
 

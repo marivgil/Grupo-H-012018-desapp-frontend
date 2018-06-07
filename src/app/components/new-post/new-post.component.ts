@@ -12,8 +12,8 @@ import { IMyDrpOptions } from 'mydaterangepicker';
   selector: 'app-new-post',
   templateUrl: './new-post.component.html'
 })
-export class NewPostComponent implements OnInit {
-
+export class NewPostComponent {
+/*
   vehicle: Vehicle;
   user: User;
   forma: FormGroup;
@@ -118,5 +118,5 @@ myDateRangePickerOptions: IMyDrpOptions = {
         }
     }});
 }
-
+*/
 }
