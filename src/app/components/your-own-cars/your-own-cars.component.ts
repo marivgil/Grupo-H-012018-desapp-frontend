@@ -42,6 +42,7 @@ export class YourOwnCarsComponent implements OnInit {
 
   confirmDeleteCar(id: number, index: number) {
       this.idSeleccionado = id;
+      console.log(index);
       $('#eliminationModal').modal({
    //     backdrop: 'static',
    //     keyboard: false

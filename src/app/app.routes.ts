@@ -6,7 +6,7 @@ import { PostComponent } from './components/post/post.component';
 import { AuthGuardService } from './services/auth-guard.service';
 import { ProfileComponent } from './components/profile/profile.component';
 import { NewCarComponent } from './components/new-car/new-car.component';
-import { NewUserComponent } from './components/new-user/new-user.component'
+import { NewUserComponent } from './components/new-user/new-user.component';
 import { NewPostComponent } from './components/new-post/new-post.component';
 
 const APP_ROUTES: Routes = [

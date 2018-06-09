@@ -10,41 +10,31 @@ declare var $;
 })
 export class ProfileComponent {
 
-//   profile: any;
-//   user: User;
-//   editar: boolean = false;
+   editar: boolean = false;
 
-//   constructor(public auth: AuthService,
-//               public _user: UserService) {
-//                 if (this.auth.userProfile) {
-//       this.profile = this.auth.userProfile;
-//     } else {
-//       this.auth.getProfile((err, profile) => {
-//         this.profile = profile;
-//       });
-//     }    
-//     this.user= _user.getUser();
-//   }
+   constructor(public auth: AuthService,
+               public _user: UserService) {
 
-//   changeEdit(){
-//     this.editar= !this.editar;
-//     console.log(this.editar);
-//   }
-  
-//   doChanges(){
-//     this.changeEdit();
-//   }
+  }
 
-//   changeName(){
-    
-//   }
+   changeEdit() {
+     this.editar = !this.editar;
+     console.log(this.editar);
+   }
 
-//   openModalName(){
-//     $('#nameModal').modal({
-//  //     backdrop: 'static',
-//  //     keyboard: false
-//     }) 
-//   }
+   doChanges() {
+     this.changeEdit();
+   }
+
+   changeName() {
+   }
+
+   openModalName() {
+     $('#nameModal').modal({
+  //     backdrop: 'static',
+  //     keyboard: false
+     });
+   }
 
 /*{
   "sub": "google-oauth2|106572254188915518115",
