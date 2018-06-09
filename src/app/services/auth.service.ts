@@ -4,6 +4,7 @@ import { UserService } from "./user.service";
 import { filter } from 'rxjs/operators';
 import {Observable} from 'rxjs/Observable';
 import * as auth0 from 'auth0-js';
+import { VehicleService } from './vehicle.service';
 
 @Injectable()
 export class AuthService {
@@ -18,7 +19,8 @@ export class AuthService {
   });
 
   constructor(public router: Router,
-              private _userService: UserService) {}
+              private _userService: UserService,
+              private _vehicle: VehicleService) {}
 
   userProfile ;
   userBD: any;
@@ -90,6 +92,13 @@ export class AuthService {
     return new Date().getTime() < expiresAt;
   }
 
+  public deleteCarLocale(i: number) {
+    this.userBD.vehicles.splice( i, 1);
+  }
+
+  public replaceCar( car: any ) {
+    this.userBD.vehicles.splice(this._vehicle.indexEditedCar , 1, car);
+  }
 
 
 }

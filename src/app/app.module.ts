@@ -34,7 +34,6 @@ import { NewUserComponent } from './components/new-user/new-user.component';
 import { NewPostComponent } from './components/new-post/new-post.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { MyMissingTranslationHandler } from './handlers/missingtemplate.component';
-import { EditCarComponent } from './components/edit-car/edit-car.component';
 import { ActivatedRouteSnapshot } from '@angular/router';
 
 
@@ -51,8 +50,7 @@ import { ActivatedRouteSnapshot } from '@angular/router';
     NewCarComponent,
     NewUserComponent,
     NewPostComponent,
-    FooterComponent,
-    EditCarComponent
+    FooterComponent
   ],
   imports: [
     BrowserModule,

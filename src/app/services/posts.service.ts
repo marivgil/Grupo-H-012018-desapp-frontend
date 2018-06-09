@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 
+import { URL_SERVICIO } from '../config';
 
 import { Post } from '../interfaces/post.interface';
 import { Coord } from '../interfaces/coord.interface';
@@ -67,7 +68,6 @@ export class PostsService {
     //     }
       ];
 
-    baseUrl: string = "http://localhost:8080/";
     extensionUrl: string = "desapp-grouph-backend/rest/";
 
     constructor(private http: Http) {
@@ -75,7 +75,7 @@ export class PostsService {
      }
 
      obtenerPosts() {
-        return this.http.get(this.baseUrl + this.extensionUrl + "servicesMiniPost/allMiniPost");
+        return this.http.get(URL_SERVICIO + this.extensionUrl + "servicesMiniPost/allMiniPost");
      }
 
      getPosts(): Post[] {

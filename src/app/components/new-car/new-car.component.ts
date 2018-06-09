@@ -51,8 +51,7 @@ export class NewCarComponent implements OnInit {
       this.forma.patchValue({
         capacity: this.vehicle.capacity,
         type: this.vehicle.type,
-        description: this.vehicle.description,
-  //      photos: []
+        description: this.vehicle.description
       });
       this.forma.setControl('photos', this.fb.array(this.vehicle.photos || []));
     }
@@ -92,6 +91,7 @@ export class NewCarComponent implements OnInit {
         this.router.navigate(['/tusAutos']);
         });
       } else {
+        // EDITA AUTO
         let vehicle = {
           type: this.forma.controls['type'].value,
           capacity: this.forma.controls['capacity'].value,
@@ -101,8 +101,7 @@ export class NewCarComponent implements OnInit {
           id: this._vehicle.editedCar.id,
          };
       this._vehicle.editCar(vehicle).subscribe( res => {
-        this._auth.userBD = res;
-        console.log(res);
+        this._auth.replaceCar(vehicle);
         this.router.navigate(['/tusAutos']);
       });
       }

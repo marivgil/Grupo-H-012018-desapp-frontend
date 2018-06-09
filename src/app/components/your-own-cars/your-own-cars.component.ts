@@ -14,21 +14,24 @@ export class YourOwnCarsComponent implements OnInit {
 
   idSeleccionado: number;
   editedCar;
+  index;
 
   constructor(public _auth: AuthService,
               private _router: Router,
               private _vehicle: VehicleService,
-              private _user: UserService) { }
+              private _user: UserService) {
+              }
 
-  ngOnInit() {
-  }
+
+  ngOnInit() {}
 
   addCar() {
     this._router.navigate(['nuevoAuto']);
   }
 
-  editCar(car) {
+  editCar(car, index) {
     this._vehicle.editedCar = car;
+    this._vehicle.indexEditedCar = index;
     this._router.navigate(['editarAuto']);
   }
 
@@ -37,9 +40,8 @@ export class YourOwnCarsComponent implements OnInit {
   }
 
 
-  confirmDeleteCar(id: number) {
+  confirmDeleteCar(id: number, index: number) {
       this.idSeleccionado = id;
-      console.log(id);
       $('#eliminationModal').modal({
    //     backdrop: 'static',
    //     keyboard: false
@@ -48,8 +50,8 @@ export class YourOwnCarsComponent implements OnInit {
 
   deleteCar() {
     this._vehicle.deleteCar(this.idSeleccionado).subscribe( res => {
-      this._auth.userBD = res;
-      this._router.navigate(['tusAutos']);
+      this._auth.deleteCarLocale(this.index);
+    //  this._router.navigate(['tusAutos']);
     });
   }
 

@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { User } from '../interfaces/user.interface';
 import { Http } from '@angular/http';
+import { URL_SERVICIO } from '../config';
 
 @Injectable()
 export class UserService {
 
-  baseUrl = "http://localhost:8080/";
   extensionUrl = "desapp-grouph-backend/rest/servicesUsers/";
 
   user: User; /* = [{
@@ -31,7 +31,7 @@ export class UserService {
   constructor(private http: Http) { }
 
   getUser(mail: string) {
-    let url: string = this.baseUrl + this.extensionUrl + "findUserByEmail/" + mail ;
+    let url: string = URL_SERVICIO + this.extensionUrl + "findUserByEmail/" + mail ;
 
    return this.http.get(url);
   }
