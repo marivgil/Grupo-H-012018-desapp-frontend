@@ -35,10 +35,9 @@ export class AuthService {
     this.auth0.client.userInfo(accessToken, (err, profile) => {
       if (profile) {
         self.userProfile = profile;
-        console.log("USER AUTH0", profile);
+        localStorage.setItem('img', profile.picture),
         this._userService.getUser(profile.email).subscribe( res => {
           this.userBD = res.json();
-          console.log("USERBD:", this.userBD);
         });
       }
       cb(err, profile);
@@ -57,7 +56,6 @@ export class AuthService {
         window.location.hash = '';
         this.setSession(authResult);
         this.router.navigate(['/home']);
-        console.log(this.userProfile);
       } else if (err) {
         this.router.navigate(['/home']);
         console.log(err);

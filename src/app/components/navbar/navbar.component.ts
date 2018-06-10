@@ -11,6 +11,7 @@ import { AuthService } from '../../services/auth.service';
 export class NavbarComponent {
 
   user: any;
+  localStorage = localStorage;
 
   constructor( public auth: AuthService) {
     if (localStorage.getItem('access_token')) {
@@ -18,6 +19,7 @@ export class NavbarComponent {
          this.user = profile;
          });
     }
+    console.log(localStorage);
   }
 
   isAuthenticated(): boolean {

@@ -14,14 +14,14 @@
         <div class="main-container">
             <h5 class="card-title">{{ 'VehicleType.'+car.type | translate}} {{'For' | translate}} {{car.capacity}} {{'Persons' | translate}} </h5>
             <p class="card-text">{{car.description}}
-                <button (click)="makeAPost()" class="btn btn-link btn-padding-right">
-                  <i class="fas fa-money-bill-alt fa-2x"></i>
+                <button (click)="makeAPost()" class="btn btn-link btn-right">
+                  <i class="fas fa-money-bill-alt fa-2x py-1"></i>
               </button>
-                <button (click)="editCar(car, index)" class="btn btn-link btn-padding-right">
-                  <i class="fas fa-pencil-alt fa-2x" ></i>
+                <button (click)="editCar(car, index)" class="btn btn-link btn-right">
+                  <i class="fas fa-pencil-alt fa-2x py-1" ></i>
               </button>
                 <button (click)="confirmDeleteCar(car.id, index)" class="btn btn-link btn-right">
-                  <i class="fas fa-trash-alt fa-2x"></i>
+                  <i class="fas fa-trash-alt fa-2x py-1 px-0"></i>
               </button>
             </p>
 

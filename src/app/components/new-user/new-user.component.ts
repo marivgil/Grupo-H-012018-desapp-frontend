@@ -36,51 +36,49 @@ export class NewUserComponent implements OnInit {
       'email': new FormControl('', Validators.required)// la validacion de email lo hace auth0!!!!
     });
     console.log (this._auth.userBD.name);
+
     this.forma.patchValue({
         email: this._auth.userProfile.email,
         name: this._auth.userBD.name,
         surname: this._auth.userBD.surname
+    });
+    console.log( this._auth.userBD.cuil.toString().substring(10, 11));
+    this.forma.controls['CUIL'].patchValue({
+      prefix: this._auth.userBD.cuil.toString().substring(0, 2) ,
+      DNI: this._auth.userBD.cuil.toString().substring(2, 10),
+      suffix: this._auth.userBD.cuil.toString().substring(10, 11),
     });
    }
 
    ngOnInit() { }
 
    registerMe() {
-     let user = {
-       address: this._auth.userBD.address,
-       name: this.forma.value.name,
-       status: this._auth.userBD.status,
-       email: this._auth.userProfile.email,
-       userName: null,
-       cuil: this._auth.userBD.cuil,
-       account: this._auth.userBD.account,
-       scores: this._auth.userBD.scores,
-       surname: this.forma.value.surname
-     };
 
-     this._user.editUser(user).subscribe(res => {
+    let cuil = this.forma.value.CUIL.prefix +
+               this.forma.value.CUIL.DNI +
+               this.forma.value.CUIL.suffix ;
+
+    let user = {
+      address: this._auth.userBD.address,
+      name: this.forma.value.name,
+      status: this._auth.userBD.status,
+      email: this._auth.userProfile.email,
+      userName: null,
+      cuil: cuil,
+      account: this._auth.userBD.account,
+      scores: this._auth.userBD.scores,
+      surname: this.forma.value.surname
+   };
+
+    this._user.editUser(user).subscribe(res => {
             this.modificarUsuarioBD(user);
             $('#nameModal').modal('hide');
-     });
+    });
    }
 
    modificarUsuarioBD(user) {
     this._auth.userBD.name = user.name;
     this._auth.userBD.surname = user.surname;
+    this._auth.userBD.cuil = user.cuil;
    }
-
-
-// { PARA PUT DE USUARIO
-//   "address": "Arredondo 1238",
-//   "name": "Analia",
-//   "status": true,
-//   "email": "a.redonda89@gmail.com",
-//   "userName": null,
-//   "cuil": "1",
-//   "account": 0,
-//   "scores": [],
-//   "surname": "Redonda"
-// }
-
-
 }
