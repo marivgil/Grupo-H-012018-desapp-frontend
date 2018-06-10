@@ -27,7 +27,6 @@ export class NewCarComponent implements OnInit {
 
     if (this.url === '/editarAuto') {
       this.vehicle = this._vehicle.editedCar;
-      console.log('VEHICULO:', this.vehicle);
     }
   }
 

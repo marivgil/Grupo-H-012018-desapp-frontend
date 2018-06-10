@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { User } from '../interfaces/user.interface';
-import { Http } from '@angular/http';
+import { Http, RequestOptions, Headers } from '@angular/http';
 import { URL_SERVICIO } from '../config';
 
 @Injectable()
@@ -36,5 +36,15 @@ export class UserService {
    return this.http.get(url);
   }
 
-//  http://localhost:8080/desapp-grouph-backend/rest/servicesUsers/findUserByEmail/a.redonda89@gmail.com
+  editUser(user: any) {
+    let url: string = URL_SERVICIO + this.extensionUrl + "updateUser";
+    let header = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions ( { headers: header });
+
+    return this.http.put(url, user, options)
+                    .map((res: any) => {
+                              return res.json();
+    });
+  }
 }
+

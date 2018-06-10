@@ -10,6 +10,7 @@ declare var $;
 })
 export class ProfileComponent {
 
+   usuarioEditado;
    editar: boolean = false;
 
    constructor(public auth: AuthService,
@@ -17,24 +18,13 @@ export class ProfileComponent {
 
   }
 
-   changeEdit() {
-     this.editar = !this.editar;
-     console.log(this.editar);
+   editUser() {
+      $('#nameModal').modal({
+   //     backdrop: 'static',
+   //     keyboard: false
+      });
    }
 
-   doChanges() {
-     this.changeEdit();
-   }
-
-   changeName() {
-   }
-
-   openModalName() {
-     $('#nameModal').modal({
-  //     backdrop: 'static',
-  //     keyboard: false
-     });
-   }
 
 /*{
   "sub": "google-oauth2|106572254188915518115",

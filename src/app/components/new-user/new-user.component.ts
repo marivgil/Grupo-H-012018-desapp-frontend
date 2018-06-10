@@ -1,27 +1,25 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
 import { CustomValidators } from 'ng2-validation';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
+import { UserService } from '../../services/user.service';
 
 
+declare var $;
 @Component({
   selector: 'app-new-user',
   templateUrl: './new-user.component.html'
 })
-export class NewUserComponent {
+
+export class NewUserComponent implements OnInit {
 
   forma: FormGroup;
   user: any;
 
-  constructor(private _auth: AuthService) {
-    if (this._auth.userProfile) {
-      this.user = this._auth.userProfile;
-    } else {
-      this._auth.getProfile((err, profile) => {
-        this.user = profile;
-      });
-    }    
+  constructor(private _auth: AuthService,
+              private _user: UserService,
+              private router: Router) {
 
     this.forma = new FormGroup({
       'CUIL': new FormGroup({
@@ -35,13 +33,54 @@ export class NewUserComponent {
             'street': new FormControl  ('', Validators.required),
             'number': new FormControl  ('', [Validators.required, Validators.pattern('[0-9]*')]),
       }),
-      'email': new FormControl('ejemplo@ejemplo.com.ar', Validators.required)// la validacion de email lo hace auth0!!!!
+      'email': new FormControl('', Validators.required)// la validacion de email lo hace auth0!!!!
+    });
+    console.log (this._auth.userBD.name);
+    this.forma.patchValue({
+        email: this._auth.userProfile.email,
+        name: this._auth.userBD.name,
+        surname: this._auth.userBD.surname
     });
    }
 
+   ngOnInit() { }
+
    registerMe() {
-     console.log(this.forma);
+     let user = {
+       address: this._auth.userBD.address,
+       name: this.forma.value.name,
+       status: this._auth.userBD.status,
+       email: this._auth.userProfile.email,
+       userName: null,
+       cuil: this._auth.userBD.cuil,
+       account: this._auth.userBD.account,
+       scores: this._auth.userBD.scores,
+       surname: this.forma.value.surname
+     };
+
+     this._user.editUser(user).subscribe(res => {
+            this.modificarUsuarioBD(user);
+            $('#nameModal').modal('hide');
+     });
    }
+
+   modificarUsuarioBD(user) {
+    this._auth.userBD.name = user.name;
+    this._auth.userBD.surname = user.surname;
+   }
+
+
+// { PARA PUT DE USUARIO
+//   "address": "Arredondo 1238",
+//   "name": "Analia",
+//   "status": true,
+//   "email": "a.redonda89@gmail.com",
+//   "userName": null,
+//   "cuil": "1",
+//   "account": 0,
+//   "scores": [],
+//   "surname": "Redonda"
+// }
 
 
 }
