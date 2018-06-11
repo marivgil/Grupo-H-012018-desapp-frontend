@@ -75,7 +75,7 @@ export class PostsService {
      }
 
      obtenerPosts() {
-        return this.http.get(URL_SERVICIO + this.extensionUrl + "servicesMiniPost/allMiniPost");
+        return this.http.get(URL_SERVICIO + this.extensionUrl + "servicesPost/allMiniPost");
      }
 
      getPosts(): Post[] {
