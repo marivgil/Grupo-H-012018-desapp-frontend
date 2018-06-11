@@ -38,7 +38,11 @@
         "Photos": "Fotos",
         "InsertPhoto": "Insertar otra foto",
         "Delete": "Eliminar",
-        "AddCar": "Agregar Auto"
+        "AddCar": "Agregar Auto",
+        "EditCar": "Guardar cambios"
+    },
+    "EditCar": {
+        "MainTitleTxt": "Editar Auto"
     },
     "VehicleType": {
         "AUTO": "Auto",

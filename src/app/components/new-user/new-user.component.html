@@ -13,26 +13,30 @@
             <label class= "col-md-3" for="inputAddress2">{{'NewUser.LastName' | translate}}:</label>
             <input formControlName="surname" [placeholder]="'NewUser.LastName' | translate" type="text" class="form-control col-md-9" id="inputAddress2">
         </div>
-
-        <agm-map 
-          latitude=180 
-          longitude=180
-          zoom=100%
-          (mapClick)= "mapClicked($event)">
-        </agm-map>
-        
-        <div class="form-row margin-top-20" formGroupName="address">
-            <label class= "col-md-3" for="inputPassword4">{{'NewUser.Address' | translate}}:</label>
-            <input formControlName="street" [placeholder]="'NewUser.Street' | translate" type="text" class="form-control col-md-6" id="inputPassword4">
-            <input formControlName="number" [placeholder]="'NewUser.Number' | translate" type="text" class="form-control col-md-3" id="inputAddress2">
-        </div>
         
         <div class="form-row margin-top-20" formGroupName="CUIL">
-            <label class="col-md-3" for="inputPassword4">CUIL:</label>
-            <input formControlName="prefix" type="number" placeholder="27" class=" col-md-2 px-1 py-0 form-control" id="inputPassword4">
-            <input formControlName="DNI" type="number" placeholder="85960697" class="col-md-5 py-0 form-control" id="inputPassword4">
-            <input formControlName="suffix" type="number" placeholder="3" class="col-md-2 px-1 py-0 form-control" id="inputPassword4">
+            <label class="col-3" for="inputPassword4">CUIL:</label>
+            <input formControlName="prefix" type="number" placeholder="27" class=" col-2 px-1 py-0 form-control" id="inputPassword4">
+            <input formControlName="DNI" type="number" placeholder="85960697" class="col-5 py-0 form-control" id="inputPassword4">
+            <input formControlName="suffix" type="number" placeholder="3" class="col-2 px-1 py-0 form-control" id="inputPassword4">
         </div>
+
+        <div class="form-row margin-top-20">
+            <label class= "col-md-3" for="inputPassword4">{{'NewUser.Address' | translate}}:</label>
+            <input formControlName="address" (click)="openMap()" readonly [placeholder]="'NewUser.Street' | translate" type="text" class="form-control col-md-9" id="inputPassword4">
+        </div>
+
+        <div *ngIf="map" class="margin-top-20">
+            <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" (mapClick)= "mapClicked($event)">
+                    <agm-marker 
+                        [latitude]="marker?.lat" 
+                        [longitude]="marker?.lng"
+                        [markerDraggable]="marker?.draggable">
+                    </agm-marker>
+            </agm-map>
+        </div>
+        
+        
 
         <button type="submit" [disabled]="!forma.valid" class="btn btn-primary btn-right main-container">{{'SaveButton' | translate}}</button>
         <button type="button" class="btn btn-right main-container btn-secondary" data-dismiss="modal">{{ 'CloseButton' | translate}} </button>
