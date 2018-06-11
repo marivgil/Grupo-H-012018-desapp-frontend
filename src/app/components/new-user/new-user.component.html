@@ -13,6 +13,13 @@
             <label class= "col-md-3" for="inputAddress2">{{'NewUser.LastName' | translate}}:</label>
             <input formControlName="surname" [placeholder]="'NewUser.LastName' | translate" type="text" class="form-control col-md-9" id="inputAddress2">
         </div>
+
+        <agm-map 
+          latitude=180 
+          longitude=180
+          zoom=100%
+          (mapClick)= "mapClicked($event)">
+        </agm-map>
         
         <div class="form-row margin-top-20" formGroupName="address">
             <label class= "col-md-3" for="inputPassword4">{{'NewUser.Address' | translate}}:</label>

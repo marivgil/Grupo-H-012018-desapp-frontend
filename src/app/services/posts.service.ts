@@ -11,20 +11,20 @@ export class PostsService {
     private coord1: Coord = {lat: 0, lng: 0};
 
     private posts: Post[] = [
-    //     {
-    //         id:0,
-    //         vehicleType:"AUTO",
-    //         capacity:"2",
-    //         location:"Bernal",
-    //         description:"TRONCOMOVIL: Es un auto antiguo, traccion a sangre y mucha voluntad",
-    //         phone: 1142836765 ,
-    //         rentalDate: "05-09-2018",
-    //         costPerDay:"80",
-    //         photos:["https://i1.wp.com/www.rinconabstracto.com/wp-content/uploads/2011/08/Yabba-Dabba-Doo-R%C3%A9plica-del-coche-de-Pedro-Picapiedras-a-la-venta-01.jpg?fit=634%2C375&ssl=1",
-    //                 "http://cdn.atv.pe/files/2011/07/fred-flintstone-car-2_2.jpg?850x450",
-    //                 "https://i1.wp.com/4.bp.blogspot.com/-Pk48QguI7dI/TkLd1sqc55I/AAAAAAAASbg/08Vm9ijvEhE/s1600/Yabba+Dabba+Doo%2521+R%25C3%25A9plica+del+coche+de+Pedro+Picapiedras+a+la+venta%2521+04.jpg?w=660"],
-    //         coordPickUp: {lat:-34.705857, lng:-58.278498}
-    //     },
+         {
+             id: 0,
+             vehicleType: "AUTO",
+             capacity: "2",
+             location: "Bernal",
+             description: "TRONCOMOVIL: Es un auto antiguo, traccion a sangre y mucha voluntad",
+             phone: 1142836765 ,
+             rentalDate: "05-09-2018",
+             costPerDay: "80",
+             photos: ["https://i1.wp.com/www.rinconabstracto.com/wp-content/uploads/2011/08/Yabba-Dabba-Doo-R%C3%A9plica-del-coche-de-Pedro-Picapiedras-a-la-venta-01.jpg?fit=634%2C375&ssl=1",
+                     "http://cdn.atv.pe/files/2011/07/fred-flintstone-car-2_2.jpg?850x450",
+                     "https://i1.wp.com/4.bp.blogspot.com/-Pk48QguI7dI/TkLd1sqc55I/AAAAAAAASbg/08Vm9ijvEhE/s1600/Yabba+Dabba+Doo%2521+R%25C3%25A9plica+del+coche+de+Pedro+Picapiedras+a+la+venta%2521+04.jpg?w=660"],
+             coordPickUp: {lat: -34.705857, lng: -58.278498}
+         },
     //     {
     //         id: 1,
     //         vehicleType:"CAMIONETA",

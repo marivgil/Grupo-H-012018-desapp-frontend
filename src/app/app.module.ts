@@ -19,7 +19,7 @@ import { VehicleService } from './services/vehicle.service';
 import { CarouselModule } from '../../node_modules/angular2-carousel';
 import { TranslateModule, MissingTranslationHandler } from 'ng2-translate';
 import { APP_TRANSLATE } from './app.translator';
-import { APP_MAPS } from './app.maps';
+import { AgmCoreModule } from '@agm/core';
 
 // Components
 import { AppComponent } from './app.component';
@@ -57,12 +57,14 @@ import { ActivatedRouteSnapshot } from '@angular/router';
     APP_ROUTING,
     FormsModule,
     ReactiveFormsModule,
-    APP_MAPS,
     CarouselModule,
     HttpModule,
     JsonpModule,
     MyDateRangePickerModule,
-    APP_TRANSLATE
+    APP_TRANSLATE,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyAx82m7KSQg0obJQYw7L5tGcEXcoM1u9sE'
+    })
   ],
   providers: [
     PostsService,

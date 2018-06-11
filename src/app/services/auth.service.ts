@@ -72,7 +72,7 @@ export class AuthService {
     this.getProfile((err , res) => {
       this.userProfile = res;
     });
-    }
+  }
 
   public logout(): void {
     // Remove tokens and expiry time from localStorage
