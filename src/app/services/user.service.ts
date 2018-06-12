@@ -46,5 +46,16 @@ export class UserService {
                               return res.json();
     });
   }
+
+  createUser(user: any) {
+    let url: string = URL_SERVICIO + this.extensionUrl + "createUser";
+    let header = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions ( { headers: header });
+
+    return this.http.post(url, user, options)
+                    .map((res: any) => {
+                              return res.json();
+    });
+  }
 }
 

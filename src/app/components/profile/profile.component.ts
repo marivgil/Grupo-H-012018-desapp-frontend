@@ -19,7 +19,7 @@ export class ProfileComponent {
   }
 
    editUser() {
-      $('#nameModal').modal({
+      $('#signUpModal').modal({
    //     backdrop: 'static',
    //     keyboard: false
       });

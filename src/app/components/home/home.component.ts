@@ -12,10 +12,12 @@ export class HomeComponent implements OnInit {
   constructor(private _router: Router,
               private _auth: AuthService) { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    console.log(this._auth.nuevoUsuario);
+   }
 
   irATusAutos() {
-    if (!this._auth.isAuthenticated()){
+    if (!this._auth.isAuthenticated()) {
       this._auth.login();
     } else {
     this._router.navigate(["tusAutos"]);

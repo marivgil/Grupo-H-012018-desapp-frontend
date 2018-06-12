@@ -5,7 +5,9 @@ import { filter } from 'rxjs/operators';
 import {Observable} from 'rxjs/Observable';
 import * as auth0 from 'auth0-js';
 import { VehicleService } from './vehicle.service';
+import { NewUserComponent } from '../components/new-user/new-user.component';
 
+declare var $;
 @Injectable()
 export class AuthService {
 
@@ -24,6 +26,7 @@ export class AuthService {
 
   userProfile ;
   userBD: any;
+  nuevoUsuario: boolean = false;
 
     public getProfile(cb): any {
     const accessToken = localStorage.getItem('access_token');
@@ -33,11 +36,22 @@ export class AuthService {
 
     const self = this;
     this.auth0.client.userInfo(accessToken, (err, profile) => {
+
       if (profile) {
+
         self.userProfile = profile;
         localStorage.setItem('img', profile.picture),
         this._userService.getUser(profile.email).subscribe( res => {
-          this.userBD = res.json();
+          console.log(res);
+
+          if (res.status === 204) {
+            this.nuevoUsuario = true;
+            console.log("pase por 204");
+
+            this.router.navigate(['nuevoUsuario']);
+          } else {
+            this.userBD = res.json();
+          }
         });
       }
       cb(err, profile);

@@ -1,3 +1,10 @@
+
+<div class="modal fade" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+
+
 <div>
     <form [formGroup]="forma" class="form" (ngSubmit)="registerMe()" novalidate="novalidate">
         <div class="form-row">
@@ -39,6 +46,13 @@
         
 
         <button type="submit" [disabled]="!forma.valid" class="btn btn-primary btn-right main-container">{{'SaveButton' | translate}}</button>
-        <button type="button" class="btn btn-right main-container btn-secondary" data-dismiss="modal">{{ 'CloseButton' | translate}} </button>
+        <button type="button" class="btn btn-right main-container btn-secondary" (click)="closeModal()">{{ 'CloseButton' | translate}} </button>
     </form>
 </div>
+
+
+
+</div>
+</div>
+</div>
+</div> 
