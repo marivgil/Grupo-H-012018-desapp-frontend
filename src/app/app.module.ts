@@ -13,12 +13,13 @@ import { PostsService } from './services/posts.service';
 import { AuthService } from './services/auth.service';
 import { UserService } from './services/user.service';
 import { AuthGuardService } from './services/auth-guard.service';
+import { VehicleService } from './services/vehicle.service';
 
 // Extern Modules
 import { CarouselModule } from '../../node_modules/angular2-carousel';
 import { TranslateModule, MissingTranslationHandler } from 'ng2-translate';
 import { APP_TRANSLATE } from './app.translator';
-import { APP_MAPS } from './app.maps';
+import { AgmCoreModule } from '@agm/core';
 
 // Components
 import { AppComponent } from './app.component';
@@ -33,6 +34,7 @@ import { NewUserComponent } from './components/new-user/new-user.component';
 import { NewPostComponent } from './components/new-post/new-post.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { MyMissingTranslationHandler } from './handlers/missingtemplate.component';
+import { ActivatedRouteSnapshot } from '@angular/router';
 
 
 
@@ -55,19 +57,22 @@ import { MyMissingTranslationHandler } from './handlers/missingtemplate.componen
     APP_ROUTING,
     FormsModule,
     ReactiveFormsModule,
-    APP_MAPS,
     CarouselModule,
     HttpModule,
     JsonpModule,
     MyDateRangePickerModule,
-    APP_TRANSLATE
+    APP_TRANSLATE,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyAx82m7KSQg0obJQYw7L5tGcEXcoM1u9sE'
+    })
   ],
   providers: [
-    PostsService, 
+    PostsService,
     AuthService,
     AuthGuardService,
+    VehicleService,
     UserService,
-    { provide: MissingTranslationHandler, 
+    { provide: MissingTranslationHandler,
       useClass: MyMissingTranslationHandler}
   ],
   bootstrap: [AppComponent]

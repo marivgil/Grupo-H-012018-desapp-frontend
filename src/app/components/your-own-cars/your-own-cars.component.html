@@ -6,20 +6,22 @@
     <h1>{{ 'MyCarsLink' | translate}}</h1>
     <hr>
 
-    <div class="card mb-3">
-        <img class="img-preview img-fluid" [src]="cars[0].photos[0]" alt="Card image cap">
-
+    <div *ngFor="let car of _auth.userBD.vehicles; let index= index" class="card mb-3">
+        
+        <img *ngIf="car.photos.length >= 1"class="img-preview img-fluid" [src]="car.photos[0]" alt="Card image cap">
+        <img *ngIf="car.photos.length === 0"class="img-preview img-fluid" src="../../../assets/img/Foto-no-disponible.png" alt="Card image cap">
+        
         <div class="main-container">
-            <h5 class="card-title">{{ 'VehicleType.'+cars[0].vehicleType | translate}} {{'For' | translate}} {{cars[0].capacity}} {{'Persons' | translate}} </h5>
-            <p class="card-text">{{cars[0].description}}
-                <button (click)="makeAPost()" class="btn btn-link btn-padding-right">
-                  <i class="fas fa-money-bill-alt fa-2x"></i>
+            <h5 class="card-title">{{ 'VehicleType.'+car.type | translate}} {{'For' | translate}} {{car.capacity}} {{'Persons' | translate}} </h5>
+            <p class="card-text">{{car.description}}
+                <button (click)="makeAPost()" class="btn btn-link btn-right">
+                  <i class="fas fa-money-bill-alt fa-2x py-1"></i>
               </button>
-                <button (click)="editCar()" class="btn btn-link btn-padding-right">
-                  <i class="fas fa-pencil-alt fa-2x" ></i>
+                <button (click)="editCar(car, index)" class="btn btn-link btn-right">
+                  <i class="fas fa-pencil-alt fa-2x py-1" ></i>
               </button>
-                <button (click)="deleteCar()" class="btn btn-link btn-right">
-                  <i class="fas fa-trash-alt fa-2x"></i>
+                <button (click)="confirmDeleteCar(car.id, index)" class="btn btn-link btn-right">
+                  <i class="fas fa-trash-alt fa-2x py-1 px-0"></i>
               </button>
             </p>
 
@@ -34,7 +36,7 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">Confirmación</h5>
+                <h5 class="modal-title">Confirmación</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -44,7 +46,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">CANCELAR</button>
-                <button type="button" class="btn btn-danger">ELIMINAR</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal" (click)=deleteCar()>ELIMINAR</button>
             </div>
         </div>
     </div>

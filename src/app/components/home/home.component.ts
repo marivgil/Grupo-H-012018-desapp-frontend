@@ -9,16 +9,17 @@ import { AuthService } from '../../services/auth.service';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private _router:Router,
+  constructor(private _router: Router,
               private _auth: AuthService) { }
 
   ngOnInit() {
-  }
+    console.log(this._auth.nuevoUsuario);
+   }
 
-  irATusAutos(){
-    if(!this._auth.isAuthenticated()){
+  irATusAutos() {
+    if (!this._auth.isAuthenticated()) {
       this._auth.login();
-    }else{
+    } else {
     this._router.navigate(["tusAutos"]);
     }
   }

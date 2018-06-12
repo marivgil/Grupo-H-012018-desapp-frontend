@@ -1,48 +1,42 @@
-<div class="main-container  animated fadeIn fast" *ngIf="profile">
+<div class="main-container  animated fadeIn fast" *ngIf="auth.userProfile">
 
-    <button *ngIf="!editar" type="button" class="btn btn-link btn-padding-right" (click)="changeEdit()">
+    <button type="button" class="btn btn-link btn-padding-right" (click)="editUser()">
         <i class="fas fa-paint-brush fa-lg" style="color:#DDDDDDDD"></i>
     </button>
-    <div *ngIf="editar" class="btn-group btn-padding-right" role="group" aria-label="Basic example">
-        <button type="button" class="btn btn-link" (click)="changeEdit()">
-            <i class="fas fa-undo fa-lg" style="color:#000000"></i>
-        </button>
-        <button type="button" class="btn btn-link" (click)="doChanges()">
-            <i class="fas fa-check fa-lg" style="color:#000000"></i>
-        </button>
-    </div>
-
     <div>
-        <h3>{{profile.name}}
-            <button *ngIf="editar" type="button" class="btn btn-link " (click)="openModalName()">
-            <i class="fas fa-paint-brush fa-lg" style="color:#DDDDDDDD"></i>
-        </button>
+        <h3>{{auth.userBD.name}} {{auth.userBD.surname}}
         </h3>
         <hr>
     </div>
 
     <div class="row">
         <div class="col-md-4">
-            <img [src]="profile.picture" class="rounded-circle img-fluid">
+            <img [src]="auth.userProfile.picture" class="rounded-circle img-fluid">
         </div>
         <div class="col-md-1">
         </div>
 
-        <div class="col-md-6 ">
-            <h3>{{profile.email}}</h3>
+        <div class="col-md-6 py-2">
+            <h3>{{auth.userProfile.email}}</h3>
             <ul class="list-group">
-                <li class="list-group-item" *ngIf="!user.isEnable">
+                <li class="list-group-item" *ngIf="!auth.userBD.status">
                     <strong>{{"Profile.AccountStatusTxt"| translate}}</strong> {{ 'Profile.DisabledStatus' | translate}}
                     <i class="fas fa-times-circle fa-lg btn-right" style="color: #FF0000"></i>
                 </li>
                 <li class="list-group-item">
-                    <strong>{{'Profile.CreditTxt'| translate}} </strong> {{user.credit | currency}}
+                    <strong>{{'Profile.CreditTxt'| translate}} </strong> {{ auth.userBD.account | currency}}
                     <i class="btn-right fas fa-plus-square fa-lg "></i>
                 </li>
                 <li class="list-group-item">
-                    <strong>{{'Profile.ReputationTxt' | translate}} </strong>{{user.reputation}}
+                    <strong>CUIL: </strong> {{ auth.userBD.cuil}}
                 </li>
-                <li class="list-group-item" *ngIf="user.isEnable">
+                <li class="list-group-item">
+                    <strong>Direccion: </strong> {{ auth.userBD.address}}
+                </li>
+                <li class="list-group-item">
+                    <strong>{{'Profile.ReputationTxt' | translate}} </strong>{{auth.userBD.reputation}}
+                </li>
+                <li class="list-group-item" *ngIf="auth.userBD.status">
                     <strong>{{"Profile.AccountStatusTxt"| translate}}</strong> {{ 'Profile.EnabledStatus' | translate}}
                     <i class="fas fa-check-circle fa-lg btn-right" style="color:#00FF00;"></i>
                 </li>
@@ -51,49 +45,5 @@
     </div>
 </div>
 
-<div class="modal fade" id="nameModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">{{'Modal.FullNameTxt' | translate}}</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-                <input type="text" class="form-control">
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ 'CloseButton' | translate}} </button>
-                <button type="button" class="btn btn-primary" (click)="changeName()">{{ 'SaveButton' | translate}} </button>
-            </div>
-        </div>
-    </div>
-</div> 
 
-<!--{
-  "sub": "google-oauth2|106572254188915518115",
-  "given_name": "Analía",
-  "family_name": "Redonda",
-  "nickname": "a.redonda89",
-  "name": "Analía Redonda",
-  "picture": "https://lh3.googleusercontent.com/-UlZYyw3K9fk/AAAAAAAAAAI/AAAAAAAAAz4/pcNGPnRW1BE/photo.jpg",
-  "gender": "female",
-  "locale": "es-419",
-  "updated_at": "2018-04-18T20:17:27.397Z",
-  "email": "a.redonda89@gmail.com",
-  "email_verified": true
-}-->
-
-<!-- {
-  "sub": "facebook|929979343832255",
-  "given_name": "Anita",
-  "family_name": "Peque",
-  "nickname": "Anita Peque",
-  "name": "Anita Peque",
-  "picture": "https://lookaside.facebook.com/platform/profilepic/?asid=929979343832255&height=50&width=50&ext=1524347627&hash=AeStDvjKTYZX0YYg",
-  "gender": "female",
-  "locale": "es-LA",
-  "updated_at": "2018-04-18T21:53:47.714Z",
-  "email_verified": true
-}-->
+<app-new-user></app-new-user>

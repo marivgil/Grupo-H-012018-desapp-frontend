@@ -2,12 +2,15 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from "./user.service";
 import { filter } from 'rxjs/operators';
+import {Observable} from 'rxjs/Observable';
 import * as auth0 from 'auth0-js';
+import { VehicleService } from './vehicle.service';
+import { NewUserComponent } from '../components/new-user/new-user.component';
 
+declare var $;
 @Injectable()
 export class AuthService {
 
-  
   auth0 = new auth0.WebAuth({
     clientID: '72SUiqt2QlHDSSXclNVJA9LuOkZ3vgiu',
     domain: 'carpnd.auth0.com',
@@ -18,20 +21,38 @@ export class AuthService {
   });
 
   constructor(public router: Router,
-              private _userService: UserService) {}
+              private _userService: UserService,
+              private _vehicle: VehicleService) {}
 
-  userProfile: any;
+  userProfile ;
   userBD: any;
+  nuevoUsuario: boolean = false;
 
-    public getProfile(cb): void {
+    public getProfile(cb): any {
     const accessToken = localStorage.getItem('access_token');
     if (!accessToken) {
+      console.log("No hay token");
       }
 
     const self = this;
     this.auth0.client.userInfo(accessToken, (err, profile) => {
+
       if (profile) {
+
         self.userProfile = profile;
+        localStorage.setItem('img', profile.picture),
+        this._userService.getUser(profile.email).subscribe( res => {
+          console.log(res);
+
+          if (res.status === 204) {
+            this.nuevoUsuario = true;
+            console.log("pase por 204");
+
+            this.router.navigate(['nuevoUsuario']);
+          } else {
+            this.userBD = res.json();
+          }
+        });
       }
       cb(err, profile);
     });
@@ -62,7 +83,10 @@ export class AuthService {
     localStorage.setItem('access_token', authResult.accessToken);
     localStorage.setItem('id_token', authResult.idToken);
     localStorage.setItem('expires_at', expiresAt);
-    }
+    this.getProfile((err , res) => {
+      this.userProfile = res;
+    });
+  }
 
   public logout(): void {
     // Remove tokens and expiry time from localStorage
@@ -80,6 +104,13 @@ export class AuthService {
     return new Date().getTime() < expiresAt;
   }
 
+  public deleteCarLocale(i: number) {
+    this.userBD.vehicles.splice( i, 1);
+  }
+
+  public replaceCar( car: any ) {
+    this.userBD.vehicles.splice(this._vehicle.indexEditedCar , 1, car);
+  }
 
 
 }

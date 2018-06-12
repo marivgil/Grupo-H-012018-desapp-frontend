@@ -18,6 +18,7 @@
   
   .img-boton {
       width: 40px;
+      height: 40px;
   }
   
   .img-post {
@@ -77,6 +78,7 @@
       padding-bottom: 50px;
   }
   
+
   .img-logo {
       width: 120px;
   }
@@ -84,6 +86,27 @@
   agm-map {
       height: 300px;
   }
+
+  html {
+    height: 100%;
+  }
+
+  body {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    min-height: 80vh;
+  }
+
+  app-navbar {
+      max-height: 20vh
+  }
+   
+  .content {
+    min-height: 100vh;
+    flex: 1;
+  }
+
   /* Animaciones */
   
   .animated {

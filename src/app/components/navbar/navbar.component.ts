@@ -11,28 +11,26 @@ import { AuthService } from '../../services/auth.service';
 export class NavbarComponent {
 
   user: any;
+  localStorage = localStorage;
 
-  constructor( public auth:AuthService) { 
-    if(localStorage.getItem('access_token')){
-       if (this.auth.userProfile) {
-         this.user = this.auth.userProfile;
-      } else {
+  constructor( public auth: AuthService) {
+    if (localStorage.getItem('access_token')) {
          this.auth.getProfile((err, profile) => {
          this.user = profile;
-        });
-      }   
-     }
+         });
+    }
+    console.log(localStorage);
   }
 
-  isAuthenticated():boolean{
+  isAuthenticated(): boolean {
     return this.auth.isAuthenticated();
   }
 
-  logout(){
+  logout() {
     this.auth.logout();
   }
 
-  login(){
+  login() {
     this.auth.login();
   }
 
