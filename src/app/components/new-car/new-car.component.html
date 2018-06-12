@@ -60,7 +60,7 @@
                         
                             
                 <div formArrayName="photos">
-                    <div class="input-group mb-3" *ngFor="let photo of forma.controls['photos'].controls; let i=index">
+                    <div class="input-group mb-3" *ngFor="let photo of forma.value.photos; let i=index">
                         <input type="url" [formControlName]="i" class="form-control" aria-describedby="basic-addon2">
                         <div class="input-group-append">
                             <button (click)="deletePhoto(i)" class="btn btn-danger" type="button">
