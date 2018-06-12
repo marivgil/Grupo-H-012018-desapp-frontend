@@ -74,9 +74,10 @@
             <button *ngIf="url==='/nuevoAuto'" type="submit" [disabled]="!forma.valid" class="btn btn-primary btn-right">
                     {{'NewCar.AddCar' | translate}}
             </button>
+            
             <button *ngIf="url==='/editarAuto'" type="submit" [disabled]="!forma.valid" class="btn btn-primary btn-right">
                 {{'NewCar.EditCar' | translate}}
-        </button>
+            </button>
          </form>
      </form>
 </div>

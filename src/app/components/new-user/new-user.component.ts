@@ -23,11 +23,14 @@ export class NewUserComponent implements OnInit {
   forma: FormGroup;
   user: any;
   map: boolean = false;
+  url: string;
 
 
   constructor(private _auth: AuthService,
               private _user: UserService,
               private router: Router ) {
+
+    this.url = this.router.routerState.snapshot.url;
 
     this.forma = new FormGroup({
       'CUIL': new FormGroup({
@@ -45,21 +48,20 @@ export class NewUserComponent implements OnInit {
 
 
    ngOnInit() {
-    $('#signUpModal').modal({
-           backdrop: 'static',
-           keyboard: false
-         });
 
     if (!this._auth.nuevoUsuario) {
         this.cargarFormExistentUser();
      } else {
+      $('#signUpModal').modal({
+        backdrop: 'static',
+        keyboard: false
+      });
        this.cargarFormNewUser();
        this.map = true;
      }
   }
 
   cargarFormNewUser() {
-    console.log(this._auth.userProfile);
     this.forma.patchValue({
       email: this._auth.userProfile.email,
       name: this._auth.userProfile.given_name,
@@ -84,9 +86,13 @@ export class NewUserComponent implements OnInit {
    }
 
    registerMe() {
-    let cuil = this.forma.value.CUIL.prefix +
-               this.forma.value.CUIL.DNI +
-               this.forma.value.CUIL.suffix ;
+    let cuil = this.forma.value.CUIL.prefix.toString() +
+               this.forma.value.CUIL.DNI.toString() +
+               this.forma.value.CUIL.suffix.toString() ;
+               console.log(this.forma.value.CUIL.prefix);
+               console.log(this.forma.value.CUIL.DNI);
+               console.log(this.forma.value.CUIL.suffix);
+               console.log(cuil);
 
     if (this._auth.nuevoUsuario) {
 
