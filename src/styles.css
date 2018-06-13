@@ -15,6 +15,10 @@
       width: 10cm;
       align-items: center;
   }
+
+  .width{
+      width: 15%;
+  }
   
   .img-boton {
       width: 40px;

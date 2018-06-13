@@ -20,6 +20,7 @@ import { CarouselModule } from '../../node_modules/angular2-carousel';
 import { TranslateModule, MissingTranslationHandler } from 'ng2-translate';
 import { APP_TRANSLATE } from './app.translator';
 import { AgmCoreModule } from '@agm/core';
+import { NeutronRatingModule } from 'neutron-star-rating';
 
 // Components
 import { AppComponent } from './app.component';
@@ -35,6 +36,7 @@ import { NewPostComponent } from './components/new-post/new-post.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { MyMissingTranslationHandler } from './handlers/missingtemplate.component';
 import { ActivatedRouteSnapshot } from '@angular/router';
+import { CreditComponent } from './components/credit/credit.component';
 
 
 
@@ -50,7 +52,8 @@ import { ActivatedRouteSnapshot } from '@angular/router';
     NewCarComponent,
     NewUserComponent,
     NewPostComponent,
-    FooterComponent
+    FooterComponent,
+    CreditComponent
   ],
   imports: [
     BrowserModule,
@@ -64,7 +67,8 @@ import { ActivatedRouteSnapshot } from '@angular/router';
     APP_TRANSLATE,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyAx82m7KSQg0obJQYw7L5tGcEXcoM1u9sE'
-    })
+    }),
+    NeutronRatingModule
   ],
   providers: [
     PostsService,

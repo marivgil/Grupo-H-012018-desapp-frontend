@@ -13,7 +13,6 @@ export class HomeComponent implements OnInit {
               private _auth: AuthService) { }
 
   ngOnInit() {
-    console.log(this._auth.nuevoUsuario);
    }
 
   irATusAutos() {

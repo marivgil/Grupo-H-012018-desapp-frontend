@@ -13,6 +13,8 @@
     "MoreButton": "More...",
     "BackToHomeLink": "< Back To Home",
     "ReserveButton": "Reserve it!",
+    "AllCategoriesTxt": "All categories",
+    "FilterTypeTxt": "Filter by type...",
     "Home": {
         "MainTitleTxt": "Publish Your Car!",
         "SubTxt": "Choose the car you want to publish, price it, choose the withdrawal and return points, select the available dates ... and that's it!",
@@ -25,7 +27,13 @@
     "Posts": {
         "MainTitleTxt": " All Posts",
         "AllCategoriesTxt": "All categories",
-        "AvailableDaysTxt": "Available on:"
+        "AvailableDaysTxt": "Available on:",
+        "FilterBy":{
+            "TODOS": "All categories",
+            "MOTO": "Only Motorcycle",
+            "AUTO": "Only Cars",
+            "CAMIONETA": "Only Vans"
+        }
     },
     "Post": {
         "PlaceholderDistance": "Click on the map from where you go to know how far you are from your next car!"
@@ -55,6 +63,9 @@
         "Address": "Address",
         "Street": "Street",
         "Number": "No."
+    },
+    "AddCreditModal" : {
+        "MainTitleTxt": "Give up your credit!"
     },
     "NewPost": {
         "MainTitleTxt": "New Post",

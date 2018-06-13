@@ -1,8 +1,19 @@
 <div class="main-container">
-    <h1>{{'Posts.MainTitleTxt'| translate}} - <small><small>{{'Posts.AllCategoriesTxt'|translate}}</small></small>
+
+    <div [formGroup]="forma" class="input-group mb-3 width btn-padding-right">
+            <select formControlName="type" class="custom-select" id="inputGroupSelect02">
+                <option value='TODOS' >{{ 'AllCategoriesTxt' | translate}}</option>
+                <option value='MOTO'>{{ 'VehicleType.MOTO' | translate}}</option>
+                <option value='AUTO'>{{ 'VehicleType.AUTO' | translate}}</option>
+                <option value='CAMIONETA'>{{ 'VehicleType.CAMIONETA' | translate}}</option>
+            </select>
+        </div>
+    <h1>{{'Posts.MainTitleTxt'| translate}} - <small><small>{{'Posts.FilterBy.'+ forma.value.type|translate}}</small></small>
     </h1>
+    
     <hr>
 
+    
     <div class="card-columns">
 
         <div class="card animated fadeIn fast" *ngFor="let post of posts">
