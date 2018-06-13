@@ -49,7 +49,7 @@ export class NewUserComponent implements OnInit {
 
    ngOnInit() {
 
-    if (!this._auth.nuevoUsuario) {
+    if (!this._user.nuevoUsuario) {
         this.cargarFormExistentUser();
      } else {
       $('#signUpModal').modal({
@@ -63,24 +63,24 @@ export class NewUserComponent implements OnInit {
 
   cargarFormNewUser() {
     this.forma.patchValue({
-      email: this._auth.userProfile.email,
-      name: this._auth.userProfile.given_name,
-      surname: this._auth.userProfile.family_name,
+      email: this._user.userProfile.email,
+      name: this._user.userProfile.given_name,
+      surname: this._user.userProfile.family_name,
     });
   }
 
   cargarFormExistentUser() {
 
    this.forma.patchValue({
-       email: this._auth.userProfile.email,
-       name: this._auth.userBD.name,
-       surname: this._auth.userBD.surname,
-       address: this._auth.userBD.address
+        email: this._user.userProfile.email,
+        name: this._user.userBD.name,
+        surname: this._user.userBD.surname,
+        address: this._user.userBD.address
    });
    this.forma.controls['CUIL'].patchValue({
-     prefix: this._auth.userBD.cuil.toString().substring(0, 2) ,
-     DNI: this._auth.userBD.cuil.toString().substring(2, 10),
-     suffix: this._auth.userBD.cuil.toString().substring(10, 11),
+     prefix: this._user.userBD.cuil.toString().substring(0, 2) ,
+     DNI: this._user.userBD.cuil.toString().substring(2, 10),
+     suffix: this._user.userBD.cuil.toString().substring(10, 11),
    });
 
    }
@@ -94,12 +94,12 @@ export class NewUserComponent implements OnInit {
                console.log(this.forma.value.CUIL.suffix);
                console.log(cuil);
 
-    if (this._auth.nuevoUsuario) {
+    if (this._user.nuevoUsuario) {
 
       let user = {
         address: this.forma.value.address,
         name: this.forma.value.name,
-        email: this._auth.userProfile.email,
+        email: this._user.userProfile.email,
         userName: null,
         cuil: cuil,
         surname: this.forma.value.surname
@@ -107,22 +107,22 @@ export class NewUserComponent implements OnInit {
 
 
       this._user.createUser(user).subscribe(res => {
-        this._auth.userBD = res;
+        this._user.userBD = res;
         $('#signUpModal').modal('hide');
         this.marker = undefined;
-        this._auth.nuevoUsuario = false;
+        this._user.nuevoUsuario = false;
         this.router.navigate(['home']);
        });
      } else {
         let user = {
           address: this.forma.value.address,
           name: this.forma.value.name,
-          status: this._auth.userBD.status,
-          email: this._auth.userProfile.email,
+          status: this._user.userBD.status,
+          email: this._user.userProfile.email,
           userName: null,
           cuil: cuil,
-          account: this._auth.userBD.account,
-          scores: this._auth.userBD.scores,
+          account: this._user.userBD.account,
+          scores: this._user.userBD.scores,
           surname: this.forma.value.surname
          };
 
@@ -137,10 +137,10 @@ export class NewUserComponent implements OnInit {
 
 
    modificarUsuarioBD(user) {
-    this._auth.userBD.name = user.name;
-    this._auth.userBD.surname = user.surname;
-    this._auth.userBD.cuil = user.cuil;
-    this._auth.userBD.address = user.address;
+    this._user.userBD.name = user.name;
+    this._user.userBD.surname = user.surname;
+    this._user.userBD.cuil = user.cuil;
+    this._user.userBD.address = user.address;
    }
 
    openMap() {
@@ -167,8 +167,8 @@ export class NewUserComponent implements OnInit {
    }
 
    closeModal() {
-    if (this._auth.nuevoUsuario) {
-      this._auth.nuevoUsuario = false;
+    if (this._user.nuevoUsuario) {
+      this._user.nuevoUsuario = false;
       this._auth.logout();
     }
 

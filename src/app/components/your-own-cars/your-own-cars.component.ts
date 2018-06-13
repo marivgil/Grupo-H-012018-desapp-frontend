@@ -19,7 +19,7 @@ export class YourOwnCarsComponent implements OnInit {
   constructor(public _auth: AuthService,
               private _router: Router,
               private _vehicle: VehicleService,
-              private _user: UserService) {
+              public _user: UserService) {
               }
 
 
@@ -43,16 +43,12 @@ export class YourOwnCarsComponent implements OnInit {
   confirmDeleteCar(id: number, index: number) {
       this.idSeleccionado = id;
       console.log(index);
-      $('#eliminationModal').modal({
-   //     backdrop: 'static',
-   //     keyboard: false
-      });
+      $('#eliminationModal').modal({ });
   }
 
   deleteCar() {
     this._vehicle.deleteCar(this.idSeleccionado).subscribe( res => {
-      this._auth.deleteCarLocale(this.index);
-    //  this._router.navigate(['tusAutos']);
+      this._user.deleteCarLocale(this.index);
     });
   }
 

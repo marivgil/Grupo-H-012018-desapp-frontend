@@ -1,6 +1,7 @@
 
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-navbar',
@@ -13,13 +14,13 @@ export class NavbarComponent {
   user: any;
   localStorage = localStorage;
 
-  constructor( public auth: AuthService) {
+  constructor( public auth: AuthService,
+                public _user: UserService) {
     if (localStorage.getItem('access_token')) {
          this.auth.getProfile((err, profile) => {
          this.user = profile;
          });
     }
-    console.log(localStorage);
   }
 
   isAuthenticated(): boolean {

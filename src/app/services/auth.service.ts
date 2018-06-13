@@ -21,17 +21,12 @@ export class AuthService {
   });
 
   constructor(public router: Router,
-              private _userService: UserService,
-              private _vehicle: VehicleService) {}
-
-  userProfile ;
-  userBD: any;
-  nuevoUsuario: boolean = false;
+              private _userService: UserService) {}
 
     public getProfile(cb): any {
     const accessToken = localStorage.getItem('access_token');
     if (!accessToken) {
-      console.log("No hay token");
+       alert("No hay token");
       }
 
     const self = this;
@@ -39,25 +34,23 @@ export class AuthService {
 
       if (profile) {
 
-        self.userProfile = profile;
+        self._userService.userProfile = profile;
         localStorage.setItem('img', profile.picture),
         this._userService.getUser(profile.email).subscribe( res => {
-          console.log(res);
 
           if (res.status === 204) {
-            this.nuevoUsuario = true;
-            console.log("pase por 204");
+            this._userService.nuevoUsuario = true;
 
             this.router.navigate(['nuevoUsuario']);
           } else {
-            this.userBD = res.json();
+            this._userService.userBD = res.json();
           }
         });
       }
       cb(err, profile);
     });
 
-    this.userBD = this._userService.getUser;
+    this._userService.userBD = this._userService.getUser;
 }
 
   public login(): void {
@@ -84,7 +77,7 @@ export class AuthService {
     localStorage.setItem('id_token', authResult.idToken);
     localStorage.setItem('expires_at', expiresAt);
     this.getProfile((err , res) => {
-      this.userProfile = res;
+      this._userService.userProfile = res;
     });
   }
 
@@ -103,14 +96,5 @@ export class AuthService {
     const expiresAt = JSON.parse(localStorage.getItem('expires_at'));
     return new Date().getTime() < expiresAt;
   }
-
-  public deleteCarLocale(i: number) {
-    this.userBD.vehicles.splice( i, 1);
-  }
-
-  public replaceCar( car: any ) {
-    this.userBD.vehicles.splice(this._vehicle.indexEditedCar , 1, car);
-  }
-
 
 }

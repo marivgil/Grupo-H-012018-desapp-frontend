@@ -9,9 +9,9 @@
 
             <div class="form-group">
                 <label for="exampleFormControlInput1">{{'NewCar.Capacity' | translate}}</label>
-                <input type="number" min="1" max="25" class="form-control" 
-                       [ngClass]="{'is-invalid': !forma.get('capacity').valid && forma.get('capacity').dirty}" 
-                       formControlName="capacity">
+                <input type="number" min="1" max="25" class="form-control" formControlName="capacity"
+                [ngClass]="{'is-invalid': !forma.get('capacity').valid && forma.get('capacity').dirty}" 
+                >
             </div>
 
 

@@ -2,9 +2,16 @@ import { Injectable } from '@angular/core';
 import { User } from '../interfaces/user.interface';
 import { Http, RequestOptions, Headers } from '@angular/http';
 import { URL_SERVICIO } from '../config';
+import { AuthService } from './auth.service';
+import { VehicleService } from './vehicle.service';
 
 @Injectable()
 export class UserService {
+
+  userProfile ;
+  userBD: any;
+
+  nuevoUsuario: boolean = false;
 
   extensionUrl = "desapp-grouph-backend/rest/servicesUsers/";
 
@@ -28,7 +35,8 @@ export class UserService {
       }]
     }];
 */
-  constructor(private http: Http) { }
+  constructor(private http: Http,
+              private _vehicle: VehicleService) { }
 
   getUser(mail: string) {
     let url: string = URL_SERVICIO + this.extensionUrl + "findUserByEmail/" + mail ;
@@ -57,5 +65,25 @@ export class UserService {
                               return res.json();
     });
   }
+
+  public deleteCarLocale(i: number) {
+    this.userBD.vehicles.splice( i, 1);
+  }
+
+  public replaceCar( car: any ) {
+    this.userBD.vehicles.splice(this._vehicle.indexEditedCar , 1, car);
+  }
+
+   addCredit(montoTotal) {
+     let monto = montoTotal - this.userBD.account;
+     let url = URL_SERVICIO + this.extensionUrl + 'addCredit/' + monto + '/' + this.userProfile.email;
+     let header = new Headers({ 'Content-Type': 'application/json' });
+     let options = new RequestOptions ( { headers: header });
+
+        return this.http.put(url, {}, options)
+                     .map((res: any) => {
+                              return res.json();
+                     });
+     }
 }
 
