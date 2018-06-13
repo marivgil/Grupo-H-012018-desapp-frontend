@@ -37,6 +37,7 @@
                 </li>
                 <li class="list-group-item">
                     <strong>{{'Profile.ReputationTxt' | translate}} </strong>{{_user.userBD.reputation}}
+                    <neutron-rating class="btn-right" [rating]="_user.userBD.reputation" [starColour]="'#FDD835'" [starSize]="1"></neutron-rating>
                 </li>
                 <li class="list-group-item" *ngIf="_user.userBD.status">
                     <strong>{{"Profile.AccountStatusTxt"| translate}}</strong> {{ 'Profile.EnabledStatus' | translate}}

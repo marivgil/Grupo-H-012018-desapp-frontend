@@ -20,6 +20,7 @@ import { CarouselModule } from '../../node_modules/angular2-carousel';
 import { TranslateModule, MissingTranslationHandler } from 'ng2-translate';
 import { APP_TRANSLATE } from './app.translator';
 import { AgmCoreModule } from '@agm/core';
+import { NeutronRatingModule } from 'neutron-star-rating';
 
 // Components
 import { AppComponent } from './app.component';
@@ -66,7 +67,8 @@ import { CreditComponent } from './components/credit/credit.component';
     APP_TRANSLATE,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyAx82m7KSQg0obJQYw7L5tGcEXcoM1u9sE'
-    })
+    }),
+    NeutronRatingModule
   ],
   providers: [
     PostsService,

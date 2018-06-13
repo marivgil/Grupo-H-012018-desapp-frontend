@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { User } from '../../interfaces/user.interface';
 import { UserService } from '../../services/user.service';
+import { NeutronRatingModule } from 'neutron-star-rating';
 
 declare var $;
 @Component({
