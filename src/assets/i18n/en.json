@@ -27,7 +27,13 @@
     "Posts": {
         "MainTitleTxt": " All Posts",
         "AllCategoriesTxt": "All categories",
-        "AvailableDaysTxt": "Available on:"
+        "AvailableDaysTxt": "Available on:",
+        "FilterBy":{
+            "TODOS": "All categories",
+            "MOTO": "Only Motorcycle",
+            "AUTO": "Only Cars",
+            "CAMIONETA": "Only Vans"
+        }
     },
     "Post": {
         "PlaceholderDistance": "Click on the map from where you go to know how far you are from your next car!"

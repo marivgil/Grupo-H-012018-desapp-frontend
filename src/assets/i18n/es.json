@@ -30,7 +30,13 @@
     "Posts": {
         "MainTitleTxt": " Todas las publicaciones",
         "AllCategoriesTxt": "Todas las categorías",
-        "AvailableDaysTxt": "Disponible en: "
+        "AvailableDaysTxt": "Disponible en: ",
+        "FilterBy":{
+            "TODOS": "Todas las categorías",
+            "MOTO": "Solo Motos",
+            "AUTO": "Solo Autos",
+            "CAMIONETA": "Solo Camionetas"
+        }
     },
     "NewCar": {
         "MainTitleTxt": "Nuevo Auto",
