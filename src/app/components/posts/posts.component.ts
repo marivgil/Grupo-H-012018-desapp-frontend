@@ -33,6 +33,7 @@ export class PostsComponent implements OnInit {
       data => {
         if (data.type === "TODOS") {
           this.obtenerTodosLosPost();
+          return;
         }
         this.filtrarPorTipo(data.type);
       }
@@ -40,7 +41,7 @@ export class PostsComponent implements OnInit {
 
   }
 
-  obtenerTodosLosPost(){
+  obtenerTodosLosPost() {
     this._postsService.obtenerPosts().subscribe(res => {
       this.posts = res.json();
      });
