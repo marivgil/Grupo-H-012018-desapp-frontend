@@ -13,6 +13,8 @@
     "BackToHomeLink": "< Volver al inicio",
     "MoreButton": "Ver mas...",
     "ReserveButton": "Reservar!",
+    "AllCategoriesTxt": "Todas las categorias",
+    "FilterTypeTxt": "Filtrar por tipo",
     "Home": {
         "MainTitleTxt": "Publica tu auto!",
         "SubTxt": "Elegi el auto que queres publicar, ponele precio, elegi los puntos de retiro y devolucion,selecciona las fechas disponibles... y ya esta!",

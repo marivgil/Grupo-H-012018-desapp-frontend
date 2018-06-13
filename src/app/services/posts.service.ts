@@ -68,13 +68,17 @@ export class PostsService {
     //     }
       ];
 
-    extensionUrl: string = "desapp-grouph-backend/rest/";
+    extensionUrl: string = "desapp-grouph-backend/rest/servicesPost/";
 
     constructor(private http: Http) {
      }
 
      obtenerPosts() {
-        return this.http.get(URL_SERVICIO + this.extensionUrl + "servicesPost/allMiniPost");
+        return this.http.get(URL_SERVICIO + this.extensionUrl + "allMiniPost");
+     }
+
+     getPostPorTipo(tipo: string) {
+         return this.http.get(URL_SERVICIO + this.extensionUrl + "PostByType/" + tipo);
      }
 
      getPosts(): Post[] {
@@ -86,4 +90,3 @@ export class PostsService {
      }
 
 }
-
