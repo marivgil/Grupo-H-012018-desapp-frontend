@@ -38,6 +38,9 @@ import { MyMissingTranslationHandler } from './handlers/missingtemplate.componen
 import { ActivatedRouteSnapshot } from '@angular/router';
 import { CreditComponent } from './components/credit/credit.component';
 
+// Pipes
+import { ImagenPipe } from './pipes/imagen.pipe';
+
 
 
 @NgModule({
@@ -53,7 +56,8 @@ import { CreditComponent } from './components/credit/credit.component';
     NewUserComponent,
     NewPostComponent,
     FooterComponent,
-    CreditComponent
+    CreditComponent,
+    ImagenPipe
   ],
   imports: [
     BrowserModule,

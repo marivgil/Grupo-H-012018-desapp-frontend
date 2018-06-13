@@ -8,8 +8,7 @@
 
     <div *ngFor="let car of _user.userBD.vehicles; let index= index" class="card mb-3">
         
-        <img *ngIf="car.photos.length >= 1"class="img-preview img-fluid" [src]="car.photos[0]" alt="Card image cap">
-        <img *ngIf="car.photos.length === 0"class="img-preview img-fluid" src="../../../assets/img/Foto-no-disponible.png" alt="Card image cap">
+        <img class="img-preview img-fluid" [src]="car.photos[0] | imagen" alt="Card image cap">
         
         <div class="main-container">
             <h5 class="card-title">{{ 'VehicleType.'+car.type | translate}} {{'For' | translate}} {{car.capacity}} {{'Persons' | translate}} </h5>

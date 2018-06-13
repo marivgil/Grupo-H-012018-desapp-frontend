@@ -18,8 +18,7 @@
 
         <div class="card animated fadeIn fast" *ngFor="let post of posts">
 
-            <img *ngIf= "post.vehicle.photos.length === 0 "class="card-img-top" src="../../../assets/img/Foto-no-disponible.png" [alt]="">
-            <img *ngIf= "post.vehicle.photos.length >=1 "class="card-img-top" [src]="post.vehicle.photos[0]" [alt]="">
+            <img *ngIf= "post.vehicle.photos.length >=1 "class="card-img-top" [src]="post.vehicle.photos[0] | imagen" [alt]="">
             <div class="card-body">
                 <h5 class="card-title">{{ 'VehicleType.'+post.vehicle.type | translate }} {{ 'In'| translate }} {{ post.location }}- {{ post.costPerDay |currency}} {{ 'PerDayTxt' | translate}}</h5>
                 <p class="card-text">{{post.description}}</p>
