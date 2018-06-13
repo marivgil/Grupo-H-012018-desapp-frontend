@@ -21,9 +21,7 @@ export class PostsComponent implements OnInit {
   // Esto se ejecuta una vez que la pagina ya esta renderizada.
   ngOnInit() {
     this._postsService.obtenerPosts().subscribe(res => {
-     console.log(res.json());
      this.posts = res.json();
-     console.log(this.posts.length);
     });
 
   }

@@ -19,12 +19,12 @@ export class ProfileComponent {
   }
 
    editUser() {
-      $('#signUpModal').modal({
-   //     backdrop: 'static',
-   //     keyboard: false
-      });
+      $('#signUpModal').modal({ });
    }
 
+   addCredit() {
+    $('#addCreditModal').modal({ });
+   }
 
 /*{
   "sub": "google-oauth2|106572254188915518115",

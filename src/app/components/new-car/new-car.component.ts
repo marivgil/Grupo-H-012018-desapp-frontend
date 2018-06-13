@@ -6,6 +6,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Vehicle } from "../../interfaces/vehicle.interface";
 import { VehicleService } from '../../services/vehicle.service';
 import { AuthService } from '../../services/auth.service';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-new-car',
@@ -19,7 +20,7 @@ export class NewCarComponent implements OnInit {
 
   constructor(private router: Router,
               private _vehicle: VehicleService,
-              private _auth: AuthService,
+              private _user: UserService,
               private fb: FormBuilder,
               private routing: ActivatedRoute) {
 
@@ -82,10 +83,10 @@ export class NewCarComponent implements OnInit {
         capacity: this.forma.controls['capacity'].value,
         description: this.forma.controls['description'].value,
         photos: this.forma.controls['photos'].value,
-        owner: this._auth.userProfile.email
+        owner: this._user.userProfile.email
        };
       this._vehicle.addCar(vehicle).subscribe(res => {
-        this._auth.userBD = res;
+        this._user.userBD = res;
         console.log(res);
         this.router.navigate(['/tusAutos']);
         });
@@ -96,11 +97,11 @@ export class NewCarComponent implements OnInit {
           capacity: this.forma.controls['capacity'].value,
           description: this.forma.controls['description'].value,
           photos: this.forma.controls['photos'].value,
-          owner: this._auth.userProfile.email,
+          owner: this._user.userProfile.email,
           id: this._vehicle.editedCar.id,
          };
       this._vehicle.editCar(vehicle).subscribe( res => {
-        this._auth.replaceCar(vehicle);
+        this._user.replaceCar(vehicle);
         this.router.navigate(['/tusAutos']);
       });
       }

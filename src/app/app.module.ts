@@ -35,6 +35,7 @@ import { NewPostComponent } from './components/new-post/new-post.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { MyMissingTranslationHandler } from './handlers/missingtemplate.component';
 import { ActivatedRouteSnapshot } from '@angular/router';
+import { CreditComponent } from './components/credit/credit.component';
 
 
 
@@ -50,7 +51,8 @@ import { ActivatedRouteSnapshot } from '@angular/router';
     NewCarComponent,
     NewUserComponent,
     NewPostComponent,
-    FooterComponent
+    FooterComponent,
+    CreditComponent
   ],
   imports: [
     BrowserModule,

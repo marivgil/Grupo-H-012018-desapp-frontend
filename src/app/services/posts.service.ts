@@ -71,7 +71,6 @@ export class PostsService {
     extensionUrl: string = "desapp-grouph-backend/rest/";
 
     constructor(private http: Http) {
-        console.log("Servicio listo para usar!!");
      }
 
      obtenerPosts() {

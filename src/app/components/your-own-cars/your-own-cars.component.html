@@ -6,7 +6,7 @@
     <h1>{{ 'MyCarsLink' | translate}}</h1>
     <hr>
 
-    <div *ngFor="let car of _auth.userBD.vehicles; let index= index" class="card mb-3">
+    <div *ngFor="let car of _user.userBD.vehicles; let index= index" class="card mb-3">
         
         <img *ngIf="car.photos.length >= 1"class="img-preview img-fluid" [src]="car.photos[0]" alt="Card image cap">
         <img *ngIf="car.photos.length === 0"class="img-preview img-fluid" src="../../../assets/img/Foto-no-disponible.png" alt="Card image cap">

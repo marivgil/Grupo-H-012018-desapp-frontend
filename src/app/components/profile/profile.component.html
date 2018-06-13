@@ -1,42 +1,44 @@
-<div class="main-container  animated fadeIn fast" *ngIf="auth.userProfile">
+<div class="main-container  animated fadeIn fast" *ngIf="_user.userProfile">
 
     <button type="button" class="btn btn-link btn-padding-right" (click)="editUser()">
         <i class="fas fa-paint-brush fa-lg" style="color:#DDDDDDDD"></i>
     </button>
     <div>
-        <h3>{{auth.userBD.name}} {{auth.userBD.surname}}
+        <h3>{{_user.userBD.name}} {{_user.userBD.surname}}
         </h3>
         <hr>
     </div>
 
     <div class="row">
         <div class="col-md-4">
-            <img [src]="auth.userProfile.picture" class="rounded-circle img-fluid">
+            <img [src]="_user.userProfile.picture" class="rounded-circle img-fluid">
         </div>
         <div class="col-md-1">
         </div>
 
         <div class="col-md-6 py-2">
-            <h3>{{auth.userProfile.email}}</h3>
+            <h3>{{_user.userProfile.email}}</h3>
             <ul class="list-group">
-                <li class="list-group-item" *ngIf="!auth.userBD.status">
+                <li class="list-group-item" *ngIf="!_user.userBD.status">
                     <strong>{{"Profile.AccountStatusTxt"| translate}}</strong> {{ 'Profile.DisabledStatus' | translate}}
                     <i class="fas fa-times-circle fa-lg btn-right" style="color: #FF0000"></i>
                 </li>
                 <li class="list-group-item">
-                    <strong>{{'Profile.CreditTxt'| translate}} </strong> {{ auth.userBD.account | currency}}
-                    <i class="btn-right fas fa-plus-square fa-lg "></i>
+                    <strong>{{'Profile.CreditTxt'| translate}} </strong> {{ _user.userBD.account | currency}}
+                    <button type="button" class="btn btn-link btn-right"  (click)="addCredit()">
+                            <i class="fas fa-plus-square fa-lg" style="color:blue"></i>
+                    </button>
                 </li>
                 <li class="list-group-item">
-                    <strong>CUIL: </strong> {{ auth.userBD.cuil}}
+                    <strong>CUIL: </strong> {{ _user.userBD.cuil}}
                 </li>
                 <li class="list-group-item">
-                    <strong>Direccion: </strong> {{ auth.userBD.address}}
+                    <strong>Direccion: </strong> {{ _user.userBD.address}}
                 </li>
                 <li class="list-group-item">
-                    <strong>{{'Profile.ReputationTxt' | translate}} </strong>{{auth.userBD.reputation}}
+                    <strong>{{'Profile.ReputationTxt' | translate}} </strong>{{_user.userBD.reputation}}
                 </li>
-                <li class="list-group-item" *ngIf="auth.userBD.status">
+                <li class="list-group-item" *ngIf="_user.userBD.status">
                     <strong>{{"Profile.AccountStatusTxt"| translate}}</strong> {{ 'Profile.EnabledStatus' | translate}}
                     <i class="fas fa-check-circle fa-lg btn-right" style="color:#00FF00;"></i>
                 </li>
@@ -47,3 +49,4 @@
 
 
 <app-new-user></app-new-user>
+<app-credit></app-credit>
