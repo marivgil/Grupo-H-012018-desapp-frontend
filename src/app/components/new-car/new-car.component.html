@@ -59,9 +59,9 @@
                 </button>
                                  
                 <div formArrayName="photos">
-                    <div class="input-group mb-3" *ngFor="let photo of forma.value.photos; let i=index">
-                        <img [src]="photo | imagen" class="w15h20">
-                        <input linkValidator type="url" [formControlName]="i" class="form-control" aria-describedby="basic-addon2">
+                    <div class="input-group" *ngFor="let photo of forma.value.photos; let i=index">
+                        <img [src]="photos[i] | imagen" class="w15h20">
+                        <input type="text" [formControlName]="i" class="form-control">
                         <div class="input-group-append">
                             <button (click)="deletePhoto(i)" class="btn btn-danger" type="button">
                                 Eliminar

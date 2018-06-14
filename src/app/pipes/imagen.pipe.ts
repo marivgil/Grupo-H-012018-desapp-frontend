@@ -6,8 +6,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class ImagenPipe implements PipeTransform {
 
   transform( img: string , tipo: string = "POST"): any {
-    console.log(img);
-    
+
     if (!img) {
       switch (tipo) {
         case ("POST"):
