@@ -41,6 +41,9 @@ import { CreditComponent } from './components/credit/credit.component';
 // Pipes
 import { ImagenPipe } from './pipes/imagen.pipe';
 
+// Validadores
+import { LinkValidatorDirective } from './directives/link-validator.directive';
+
 
 
 @NgModule({
@@ -57,7 +60,8 @@ import { ImagenPipe } from './pipes/imagen.pipe';
     NewPostComponent,
     FooterComponent,
     CreditComponent,
-    ImagenPipe
+    ImagenPipe,
+    LinkValidatorDirective
   ],
   imports: [
     BrowserModule,
