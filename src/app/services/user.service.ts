@@ -74,7 +74,7 @@ export class UserService {
     this.userBD.vehicles.splice(this._vehicle.indexEditedCar , 1, car);
   }
 
-   addCredit(montoTotal) {
+  public addCredit(montoTotal) {
      let monto = montoTotal - this.userBD.account;
      let url = URL_SERVICIO + this.extensionUrl + 'addCredit/' + monto + '/' + this.userProfile.email;
      let header = new Headers({ 'Content-Type': 'application/json' });

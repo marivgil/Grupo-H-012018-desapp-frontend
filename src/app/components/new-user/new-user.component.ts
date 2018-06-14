@@ -61,7 +61,7 @@ export class NewUserComponent implements OnInit {
      }
   }
 
-  cargarFormNewUser() {
+  private cargarFormNewUser() {
     this.forma.patchValue({
       email: this._user.userProfile.email,
       name: this._user.userProfile.given_name,
@@ -69,7 +69,7 @@ export class NewUserComponent implements OnInit {
     });
   }
 
-  cargarFormExistentUser() {
+  private cargarFormExistentUser() {
 
    this.forma.patchValue({
         email: this._user.userProfile.email,
@@ -85,7 +85,7 @@ export class NewUserComponent implements OnInit {
 
    }
 
-   registerMe() {
+  public registerMe() {
     let cuil = this.forma.value.CUIL.prefix.toString() +
                this.forma.value.CUIL.DNI.toString() +
                this.forma.value.CUIL.suffix.toString() ;
@@ -98,11 +98,11 @@ export class NewUserComponent implements OnInit {
 
       let user = {
         address: this.forma.value.address,
-        name: this.forma.value.name,
+        name: this.toTitleCase(this.forma.value.name),
         email: this._user.userProfile.email,
         userName: null,
         cuil: cuil,
-        surname: this.forma.value.surname
+        surname: this.toTitleCase(this.forma.value.surname)
       };
 
 
@@ -116,14 +116,14 @@ export class NewUserComponent implements OnInit {
      } else {
         let user = {
           address: this.forma.value.address,
-          name: this.forma.value.name,
+          name: this.toTitleCase(this.forma.value.name),
           status: this._user.userBD.status,
           email: this._user.userProfile.email,
           userName: null,
           cuil: cuil,
           account: this._user.userBD.account,
           scores: this._user.userBD.scores,
-          surname: this.forma.value.surname
+          surname: this.toTitleCase(this.forma.value.surname)
          };
 
         this._user.editUser(user).subscribe(res => {
@@ -136,18 +136,18 @@ export class NewUserComponent implements OnInit {
 
 
 
-   modificarUsuarioBD(user) {
+  private modificarUsuarioBD(user) {
     this._user.userBD.name = user.name;
     this._user.userBD.surname = user.surname;
     this._user.userBD.cuil = user.cuil;
     this._user.userBD.address = user.address;
    }
 
-   openMap() {
+  public openMap() {
     this.map = true;
    }
 
-   mapClicked($event: any) {
+  public mapClicked($event: any) {
      this.marker = {
        lat: $event.coords.lat,
        lng: $event.coords.lng,
@@ -174,4 +174,12 @@ export class NewUserComponent implements OnInit {
 
     $('#signUpModal').modal('hide');
    }
+
+
+   private toTitleCase = (phrase) => {
+    return phrase
+      .split(' ')
+      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(' ');
+  }
 }
