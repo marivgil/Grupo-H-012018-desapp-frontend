@@ -1,5 +1,7 @@
 <div class="main-container">
-
+<div class=" d-flex flex-column flex-md-row justify-content-sm-between flex-xl-nowrap">
+    <h1>{{'Posts.MainTitleTxt'| translate}} - <small><small>{{'Posts.FilterBy.'+ forma.value.type|translate}}</small></small>
+    </h1>
     <div [formGroup]="forma" class="input-group mb-3 width btn-padding-right">
             <select formControlName="type" class="custom-select" id="inputGroupSelect02">
                 <option value='TODOS' >{{ 'AllCategoriesTxt' | translate}}</option>
@@ -8,9 +10,7 @@
                 <option value='CAMIONETA'>{{ 'VehicleType.CAMIONETA' | translate}}</option>
             </select>
         </div>
-    <h1>{{'Posts.MainTitleTxt'| translate}} - <small><small>{{'Posts.FilterBy.'+ forma.value.type|translate}}</small></small>
-    </h1>
-    
+</div>
     <hr>
 
     

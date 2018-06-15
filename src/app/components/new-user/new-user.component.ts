@@ -166,7 +166,7 @@ export class NewUserComponent implements OnInit {
     });
    }
 
-   closeModal() {
+   public closeModal() {
     if (this._user.nuevoUsuario) {
       this._user.nuevoUsuario = false;
       this._auth.logout();
