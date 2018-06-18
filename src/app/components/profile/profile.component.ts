@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, LOCALE_ID, OnInit} from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { User } from '../../interfaces/user.interface';
 import { UserService } from '../../services/user.service';
+import {getLocaleCurrencySymbol} from "@angular/common";
+import {TranslateService} from "ng2-translate";
 
 declare var $;
 @Component({
@@ -12,9 +14,13 @@ export class ProfileComponent {
 
    usuarioEditado;
    editar: boolean = false;
+  cheatSymbol = getLocaleCurrencySymbol('es-AR');
+  //cheatSymbol = getLocaleCurrencySymbol(this.translate.currentLang);
+  //cheatSymbol = getLocaleCurrencySymbol(this.translate.getBrowserLang());
 
    constructor(public auth: AuthService,
-               public _user: UserService) {
+               public _user: UserService,
+               private translate: TranslateService) {
 
   }
 
