@@ -9,7 +9,7 @@ export class FooterComponent {
 
   constructor(private translate: TranslateService) { }
 
-  changeLanguage(lang){
+  changeLanguage(lang) {
     this.translate.use(lang);
 }
 }
