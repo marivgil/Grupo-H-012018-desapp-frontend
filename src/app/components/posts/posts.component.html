@@ -1,4 +1,4 @@
-<div class="main-container">
+<div class="d-flex flex-column main-container">
     <h1>{{'Posts.MainTitleTxt'| translate}} - <small><small>{{'Posts.AllCategoriesTxt'|translate}}</small></small>
     </h1>
     <hr>
@@ -21,8 +21,9 @@
                 <!--          <a [routerLink]="['/heroe',i]" class="btn btn-outline-primary">Ver mas link...</a> -->
             </div>
         </div>
-
-      <pagination-controls (pageChange)="p = $event"></pagination-controls>
-
+        
     </div>
 </div>
+                <div class="d-flex flex-row justify-content-center">
+                    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+                </div>
