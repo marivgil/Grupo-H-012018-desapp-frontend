@@ -20,6 +20,10 @@ import { CarouselModule } from '../../node_modules/angular2-carousel';
 import { TranslateModule, MissingTranslationHandler } from 'ng2-translate';
 import { APP_TRANSLATE } from './app.translator';
 import { AgmCoreModule } from '@agm/core';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { LOCALE_ID} from '@angular/core';
+import LocaleEsAR from '@angular/common/locales/es-AR.js';
+import {registerLocaleData} from "@angular/common";
 
 // Components
 import { AppComponent } from './app.component';
@@ -38,6 +42,7 @@ import { ActivatedRouteSnapshot } from '@angular/router';
 import { CreditComponent } from './components/credit/credit.component';
 
 
+registerLocaleData(LocaleEsAR);
 
 @NgModule({
   declarations: [
@@ -66,7 +71,8 @@ import { CreditComponent } from './components/credit/credit.component';
     APP_TRANSLATE,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyAx82m7KSQg0obJQYw7L5tGcEXcoM1u9sE'
-    })
+    }),
+    NgxPaginationModule
   ],
   providers: [
     PostsService,
@@ -75,7 +81,9 @@ import { CreditComponent } from './components/credit/credit.component';
     VehicleService,
     UserService,
     { provide: MissingTranslationHandler,
-      useClass: MyMissingTranslationHandler}
+      useClass: MyMissingTranslationHandler},
+    {provide: LOCALE_ID,
+      useValue: 'es-AR'},
   ],
   bootstrap: [AppComponent]
 })

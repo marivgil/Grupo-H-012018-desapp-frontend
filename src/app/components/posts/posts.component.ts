@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 export class PostsComponent implements OnInit {
 
   posts: Post[] = [];
-
+  p;
 
   constructor( private _postsService: PostsService,
                private _router: Router) {

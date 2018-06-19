@@ -1,11 +1,11 @@
-<div class="main-container">
+<div class="d-flex flex-column main-container">
     <h1>{{'Posts.MainTitleTxt'| translate}} - <small><small>{{'Posts.AllCategoriesTxt'|translate}}</small></small>
     </h1>
     <hr>
 
     <div class="card-columns">
 
-        <div class="card animated fadeIn fast" *ngFor="let post of posts">
+        <div class="card animated fadeIn fast" *ngFor="let post of posts| paginate: { itemsPerPage: 3, currentPage: p }">
 
             <img *ngIf= "post.vehicle.photos.length === 0 "class="card-img-top" src="../../../assets/img/Foto-no-disponible.png" [alt]="">
             <img *ngIf= "post.vehicle.photos.length >=1 "class="card-img-top" [src]="post.vehicle.photos[0]" [alt]="">
@@ -21,6 +21,9 @@
                 <!--          <a [routerLink]="['/heroe',i]" class="btn btn-outline-primary">Ver mas link...</a> -->
             </div>
         </div>
-
+        
     </div>
 </div>
+                <div class="d-flex flex-row justify-content-center">
+                    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+                </div>

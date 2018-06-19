@@ -90,5 +90,6 @@
     "WalkingTxt": "walking",
     "YoureTxt": "You're",
     "FromPickUpPlaceTxt": " from pick up place",
-    "EmailTxt": "E-mail"
+    "EmailTxt": "E-mail",
+    "Currency": "u$s"
 }

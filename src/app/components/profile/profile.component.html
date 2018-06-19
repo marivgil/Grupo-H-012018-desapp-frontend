@@ -24,7 +24,7 @@
                     <i class="fas fa-times-circle fa-lg btn-right" style="color: #FF0000"></i>
                 </li>
                 <li class="list-group-item">
-                    <strong>{{'Profile.CreditTxt'| translate}} </strong> {{ _user.userBD.account | currency}}
+                    <strong>{{'Profile.CreditTxt'| translate}} </strong> {{_user.userBD.account | currency:cheatSymbol:'':'3.2'}}
                     <button type="button" class="btn btn-link btn-right"  (click)="addCredit()">
                             <i class="fas fa-plus-square fa-lg" style="color:blue"></i>
                     </button>

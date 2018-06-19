@@ -91,5 +91,6 @@
     "WalkingTxt": "a pie",
     "YoureTxt": "Estas a ",
     "FromPickUpPlaceTxt": " del lugar de retiro",
-    "EmailTxt": "Correo electrónico"
+    "EmailTxt": "Correo electrónico",
+    "Currency": "$"
 }
