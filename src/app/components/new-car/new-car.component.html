@@ -52,16 +52,16 @@
 
 
             <div class="form-group">
-                <label for="exampleFormControlInput1">{{'NewCar.Photos' | translate}}</label>
+                <label for="exampleFormControlInput1"> <strong>{{'NewCar.Photos' | translate}}</strong></label>
+                
                 <button (click)="addPhoto()" class="btn btn-link btn-right" type="button">
                     {{'NewCar.InsertPhoto' | translate}}
                 </button>
-                    
-                        
-                            
+                                 
                 <div formArrayName="photos">
-                    <div class="input-group mb-3" *ngFor="let photo of forma.value.photos; let i=index">
-                        <input type="url" [formControlName]="i" class="form-control" aria-describedby="basic-addon2">
+                    <div class="input-group" *ngFor="let photo of forma.value.photos; let i=index">
+                        <img [src]="photos[i] | imagen" class="w15h20">
+                        <input type="text" [formControlName]="i" class="form-control">
                         <div class="input-group-append">
                             <button (click)="deletePhoto(i)" class="btn btn-danger" type="button">
                                 Eliminar

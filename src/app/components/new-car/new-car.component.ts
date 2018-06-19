@@ -2,6 +2,7 @@ import { Component, OnInit} from '@angular/core';
 import { FormGroup, FormControl, Validators, FormArray, FormBuilder } from '@angular/forms';
 import { CustomValidators } from 'ng2-validation';
 import { Router, ActivatedRoute } from '@angular/router';
+import { isLink } from '../../directives/isLink.validator';
 
 import { Vehicle } from "../../interfaces/vehicle.interface";
 import { VehicleService } from '../../services/vehicle.service';
@@ -17,6 +18,7 @@ export class NewCarComponent implements OnInit {
   vehicle: Vehicle;
   forma: FormGroup;
   url: string;
+  photos = [];
 
   constructor(private router: Router,
               private _vehicle: VehicleService,
@@ -35,11 +37,11 @@ export class NewCarComponent implements OnInit {
   ngOnInit() {
 
     this.forma = new FormGroup({
-      'capacity': new FormControl('1',  [Validators.required
+      'capacity': new FormControl('2',  [Validators.required
                                         , CustomValidators.range([2, 25])
                                         , Validators.pattern("[0-9]*")]
                                   ),
-      'type': new FormControl('MOTO',     Validators.required),
+      'type': new FormControl('AUTO',     Validators.required),
 
       'description': new FormControl('', [ Validators.required
                                         , CustomValidators.rangeLength([30, 200])]
@@ -54,6 +56,7 @@ export class NewCarComponent implements OnInit {
         description: this.vehicle.description
       });
       this.forma.setControl('photos', this.fb.array(this.vehicle.photos || []));
+      this.photos = this.vehicle.photos;
     }
 
 
@@ -65,9 +68,15 @@ export class NewCarComponent implements OnInit {
   */
   }
 
+
+  setearFoto(st: string) {
+    this.photos.push(st);
+  }
+
+
   addPhoto() {
     (<FormArray>this.forma.controls['photos']).push(
-      new FormControl('', Validators.required)
+      new FormControl('', [Validators.required, isLink])
     );
   }
 

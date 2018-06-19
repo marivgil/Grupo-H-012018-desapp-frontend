@@ -23,7 +23,7 @@
 
         <div class="btn-group btn-padding-right btn-dark" role="group" *ngIf="isAuthenticated()">
             <button id="btnGroupDrop1" type="button" class="btn btn-secondary" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <img *ngIf="_user.userProfile" [src]="localStorage.img" class="rounded-circle img-fluid img-boton">
+                <img *ngIf="_user.userProfile" [src]="localStorage.img | imagen:'USER'" class="rounded-circle img-fluid img-boton">
                 {{'WelcomeButton' | translate}} 
                 <i class="fas fa-caret-down"></i>
             </button>

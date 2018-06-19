@@ -1,17 +1,22 @@
 <footer class="footer bg-dark">
     <div class="inner">
        
-      <p class="text-center" style="color:#FFFFFF;"> &copy; 2018 Carpnd by {{'Footer.Sign' | translate}} &copy;</p>
-      <img class= "img-boton btn-padding-right" src="../../../assets/img/12cactusInc.png">
-    
-    <div class="btn-group dropup btn-padding-right">
-        <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          {{ 'Footer.LanguageBtn' | translate}}
-        </button>
-        <div class="dropdown-menu">
-            <!-- Dropdown menu links -->
-            <button class="dropdown-item" type="button" (click)="changeLanguage('es')">Español</button>
-            <button class="dropdown-item" type="button" (click)="changeLanguage('en')">Ingles</button>
+      <div class="d-flex flex-row align-content-around" style="color:#FFFFFF;"> 
+        <div class="d-flex flex-row">
+            <img class= "margin-right img-boton align-self-center" src="../../../assets/img/12cactusInc.png">
+              
+              <p class="px-4 align-self-end" style="color: #B5AAA8">2018 Carpnd by {{'Footer.Sign' | translate}} &copy;</p>   
+
+        </div>  
+            <div class="btn-group dropup ml-auto p-2">
+                <button type="button" class="btn btn-dark dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    {{ 'Footer.LanguageBtn' | translate}}
+                </button>
+                <div class="dropdown-menu">
+                   <!-- Dropdown menu links -->
+                   <button class="dropdown-item" type="button" (click)="changeLanguage('es')">Español</button>
+                   <button class="dropdown-item" type="button" (click)="changeLanguage('en')">Ingles</button>
+        </div>
         </div>
     </div> 
     </div>

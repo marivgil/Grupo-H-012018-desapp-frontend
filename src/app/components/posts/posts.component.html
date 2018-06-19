@@ -1,5 +1,7 @@
 <div class="main-container">
-
+<div class=" d-flex flex-column flex-md-row justify-content-sm-between flex-xl-nowrap">
+    <h1>{{'Posts.MainTitleTxt'| translate}} - <small><small>{{'Posts.FilterBy.'+ forma.value.type|translate}}</small></small>
+    </h1>
     <div [formGroup]="forma" class="input-group mb-3 width btn-padding-right">
             <select formControlName="type" class="custom-select" id="inputGroupSelect02">
                 <option value='TODOS' >{{ 'AllCategoriesTxt' | translate}}</option>
@@ -8,9 +10,7 @@
                 <option value='CAMIONETA'>{{ 'VehicleType.CAMIONETA' | translate}}</option>
             </select>
         </div>
-    <h1>{{'Posts.MainTitleTxt'| translate}} - <small><small>{{'Posts.FilterBy.'+ forma.value.type|translate}}</small></small>
-    </h1>
-    
+</div>
     <hr>
 
     
@@ -18,8 +18,7 @@
 
         <div class="card animated fadeIn fast" *ngFor="let post of posts">
 
-            <img *ngIf= "post.vehicle.photos.length === 0 "class="card-img-top" src="../../../assets/img/Foto-no-disponible.png" [alt]="">
-            <img *ngIf= "post.vehicle.photos.length >=1 "class="card-img-top" [src]="post.vehicle.photos[0]" [alt]="">
+            <img *ngIf= "post.vehicle.photos.length >=1 "class="card-img-top" [src]="post.vehicle.photos[0] | imagen" [alt]="">
             <div class="card-body">
                 <h5 class="card-title">{{ 'VehicleType.'+post.vehicle.type | translate }} {{ 'In'| translate }} {{ post.location }}- {{ post.costPerDay |currency}} {{ 'PerDayTxt' | translate}}</h5>
                 <p class="card-text">{{post.description}}</p>
