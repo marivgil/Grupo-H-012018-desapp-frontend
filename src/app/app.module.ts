@@ -21,6 +21,7 @@ import { TranslateModule, MissingTranslationHandler } from 'ng2-translate';
 import { APP_TRANSLATE } from './app.translator';
 import { AgmCoreModule } from '@agm/core';
 import { NeutronRatingModule } from 'neutron-star-rating';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 // Components
 import { AppComponent } from './app.component';
@@ -76,7 +77,8 @@ import { LinkValidatorDirective } from './directives/link-validator.directive';
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyAx82m7KSQg0obJQYw7L5tGcEXcoM1u9sE'
     }),
-    NeutronRatingModule
+    NeutronRatingModule,
+    NgxPaginationModule
   ],
   providers: [
     PostsService,

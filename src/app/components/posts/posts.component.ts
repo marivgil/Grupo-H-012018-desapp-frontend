@@ -12,6 +12,7 @@ export class PostsComponent implements OnInit {
 
   posts: Post[] = [];
   forma: FormGroup;
+  p;
 
 
   constructor( private _postsService: PostsService,
