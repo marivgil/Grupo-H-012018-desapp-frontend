@@ -82,11 +82,12 @@
         "WrongDescription": "The description must have between 30 and 200 characters."
     },
     "Profile": {
-        "AccountStatusTxt": "Account Status:",
+        "AccountStatusTxt": "Account Status",
         "DisabledStatus": "Disabled",
         "EnabledStatus": "Enabled",
-        "CreditTxt": "Credit:",
-        "ReputationTxt": "Reputation:"
+        "CreditTxt": "Credit",
+        "ReputationTxt": "Reputation",
+        "AddressTxt": "Address"
     },
     "Modal": {
         "FullNameTxt": "Full Name"

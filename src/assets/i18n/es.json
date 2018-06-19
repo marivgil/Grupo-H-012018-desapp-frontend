@@ -82,11 +82,12 @@
         "WrongDescription": "La descripción debe tener entre 30 y 200 caracteres."
     },
     "Profile": {
-        "AccountStatusTxt": "Estado de la cuenta:",
+        "AccountStatusTxt": "Estado de la cuenta",
         "DisabledStatus": "Bloqueado",
         "EnabledStatus": "Activo",
-        "CreditTxt": "Crédito:",
-        "ReputationTxt": "Reputación:"
+        "CreditTxt": "Crédito",
+        "ReputationTxt": "Reputación",
+        "AddressTxt": "Dirección"
 
     },
     "Modal": {
