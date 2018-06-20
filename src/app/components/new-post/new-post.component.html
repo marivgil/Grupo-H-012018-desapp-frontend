@@ -1,4 +1,4 @@
-<!--
+
 
 <div class="main-container animated fadeIn">
 
@@ -9,21 +9,7 @@
 
     <div class="row">
 
-        <div class="col-md-2 margin-top-20">
-            <div class="card center container-fluid" style="width: 18rem;">
-                <img class="card-img-top" [src]="vehicle.photos[0]" alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title">{{'VehicleType.'+vehicle.vehicleType| translate}} {{'For'| translate}} {{vehicle.capacity}} </h5>
-                    <p class="card-text">{{vehicle.description}}</p>
-                </div>
-                <div class="card-body">
-                    <a href="#" class="card-link text-center">{{'EditCarLink' | translate}}</a>
-                    <a href="#" class="card-link btn-right">{{'ChangeCarLink'| translate}}</a>
-                </div>
-            </div>
-
-        </div>
-
+        
         <div class="col-md-9 padding-right container-fluid margin-right-20 margin-top-20">
             <label><strong>{{'NewPost.PickUpPoint'|translate}}:</strong></label>
             <div class="map">
@@ -32,12 +18,12 @@
                     </agm-marker>
                 </agm-map>
             </div>
-
+            
             <form [formGroup]="forma" (ngSubmit)="post()" novalidate="novalidate">
                 <div class="form-group margin-top-20">
                     <label><strong>{{'NewPost.ContactNumber'|translate}}</strong></label>
                     <input type="number" class="form-control" formControlName="phone" id="exampleInputEmail1" aria-describedby="emailHelp" [placeholder]="'NewPost.PhoneHolder'| translate">
-                                <small class="form-text text-muted">Ingresalo con tu codigo de area. Ejemplo: Bs.As. (011 9999 9999)</small> 
+                    <small class="form-text text-muted">Ingresalo con tu codigo de area. Ejemplo: Bs.As. (011 9999 9999)</small> 
                 </div>
                 <div class="row">
                     <div class="col-md-6 form-group">
@@ -51,7 +37,7 @@
                         <small class="form-text text-muted">En pesos argentinos!</small>
                     </div>
                 </div>
-
+                
                 <label><strong>{{'NewPost.ReturnsPoint'| translate}}:</strong></label>
                 <div id="mapa2" class="map">
                     <agm-map id="mapa3" [latitude]="lat" [longitude]="lng" [zoom]="zoom" [disableDefaultUI]=false [zoomControl]=true (mapClick)="mapReturnClicked($event)">
@@ -66,6 +52,20 @@
                 </footer>
             </form>
         </div>
+        <div class="col-md-2 margin-top-20">
+            <div class="card center container-fluid" style="width: 18rem;">
+                <img class="card-img-top" [src]="vehicle.photos[0]" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">{{'VehicleType.'+vehicle.type| translate}} {{'For'| translate}} {{vehicle.capacity}} </h5>
+                    <p class="card-text">{{vehicle.description}}</p>
+                </div>
+                <div class="card-body">
+                    <a href="#" class="card-link text-center">{{'EditCarLink' | translate}}</a>
+                    <a href="#" class="card-link btn-right">{{'ChangeCarLink'| translate}}</a>
+                </div>
+            </div>
+    
+        </div>
     </div>
-
-</div> -->
+    
+</div>

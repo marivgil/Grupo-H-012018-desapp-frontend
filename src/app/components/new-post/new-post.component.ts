@@ -7,13 +7,15 @@ import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
 import { CustomValidators } from 'ng2-validation';
 import { Router } from '@angular/router';
 import { IMyDrpOptions } from 'mydaterangepicker';
+import { PostsService } from '../../services/posts.service';
+import { Http } from '@angular/http';
 
 @Component({
   selector: 'app-new-post',
   templateUrl: './new-post.component.html'
 })
 export class NewPostComponent {
-/*
+
   vehicle: Vehicle;
   user: User;
   forma: FormGroup;
@@ -43,12 +45,12 @@ myDateRangePickerOptions: IMyDrpOptions = {
   returnMarkers: any[] = [];
 
 
-  constructor( private _userService: UserService,
-              private _authService: AuthService,
+  constructor(private _userService: UserService,
+              private _postService: PostsService,,
               private _router: Router) {
 
-    this.vehicle = this._userService.getUserWithCar().vehicles[0];
-    this.user = this._authService.userBD;
+    this.vehicle = this._postService.postCar;
+    this.user = this._userService.userBD;
 
     this.forma = new FormGroup({
       'phone': new FormControl('',      [Validators.required]),
@@ -62,28 +64,28 @@ myDateRangePickerOptions: IMyDrpOptions = {
     });
    }
 
-  ngOnInit() {
-  }
-
-  post() {
-
-    console.log(this.forma);
-  }
-
-  mapClicked($event: any) {
-    this.marker = {
-      name: 'Untitled',
+   
+   mapClicked($event: any) {
+     this.marker = {
+       name: 'Untitled',
+       lat: $event.coords.lat,
+       lng: $event.coords.lng,
+       draggable: false
+      };
+      
+    // this.forma.patchValue({
+      //   capacity: this.vehicle.capacity,
+    //   type: this.vehicle.type,
+    //   description: this.vehicle.description
+    // });
+    this.forma.controls['pickUpCoord'].patchValue({
       lat: $event.coords.lat,
-      lng: $event.coords.lng,
-      draggable: false
-    };
-
-    this.forma.get('pickUpCoord').get('lat').setValue = $event.coords.lat,
-    this.forma.get('pickUpCoord').get('lng').setValue = $event.coords.lng;
+      lng: $event.coords.lng
+    });
   }
-
+  
   mapReturnClicked($event) {
-
+    
     let marker = new FormGroup({
       'lat': new FormControl($event.coords.lat),
       'lng': new FormControl($event.coords.lng)
@@ -97,7 +99,7 @@ myDateRangePickerOptions: IMyDrpOptions = {
     };
     this.returnMarkers.push(m);
   }
-
+  
   volverAHome() {
     this._router.navigate(['/home']);
   }
@@ -106,17 +108,77 @@ myDateRangePickerOptions: IMyDrpOptions = {
     // Set date range (today) using the patchValue function
     let date = new Date();
     this.forma.patchValue({dateRange: {
-        beginDate: {
-            year: date.getFullYear(),
-            month: date.getMonth() + 1,
+      beginDate: {
+        year: date.getFullYear(),
+        month: date.getMonth() + 1,
             day: date.getDate()
-        },
+          },
         endDate: {
-            year: date.getFullYear(),
-            month: date.getMonth() + 1,
-            day: date.getDate()
+          year: date.getFullYear(),
+          month: date.getMonth() + 1,
+          day: date.getDate()
         }
-    }});
-}
-*/
+      }});
+    }
+
+  post() {
+    let sinceDate: string = this.forma.value.dateRange.beginDate.year + "-0" +
+                    this.forma.value.dateRange.beginDate.month + "-" +
+                    this.forma.value.dateRange.beginDate.day;
+    let untilDate: string = this.forma.value.dateRange.endDate.year + "-0" +
+                    this.forma.value.dateRange.endDate.month + "-" +
+                    this.forma.value.dateRange.endDate.day;
+    let costPerDay: number = this.forma.value.costPerDay;
+    let vehicle: number = this._postService.postCar.id;
+    let phone: number = this.forma.value.phone;
+    let pickLng: number = this.forma.value.pickUpCoord.lng;
+    let pickLat: number = this.forma.value.pickUpCoord.lat;
+    let ownerUser: string = this._userService.userProfile.email;
+
+    console.log(this._postService.postCar);
+    
+
+    let post =  {
+      "costPerDay": costPerDay,
+      "sinceDate": sinceDate,
+      "untilDate": untilDate,
+      "vehicle": 1 ,
+      "phone": phone,
+      "pickUpCoord": {
+          "lng": pickLng,
+          "lat": pickLat
+      },
+      "returnCoords": [{
+          "lng": pickLat,
+          "lat": pickLng
+      }],
+      "ownerUser": ownerUser,
+      "location": "Palermo"
+  };
+
+    // let post = {
+    //    "costPerDay": costPerDay,
+    //    "sinceDate": sinceDate,
+    //    "untilDate": untilDate,
+    //    "vehicle": vehicle,
+    //    "phone": phone,
+    //    "pickUpCoord": {
+    //      "lng" : pickLng,
+    //      "lat" : pickLat
+    //    },
+    //    "location": "Palermo",
+    //    "ownerUser": ownerUser,
+    //    "returnCoords": [{
+    //     "lng" : pickLng,
+    //     "lat" : pickLat
+    //   }],
+    //  };
+
+     console.log(post);
+
+      this._postService.createPost(post).subscribe(res => {
+        console.log(res);
+        this._router.navigate["post", res.id];
+      });
+  }
 }

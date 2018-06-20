@@ -4,6 +4,7 @@ import { UserService } from '../../services/user.service';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { VehicleService } from '../../services/vehicle.service';
+import { PostsService } from '../../services/posts.service';
 
 declare var $;
 @Component({
@@ -19,7 +20,8 @@ export class YourOwnCarsComponent implements OnInit {
   constructor(public _auth: AuthService,
               private _router: Router,
               private _vehicle: VehicleService,
-              public _user: UserService) {
+              public _user: UserService,
+              private _post: PostsService) {
               }
 
 
@@ -35,7 +37,8 @@ export class YourOwnCarsComponent implements OnInit {
     this._router.navigate(['editarAuto']);
   }
 
-  makeAPost() {
+  makeAPost(car) {
+    this._post.postCar = car;
     this._router.navigate(['nuevoPost']);
   }
 
