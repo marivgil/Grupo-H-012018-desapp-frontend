@@ -21,47 +21,44 @@
             </agm-info-window>
             </agm-marker>
           </agm-map>
-      </div>
-      
+      </div>      
     </div>
   </div>
-  
-  <div class="alert alert-light btn-right" *ngIf="distance" role="alert">
-      {{'YoureTxt'| translate}} {{distance}} {{'FromPickUpPlaceTxt' | translate}} ({{duration}} {{'WalkingTxt' | translate}}).
-  </div>
-  <div class="alert alert-light btn-right" *ngIf="!distance" role="alert">
-      {{'Post.PlaceholderDistance' | translate}}   
+  <div class="d-flex flex-column">
+    <div class="alert alert-light align-self-end" *ngIf="distance" role="alert">
+        {{'YoureTxt'| translate}} {{distance}} {{'FromPickUpPlaceTxt' | translate}} ({{duration}} {{'WalkingTxt' | translate}}).
+    </div>
+    <div class="alert alert-light align-self-end" *ngIf="!distance" role="alert">
+        {{'Post.PlaceholderDistance' | translate}}   
+    </div>
+
+    <div class="d-flex flex-row justify-content-around">
+      <h1>{{'VehicleType.'+post.vehicle.type | translate}} {{"In" | translate}} {{post.location | uppercase}} 
+        <br>
+        <small>{{'Posts.AvailableDaysTxt' | translate}} ({{post.sinceDate}})</small>
+      </h1>
+    </div>
+     
+    <hr>
   </div>
 
-<h1 class="main-container">{{'VehicleType.'+post.vehicle.type | translate}} {{"In" | translate}} {{post.location | uppercase}} 
-  <br>
-  <small>{{'Posts.AvailableDaysTxt' | translate}} ({{post.sinceDate}})</small>
-</h1>
- 
-<hr>
 
-<div class= "animated fadeIn fast">
-      <div class="row">
-          <div class="col-md-4">
+<div class= "d-flex justify-content-around flex-column flex-lg-row animated fadeIn fast">
               
-              <carousel-component [mode]="'horizontal'" [autoPlay]="true" #topCarousel >
-                <div class="item-carousel" *ngFor="let p of post.vehicle.photos"><img [src]="p"></div>
-              </carousel-component>
-          </div>
-          <div class="col-md-2">
+  <div class="d-flex justify-content-center">
+    <carousel-component [mode]="'horizontal'" [autoPlay]="true" #topCarousel >
+      <div class="item-carousel" *ngFor="let p of post.vehicle.photos"><img [src]="p"></div>
+    </carousel-component>
+  </div>
 
-          </div>
-          <div class="col-md-4">
-            <h3>{{'VehicleType.'+post.vehicle.type | translate}} {{'In' | translate}} {{post.location | uppercase}} <small>{{post.costPerDay | currency}} {{'PerDayTxt'| translate}}</small></h3>
-            <hr>
-            <p>
-              {{post.vehicle.description}}
-            </p>
-        
-            <button (click)= "reservar(post.id)" class="btn btn-success btn-block">{{'ReserveButton' | translate}}</button>
-          </div>
 
-      </div>
-    <br><br>
+  <div class="flex-column d-flex py-4 align-self-center">
+    <h3>{{'VehicleType.'+post.vehicle.type | translate}} {{'In' | translate}} {{post.location | uppercase}} <small>{{post.costPerDay | currency}} {{'PerDayTxt'| translate}}</small></h3>
+    <p>
+      {{post.vehicle.description}}
+    </p>
+    <button (click)= "reservar(post.id)" class="btn btn-success btn-block">{{'ReserveButton' | translate}}</button>
+  </div>
 
 </div>
+    <br><br>
