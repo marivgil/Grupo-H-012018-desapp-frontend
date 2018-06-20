@@ -15,7 +15,7 @@ declare var google: any;
 export class PostComponent implements OnInit {
 
 
-  post: Post;
+  post;
   zoom: number = 15;
   // Start position
   lat: number = -34.603418;
@@ -34,17 +34,20 @@ export class PostComponent implements OnInit {
 
       this.activatedRoute.params.subscribe( params => {
         // Se pone id porque es el nombre del parametro que esta en el routing ((/post/:id))!!!!!
-          this.post = this._postsService.getPost("0");
+        this._postsService.getPost(params['id']).subscribe(res => {
+          this.post = res.json();
+          this.lat = this.post.pickUpCoord.lat;
+          this.lng = this.post.pickUpCoord.lng;
+          let marker: Marker = {name: "Lugar de Retiro", lat: this.lat, lng: this.lng, draggable: false};
+          this.markers.push(marker);
+          console.log(res.json());
+        });
       });
   }
 
 
 
   ngOnInit() {
-    this.lat = this.post.coordPickUp.lat;
-    this.lng = this.post.coordPickUp.lng;
-    let marker: Marker = {name: "Lugar de Retiro", lat: this.lat, lng: this.lng, draggable: false};
-    this.markers.push(marker);
   }
 
 
@@ -73,7 +76,7 @@ export class PostComponent implements OnInit {
 
     let service = new google.maps.DistanceMatrixService();
     let origin1 = new google.maps.LatLng(marker.lat, marker.lng);
-    let destinationA = new google.maps.LatLng(this.post.coordPickUp.lat, this.post.coordPickUp.lng);
+    let destinationA = new google.maps.LatLng(this.post.pickUpCoord.lat, this.post.pickUpCoord.lng);
 
     service.getDistanceMatrix(
       {
@@ -87,7 +90,7 @@ export class PostComponent implements OnInit {
   markerClicked(m) {
     let service = new google.maps.DistanceMatrixService();
     let origin1 = new google.maps.LatLng(m.lat, m.lng);
-    let destinationA = new google.maps.LatLng(this.post.coordPickUp.lat, this.post.coordPickUp.lng);
+    let destinationA = new google.maps.LatLng(this.post.pickUpCoord.lat, this.post.pickUpCoord.lng);
 
     service.getDistanceMatrix(
       {

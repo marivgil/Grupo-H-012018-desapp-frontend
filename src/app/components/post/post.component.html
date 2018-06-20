@@ -33,9 +33,9 @@
       {{'Post.PlaceholderDistance' | translate}}   
   </div>
 
-<h1 class="main-container">{{'VehicleType.'+post.vehicleType | translate}} {{"In" | translate}} {{post.location | uppercase}} 
+<h1 class="main-container">{{'VehicleType.'+post.vehicle.type | translate}} {{"In" | translate}} {{post.location | uppercase}} 
   <br>
-  <small>{{'Posts.AvailableDaysTxt' | translate}} ({{post.rentalDate}})</small>
+  <small>{{'Posts.AvailableDaysTxt' | translate}} ({{post.sinceDate}})</small>
 </h1>
  
 <hr>
@@ -45,17 +45,17 @@
           <div class="col-md-4">
               
               <carousel-component [mode]="'horizontal'" [autoPlay]="true" #topCarousel >
-                <div class="item-carousel" *ngFor="let p of post.photos"><img [src]="p"></div>
+                <div class="item-carousel" *ngFor="let p of post.vehicle.photos"><img [src]="p"></div>
               </carousel-component>
           </div>
           <div class="col-md-2">
 
           </div>
           <div class="col-md-4">
-            <h3>{{'VehicleType.'+post.vehicleType | translate}} {{'In' | translate}} {{post.location | uppercase}} <small>{{post.costPerDay | currency}} {{'PerDayTxt'| translate}}</small></h3>
+            <h3>{{'VehicleType.'+post.vehicle.type | translate}} {{'In' | translate}} {{post.location | uppercase}} <small>{{post.costPerDay | currency}} {{'PerDayTxt'| translate}}</small></h3>
             <hr>
             <p>
-              {{post.description}}
+              {{post.vehicle.description}}
             </p>
         
             <button (click)= "reservar(post.id)" class="btn btn-success btn-block">{{'ReserveButton' | translate}}</button>
@@ -64,4 +64,4 @@
       </div>
     <br><br>
 
-</div> 
+</div>

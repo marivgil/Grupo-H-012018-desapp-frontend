@@ -85,8 +85,8 @@ export class PostsService {
          return this.posts;
      }
 
-     getPost(idx: string): Post {
-         return this.posts[idx];
+     getPost(idx: string) {
+         return this.http.get( URL_SERVICIO + this.extensionUrl + "postById/" + idx);
      }
 
 }
