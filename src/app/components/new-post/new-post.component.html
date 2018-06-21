@@ -1,16 +1,27 @@
-
-
-<div class="main-container animated fadeIn">
-
-    <button class="btn btn-link btn-right" (click)="volverAHome()"> {{ 'BackToHomeLink' | translate }} </button>
-    <h1> {{ 'NewPost.MainTitleTxt' | translate}}</h1>
-    <hr>
-
-
-    <div class="row">
-
+<div class="main-container d-flex flex-column container-fluid  animated fadeIn">
+    
+    
+    <div class="d-flex flex-row justify-content-between">
+        <h1> {{ 'NewPost.MainTitleTxt' | translate}}</h1>
+        <button class="btn btn-link align-self-end" (click)="volverAHome()"> {{ 'BackToHomeLink' | translate }} </button>
+    </div>
+    <div class="d-flex flex-lg-row-reverse flex-column">
+        <hr>
         
-        <div class="col-md-9 padding-right container-fluid margin-right-20 margin-top-20">
+        <div class="col-md-2 margin-top-20 px-0">
+            <div class="card center container-fluid" style="width: 18rem;">
+                <img class="card-img-top" [src]="vehicle.photos[0]" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">{{'VehicleType.'+vehicle.type| translate}} {{'For'| translate}} {{vehicle.capacity}} </h5>
+                    <p class="card-text">{{vehicle.description}}</p>
+                </div>
+                <div class="card-body">
+                    <a href="#" class="card-link text-center">{{'EditCarLink' | translate}}</a>
+                    <a href="#" class="card-link btn-right">{{'ChangeCarLink'| translate}}</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8 padding-right margin-top-20">
             <label><strong>{{'NewPost.PickUpPoint'|translate}}:</strong></label>
             <div class="map">
                 <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" [disableDefaultUI]=false [zoomControl]=true (mapClick)="mapClicked($event)">
@@ -25,20 +36,21 @@
                     <input type="number" class="form-control" formControlName="phone" id="exampleInputEmail1" aria-describedby="emailHelp" [placeholder]="'NewPost.PhoneHolder'| translate">
                     <small class="form-text text-muted">Ingresalo con tu codigo de area. Ejemplo: Bs.As. (011 9999 9999)</small> 
                 </div>
-                <div class="row">
-                    <div class="col-md-6 form-group">
+
+                <div class="d-flex flex-column flex-md-row justify-content-around">
+                    <div class="d-flex flex-column">
                         <label><strong>{{'NewPost.AvailableDates' | translate}}</strong></label>
                         <my-date-range-picker class="text-center" name="mydaterange" [options]="myDateRangePickerOptions" formControlName="dateRange">
                         </my-date-range-picker>
                     </div>
-                    <div class=" col-md-6">
+                    <div>
                         <label><strong>{{'NewPost.CostPerDay'| translate}}</strong></label>
-                        <input type="number" step='0.01' class="form-control" formControlName="costPerDay" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Valor por dia de alquiler">
+                        <input type="number" step='0.01' class="form-control" formControlName="costPerDay" id="exampleInputEmail1" placeholder="Valor por dia de alquiler">
                         <small class="form-text text-muted">En pesos argentinos!</small>
                     </div>
                 </div>
                 
-                <label><strong>{{'NewPost.ReturnsPoint'| translate}}:</strong></label>
+                <label class="py-2"><strong>{{'NewPost.ReturnsPoint'| translate}}:</strong></label>
                 <div id="mapa2" class="map">
                     <agm-map id="mapa3" [latitude]="lat" [longitude]="lng" [zoom]="zoom" [disableDefaultUI]=false [zoomControl]=true (mapClick)="mapReturnClicked($event)">
                         <div *ngIf="returnMarkers">
@@ -51,21 +63,9 @@
                     <button type="submit" class="btn btn-primary btn-right main-container" [disabled]="!forma.valid">{{'Home.BtnTxt'| translate}}</button>
                 </footer>
             </form>
-        </div>
-        <div class="col-md-2 margin-top-20">
-            <div class="card center container-fluid" style="width: 18rem;">
-                <img class="card-img-top" [src]="vehicle.photos[0]" alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title">{{'VehicleType.'+vehicle.type| translate}} {{'For'| translate}} {{vehicle.capacity}} </h5>
-                    <p class="card-text">{{vehicle.description}}</p>
-                </div>
-                <div class="card-body">
-                    <a href="#" class="card-link text-center">{{'EditCarLink' | translate}}</a>
-                    <a href="#" class="card-link btn-right">{{'ChangeCarLink'| translate}}</a>
-                </div>
-            </div>
-    
+                
+            
         </div>
     </div>
-    
 </div>
+    
