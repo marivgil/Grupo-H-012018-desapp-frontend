@@ -157,6 +157,7 @@ export class NewUserComponent implements OnInit {
       let geocoder = new google.maps.Geocoder();
       let origin1 = new google.maps.LatLng($event.coords.lat, $event.coords.lng);
       geocoder.geocode( { location: origin1 } , (results, status) =>  {
+      // tslint:disable-next-line:triple-equals
       if (status == 'OK') {
         this.forma.patchValue({
           address: results[0].formatted_address });

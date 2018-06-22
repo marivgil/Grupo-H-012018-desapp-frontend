@@ -192,6 +192,7 @@ myDateRangePickerOptions: IMyDrpOptions = {
     let geocoder = new google.maps.Geocoder();
     let origin1 = new google.maps.LatLng($event.coords.lat, $event.coords.lng);
     geocoder.geocode( { location: origin1 } , (results, status) =>  {
+    // tslint:disable-next-line:triple-equals
     if (status == 'OK') {
       switch (ref) {
         case "pickAddress":
@@ -202,7 +203,7 @@ myDateRangePickerOptions: IMyDrpOptions = {
           this.retAddress = results[0].formatted_address;
           break;
         default:
-          alert("No lo guarde en ningun lado!");
+          alert("Error al guardar direccion en variable");
       }
     } else {
       alert('Geocode was not successful for the following reason: ' + status);
