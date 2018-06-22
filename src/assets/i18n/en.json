@@ -33,7 +33,8 @@
             "MOTO": "Only Motorcycle",
             "AUTO": "Only Cars",
             "CAMIONETA": "Only Vans"
-        }
+        },
+        "NoResultsTxt": "No results found for"
     },
     "Post": {
         "PlaceholderDistance": "Click on the map from where you go to know how far you are from your next car!"

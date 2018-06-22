@@ -36,7 +36,8 @@
             "MOTO": "Solo Motos",
             "AUTO": "Solo Autos",
             "CAMIONETA": "Solo Camionetas"
-        }
+        },
+        "NoResultsTxt": "No se encontraron resultados para"
     },
     "NewCar": {
         "MainTitleTxt": "Nuevo Auto",
