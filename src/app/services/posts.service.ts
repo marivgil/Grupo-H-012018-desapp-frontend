@@ -99,7 +99,6 @@ export class PostsService {
                         .map((res: any) => {
                                  return res.json();
                         });
-        }
-     }
-
+    }
 }
+

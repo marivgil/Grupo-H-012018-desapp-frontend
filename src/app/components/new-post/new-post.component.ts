@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 import { IMyDrpOptions } from 'mydaterangepicker';
 import { PostsService } from '../../services/posts.service';
 import { Http } from '@angular/http';
+import { VehicleService } from '../../services/vehicle.service';
 
 @Component({
   selector: 'app-new-post',
@@ -41,12 +42,14 @@ myDateRangePickerOptions: IMyDrpOptions = {
   lat: number = -34.603418;
   lng: number = -58.381592;
 
-  marker: any;
+  markerP: any;
+  markerR: any;
   returnMarkers: any[] = [];
 
 
   constructor(private _userService: UserService,
-              private _postService: PostsService,,
+              private _postService: PostsService,
+              private _vehicle: VehicleService,
               private _router: Router) {
 
     this.vehicle = this._postService.postCar;
@@ -59,47 +62,58 @@ myDateRangePickerOptions: IMyDrpOptions = {
                                     'lat': new FormControl(),
                                     'lng': new FormControl()
                                   },    Validators.required),
-      'returnMarkers': new FormArray( [] , Validators.required),
+      'returnCoord': new FormGroup({
+                                    'lat': new FormControl(),
+                                    'lng': new FormControl()
+                                  },    Validators.required),
       'dateRange': new FormControl()
     });
    }
 
-   
+
    mapClicked($event: any) {
-     this.marker = {
+     this.markerP = {
        name: 'Untitled',
        lat: $event.coords.lat,
        lng: $event.coords.lng,
        draggable: false
       };
-      
-    // this.forma.patchValue({
-      //   capacity: this.vehicle.capacity,
-    //   type: this.vehicle.type,
-    //   description: this.vehicle.description
-    // });
+
     this.forma.controls['pickUpCoord'].patchValue({
       lat: $event.coords.lat,
       lng: $event.coords.lng
     });
   }
-  
+
   mapReturnClicked($event) {
-    
-    let marker = new FormGroup({
-      'lat': new FormControl($event.coords.lat),
-      'lng': new FormControl($event.coords.lng)
-    });
-    (<FormArray>this.forma.controls['returnMarkers']).push(marker);
-    let m = {
+    this.markerR = {
       name: 'Untitled',
       lat: $event.coords.lat,
       lng: $event.coords.lng,
       draggable: false
-    };
-    this.returnMarkers.push(m);
+     };
+
+   this.forma.controls['pickUpCoord'].patchValue({
+     lat: $event.coords.lat,
+     lng: $event.coords.lng
+   });
+
+
+   // PARA MULTIPLES PUNTOS DE DEVOLUCIONES.
+    // let marker = new FormGroup({
+    //   'lat': new FormControl($event.coords.lat),
+    //   'lng': new FormControl($event.coords.lng)
+    // });
+    // (<FormArray>this.forma.controls['returnMarkers']).push(marker);
+    // let m = {
+    //   name: 'Untitled',
+    //   lat: $event.coords.lat,
+    //   lng: $event.coords.lng,
+    //   draggable: false
+    // };
+    // this.returnMarkers.push(m);
   }
-  
+
   volverAHome() {
     this._router.navigate(['/home']);
   }
@@ -122,11 +136,23 @@ myDateRangePickerOptions: IMyDrpOptions = {
     }
 
   post() {
-    let sinceDate: string = this.forma.value.dateRange.beginDate.year + "-0" +
-                    this.forma.value.dateRange.beginDate.month + "-" +
+    let beginMonth = this.forma.value.dateRange.beginDate.month;
+
+    let endMonth = this.forma.value.dateRange.endDate.month;
+
+    if (beginMonth < 10 ) {
+      beginMonth = "0".concat(this.forma.value.dateRange.beginDate.month);
+    }
+
+    if (endMonth < 10 ) {
+      endMonth = "0".concat(this.forma.value.dateRange.endDate.month);
+    }
+
+    let sinceDate: string = this.forma.value.dateRange.beginDate.year + "-" +
+                    beginMonth + "-" +
                     this.forma.value.dateRange.beginDate.day;
-    let untilDate: string = this.forma.value.dateRange.endDate.year + "-0" +
-                    this.forma.value.dateRange.endDate.month + "-" +
+    let untilDate: string = this.forma.value.dateRange.endDate.year + "-" +
+                    endMonth + "-" +
                     this.forma.value.dateRange.endDate.day;
     let costPerDay: number = this.forma.value.costPerDay;
     let vehicle: number = this._postService.postCar.id;
@@ -135,50 +161,35 @@ myDateRangePickerOptions: IMyDrpOptions = {
     let pickLat: number = this.forma.value.pickUpCoord.lat;
     let ownerUser: string = this._userService.userProfile.email;
 
-    console.log(this._postService.postCar);
-    
-
     let post =  {
       "costPerDay": costPerDay,
       "sinceDate": sinceDate,
       "untilDate": untilDate,
-      "vehicle": 1 ,
+      "vehicle": vehicle ,
       "phone": phone,
       "pickUpCoord": {
           "lng": pickLng,
           "lat": pickLat
       },
-      "returnCoords": [{
+      "returnCoords": {
           "lng": pickLat,
           "lat": pickLng
-      }],
+      },
       "ownerUser": ownerUser,
       "location": "Palermo"
   };
 
-    // let post = {
-    //    "costPerDay": costPerDay,
-    //    "sinceDate": sinceDate,
-    //    "untilDate": untilDate,
-    //    "vehicle": vehicle,
-    //    "phone": phone,
-    //    "pickUpCoord": {
-    //      "lng" : pickLng,
-    //      "lat" : pickLat
-    //    },
-    //    "location": "Palermo",
-    //    "ownerUser": ownerUser,
-    //    "returnCoords": [{
-    //     "lng" : pickLng,
-    //     "lat" : pickLat
-    //   }],
-    //  };
-
-     console.log(post);
-
       this._postService.createPost(post).subscribe(res => {
-        console.log(res);
-        this._router.navigate["post", res.id];
+        this._router.navigate(['post', res.id]);
       });
+  }
+
+  editCar() {
+    this._vehicle.editedCar = this._postService.postCar;
+    this._router.navigate(['editarAuto']);
+  }
+
+  changeCar() {
+    this._router.navigate(["tusAutos"]);
   }
 }

@@ -37,8 +37,9 @@ export class YourOwnCarsComponent implements OnInit {
     this._router.navigate(['editarAuto']);
   }
 
-  makeAPost(car) {
+  makeAPost(car, index) {
     this._post.postCar = car;
+    this._vehicle.indexEditedCar = index;
     this._router.navigate(['nuevoPost']);
   }
 

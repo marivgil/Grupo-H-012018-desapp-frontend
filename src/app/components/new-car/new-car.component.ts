@@ -76,7 +76,7 @@ export class NewCarComponent implements OnInit {
 
   addPhoto() {
     (<FormArray>this.forma.controls['photos']).push(
-      new FormControl('', [Validators.required, isLink])
+      new FormControl('', [Validators.required])
     );
   }
 

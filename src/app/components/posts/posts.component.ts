@@ -54,7 +54,6 @@ export class PostsComponent implements OnInit {
 
   filtrarPorTipo(tipo: string) {
     this._postsService.getPostPorTipo(tipo).subscribe(res => {
-      console.log(res);
       this.posts = res.json();
     });
   }

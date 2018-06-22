@@ -40,7 +40,6 @@ export class PostComponent implements OnInit {
           this.lng = this.post.pickUpCoord.lng;
           let marker: Marker = {name: "Lugar de Retiro", lat: this.lat, lng: this.lng, draggable: false};
           this.markers.push(marker);
-          console.log(res.json());
         });
       });
   }
@@ -100,12 +99,6 @@ export class PostComponent implements OnInit {
       }, this.cb);
 
   }
-  // var newMarker = {
-  //   name:'Untitled',
-  //   lat: $event.coords.lat,
-  //   lng: $event.coords.lng,
-  //   draggable: false,
-  // }
 }
 
 interface Marker {
