@@ -16,7 +16,7 @@
                 {{'Posts.NoResultsTxt' | translate}} {{'VehicleType.'+ this.forma.value.type | translate}}
         </div>
     
-        <div class="card-columns">
+        <div class=" margin-top-40 card-columns">
     
             <div class="card animated fadeIn fast" *ngFor="let post of posts| paginate: { itemsPerPage: 3, currentPage: p }">
     
@@ -37,6 +37,8 @@
             
         </div>
     </div>
-                    <div *ngIf="posts.length > 0" class="d-flex flex-row justify-content-center">
-                        <pagination-controls (pageChange)="p = $event"></pagination-controls>
-                    </div>
+                   
+    
+                <div *ngIf="posts.length > 0" class="d-flex flex-row justify-content-center">
+                    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+                </div>

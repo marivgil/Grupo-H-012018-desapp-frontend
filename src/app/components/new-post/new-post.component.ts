@@ -11,6 +11,8 @@ import { PostsService } from '../../services/posts.service';
 import { Http } from '@angular/http';
 import { VehicleService } from '../../services/vehicle.service';
 
+declare var google;
+
 @Component({
   selector: 'app-new-post',
   templateUrl: './new-post.component.html'
@@ -20,6 +22,8 @@ export class NewPostComponent {
   vehicle: Vehicle;
   user: User;
   forma: FormGroup;
+  pickAddress;
+  retAddress;
 
 // Inicializaciones para calendario
 date = new Date();
@@ -72,6 +76,7 @@ myDateRangePickerOptions: IMyDrpOptions = {
 
 
    mapClicked($event: any) {
+     this.pickAddress = "Buscando...";
      this.markerP = {
        name: 'Untitled',
        lat: $event.coords.lat,
@@ -83,9 +88,12 @@ myDateRangePickerOptions: IMyDrpOptions = {
       lat: $event.coords.lat,
       lng: $event.coords.lng
     });
+
+    this.findAddress($event, "pickAddress");
   }
 
   mapReturnClicked($event) {
+    this.retAddress = "Buscando...";
     this.markerR = {
       name: 'Untitled',
       lat: $event.coords.lat,
@@ -98,20 +106,7 @@ myDateRangePickerOptions: IMyDrpOptions = {
      lng: $event.coords.lng
    });
 
-
-   // PARA MULTIPLES PUNTOS DE DEVOLUCIONES.
-    // let marker = new FormGroup({
-    //   'lat': new FormControl($event.coords.lat),
-    //   'lng': new FormControl($event.coords.lng)
-    // });
-    // (<FormArray>this.forma.controls['returnMarkers']).push(marker);
-    // let m = {
-    //   name: 'Untitled',
-    //   lat: $event.coords.lat,
-    //   lng: $event.coords.lng,
-    //   draggable: false
-    // };
-    // this.returnMarkers.push(m);
+   this.findAddress($event, "retAddress");
   }
 
   volverAHome() {
@@ -191,5 +186,27 @@ myDateRangePickerOptions: IMyDrpOptions = {
 
   changeCar() {
     this._router.navigate(["tusAutos"]);
+  }
+
+  findAddress($event, ref: string) {
+    let geocoder = new google.maps.Geocoder();
+    let origin1 = new google.maps.LatLng($event.coords.lat, $event.coords.lng);
+    geocoder.geocode( { location: origin1 } , (results, status) =>  {
+    if (status == 'OK') {
+      switch (ref) {
+        case "pickAddress":
+          this.pickAddress = results[0].formatted_address;
+          console.log(this.pickAddress);
+          break;
+        case "retAddress":
+          this.retAddress = results[0].formatted_address;
+          break;
+        default:
+          alert("No lo guarde en ningun lado!");
+      }
+    } else {
+      alert('Geocode was not successful for the following reason: ' + status);
+    }
+  });
   }
 }

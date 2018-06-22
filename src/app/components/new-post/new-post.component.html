@@ -23,6 +23,7 @@
         </div>
         <div class="col-md-8 padding-right margin-top-20">
             <label><strong>{{'NewPost.PickUpPoint'|translate}}:</strong></label>
+            <label *ngIf="pickAddress">{{pickAddress}}</label>
             <div class="map">
                 <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" [disableDefaultUI]=false [zoomControl]=true (mapClick)="mapClicked($event)">
                     <agm-marker *ngIf="markerP" [latitude]="markerP.lat" [longitude]="markerP.lng" [markerDraggable]="markerP.draggable">
@@ -51,6 +52,8 @@
                 </div>
                 
                 <label class="py-2"><strong>{{'NewPost.ReturnsPoint'| translate}}:</strong></label>
+                <label *ngIf="retAddress">{{retAddress}}</label>
+
                 <div id="mapa2" class="map">
                     <agm-map id="mapa3" [latitude]="lat" [longitude]="lng" [zoom]="zoom" [disableDefaultUI]=false [zoomControl]=true (mapClick)="mapReturnClicked($event)">
         
