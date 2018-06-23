@@ -54,19 +54,21 @@
             <div class="form-group">
                 <label for="exampleFormControlInput1"> <strong>{{'NewCar.Photos' | translate}}</strong></label>
                 
-                <button (click)="addPhoto()" class="btn btn-link btn-right" type="button">
+                <button (click)="addPhoto()" class="btn btn-link btn-right py-0" type="button">
                     {{'NewCar.InsertPhoto' | translate}}
                 </button>
                                  
                 <div formArrayName="photos">
-                    <div class="input-group" *ngFor="let photo of forma.value.photos; let i=index">
-                        <img [src]="photos[i] | imagen" class="w15h20">
-                        <input type="text" [formControlName]="i" class="form-control">
-                        <div class="input-group-append">
-                            <button (click)="deletePhoto(i)" class="btn btn-danger" type="button">
-                                Eliminar
-                            </button>
-                       </div>
+                    <div *ngFor="let photo of forma.value.photos; let i=index">
+                        <div class="py-2 d-flex flex-column flex-md-row bd-highlight align-items-end">
+                            <img [src]="forma.value.photos[i] | imagen" class="w15h20">
+                            <input type="text" [formControlName]="[i]" class="w-100 form-control flex-md-fill bd-highlight">
+                            <div class="ml-auto">
+                                <button (click)="deletePhoto(i)" class="btn btn-danger" type="button">
+                                    Eliminar
+                                </button>
+                           </div>
+                        </div>
                     </div>
                 </div>
             </div>

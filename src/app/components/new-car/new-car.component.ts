@@ -76,44 +76,46 @@ export class NewCarComponent implements OnInit {
 
   addPhoto() {
     (<FormArray>this.forma.controls['photos']).push(
-      new FormControl('', [Validators.required])
+      new FormControl(undefined , [Validators.required])
     );
   }
 
   deletePhoto(photo) {
+    console.log(photo);
+    
     (<FormArray>this.forma.controls['photos']).removeAt(photo);
   }
 
   saveChanges() {
      console.log(this.forma);
-     if (this.url === '/nuevoAuto') {
-       let vehicle = {
-        type: this.forma.controls['type'].value,
-        capacity: this.forma.controls['capacity'].value,
-        description: this.forma.controls['description'].value,
-        photos: this.forma.controls['photos'].value,
-        owner: this._user.userProfile.email
-       };
-      this._vehicle.addCar(vehicle).subscribe(res => {
-        this._user.userBD = res;
-        console.log(res);
-        this.router.navigate(['/tusAutos']);
-        });
-      } else {
-        // EDITA AUTO
-        let vehicle = {
-          type: this.forma.controls['type'].value,
-          capacity: this.forma.controls['capacity'].value,
-          description: this.forma.controls['description'].value,
-          photos: this.forma.controls['photos'].value,
-          owner: this._user.userProfile.email,
-          id: this._vehicle.editedCar.id,
-         };
-      this._vehicle.editCar(vehicle).subscribe( res => {
-        this._user.replaceCar(vehicle);
-        this.router.navigate(['/tusAutos']);
-      });
-      }
+    //  if (this.url === '/nuevoAuto') {
+    //    let vehicle = {
+    //     type: this.forma.controls['type'].value,
+    //     capacity: this.forma.controls['capacity'].value,
+    //     description: this.forma.controls['description'].value,
+    //     photos: this.forma.controls['photos'].value,
+    //     owner: this._user.userProfile.email
+    //    };
+    //   this._vehicle.addCar(vehicle).subscribe(res => {
+    //     this._user.userBD = res;
+    //     console.log(res);
+    //     this.router.navigate(['/tusAutos']);
+    //     });
+    //   } else {
+    //     // EDITA AUTO
+    //     let vehicle = {
+    //       type: this.forma.controls['type'].value,
+    //       capacity: this.forma.controls['capacity'].value,
+    //       description: this.forma.controls['description'].value,
+    //       photos: this.forma.controls['photos'].value,
+    //       owner: this._user.userProfile.email,
+    //       id: this._vehicle.editedCar.id,
+    //      };
+    //   this._vehicle.editCar(vehicle).subscribe( res => {
+    //     this._user.replaceCar(vehicle);
+    //     this.router.navigate(['/tusAutos']);
+    //   });
+    //   }
      // this.forma.reset();
    }
 }
