@@ -3,6 +3,10 @@ import { Post } from '../../interfaces/post.interface';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PostsService } from '../../services/posts.service';
 import {CarouselComponent} from "angular2-carousel";
+import { TranslateService } from 'ng2-translate';
+import { UserService } from '../../services/user.service';
+import { AuthService } from '../../services/auth.service';
+import { ReservasService } from '../../services/reservas.service';
 
 declare var google: any;
 @Component({
@@ -25,11 +29,16 @@ export class PostComponent implements OnInit {
 
   duration: string;
   distance: string;
+  date = 20180629;
 
   @ViewChild('topCarousel') topCarousel: CarouselComponent;
 
   constructor(private activatedRoute: ActivatedRoute,
               private _postsService: PostsService,
+              private _reservationService: ReservasService,
+              private _authService: AuthService,
+              private _userService: UserService,
+              private _translate: TranslateService,
               private _router: Router) {
 
       this.activatedRoute.params.subscribe( params => {
@@ -51,8 +60,18 @@ export class PostComponent implements OnInit {
 
 
   reservar(id: number) {
-    this._router.navigate(['/home']);
-  }
+//    this._router.navigate(['/home']);
+
+    if (this._authService.isAuthenticated()) {
+      this._reservationService.bookPost(id, this._userService.userProfile.email, this.post.sinceDate, this.post.untilDate)
+                          .subscribe((res: any) => {
+                            console.log(res);
+                          });
+    } else {
+      this._authService.login();
+    }
+
+}
 
 
 

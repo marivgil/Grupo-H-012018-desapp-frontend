@@ -44,6 +44,8 @@ import { ImagenPipe } from './pipes/imagen.pipe';
 
 // Validadores
 import { LinkValidatorDirective } from './directives/link-validator.directive';
+import { FormatterDatePipe } from './pipes/formatter-date.pipe';
+import { ReservasService } from './services/reservas.service';
 
 
 
@@ -62,7 +64,8 @@ import { LinkValidatorDirective } from './directives/link-validator.directive';
     FooterComponent,
     CreditComponent,
     ImagenPipe,
-    LinkValidatorDirective
+    LinkValidatorDirective,
+    FormatterDatePipe
   ],
   imports: [
     BrowserModule,
@@ -85,6 +88,7 @@ import { LinkValidatorDirective } from './directives/link-validator.directive';
     AuthService,
     AuthGuardService,
     VehicleService,
+    ReservasService,
     UserService,
     { provide: MissingTranslationHandler,
       useClass: MyMissingTranslationHandler}

@@ -81,8 +81,6 @@ export class NewCarComponent implements OnInit {
   }
 
   deletePhoto(photo) {
-    console.log(photo);
-    
     (<FormArray>this.forma.controls['photos']).removeAt(photo);
   }
 

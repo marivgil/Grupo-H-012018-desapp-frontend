@@ -30,7 +30,8 @@
     "Posts": {
         "MainTitleTxt": " Todas las publicaciones",
         "AllCategoriesTxt": "Todas las categorías",
-        "AvailableDaysTxt": "Disponible en: ",
+        "AvailableDayTxt": "Disponible el:",
+        "AvailableDaysTxt": "Disponible de: ",
         "FilterBy":{
             "TODOS": "Todas las categorías",
             "MOTO": "Solo Motos",
@@ -101,5 +102,6 @@
     "WalkingTxt": "a pie",
     "YoureTxt": "Estas a ",
     "FromPickUpPlaceTxt": " del lugar de retiro",
-    "EmailTxt": "Correo electrónico"
+    "EmailTxt": "Correo electrónico",
+    "To": "a"
 }

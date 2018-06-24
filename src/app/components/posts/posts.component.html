@@ -25,7 +25,7 @@
                 <div class="card-body">
                     <h5 class="card-title">{{ 'VehicleType.'+post.vehicle.type | translate }} {{ 'In'| translate }} {{ post.location }}- {{ post.costPerDay |currency}} {{ 'PerDayTxt' | translate}}</h5>
                     <p class="card-text">{{post.description}}</p>
-                    <p class="card-text"><small class="text-muted">{{'Posts.AvailableDaysTxt' | translate }} {{post.rentalDate}}</small></p>
+                    <p class="card-text"><small class="text-muted">{{'Posts.AvailableDaysTxt' | translate }} {{post.sinceDate}} {{'To' | translate}} {{post.untilDate}}</small></p>
     
     
                     <button type="button" (click)="verPost(post.id)" class="btn btn-outline-primary btn-block">

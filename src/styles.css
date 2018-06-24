@@ -12,8 +12,8 @@
   }
   
   .img-preview {
-      max-width: 10cm;
-      max-height: 5cm;
+      width: 8cm;
+      height: 5cm;
       align-items: center;
   }
 

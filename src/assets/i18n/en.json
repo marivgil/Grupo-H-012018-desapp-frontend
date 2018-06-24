@@ -27,7 +27,8 @@
     "Posts": {
         "MainTitleTxt": " All Posts",
         "AllCategoriesTxt": "All categories",
-        "AvailableDaysTxt": "Available on:",
+        "AvailableDayTxt": "Available in:",
+        "AvailableDaysTxt": "Available from:",
         "FilterBy":{
             "TODOS": "All categories",
             "MOTO": "Only Motorcycle",
@@ -100,5 +101,6 @@
     "WalkingTxt": "walking",
     "YoureTxt": "You're",
     "FromPickUpPlaceTxt": " from pick up place",
-    "EmailTxt": "E-mail"
+    "EmailTxt": "E-mail",
+    "To": "to"
 }

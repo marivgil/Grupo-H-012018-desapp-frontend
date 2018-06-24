@@ -37,7 +37,8 @@
       <div class="d-flex flex-row justify-content-around">
         <h1>{{'VehicleType.'+post.vehicle.type | translate}} {{"In" | translate}} {{post.location | uppercase}} 
           <br>
-          <small>{{'Posts.AvailableDaysTxt' | translate}} ({{post.sinceDate}})</small>
+          <small *ngIf="post.sinceDate===post.untilDate">{{'Posts.AvailableDayTxt' | translate}} {{post.sinceDate | formatterDate: _translate}}</small>
+          <small *ngIf="post.sinceDate!==post.untilDate">{{'Posts.AvailableDaysTxt' | translate}} {{post.sinceDate}} {{'To' | translate}} {{post.untilDate}}</small>
         </h1>
       </div>
        

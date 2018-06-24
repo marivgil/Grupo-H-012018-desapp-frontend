@@ -11,5 +11,5 @@ export class FooterComponent {
 
   changeLanguage(lang) {
     this.translate.use(lang);
-}
+    }
 }
