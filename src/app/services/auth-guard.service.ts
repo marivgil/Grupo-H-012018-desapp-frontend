@@ -8,20 +8,17 @@ import { log } from 'util';
 @Injectable()
 export class AuthGuardService implements CanActivate{
 
-  constructor(
-    private auth:AuthService,
-    private router: Router
-  ) { }
+  constructor( private auth: AuthService,
+               private router: Router) { }
 
-  canActivate( next:ActivatedRouteSnapshot, state: RouterStateSnapshot){
-    if(this.auth.isAuthenticated() ){
+  canActivate( next: ActivatedRouteSnapshot, state: RouterStateSnapshot){
+    if ( this.auth.isAuthenticated() ) {
       console.log("El guard paso!");
-      return true;      
-    }else{
+      return true;
+    } else {
       console.error("bloqueado por el guard");
       this.router.navigate(['home']);
-      return false
-      
+      return false;
     }
   }
 

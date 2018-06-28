@@ -46,6 +46,9 @@ import { ImagenPipe } from './pipes/imagen.pipe';
 import { LinkValidatorDirective } from './directives/link-validator.directive';
 import { FormatterDatePipe } from './pipes/formatter-date.pipe';
 import { ReservasService } from './services/reservas.service';
+import { AccountComponent } from './components/account/account.component';
+import { ReservationsComponent } from './components/reservations/reservations.component';
+import { RentalsComponent } from './components/rentals/rentals.component';
 
 
 
@@ -65,7 +68,10 @@ import { ReservasService } from './services/reservas.service';
     CreditComponent,
     ImagenPipe,
     LinkValidatorDirective,
-    FormatterDatePipe
+    FormatterDatePipe,
+    AccountComponent,
+    ReservationsComponent,
+    RentalsComponent
   ],
   imports: [
     BrowserModule,

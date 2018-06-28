@@ -8,6 +8,9 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { NewCarComponent } from './components/new-car/new-car.component';
 import { NewUserComponent } from './components/new-user/new-user.component';
 import { NewPostComponent } from './components/new-post/new-post.component';
+import { AccountComponent } from './components/account/account.component';
+import { ReservationsComponent } from './components/reservations/reservations.component';
+import { RentalsComponent } from './components/rentals/rentals.component';
 
 const APP_ROUTES: Routes = [
     { path: 'home', component: HomeComponent },
@@ -36,6 +39,22 @@ const APP_ROUTES: Routes = [
     {
         path: 'nuevoPost',
         component: NewPostComponent,
+        canActivate: [AuthGuardService]},
+    {
+        path: 'cuenta',
+        component: AccountComponent,
+        canActivate: [AuthGuardService]},
+    {
+        path: 'reservasParaConfirmar',
+        component: ReservationsComponent,
+        canActivate: [AuthGuardService]},
+    {
+        path: 'misReservas',
+        component: ReservationsComponent,
+        canActivate: [AuthGuardService]},
+    {
+        path: 'alquileresDeMisAutos',
+        component: RentalsComponent,
         canActivate: [AuthGuardService]},
     { path: '**', pathMatch: 'full', redirectTo: 'home' }
 ] ;

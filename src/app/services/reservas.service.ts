@@ -15,8 +15,55 @@ export class ReservasService {
                         .map((res: any) => {
                             return res.json();
                         });
+  }
 
-}
+  getAllPendingOwnerReservations(mail) {
+    let url = URL_SERVICIO + this.extensionUrl + "allOwnerPendingReservations/" + mail;
+    return this.http.get(url)
+            .map((res: any) => {
+                return res.json();
+    });
+  }
+
+  confirmReservation(id) {
+    let url = URL_SERVICIO + this.extensionUrl + "confirmedReservation/" + id;
+    return this.http.put(url, {} )
+                    .map((res) => {
+                      return res;
+                    });
+  }
+
+  rejectReservation(id) {
+    let url = URL_SERVICIO + this.extensionUrl + "rejectReservation/" + id;
+    return this.http.put(url, {} )
+                    .map((res) => {
+                      return res;
+                    });
+  }
+
+  getAllPendingTenantReservations(mail) {
+    let url = URL_SERVICIO + this.extensionUrl + "allTenantReservations/" + mail;
+    return this.http.get(url)
+            .map((res: any) => {
+                return res.json();
+    });
+  }
+
+  getAllOwnerRentals(mail) {
+    let url = URL_SERVICIO + this.extensionUrl + "allOwnerRentals/" + mail;
+    return this.http.get(url)
+                    .map((res: any) => {
+                      return res.json();
+                    });
+  }
+
+  getAllTenantRentals(mail) {
+    let url = URL_SERVICIO + this.extensionUrl + "allTenantRentals/" + mail;
+    return this.http.get(url)
+                    .map((res: any) => {
+                      return res.json();
+                    });
+  }
 
 
 

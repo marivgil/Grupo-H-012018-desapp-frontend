@@ -104,7 +104,7 @@ export class NewUserComponent implements OnInit {
         cuil: cuil,
         surname: this.toTitleCase(this.forma.value.surname)
       };
-
+      console.log(user);
 
       this._user.createUser(user).subscribe(res => {
         this._user.userBD = res;

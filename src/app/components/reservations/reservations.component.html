@@ -1,0 +1,41 @@
+<div class="d-flex flex-row justify-content-between main-container fadeIn animated">
+    <h1> Reservas de mis autos </h1>
+</div>
+<hr>
+
+    <div *ngIf="reservation">
+        
+        <div class="col-md-12" *ngFor="let r of reservation, let i=index">
+            <li class="list-group-item d-flex flex-row bd-highlight flex-fill">
+                
+                <img class="img-fluid img-preview" [src]="post?.vehicle.photos[0] | imagen" alt="Loading...">
+                
+                <div class="main-container d-flex flex-column">
+                    <h5 class="card-title">{{r.reservationSinceDate}} a {{r.reservationUntilDate}} </h5>    
+                    <p class="card-text"></p>
+                </div>
+                <div class="d-flex align-self-end" *ngIf="url=== '/reservasParaConfirmar'">
+                    <button class="btn btn-success" (click)="confirmReservation(r.id, i)">
+                            <i class="fas fa-check-circle"></i>
+                            Confirmar
+                        </button>
+                        <button class="btn btn-danger px-2" (click)="rejectReservation(r.id, i)"> 
+                            <i class="far fa-times-circle"></i>
+                            Rechazar
+                        </button>
+                    </div>
+                    <div class="d-flex align-self-end" *ngIf="(url=== '/misReservas')&& (r.statusReservation=== 'Rejected')">
+                        <i class="far fa-times-circle fa-5x" style="color:red"></i>   
+                    </div>  
+                    <div class="d-flex align-self-end" *ngIf="(url=== '/misReservas')&& (r.statusReservation=== 'Pending')">
+                        <i class="fas fa-clock fa-5x" style="color:yellow"></i>   
+                    </div>                               
+                </li>
+            </div>
+        </div>
+    
+    <!--bordercolor para poner los bordes de colores-->
+    
+    <div class="alert alert-light text-center" role="alert" *ngIf="reservation?.length === 0">
+           No se encontraron reservas.
+    </div>

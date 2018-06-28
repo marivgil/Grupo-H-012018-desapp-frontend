@@ -17,6 +17,15 @@
       align-items: center;
   }
 
+  .w100{
+      width:100%;
+  }
+
+  .big-button{
+      max-width: 10cm;
+      max-height: 10cm;
+  }
+
   .width{
       width: 200px;
   }
@@ -99,6 +108,10 @@
 
   html {
     height: 100%;
+  }
+
+  border{
+      border:yellow 5px solid;
   }
 
   body {
