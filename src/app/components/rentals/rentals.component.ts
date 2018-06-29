@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
 import { ReservasService } from '../../services/reservas.service';
 import { UserService } from '../../services/user.service';
 import { Router } from '@angular/router';
@@ -9,11 +10,9 @@ import { Router } from '@angular/router';
 })
 export class RentalsComponent implements OnInit {
 
-
-  score = 5;
-  comment = "Muy bueno todo";
   rentals;
   url;
+  forma;
 
   constructor(private _reservations: ReservasService,
               private _user: UserService,
@@ -38,6 +37,10 @@ export class RentalsComponent implements OnInit {
   } // fin constructor
 
   ngOnInit() {
+    this.forma = new FormGroup({
+      'score': new FormControl('3', Validators.required),
+      'comment': new FormControl('', Validators.required)
+    });
   }
 
   confirmCarPickUpOwner(id, idx) {
@@ -53,14 +56,20 @@ export class RentalsComponent implements OnInit {
   }
 
   confirmReturnCarOwner(id, idx) {
-    this._reservations.confirmReturnLikeOwner(id, this.score, this.comment).subscribe((res) => {
+     this._reservations.confirmReturnLikeOwner(id, this.forma.value.score, this.forma.value.comment).subscribe((res) => {
+       console.log(res);
+     });
+  }
+
+  confirmReturnCarTenant(id, idx) {
+    this._reservations.confirmReturnLikeTenant(id, this.forma.value.score, this.forma.value.comment). subscribe((res) => {
       console.log(res);
     });
   }
 
-  confirmReturnCarTenant(id, idx) {
-    this._reservations.confirmReturnLikeTenant(id, this.score, this.comment). subscribe((res) => {
-      console.log(res);
+  onRatingClicked($event) {
+    this.forma.patchValue({
+      'score': $event
     });
   }
 }

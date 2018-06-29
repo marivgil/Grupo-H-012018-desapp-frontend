@@ -1,30 +1,59 @@
-<div class= "main-container">
-<!--OWNER-->
-  <div *ngIf="url=== '/alquileresDeMisAutos'">
-    <div *ngFor="let r of rentals, let i=index">
-      <button *ngIf="(r.rentalState=== 'PendingRental') || (r.rentalState==='ConfirmedByTheTenant') " class="btn btn-success" (click)="confirmCarPickUpOwner(r.id,idx)">Confirmar retiro del automóvil</button>
-      <label *ngIf="r.rentalState=== 'ConfirmedByTheOwner'">Esperando confirmacion de retiro de cliente...</label>
-      <button *ngIf="(r.rentalState=== 'PendingReturnRental') || (r.rentalState==='ReturnConfirmedByTheTenant') " class="btn btn-success" (click)="confirmReturnCarOwner(r.id,idx)">Confirmar devolucion del automóvil</button>
-      <label *ngIf="r.rentalState=== 'ReturnConfirmedByTheOwner'">Esperando confirmacion de retorno y valuacion de cliente...</label>
-      <label *ngIf="r.rentalState=== 'FinalizedRental'">Finalizado</label>
-    </div>
+<div *ngFor="let r of rentals, let i=index">
+
+  <div class="card" style="width: 18rem;">
+    <img class="card-img-top" [src]="r.reservation.post.vehicle.photos[0]" alt="Loading...">
+    <div class="card-body">
+      <h5 class="card-title text-center" *ngIf="r.reservation.reservationSinceDate === r.reservation.reservationUntilDate ">{{r.reservation.reservationSinceDate}}</h5>
+      <h5 class="card-title text-center" *ngIf="r.reservation.reservationSinceDate !== r.reservation.reservationUntilDate ">{{r.reservation.reservationSinceDate}} a {{r.reservation.reservationUntilDate}} </h5>
+      <div class="card-text">
+        <!--Botonera!!!!!-->
+        <!--OWNER-->
+          <div class="" *ngIf="url=== '/alquileresDeMisAutos'">
+              <button *ngIf="(r.rentalState=== 'PendingRental') || (r.rentalState==='ConfirmedByTheTenant') " class="btn btn-success" (click)="confirmCarPickUpOwner(r.id,idx)">Confirmar retiro</button>
+              <label *ngIf="r.rentalState=== 'ConfirmedByTheOwner'">Esperando confirmacion de retiro de cliente...</label>
+              <div *ngIf="(r.rentalState=== 'PendingReturnRental') || (r.rentalState==='ReturnConfirmedByTheTenant') ">
+                  <form [formGroup]="forma" class="form" (ngSubmit)="confirmReturnCarOwner(r.id,idx)">
+                    <neutron-rating class="px-2 text-center" (ratingClicked)='onRatingClicked($event)' [rating]="3" [starColour]="'#FDD835'" [starSize]="2"></neutron-rating>
+                    <small class="form-text text-muted btn-right">*Obligatorio</small> 
+                    <label>Inserte un comentario:</label>
+                    <input formControlName="comment" class="form-control">
+                    <small class="form-text text-muted btn-right">*Obligatorio</small> 
+                    <button type="submit" class="btn btn-success">Confirmar devolucion</button>
+                  </form>
+              </div>
+              <label *ngIf="r.rentalState=== 'ReturnConfirmedByTheOwner'">Esperando confirmacion de retorno y valuacion de cliente...</label>
+              <label *ngIf="r.rentalState=== 'FinalizedRental'">Finalizado</label>
+          </div>
+          
+          <!--Tenant-->
+          <div class=""  *ngIf="url==='/alquileresDeOtrosAutos'">
+              <button *ngIf="(r.rentalState==='PendingRental') || (r.rentalState==='ConfirmedByTheOwner') " class="btn btn-success" (click)="confirmCarPickUpTenant(r.id,idx)">Confirmar retiro</button>
+              <label *ngIf="r.rentalState=== 'ConfirmedByTheTenant'">Esperando confirmacion de retiro del dueño...</label>
+              <div *ngIf="(r.rentalState=== 'PendingReturnRental') || (r.rentalState==='ReturnConfirmedByTheOwner') ">
+                  <form [formGroup]="forma" class="form" (ngSubmit)="confirmReturnCarTenant(r.id,idx)">
+                      <neutron-rating class="px-2 text-center" (ratingClicked)='onRatingClicked($event)' [rating]="3" [starColour]="'#FDD835'" [starSize]="2"></neutron-rating>
+                      <small class="form-text text-muted btn-right">*Obligatorio</small> 
+                      <label>Inserte un comentario:</label>
+                      <input formControlName="comment" class="form-control">
+                      <small class="form-text text-muted btn-right">*Obligatorio</small> 
+                      <button type="submit" class="btn btn-success">Confirmar devolucion</button>
+                    </form>
+
+              </div>
+              
+              <label *ngIf="r.rentalState=== 'ReturnConfirmedByTheTenant'">Esperando confirmacion de retorno y valuacion del dueño...</label>
+              <label *ngIf="r.rentalState=== 'FinalizedRental'">Finalizado</label>
+          </div>
+          <!--FIN BOTONERA-->
+        </div>
   </div>
-
-  <!--Tenant-->
-  <div *ngIf="url==='/alquileresDeOtrosAutos'">
-      <div *ngFor="let r of rentals, let i=index">
-        <button *ngIf="(r.rentalState==='PendingRental') || (r.rentalState==='ConfirmedByTheOwner') " class="btn btn-success" (click)="confirmCarPickUpTenant(r.id,idx)">Confirmar retiro del automóvil</button>
-        <label *ngIf="r.rentalState=== 'ConfirmedByTheTenant'">Esperando confirmacion de retiro del dueño...</label>
-        <button *ngIf="(r.rentalState=== 'PendingReturnRental') || (r.rentalState==='ReturnConfirmedByTheOwner') " class="btn btn-success" (click)="confirmReturnCarTenant(r.id,idx)">Confirmar devolucion del automóvil</button>
-        <label *ngIf="r.rentalState=== 'ReturnConfirmedByTheTenant'">Esperando confirmacion de retorno y valuacion del dueño...</label>
-        <label *ngIf="r.rentalState=== 'FinalizedRental'">Finalizado</label>
-      </div>
-    </div>
-
+</div>
+  
+  
+  
+  
+  
+  
   
 
-</div>
-
-
-
-
+  
