@@ -1,26 +1,42 @@
 <div class="d-flex flex-row justify-content-between main-container fadeIn animated">
-    <h1> Reservas de mis autos </h1>
+    <h1 *ngIf="url==='/reservasParaConfirmar'"> Reservas de mis autos </h1>
+    <h1 *ngIf="url==='/misReservas'"> Reservas que solicité </h1>
 </div>
 <hr>
-
-    <div *ngIf="reservation">
         
         <div class="col-md-12" *ngFor="let r of reservation, let i=index">
             
             <li class="list-group-item d-flex flex-column flex-md-row justify-content-around">
                 
                 
-                <div class="main-container d-flex flex-row">
+                <div class=" d-flex flex-row">
                     <div class="d-flex flex-column">
                         <label>
                             <i class="fas fa-calendar-alt"></i>
                             <strong>
-                                    Fecha: {{r.reservationSinceDate}}
+                                Fecha: {{r.reservationSinceDate}}
                             </strong> a 
                             <strong>
-                                    {{r.reservationUntilDate}}
+                                {{r.reservationUntilDate}}
                             </strong>  
-                        </label>    
+                        </label>   
+                        
+                        <label>
+                            <i class="fas fa-hand-holding-usd"></i>
+                            <strong>
+                                Costo total de alquiler: 
+                            </strong> 
+                                {{cost[i] | currency}}
+                        </label>  
+
+                        <label>
+                            <i class="fas fa-car"></i>
+                            <strong>
+                                Tipo de vehiculo:
+                            </strong> 
+                            {{r.post.vehicle.type}} para {{r.post.vehicle.capacity}}
+                        </label>
+                        
                         
                         <label *ngIf="(url=== '/misReservas')&& (r.statusReservation=== 'Rejected')">
                             <i class="far fa-times-circle" style="color:red"></i>
@@ -34,24 +50,32 @@
                             <strong>
                                 Status: 
                             </strong>Esperando aprobación del dueño.  
-                        </label>                              
+                        </label>    
+                        
+                        <label *ngIf="(url=== '/reservasParaConfirmar')">
+                            <i class="fas fa-star"></i>
+                            <strong>
+                                Reputacion de postulante: 
+                                <neutron-rating class="align-self-center"[rating]="scores[i]" [readOnly]="true" [starColour]="'#FDD835'" [starSize]="1"></neutron-rating>
+                            </strong>
+                        </label>  
+                        
 
                     </div>
                 </div>
-                <img class="img-fluid img-preview" [src]="post?.vehicle.photos[0] | imagen" alt="Loading...">
                 <div class="d-flex align-self-end" *ngIf="url=== '/reservasParaConfirmar'">
                     <button class="btn btn-success" (click)="confirmReservation(r.id, i)">
-                            <i class="fas fa-check-circle"></i>
-                            Confirmar
-                        </button>
-                        <button class="btn btn-danger px-2" (click)="rejectReservation(r.id, i)"> 
-                            <i class="far fa-times-circle"></i>
-                            Rechazar
-                        </button>
-                    </div>
+                        <i class="fas fa-check-circle"></i>
+                        Confirmar
+                    </button>
+                    <button class="btn btn-danger px-2" (click)="rejectReservation(r.id, i)"> 
+                        <i class="far fa-times-circle"></i>
+                        Rechazar
+                    </button>
+                </div>
+                <img class="img-fluid img-preview" [src]="r.post.vehicle.photos[0] | imagen" alt="Loading...">
                 </li>
             </div>
-        </div>
     
     <!--bordercolor para poner los bordes de colores-->
     
