@@ -9,18 +9,36 @@
             
             <li class="list-group-item d-flex flex-column flex-md-row justify-content-around">
                 
-                <img class="img-fluid img-preview" [src]="post?.vehicle.photos[0] | imagen" alt="Loading...">
                 
                 <div class="main-container d-flex flex-row">
-                    <div *ngIf="(url=== '/misReservas')&& (r.statusReservation=== 'Rejected')">
-                        <i class="far fa-times-circle fa-2x" style="color:red"></i>   
-                    </div>  
-                    <div *ngIf="(url=== '/misReservas')&& (r.statusReservation=== 'Pending')">
-                        <i class="fas fa-clock fa-2x" style="color:yellow"></i>   
-                    </div>                              
-                    <h5 class="card-title px-2">{{r.reservationSinceDate}} a {{r.reservationUntilDate}}  </h5>    
-                    <p class="card-text"></p>
+                    <div class="d-flex flex-column">
+                        <label>
+                            <i class="fas fa-calendar-alt"></i>
+                            <strong>
+                                    Fecha: {{r.reservationSinceDate}}
+                            </strong> a 
+                            <strong>
+                                    {{r.reservationUntilDate}}
+                            </strong>  
+                        </label>    
+                        
+                        <label *ngIf="(url=== '/misReservas')&& (r.statusReservation=== 'Rejected')">
+                            <i class="far fa-times-circle" style="color:red"></i>
+                            <strong>
+                                Status: 
+                            </strong>Rechazado 
+                        </label>  
+                        
+                        <label *ngIf="(url=== '/misReservas')&& (r.statusReservation=== 'Pending')">
+                            <i class="fas fa-clock" style="color:yellow"></i>
+                            <strong>
+                                Status: 
+                            </strong>Esperando aprobación del dueño.  
+                        </label>                              
+
+                    </div>
                 </div>
+                <img class="img-fluid img-preview" [src]="post?.vehicle.photos[0] | imagen" alt="Loading...">
                 <div class="d-flex align-self-end" *ngIf="url=== '/reservasParaConfirmar'">
                     <button class="btn btn-success" (click)="confirmReservation(r.id, i)">
                             <i class="fas fa-check-circle"></i>
