@@ -10,6 +10,20 @@
                 
                 
                 <div class=" d-flex flex-row">
+                        <label *ngIf="(url=== '/misReservas')&& (r.statusReservation=== 'Pending')">
+                            <span class="badge badge-warning">
+                                <i class="fas fa-clock" style="color:yellow"></i>
+                                Pendiente de aprobación
+                            </span>  
+                        </label>  
+
+                        <label *ngIf="(url=== '/misReservas')&& (r.statusReservation=== 'Rejected')">
+                            <span class="badge badge-danger">
+                                <i class="far fa-times-circle" style="color:red"></i>
+                                 Reserva rechazada
+                                </span>  
+                        </label>  
+
                     <div class="d-flex flex-column">
                         <label>
                             <i class="fas fa-calendar-alt"></i>
@@ -35,29 +49,14 @@
                                 Tipo de vehiculo:
                             </strong> 
                             {{r.post.vehicle.type}} para {{r.post.vehicle.capacity}}
-                        </label>
-                        
-                        
-                        <label *ngIf="(url=== '/misReservas')&& (r.statusReservation=== 'Rejected')">
-                            <i class="far fa-times-circle" style="color:red"></i>
-                            <strong>
-                                Status: 
-                            </strong>Rechazado 
-                        </label>  
-                        
-                        <label *ngIf="(url=== '/misReservas')&& (r.statusReservation=== 'Pending')">
-                            <i class="fas fa-clock" style="color:yellow"></i>
-                            <strong>
-                                Status: 
-                            </strong>Esperando aprobación del dueño.  
-                        </label>    
+                        </label>                        
                         
                         <label *ngIf="(url=== '/reservasParaConfirmar')">
                             <i class="fas fa-star"></i>
                             <strong>
                                 Reputacion de postulante: 
-                                <neutron-rating class="align-self-center"[rating]="scores[i]" [readOnly]="true" [starColour]="'#FDD835'" [starSize]="1"></neutron-rating>
                             </strong>
+                            <span class="badge badge-warning">{{scores[i]}}<i class="fas fa-star"></i> </span>
                         </label>  
                         
 
