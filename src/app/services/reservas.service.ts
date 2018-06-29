@@ -65,6 +65,36 @@ export class ReservasService {
                     });
   }
 
+  confirmRentalLikeOwner(idRental) {
+    let url = URL_SERVICIO + this.extensionUrl + "confirmedRentalByOwner/" + idRental;
+    return this.http.put(url, {})
+                    .map((res: any) => {
+                      return res;
+                    });
+  }
 
+  confirmRentalLikeTenant(idRental) {
+    let url = URL_SERVICIO + this.extensionUrl + "confirmedRentalByTenant/" + idRental;
+    return this.http.put(url, {})
+                    .map((res: any) => {
+                      return res;
+                    });
+  }
+
+  confirmReturnLikeTenant(idRental, score, comment) {
+    let url = URL_SERVICIO + this.extensionUrl + "confirmedReturnByTenant/" + idRental + "/" + score + "/" + comment;
+    return this.http.put(url, {})
+                    .map((res) => {
+                      return res;
+                    });
+  }
+
+  confirmReturnLikeOwner(idRental, score, comment) {
+    let url = URL_SERVICIO + this.extensionUrl + "confirmedReturnByOwner/" + idRental + "/" + score + "/" + comment;
+    return this.http.put(url, {})
+                    .map((res) => {
+                      return res;
+                    });
+  }
 
 }

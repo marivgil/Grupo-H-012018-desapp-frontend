@@ -56,6 +56,10 @@ const APP_ROUTES: Routes = [
         path: 'alquileresDeMisAutos',
         component: RentalsComponent,
         canActivate: [AuthGuardService]},
+    {
+        path: 'alquileresDeOtrosAutos',
+        component: RentalsComponent,
+        canActivate: [AuthGuardService]},
     { path: '**', pathMatch: 'full', redirectTo: 'home' }
 ] ;
 

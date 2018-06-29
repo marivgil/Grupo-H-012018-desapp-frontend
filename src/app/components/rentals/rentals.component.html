@@ -1,3 +1,30 @@
-<p>
-  rentals works!
-</p>
+<div class= "main-container">
+<!--OWNER-->
+  <div *ngIf="url=== '/alquileresDeMisAutos'">
+    <div *ngFor="let r of rentals, let i=index">
+      <button *ngIf="(r.rentalState=== 'PendingRental') || (r.rentalState==='ConfirmedByTheTenant') " class="btn btn-success" (click)="confirmCarPickUpOwner(r.id,idx)">Confirmar retiro del automóvil</button>
+      <label *ngIf="r.rentalState=== 'ConfirmedByTheOwner'">Esperando confirmacion de retiro de cliente...</label>
+      <button *ngIf="(r.rentalState=== 'PendingReturnRental') || (r.rentalState==='ReturnConfirmedByTheTenant') " class="btn btn-success" (click)="confirmReturnCarOwner(r.id,idx)">Confirmar devolucion del automóvil</button>
+      <label *ngIf="r.rentalState=== 'ReturnConfirmedByTheOwner'">Esperando confirmacion de retorno y valuacion de cliente...</label>
+      <label *ngIf="r.rentalState=== 'FinalizedRental'">Finalizado</label>
+    </div>
+  </div>
+
+  <!--Tenant-->
+  <div *ngIf="url==='/alquileresDeOtrosAutos'">
+      <div *ngFor="let r of rentals, let i=index">
+        <button *ngIf="(r.rentalState==='PendingRental') || (r.rentalState==='ConfirmedByTheOwner') " class="btn btn-success" (click)="confirmCarPickUpTenant(r.id,idx)">Confirmar retiro del automóvil</button>
+        <label *ngIf="r.rentalState=== 'ConfirmedByTheTenant'">Esperando confirmacion de retiro del dueño...</label>
+        <button *ngIf="(r.rentalState=== 'PendingReturnRental') || (r.rentalState==='ReturnConfirmedByTheOwner') " class="btn btn-success" (click)="confirmReturnCarTenant(r.id,idx)">Confirmar devolucion del automóvil</button>
+        <label *ngIf="r.rentalState=== 'ReturnConfirmedByTheTenant'">Esperando confirmacion de retorno y valuacion del dueño...</label>
+        <label *ngIf="r.rentalState=== 'FinalizedRental'">Finalizado</label>
+      </div>
+    </div>
+
+  
+
+</div>
+
+
+
+

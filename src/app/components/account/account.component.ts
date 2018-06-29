@@ -24,4 +24,8 @@ export class AccountComponent implements OnInit {
   goToRentalsLikeOwner() {
     this._router.navigate(['/alquileresDeMisAutos']);
   }
+
+  goToRentalsLikeTenant() {
+    this._router.navigate(['/alquileresDeOtrosAutos']);
+  }
 }
