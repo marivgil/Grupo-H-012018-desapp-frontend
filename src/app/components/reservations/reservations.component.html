@@ -2,78 +2,78 @@
     <h1 *ngIf="url==='/reservasParaConfirmar'"> Reservas de mis autos </h1>
     <h1 *ngIf="url==='/misReservas'"> Reservas que solicité </h1>
 </div>
-<hr>
+    <hr>
         
-        <div class="col-md-12" *ngFor="let r of reservation, let i=index">
+    <div class="col-md-12" *ngFor="let r of reservation, let i=index">
             
-            <li class="list-group-item d-flex flex-column flex-md-row justify-content-around">
+        <li class="list-group-item d-flex flex-row justify-content-around">
                 
                 
-                <div class=" d-flex flex-row">
-                        <label *ngIf="(url=== '/misReservas')&& (r.statusReservation=== 'Pending')">
-                            <span class="badge badge-warning">
-                                <i class="fas fa-clock" style="color:yellow"></i>
-                                Pendiente de aprobación
-                            </span>  
-                        </label>  
+            <label class="d-flex " *ngIf="(url=== '/misReservas')&& (r.statusReservation=== 'Pending')">
+                <span class="align-self-start badge badge-warning">
+                    <i class="fas fa-clock"></i>
+                    Pendiente de aprobación
+                </span>  
+            </label>  
 
-                        <label *ngIf="(url=== '/misReservas')&& (r.statusReservation=== 'Rejected')">
-                            <span class="badge badge-danger">
-                                <i class="far fa-times-circle" style="color:red"></i>
-                                 Reserva rechazada
-                                </span>  
-                        </label>  
-
-                    <div class="d-flex flex-column">
-                        <label>
-                            <i class="fas fa-calendar-alt"></i>
-                            <strong>
-                                Fecha: {{r.reservationSinceDate}}
-                            </strong> a 
-                            <strong>
-                                {{r.reservationUntilDate}}
-                            </strong>  
-                        </label>   
-                        
-                        <label>
-                            <i class="fas fa-hand-holding-usd"></i>
-                            <strong>
-                                Costo total de alquiler: 
-                            </strong> 
-                                {{cost[i] | currency}}
-                        </label>  
-
-                        <label>
-                            <i class="fas fa-car"></i>
-                            <strong>
-                                Tipo de vehiculo:
-                            </strong> 
-                            {{r.post.vehicle.type}} para {{r.post.vehicle.capacity}}
-                        </label>                        
-                        
-                        <label *ngIf="(url=== '/reservasParaConfirmar')">
-                            <i class="fas fa-star"></i>
-                            <strong>
-                                Reputacion de postulante: 
-                            </strong>
-                            <span class="badge badge-warning">{{scores[i]}}<i class="fas fa-star"></i> </span>
-                        </label>  
-                        
-
+                <span *ngIf="(url=== '/misReservas')&& (r.statusReservation=== 'Rejected')" class="mb-auto badge badge-danger">
+                    <i class="far fa-times-circle" style="color:red"></i>
+                    Reserva rechazada
+                </span> 
+        
+                <div class="d-flex">
+                        <img class="img-fluid img-preview" [src]="r.post.vehicle.photos[0] | imagen" alt="Loading...">
+                    </div>
+                    
+            <div class="justify-content-around d-flex flex-row">
+    
+                        <div class="d-flex flex-column">
+                            <label>
+                                <i class="fas fa-calendar-alt"></i>
+                                <strong>
+                                    Fecha: {{r.reservationSinceDate}}
+                                </strong> a 
+                                <strong>
+                                    {{r.reservationUntilDate}}
+                                </strong>  
+                            </label>   
+                            
+                            <label>
+                                <i class="fas fa-hand-holding-usd"></i>
+                                <strong>
+                                    Costo total de alquiler: 
+                                </strong> 
+                                    {{cost[i] | currency}}
+                            </label>  
+    
+                            <label>
+                                <i class="fas fa-car"></i>
+                                <strong>
+                                    Tipo de vehiculo:
+                                </strong> 
+                                {{r.post.vehicle.type}} para {{r.post.vehicle.capacity}}
+                            </label>                        
+                            
+                            <label *ngIf="(url=== '/reservasParaConfirmar')">
+                                <i class="fas fa-star"></i>
+                                <strong>
+                                    Reputacion de postulante: 
+                                </strong>
+                                <span class="badge badge-warning">{{scores[i]}}<i class="fas fa-star"></i> </span>
+                            </label>  
+                        </div>
+                    <div class="d-flex align-self-end" *ngIf="url=== '/reservasParaConfirmar'">
+                        <button class="btn btn-success" (click)="confirmReservation(r.id, i)">
+                            <i class="fas fa-check-circle"></i>
+                            Confirmar
+                        </button>
+                        <button class="btn btn-danger px-2" (click)="rejectReservation(r.id, i)"> 
+                            <i class="far fa-times-circle"></i>
+                            Rechazar
+                        </button>
                     </div>
                 </div>
-                <div class="d-flex align-self-end" *ngIf="url=== '/reservasParaConfirmar'">
-                    <button class="btn btn-success" (click)="confirmReservation(r.id, i)">
-                        <i class="fas fa-check-circle"></i>
-                        Confirmar
-                    </button>
-                    <button class="btn btn-danger px-2" (click)="rejectReservation(r.id, i)"> 
-                        <i class="far fa-times-circle"></i>
-                        Rechazar
-                    </button>
-                </div>
-                <img class="img-fluid img-preview" [src]="r.post.vehicle.photos[0] | imagen" alt="Loading...">
-                </li>
+            </li>
             </div>
     
     <!--bordercolor para poner los bordes de colores-->

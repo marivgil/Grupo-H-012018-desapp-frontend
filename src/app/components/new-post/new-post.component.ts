@@ -131,9 +131,11 @@ myDateRangePickerOptions: IMyDrpOptions = {
     }
 
   post() {
-    let beginMonth = this.forma.value.dateRange.beginDate.month;
 
+    let beginMonth = this.forma.value.dateRange.beginDate.month;
     let endMonth = this.forma.value.dateRange.endDate.month;
+    let beginDay = this.forma.value.dateRange.beginDate.day;
+    let endDay = this.forma.value.dateRange.beginDate.day;
 
     if (beginMonth < 10 ) {
       beginMonth = "0".concat(this.forma.value.dateRange.beginDate.month);
@@ -143,12 +145,18 @@ myDateRangePickerOptions: IMyDrpOptions = {
       endMonth = "0".concat(this.forma.value.dateRange.endDate.month);
     }
 
+    if (beginDay < 10 ) {
+      beginDay = "0".concat(this.forma.value.dateRange.beginDate.day);
+    }
+
+    if (endDay < 10 ) {
+      endDay = "0".concat(this.forma.value.dateRange.endDate.day);
+    }
+
     let sinceDate: string = this.forma.value.dateRange.beginDate.year + "-" +
-                    beginMonth + "-" +
-                    this.forma.value.dateRange.beginDate.day;
+                    beginMonth + "-" + beginDay;
     let untilDate: string = this.forma.value.dateRange.endDate.year + "-" +
-                    endMonth + "-" +
-                    this.forma.value.dateRange.endDate.day;
+                    endMonth + "-" + endDay;
     let costPerDay: number = this.forma.value.costPerDay;
     let vehicle: number = this._postService.postCar.id;
     let phone: number = this.forma.value.phone;
@@ -173,6 +181,7 @@ myDateRangePickerOptions: IMyDrpOptions = {
       "ownerUser": ownerUser,
       "location": "Palermo"
   };
+console.log(post);
 
       this._postService.createPost(post).subscribe(res => {
         this._router.navigate(['post', res.id]);

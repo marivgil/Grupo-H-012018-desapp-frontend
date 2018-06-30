@@ -10,7 +10,7 @@
         
         <div class="col-md-2 margin-top-20 px-0">
             <div class="card center container-fluid" style="width: 18rem;">
-                <img class="card-img-top" [src]="vehicle.photos[0]" alt="Card image cap">
+                <img class="card-img-top" [src]="vehicle.photos[0] | imagen" alt="Card image cap">
                 <div class="card-body">
                     <h5 class="card-title">{{'VehicleType.'+vehicle.type| translate}} {{'For'| translate}} {{vehicle.capacity}} </h5>
                     <p class="card-text">{{vehicle.description}}</p>
