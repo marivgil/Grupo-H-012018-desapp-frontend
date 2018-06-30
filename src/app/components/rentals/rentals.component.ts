@@ -3,6 +3,9 @@ import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
 import { ReservasService } from '../../services/reservas.service';
 import { UserService } from '../../services/user.service';
 import { Router } from '@angular/router';
+import * as moment from 'moment';
+
+declare var $;
 
 @Component({
   selector: 'app-rentals',
@@ -10,30 +13,18 @@ import { Router } from '@angular/router';
 })
 export class RentalsComponent implements OnInit {
 
+  usuario;
   rentals;
   url;
   forma;
+  reservationModal;
+  cost;
 
   constructor(private _reservations: ReservasService,
               private _user: UserService,
               private router: Router) {
     this.url = this.router.routerState.snapshot.url;
-
-    switch (this.url) {
-      case("/alquileresDeMisAutos"):
-                              this._reservations.getAllOwnerRentals(this._user.userProfile.email)
-                                                .subscribe((res) => {
-                                                            console.log(res);
-                                                            this.rentals = res;
-                              }); break;
-
-      case("/alquileresDeOtrosAutos"):
-                              this._reservations.getAllTenantRentals(this._user.userProfile.email)
-                                                .subscribe((res) => {
-                                                            console.log(res);
-                                                            this.rentals = res;
-                                                });
-    } // fin switch
+    this.cargarDatos();
   } // fin constructor
 
   ngOnInit() {
@@ -43,27 +34,55 @@ export class RentalsComponent implements OnInit {
     });
   }
 
+  cargarDatos() {
+    switch (this.url) {
+      case("/alquileresDeMisAutos"):
+                              this._reservations.getAllOwnerRentals(this._user.userProfile.email)
+                                                .subscribe((res) => {
+                                                            console.log(res);
+                                                            this.rentals = res;
+                                                            this.calculateCost(res);
+                              }); break;
+
+      case("/alquileresDeOtrosAutos"):
+                              this._reservations.getAllTenantRentals(this._user.userProfile.email)
+                                                .subscribe((res) => {
+                                                            console.log(res);
+                                                            this.rentals = res;
+                                                            this.calculateCost(res);
+                                                });
+    } // fin switch
+  }
+
+  calculateCost(res) {
+    this.cost = res.map(function(x) {
+      let fecha1 = moment(x.reservation.post.sinceDate);
+      let fecha2 = moment (x.reservation.post.untilDate);
+      return ((fecha2.diff(fecha1, 'days')) + 1) * x.reservation.post.costPerDay;
+     });
+  }
+
   confirmCarPickUpOwner(id, idx) {
     this._reservations.confirmRentalLikeOwner(id).subscribe((res) => {
-      console.log(res);
+      this.cargarDatos();
     });
   }
 
   confirmCarPickUpTenant(id, idx) {
     this._reservations.confirmRentalLikeTenant(id).subscribe((res) => {
-      console.log(res);
+      this.cargarDatos();
     });
   }
 
   confirmReturnCarOwner(id, idx) {
      this._reservations.confirmReturnLikeOwner(id, this.forma.value.score, this.forma.value.comment).subscribe((res) => {
-       console.log(res);
+       this.cargarDatos();
      });
   }
 
   confirmReturnCarTenant(id, idx) {
     this._reservations.confirmReturnLikeTenant(id, this.forma.value.score, this.forma.value.comment). subscribe((res) => {
-      console.log(res);
+      this.cargarDatos();
     });
   }
 
@@ -71,5 +90,22 @@ export class RentalsComponent implements OnInit {
     this.forma.patchValue({
       'score': $event
     });
+  }
+
+
+  verDatosDuenio( r ) {
+    this._user.getUser(r.reservation.owner).subscribe((res) => {
+      console.log(res.json());
+      this.reservationModal = r ;
+      this.usuario = res.json();
+      $('#personalData').modal('show');
+    });
+  }
+
+  verDatosCliente( r ) {
+    console.log("pase por aca");
+    this.reservationModal = r;
+    this.usuario = r.reservation.tenantUser;
+    $('#personalData').modal('show');
   }
 }

@@ -78,6 +78,7 @@ export class AuthService {
     localStorage.setItem('expires_at', expiresAt);
     this.getProfile((err , res) => {
       this._userService.userProfile = res;
+      localStorage.setItem('email', res.email);
     });
   }
 
@@ -86,6 +87,7 @@ export class AuthService {
     localStorage.removeItem('access_token');
     localStorage.removeItem('id_token');
     localStorage.removeItem('expires_at');
+    localStorage.removeItem('email');
     // Go back to the home route
     this.router.navigate(['/']);
   }
