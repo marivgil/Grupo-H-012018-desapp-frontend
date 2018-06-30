@@ -33,7 +33,6 @@ export class ReservationsComponent implements OnInit {
                                               this.calculateCost(res);
                                               this.calculateScores(res);
                                               console.log(this.scores);
-                                              
                                               console.log(res);
                                               });
                                           break;
