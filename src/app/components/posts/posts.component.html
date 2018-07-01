@@ -1,5 +1,5 @@
 <div class="main-container">
-        <div class=" d-flex flex-column flex-md-row justify-content-sm-between flex-xl-nowrap">
+        <div class=" d-flex flex-column flex-md-row justify-content-sm-between justify-content-around flex-xl-nowrap">
             <h1>{{'Posts.MainTitleTxt'| translate}} - <small><small>{{'Posts.FilterBy.'+ forma.value.type|translate}}</small></small>
             </h1>
             <div [formGroup]="forma" class=" mb-3 width d-flex flex-column py-2">
@@ -60,8 +60,7 @@
                         [longitude]="lng"
                         [zoom]="zoom"
                         [disableDefaultUI]=false
-                        [zoomControl]=true
-                        (mapClick)= "mapClicked($event)">
+                        [zoomControl]=true>
               
                             <agm-marker 
                             *ngFor= "let p of posts; let i= index"
