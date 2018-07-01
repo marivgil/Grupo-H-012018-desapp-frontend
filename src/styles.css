@@ -78,6 +78,11 @@
       margin-top: 40px;
       margin-left: 20px;
   }
+
+  .margins{
+      margin-bottom: 30px;
+      margin-right: 20px;
+  }
   
   .bigger-bold {
       font-size: 20px;

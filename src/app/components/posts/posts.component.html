@@ -50,7 +50,11 @@
 <div id="mapModal" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
-                <div class="map">
+                <div class=" main-container d-flex flex-column flex-md-row justify-content-sm-between flex-xl-nowrap">
+                        <h3>Busqueda por Mapa</h3>
+                        <hr>
+                </div>
+                <div class="main-container margins map">
                         <agm-map 
                         [latitude]="lat" 
                         [longitude]="lng"
