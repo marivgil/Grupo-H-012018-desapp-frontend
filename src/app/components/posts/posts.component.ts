@@ -24,7 +24,7 @@ export class PostsComponent implements OnInit {
   lng: number = -58.381592;
   // Markers
   markers: Marker[] = [];
-  
+
   // Geolocalizacion
   options = {
     enableHighAccuracy: true,

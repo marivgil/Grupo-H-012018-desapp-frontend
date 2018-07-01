@@ -47,19 +47,56 @@
   
   
   <div class= "d-flex justify-content-around flex-column flex-lg-row animated fadeIn fast">
-                
-    <div class="d-flex justify-content-center">
-      <carousel-component [mode]="'horizontal'" [autoPlay]="true" #topCarousel >
-        <div class="item-carousel" *ngFor="let p of post.vehicle.photos"><img [src]="p"></div>
-      </carousel-component>
-    </div>
+    <div class="d-flex flex-column">
   
-  
-    <div class="flex-column d-flex py-4 align-self-center">
-      <h3>{{'VehicleType.'+post.vehicle.type | translate}} {{'In' | translate}} {{post.location | uppercase}} <small>{{post.costPerDay | currency}} {{'PerDayTxt'| translate}}</small></h3>
-      <p>
+      <div class="d-flex justify-content-center">
+        <carousel-component [mode]="'horizontal'" [autoPlay]="true" #topCarousel >
+          <div class="item-carousel" *ngFor="let p of post.vehicle.photos"><img [src]="p"></div>
+        </carousel-component>
+      </div>
+    
+      <div class="d-flex flex-row">
+        <h3 class="px-2 align-self-center">
+          {{'VehicleType.'+post.vehicle.type | translate}} {{'In' | translate}} {{post.location | uppercase}}  
+        </h3>
+        <span class=" px-2 badge badge-warning align-self-center">
+          {{user.reputation}}
+          <i class="fas fa-star"></i>  
+        </span>
+      </div>
+      
+      <div class="align-self-center">
+        <i class="fas fa-hand-holding-usd"></i>
+        {{post.costPerDay | currency}} {{'PerDayTxt'| translate}}
+      </div>
+     
+      <p class="py-2">
         {{post.vehicle.description}}
       </p>
+    </div>
+    
+    <div class="d-flex flex-column flex-fill px-4">
+      
+      <label><strong>Direccion de retorno: </strong></label>
+      <div class="map px-2 py-2 postmap justify-content-center align-self-center">
+          <agm-map 
+          [latitude]="post.returnCoords.lat" 
+          [longitude]="post.returnCoords.lng"
+          [zoom]="zoom"
+          [disableDefaultUI]=false
+          [zoomControl]=true>
+
+              <agm-marker 
+              [latitude]="post.returnCoords.lat" 
+              [longitude]="post.returnCoords.lng"
+              markerDraggable=false
+              >
+            <agm-info-window>
+              <strong>Direccion de retorno</strong>
+            </agm-info-window>
+            </agm-marker>
+          </agm-map>
+      </div>      
       <button (click)= "reservar(post.id)" class="btn btn-success btn-block">{{'ReserveButton' | translate}}</button>
     </div>
   

@@ -31,6 +31,7 @@ export class PostComponent implements OnInit {
   duration: string;
   distance: string;
   date = 20180629;
+  user;
 
   @ViewChild('topCarousel') topCarousel: CarouselComponent;
 
@@ -39,18 +40,22 @@ export class PostComponent implements OnInit {
               private _reservationService: ReservasService,
               private _authService: AuthService,
               private _userService: UserService,
-              private _translate: TranslateService,
               private _router: Router) {
 
       this.activatedRoute.params.subscribe( params => {
         // Se pone id porque es el nombre del parametro que esta en el routing ((/post/:id))!!!!!
         this._postsService.getPost(params['id']).subscribe(res => {
-          this.post = res.json();
-          this.lat = this.post.pickUpCoord.lat;
-          this.lng = this.post.pickUpCoord.lng;
-          let marker: Marker = {name: "Lugar de Retiro", lat: this.lat, lng: this.lng, draggable: false};
-          this.markers.push(marker);
-        });
+          console.log(res.json());
+          this._userService.getUser(res.json().ownerUser).subscribe(user => {
+            this.post = res.json();
+            this.user = user.json();
+            console.log(this.user);
+            this.lat = this.post.pickUpCoord.lat;
+            this.lng = this.post.pickUpCoord.lng;
+            let marker: Marker = {name: "Lugar de Retiro", lat: this.lat, lng: this.lng, draggable: false};
+            this.markers.push(marker);
+          });
+          });
       });
   }
 
