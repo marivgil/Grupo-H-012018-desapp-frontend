@@ -11,6 +11,9 @@ import { NewPostComponent } from './components/new-post/new-post.component';
 import { AccountComponent } from './components/account/account.component';
 import { ReservationsComponent } from './components/reservations/reservations.component';
 import { RentalsComponent } from './components/rentals/rentals.component';
+import { CarGuard } from './services/car.guard';
+import { PostGuard } from './services/post.guard';
+import { UserGuard } from './services/user.guard';
 
 const APP_ROUTES: Routes = [
     { path: 'home', component: HomeComponent },
@@ -31,7 +34,7 @@ const APP_ROUTES: Routes = [
     {
         path: 'editarAuto',
         component: NewCarComponent,
-        canActivate: [AuthGuardService]},
+        canActivate: [AuthGuardService, CarGuard]},
     {
         path: 'nuevoUsuario',
         component: NewUserComponent,
@@ -39,7 +42,7 @@ const APP_ROUTES: Routes = [
     {
         path: 'nuevoPost',
         component: NewPostComponent,
-        canActivate: [AuthGuardService]},
+        canActivate: [AuthGuardService, PostGuard]},
     {
         path: 'cuenta',
         component: AccountComponent,

@@ -27,7 +27,7 @@ export class ReservationsComponent implements OnInit {
 
     switch (this.url) {
       case "/reservasParaConfirmar" :
-                  this._reservations.getAllPendingOwnerReservations(this._user.userProfile.email)
+                  this._reservations.getAllPendingOwnerReservations(localStorage.getItem('email'))
                                           .subscribe((res) => {
                                               this.reservation = res;
                                               this.calculateCost(res);
@@ -37,7 +37,7 @@ export class ReservationsComponent implements OnInit {
                                               });
                                           break;
      case "/misReservas":
-                  this._reservations.getAllPendingTenantReservations(this._user.userProfile.email)
+                  this._reservations.getAllPendingTenantReservations(localStorage.getItem('email'))
                                           .subscribe((res) => {
                                               this.reservation = res;
                                               this.calculateCost(res);

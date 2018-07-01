@@ -1,3 +1,13 @@
+<div class="d-flex flex-row justify-content-between main-container fadeIn animated">
+  <h1 *ngIf="url==='/alquileresDeOtrosAutos'"> Alquileres que me aprobaron </h1>
+  <h1 *ngIf="url==='/alquileresDeMisAutos'"> Alquileres que aprobe </h1>
+</div>
+<hr>
+
+<div class="main-container alert alert-light text-center" role="alert" *ngIf="rentals?.length === 0">
+  No se encontraron alquileres.
+</div>
+
 <div *ngFor="let r of rentals, let i=index">
   
   <div class="card" style="width: 18rem;">
@@ -130,6 +140,8 @@
       </div>
     </div>
   </div>
+
+
   
   
   

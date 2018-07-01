@@ -49,6 +49,9 @@ import { ReservasService } from './services/reservas.service';
 import { AccountComponent } from './components/account/account.component';
 import { ReservationsComponent } from './components/reservations/reservations.component';
 import { RentalsComponent } from './components/rentals/rentals.component';
+import { CarGuard } from './services/car.guard';
+import { PostGuard } from './services/post.guard';
+import { UserGuard } from './services/user.guard';
 
 
 
@@ -90,9 +93,12 @@ import { RentalsComponent } from './components/rentals/rentals.component';
     NgxPaginationModule
   ],
   providers: [
+    AuthGuardService,
+    CarGuard,
+    PostGuard,
+    UserGuard,
     PostsService,
     AuthService,
-    AuthGuardService,
     VehicleService,
     ReservasService,
     UserService,

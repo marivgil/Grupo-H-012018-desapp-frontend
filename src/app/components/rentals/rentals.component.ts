@@ -37,7 +37,7 @@ export class RentalsComponent implements OnInit {
   cargarDatos() {
     switch (this.url) {
       case("/alquileresDeMisAutos"):
-                              this._reservations.getAllOwnerRentals(this._user.userProfile.email)
+                              this._reservations.getAllOwnerRentals(localStorage.getItem('email'))
                                                 .subscribe((res) => {
                                                             console.log(res);
                                                             this.rentals = res;
@@ -45,7 +45,7 @@ export class RentalsComponent implements OnInit {
                               }); break;
 
       case("/alquileresDeOtrosAutos"):
-                              this._reservations.getAllTenantRentals(this._user.userProfile.email)
+                              this._reservations.getAllTenantRentals(localStorage.getItem('email'))
                                                 .subscribe((res) => {
                                                             console.log(res);
                                                             this.rentals = res;

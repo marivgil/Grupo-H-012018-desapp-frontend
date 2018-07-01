@@ -50,7 +50,7 @@ export class AuthService {
       cb(err, profile);
     });
 
-    this._userService.userBD = this._userService.getUser;
+//    this._userService.userBD = this._userService.getUser;
 }
 
   public login(): void {
