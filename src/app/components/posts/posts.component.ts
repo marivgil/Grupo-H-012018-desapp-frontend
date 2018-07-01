@@ -24,45 +24,60 @@ export class PostsComponent implements OnInit {
   lng: number = -58.381592;
   // Markers
   markers: Marker[] = [];
-
+  
+  // Geolocalizacion
+  options = {
+    enableHighAccuracy: true,
+    maximumAge: 0
+  };
 
   constructor( private _postsService: PostsService,
-               private _router: Router) {
+    private _router: Router) {
 
+      navigator.geolocation.getCurrentPosition(this.success, this.error, this.options);
+    }
 
+    // Esto se ejecuta una vez que la pagina ya esta renderizada.
+    ngOnInit() {
+
+      this.obtenerTodosLosPost();
+
+      this.forma = new FormGroup({
+        'type': new FormControl("TODOS"),
+        'view': new FormControl("LIST")
+      });
+
+      this.forma.get('type').valueChanges.subscribe(
+        val => {
+          if (val === "TODOS") {
+            this.obtenerTodosLosPost();
+            return;
+          }
+          this.filtrarPorTipo(val);
+        }
+      );
+
+      this.forma.get('view').valueChanges.subscribe( val => {
+        if (val === 'MAP') {
+          $('#mapModal').modal('show');
+        }
+      });
+
+      $("#mapModal").on('hidden.bs.modal', () => {
+        this.forma.patchValue({
+          'view': "LIST"
+        });
+      });
+    }
+
+  private success = (pos) => {
+    let crd = pos.coords;
+    this.lat = crd.latitude;
+    this.lng = crd.longitude;
   }
 
-  // Esto se ejecuta una vez que la pagina ya esta renderizada.
-  ngOnInit() {
-
-    this.obtenerTodosLosPost();
-
-    this.forma = new FormGroup({
-      'type': new FormControl("TODOS"),
-      'view': new FormControl("LIST")
-    });
-
-    this.forma.get('type').valueChanges.subscribe(
-      val => {
-        if (val === "TODOS") {
-          this.obtenerTodosLosPost();
-          return;
-        }
-        this.filtrarPorTipo(val);
-      }
-    );
-
-    this.forma.get('view').valueChanges.subscribe( val => {
-      if (val === 'MAP') {
-        $('#mapModal').modal('show');
-      }
-    });
-
-    $("#mapModal").on('hidden.bs.modal', () => {
-      this.forma.patchValue({
-        'view': "LIST"
-      });
-});
+  private error(err) {
+    console.warn('ERROR(' + err.code + '): ' + err.message);
   }
 
   obtenerTodosLosPost() {
