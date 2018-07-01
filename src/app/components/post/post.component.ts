@@ -26,6 +26,7 @@ export class PostComponent implements OnInit {
   lng: number = -58.381592;
   // Markers
   markers: Marker[] = [];
+  draggable = false;
 
   duration: string;
   distance: string;

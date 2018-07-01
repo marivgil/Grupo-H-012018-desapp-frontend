@@ -21,6 +21,10 @@
       width:100%;
   }
 
+  .window{
+      max-width: 100px;
+  }
+
   .big-button{
       max-width: 10cm;
       max-height: 10cm;
