@@ -73,11 +73,11 @@
                 </div>
             </div>
                        
-            <button *ngIf="url==='/nuevoAuto'" type="submit"  class="btn btn-primary btn-right">
+            <button *ngIf="url==='/nuevoAuto'" [disabled] ="!forma.valid" type="submit"  class="btn btn-primary btn-right">
                     {{'NewCar.AddCar' | translate}}
             </button>
             
-            <button *ngIf="url==='/editarAuto'" type="submit" [disabled]="!forma.valid" class="btn btn-primary btn-right">
+            <button *ngIf="url==='/editarAuto'" [disabled] ="!forma.valid" type="submit" [disabled]="!forma.valid" class="btn btn-primary btn-right">
                 {{'NewCar.EditCar' | translate}}
             </button>
          </form>
