@@ -49,7 +49,7 @@ export class PostComponent implements OnInit {
           this._userService.getUser(res.json().ownerUser).subscribe(user => {
             this.post = res.json();
             this.user = user.json();
-            console.log(this.user);
+            console.log(this.post);
             this.lat = this.post.pickUpCoord.lat;
             this.lng = this.post.pickUpCoord.lng;
             let marker: Marker = {name: "Lugar de Retiro", lat: this.lat, lng: this.lng, draggable: false};

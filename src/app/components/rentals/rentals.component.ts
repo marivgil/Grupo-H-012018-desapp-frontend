@@ -19,6 +19,7 @@ export class RentalsComponent implements OnInit {
   forma;
   reservationModal;
   cost;
+  draggable = false;
 
   constructor(private _reservations: ReservasService,
               private _user: UserService,
@@ -95,7 +96,6 @@ export class RentalsComponent implements OnInit {
 
   verDatosDuenio( r ) {
     this._user.getUser(r.reservation.owner).subscribe((res) => {
-      console.log(res.json());
       this.reservationModal = r ;
       this.usuario = res.json();
       $('#personalData').modal('show');
@@ -103,7 +103,6 @@ export class RentalsComponent implements OnInit {
   }
 
   verDatosCliente( r ) {
-    console.log("pase por aca");
     this.reservationModal = r;
     this.usuario = r.reservation.tenantUser;
     $('#personalData').modal('show');

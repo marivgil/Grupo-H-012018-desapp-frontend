@@ -101,7 +101,7 @@ myDateRangePickerOptions: IMyDrpOptions = {
       draggable: false
      };
 
-   this.forma.controls['pickUpCoord'].patchValue({
+   this.forma.controls['returnCoord'].patchValue({
      lat: $event.coords.lat,
      lng: $event.coords.lng
    });
@@ -162,6 +162,8 @@ myDateRangePickerOptions: IMyDrpOptions = {
     let phone: number = this.forma.value.phone;
     let pickLng: number = this.forma.value.pickUpCoord.lng;
     let pickLat: number = this.forma.value.pickUpCoord.lat;
+    let retLat: number = this.forma.value.returnCoord.lat;
+    let retLng: number = this.forma.value.returnCoord.lng;
     let ownerUser: string = this._userService.userProfile.email;
 
     let post =  {
@@ -175,8 +177,8 @@ myDateRangePickerOptions: IMyDrpOptions = {
           "lat": pickLat
       },
       "returnCoords": {
-          "lng": pickLat,
-          "lat": pickLng
+          "lng": retLng,
+          "lat": retLat
       },
       "ownerUser": ownerUser,
       "location": "Palermo"

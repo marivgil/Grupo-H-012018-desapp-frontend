@@ -37,7 +37,7 @@
       <div class="d-flex flex-row justify-content-around">
         <h1>{{'VehicleType.'+post.vehicle.type | translate}} {{"In" | translate}} {{post.location | uppercase}} 
           <br>
-          <small *ngIf="post.sinceDate===post.untilDate">{{'Posts.AvailableDayTxt' | translate}} {{post.sinceDate | formatterDate: _translate}}</small>
+          <small *ngIf="post.sinceDate===post.untilDate">{{'Posts.AvailableDayTxt' | translate}} {{post.sinceDate}}</small>
           <small *ngIf="post.sinceDate!==post.untilDate">{{'Posts.AvailableDaysTxt' | translate}} {{post.sinceDate}} {{'To' | translate}} {{post.untilDate}}</small>
         </h1>
       </div>
@@ -46,15 +46,15 @@
     </div>
   
   
-  <div class= "d-flex justify-content-around flex-column flex-lg-row animated fadeIn fast">
-    <div class="d-flex flex-column">
+  <div class= "d-flex justify-content-around  flex-column flex-lg-row animated fadeIn fast">
+    <div class="d-flex flex-column main-container align-content-center justify-content-center">
   
-      <div class="d-flex justify-content-center">
+      <div class="d-flex justify-content-center py-2">
         <carousel-component [mode]="'horizontal'" [autoPlay]="true" #topCarousel >
           <div class="item-carousel" *ngFor="let p of post.vehicle.photos"><img [src]="p"></div>
         </carousel-component>
       </div>
-    
+      
       <div class="d-flex flex-row">
         <h3 class="px-2 align-self-center">
           {{'VehicleType.'+post.vehicle.type | translate}} {{'In' | translate}} {{post.location | uppercase}}  
@@ -69,7 +69,7 @@
         <i class="fas fa-hand-holding-usd"></i>
         {{post.costPerDay | currency}} {{'PerDayTxt'| translate}}
       </div>
-     
+      
       <p class="py-2">
         {{post.vehicle.description}}
       </p>
@@ -77,7 +77,9 @@
     
     <div class="d-flex flex-column flex-fill px-4">
       
-      <label><strong>Direccion de retorno: </strong></label>
+      <label class="d-flex align-self-center">
+          <i class="fas fa-map-marker-alt"></i>
+          <strong class="px-1"> Retorno: </strong></label>
       <div class="map px-2 py-2 postmap justify-content-center align-self-center">
           <agm-map 
           [latitude]="post.returnCoords.lat" 
@@ -89,7 +91,7 @@
               <agm-marker 
               [latitude]="post.returnCoords.lat" 
               [longitude]="post.returnCoords.lng"
-              markerDraggable=false
+              [markerDraggable]=draggable
               >
             <agm-info-window>
               <strong>Direccion de retorno</strong>
@@ -97,7 +99,9 @@
             </agm-marker>
           </agm-map>
       </div>      
-      <button (click)= "reservar(post.id)" class="btn btn-success btn-block">{{'ReserveButton' | translate}}</button>
+      <div class="align-self-end px-5 py-3">
+        <button (click)= "reservar(post.id)" class="btn btn-success align-self-end">{{'ReserveButton' | translate}}</button>
+      </div>
     </div>
   
   </div>
