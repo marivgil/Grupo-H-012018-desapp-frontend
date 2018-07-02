@@ -1,6 +1,6 @@
 <div class="d-flex flex-row justify-content-between main-container fadeIn animated">
-  <h1 *ngIf="url==='/alquileresDeOtrosAutos'"> Alquileres que me aprobaron </h1>
-  <h1 *ngIf="url==='/alquileresDeMisAutos'"> Alquileres que aprobe </h1>
+  <h1 *ngIf="url==='/cuenta/alquileresDeOtrosAutos'"> Alquileres que me aprobaron </h1>
+  <h1 *ngIf="url==='/cuenta/alquileresDeMisAutos'"> Alquileres que aprobe </h1>
 </div>
 <hr>
 
@@ -21,25 +21,25 @@
                   <i class="fas fa-check"></i>
                   Finalizado</span>
           </label>
-          <label class="d-flex justify-content-center" *ngIf="r.rentalState=== 'ConfirmedByTheOwner' && url=== '/alquileresDeMisAutos'">
+          <label class="d-flex justify-content-center" *ngIf="r.rentalState=== 'ConfirmedByTheOwner' && url=== '/cuenta/alquileresDeMisAutos'">
             <span class="badge badge-warning">
               <i class="fas fa-clock"></i>
               Esperando confirmacion de retiro de cliente...
             </span>
           </label>
-          <label class="d-flex justify-content-center" *ngIf="r.rentalState=== 'ReturnConfirmedByTheOwner'  && url=== '/alquileresDeMisAutos'">
+          <label class="d-flex justify-content-center" *ngIf="r.rentalState=== 'ReturnConfirmedByTheOwner'  && url=== '/cuenta/alquileresDeMisAutos'">
             <span class="badge badge-warning">
               <i class="fas fa-clock"></i>
               Esperando confirmacion de retorno de cliente...
             </span>
           </label>
-          <label class="d-flex justify-content-center" *ngIf="r.rentalState=== 'ConfirmedByTheTenant' && url==='/alquileresDeOtrosAutos'">
+          <label class="d-flex justify-content-center" *ngIf="r.rentalState=== 'ConfirmedByTheTenant' && url==='/cuenta/alquileresDeOtrosAutos'">
             <span class="badge badge-warning">
               <i class="fas fa-clock"></i>
               Esperando confirmacion de retiro del dueño...
             </span>
           </label>
-          <label class="d-flex justify-content-center" *ngIf="r.rentalState=== 'ReturnConfirmedByTheTenant' && url==='/alquileresDeOtrosAutos'">
+          <label class="d-flex justify-content-center" *ngIf="r.rentalState=== 'ReturnConfirmedByTheTenant' && url==='/cuenta/alquileresDeOtrosAutos'">
             <span class="badge badge-warning">
               <i class="fas fa-clock"></i>
               Esperando confirmacion de retorno del dueño...
@@ -48,11 +48,11 @@
           <!--Fin Badge de estado-->
         
           <!--Boton datos-->
-          <div *ngIf = "url==='/alquileresDeOtrosAutos'" class="d-flex align-content-end justify-content-end">
+          <div *ngIf = "url==='/cuenta/alquileresDeOtrosAutos'" class="d-flex align-content-end justify-content-end">
             <a class="card-link btn " (click)="verDatosDuenio(r)">
                 <i class="fas fa-search"></i> Ver datos dueño...</a>
             </div>
-          <div *ngIf = "url==='/alquileresDeMisAutos'" class="d-flex align-content-end justify-content-end">
+          <div *ngIf = "url==='/cuenta/alquileresDeMisAutos'" class="d-flex align-content-end justify-content-end">
             <a class="card-link btn" (click)="verDatosCliente(r)">
                 <i class="fas fa-search"></i> Ver datos cliente...</a>
           </div>
@@ -84,7 +84,7 @@
         <div class="card-text">
           <!--Botonera!!!!!-->
           <!--OWNER-->
-            <div class="d-flex d-flex align-content-center justify-content-center py-2" *ngIf="url=== '/alquileresDeMisAutos'">
+            <div class="d-flex d-flex align-content-center justify-content-center py-2" *ngIf="url=== '/cuenta/alquileresDeMisAutos'">
                 <button *ngIf="(r.rentalState=== 'PendingRental') || (r.rentalState==='ConfirmedByTheTenant') " class="btn btn-success" (click)="confirmCarPickUpOwner(r.id,idx)">Confirmar retiro</button>
                
                 <div *ngIf="(r.rentalState=== 'PendingReturnRental') || (r.rentalState==='ReturnConfirmedByTheTenant') ">
@@ -129,7 +129,7 @@
             </div>
             
             <!--Tenant-->
-            <div class="d-flex align-content-center justify-content-center py-2"  *ngIf="url==='/alquileresDeOtrosAutos'">
+            <div class="d-flex align-content-center justify-content-center py-2"  *ngIf="url==='/cuenta/alquileresDeOtrosAutos'">
                 <button *ngIf="(r.rentalState==='PendingRental') || (r.rentalState==='ConfirmedByTheOwner') " class="btn btn-success" (click)="confirmCarPickUpTenant(r.id,idx)">Confirmar retiro</button>
                 <div *ngIf="(r.rentalState=== 'PendingReturnRental') || (r.rentalState==='ReturnConfirmedByTheOwner') ">
                     <form [formGroup]="forma" class="form" (ngSubmit)="confirmReturnCarTenant(r.id,idx)">

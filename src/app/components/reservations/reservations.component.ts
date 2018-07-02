@@ -27,9 +27,10 @@ export class ReservationsComponent implements OnInit {
               private _user: UserService,
               private router: Router) {
     this.url = this.router.routerState.snapshot.url;
+    console.log(this.url);
 
     switch (this.url) {
-      case "/reservasParaConfirmar" :
+      case "/cuenta/reservasParaConfirmar" :
                   this._reservations.getAllPendingOwnerReservations(localStorage.getItem('email'))
                                           .subscribe((res) => {
                                               this.reservation = res;
@@ -39,7 +40,7 @@ export class ReservationsComponent implements OnInit {
                                               console.log(res);
                                               });
                                           break;
-     case "/misReservas":
+     case "/cuenta/misReservas":
                   this._reservations.getAllPendingTenantReservations(localStorage.getItem('email'))
                                           .subscribe((res) => {
                                               this.reservation = res;

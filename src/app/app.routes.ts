@@ -42,26 +42,6 @@ const APP_ROUTES: Routes = [
         path: 'nuevoPost',
         component: NewPostComponent,
         canActivate: [AuthGuardService, PostGuard]},
-    {
-        path: 'cuenta',
-        component: AccountComponent,
-        canActivate: [AuthGuardService]},
-    {
-        path: 'reservasParaConfirmar',
-        component: ReservationsComponent,
-        canActivate: [AuthGuardService]},
-    {
-        path: 'misReservas',
-        component: ReservationsComponent,
-        canActivate: [AuthGuardService]},
-    {
-        path: 'alquileresDeMisAutos',
-        component: RentalsComponent,
-        canActivate: [AuthGuardService]},
-    {
-        path: 'alquileresDeOtrosAutos',
-        component: RentalsComponent,
-        canActivate: [AuthGuardService]},
     { path: '**', pathMatch: 'full', redirectTo: 'home' }
 ] ;
 
