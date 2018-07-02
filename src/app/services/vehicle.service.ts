@@ -12,6 +12,7 @@ export class VehicleService {
 
   editedCar;
   indexEditedCar;
+  postCar;
 
   extensionUrl: string = 'desapp-grouph-backend/rest/servicesVehicle/';
 

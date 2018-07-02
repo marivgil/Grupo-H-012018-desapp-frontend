@@ -14,13 +14,22 @@ export class CreditComponent implements OnInit {
 
   forma: FormGroup;
 
-  constructor(private _user: UserService) { }
-
-  ngOnInit() {
-
+  constructor(private _user: UserService,
+              private _auth: AuthService) {
+    if (!this._user.userBD ) {
+      this._auth.getProfile((err, profile) =>  {
+        this.forma = new FormGroup({
+            'credit': new FormControl(this._user.userBD.account, Validators.required)
+        });
+      });
+    } else {
       this.forma = new FormGroup({
         'credit': new FormControl(this._user.userBD.account, Validators.required)
-      });
+    });
+    }
+  }
+
+    ngOnInit() {
   }
 
   addCredit( ) {

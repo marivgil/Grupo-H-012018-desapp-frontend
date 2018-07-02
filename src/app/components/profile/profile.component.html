@@ -1,4 +1,4 @@
-<div class="main-container  animated fadeIn fast" *ngIf="_user.userProfile">
+<div class="main-container  animated fadeIn fast" *ngIf="_user.userProfile && _user.userBD">
 
     <button type="button" class="btn btn-link btn-padding-right" (click)="editUser()">
         <i class="fas fa-paint-brush fa-lg" style="color:#DDDDDDDD"></i>
@@ -19,33 +19,57 @@
         <div class="col-md-6 py-2">
             <h3 class="text-center py-2">{{_user.userProfile.email}}</h3>
             <ul class="list-group">
-                <li class="list-group-item" *ngIf="!_user.userBD.status">
-                    <strong>{{"Profile.AccountStatusTxt"| translate}}</strong> {{ 'Profile.DisabledStatus' | translate}}
+                <li class="list-group-item " *ngIf="!_user.userBD.status">
+                        <i class="fas fa-user"></i>
+                    <strong class="px-2">{{"Profile.AccountStatusTxt"| translate}}</strong> {{ 'Profile.DisabledStatus' | translate}}
                     <i class="fas fa-times-circle fa-lg btn-right" style="color: #FF0000"></i>
                 </li>
                 <li class="list-group-item">
-                    <strong>{{'Profile.CreditTxt'| translate}}: </strong> {{ _user.userBD.account | currency}}
-                    <button type="button" class="btn btn-link btn-right"  (click)="addCredit()">
+                    <i class="fas fa-money-bill-alt"></i>
+                    <strong class="px-2">{{'Profile.CreditTxt'| translate}}: </strong> {{ _user.userBD.account | currency}}
+                    <button type="button" class="btn btn-link btn-right p-0"  (click)="addCredit()">
                             <i class="fas fa-plus-square fa-lg" style="color:blue"></i>
                     </button>
                 </li>
                 <li class="list-group-item">
-                    <strong>CUIL: </strong> {{ _user.userBD.cuil }}
+                        <i class="fas fa-id-card"></i>
+                    <strong class="px-2">CUIL: </strong> {{ _user.userBD.cuil }}
                 </li>
                 <li class="list-group-item">
-                    <strong>{{'Profile.AddressTxt' | translate}}: </strong> {{ _user.userBD.address }}
+                        <i class="fas fa-map-marker-alt"></i>
+                    <strong class="px-2">{{'Profile.AddressTxt' | translate}}: </strong> {{ _user.userBD.address }}
                 </li>
-                <li class="list-group-item">
-                    <strong>{{'Profile.ReputationTxt' | translate}}: </strong>{{_user.userBD.reputation}}
-                    <neutron-rating class="btn-right" [rating]="_user.userBD.reputation" [readOnly]="true" [starColour]="'#FDD835'" [starSize]="1"></neutron-rating>
+                <li class="list-group-item d-flex flex-row">
+                    <i class="fas fa-star"></i>
+                    <strong class="px-2">{{'Profile.ReputationTxt' | translate}}: </strong>
+                    <neutron-rating [rating]="_user.userBD.reputation" [readOnly]="true" [starColour]="'#FDD835'" [starSize]=""></neutron-rating>
                 </li>
                 <li class="list-group-item" *ngIf="_user.userBD.status">
-                    <strong>{{"Profile.AccountStatusTxt"| translate}}:</strong> {{ 'Profile.EnabledStatus' | translate}}
+                        <i class="fas fa-user"></i>
+                    <strong class="px-2">{{"Profile.AccountStatusTxt"| translate}}:</strong> {{ 'Profile.EnabledStatus' | translate}}
                     <i class="fas fa-check-circle fa-lg btn-right" style="color:#00FF00;"></i>
                 </li>
+                <div class="d-flex flex-row justify-content-end">
+                    <button class="btn btn-link btn-right d-flex flex-row" (click)="sendMonthlyReport()">
+                        Enviar reporte mensual
+                            <div class= "px-2" *ngIf="spin">
+                                <i class="fas fa-spinner fa-spin"></i>
+                            </div>
+                            <div class= "px-2" *ngIf="success">
+                                <i class="far fa-thumbs-up" ></i>
+                            </div> 
+                            <div class= "px-2" *ngIf="error">
+                                <i class="fas fa-exclamation" style="color:#FF0000"></i>
+                            </div>   
+                    </button>
+
+                </div>
+
             </ul>
         </div>
     </div>
+
+
 </div>
 
 

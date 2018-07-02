@@ -1,6 +1,7 @@
 {
     "HomeLink": "Home",
     "FindYourCarLink": "Find your ideal car",
+    "AccountButton": "My Account",
     "MyCarsLink": "My Cars",
     "EditCarLink": "Edit Car",
     "ChangeCarLink": "Change Car",
@@ -27,13 +28,15 @@
     "Posts": {
         "MainTitleTxt": " All Posts",
         "AllCategoriesTxt": "All categories",
-        "AvailableDaysTxt": "Available on:",
+        "AvailableDayTxt": "Available in:",
+        "AvailableDaysTxt": "Available from:",
         "FilterBy":{
             "TODOS": "All categories",
             "MOTO": "Only Motorcycle",
             "AUTO": "Only Cars",
             "CAMIONETA": "Only Vans"
-        }
+        },
+        "NoResultsTxt": "No results found for"
     },
     "Post": {
         "PlaceholderDistance": "Click on the map from where you go to know how far you are from your next car!"
@@ -99,5 +102,6 @@
     "WalkingTxt": "walking",
     "YoureTxt": "You're",
     "FromPickUpPlaceTxt": " from pick up place",
-    "EmailTxt": "E-mail"
+    "EmailTxt": "E-mail",
+    "To": "to"
 }

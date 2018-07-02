@@ -44,6 +44,13 @@ import { ImagenPipe } from './pipes/imagen.pipe';
 
 // Validadores
 import { LinkValidatorDirective } from './directives/link-validator.directive';
+import { FormatterDatePipe } from './pipes/formatter-date.pipe';
+import { ReservasService } from './services/reservas.service';
+import { AccountComponent } from './components/account/account.component';
+import { ReservationsComponent } from './components/reservations/reservations.component';
+import { RentalsComponent } from './components/rentals/rentals.component';
+import { CarGuard } from './services/car.guard';
+import { PostGuard } from './services/post.guard';
 
 
 
@@ -62,7 +69,11 @@ import { LinkValidatorDirective } from './directives/link-validator.directive';
     FooterComponent,
     CreditComponent,
     ImagenPipe,
-    LinkValidatorDirective
+    LinkValidatorDirective,
+    FormatterDatePipe,
+    AccountComponent,
+    ReservationsComponent,
+    RentalsComponent
   ],
   imports: [
     BrowserModule,
@@ -81,10 +92,13 @@ import { LinkValidatorDirective } from './directives/link-validator.directive';
     NgxPaginationModule
   ],
   providers: [
+    AuthGuardService,
+    CarGuard,
+    PostGuard,
     PostsService,
     AuthService,
-    AuthGuardService,
     VehicleService,
+    ReservasService,
     UserService,
     { provide: MissingTranslationHandler,
       useClass: MyMissingTranslationHandler}
