@@ -40,13 +40,7 @@
             <input formControlName="suffix" type="number" class="col-2 px-1 py-0 form-control" id="inputPassword4">
         </div>
 
-        <div *ngIf="( forma.controls['CUIL'].controls['prefix'].errors?.pattern ||
-                      forma.controls['CUIL'].controls['DNI'].errors?.pattern ||
-                      forma.controls['CUIL'].controls['suffix'].errors?.pattern)
-                         ||( 
-                         forma.controls['CUIL'].controls['prefix'].touched &&
-                         forma.controls['CUIL'].controls['DNI'].touched &&
-                         forma.controls['CUIL'].controls['suffix'].touched && forma.controls['CUIL'].invalid)"
+        <div *ngIf="(forma.get('CUIL').get('prefix').errors?.pattern || forma.get('CUIL').get('DNI').errors?.pattern ||  forma.get('CUIL').get('suffix').errors?.pattern)||( forma.get('CUIL').get('prefix').touched && forma.get('CUIL').get('DNI').touched && forma.get('CUIL').get('suffix').touched && forma.get('CUIL').invalid)"
               class="alert alert-danger my-2">
             El CUIL es invalido
         </div>
