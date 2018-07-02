@@ -37,7 +37,7 @@ export class RentalsComponent implements OnInit {
 
   cargarDatos() {
     switch (this.url) {
-      case("/alquileresDeMisAutos"):
+      case("/cuenta/alquileresDeMisAutos"):
                               this._reservations.getAllOwnerRentals(localStorage.getItem('email'))
                                                 .subscribe((res) => {
                                                             console.log(res);
@@ -45,7 +45,7 @@ export class RentalsComponent implements OnInit {
                                                             this.calculateCost(res);
                               }); break;
 
-      case("/alquileresDeOtrosAutos"):
+      case("/cuenta/alquileresDeOtrosAutos"):
                               this._reservations.getAllTenantRentals(localStorage.getItem('email'))
                                                 .subscribe((res) => {
                                                             console.log(res);

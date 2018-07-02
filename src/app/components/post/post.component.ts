@@ -72,7 +72,7 @@ export class PostComponent implements OnInit {
       this._reservationService.bookPost(id, this._userService.userProfile.email, this.post.sinceDate, this.post.untilDate)
                           .subscribe((res: any) => {
                             console.log(res);
-                            this._router.navigate(['/misReservas']);
+                            this._router.navigate(['/cuenta/misReservas']);
                           });
     } else {
       this._authService.login();
