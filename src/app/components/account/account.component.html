@@ -1,44 +1,30 @@
-<div class= "align-items-center all" >
 
-  <div class=" all d-flex flex-column justify-content-around flex-wrap">
-    
-    <!-- Tenant -->
-    <div class="d-flex flex-row justify-content-around align-items-stretch">
-      <button type="button" class="btn btn-link py-2 big-button btn-outline-secondary" style="color:#F781F3;" (click)="goToMyReservations()">
-        <div class=" d-flex flex-column justify-content-center align-self-center">
-          <i class="fab fa-algolia fa-5x align-self-center"></i> 
-          Mis reservas 
-        </div>
-      </button>
-      
-      <!-- Owner -->
-      <button type="button" class="btn btn-link px-2 big-button btn-outline-danger" style="color:#FE9A2E;" (click)="goToReservationsToBeConfirmed()">
-        <div class=" d-flex flex-column justify-content-center align-self-center">
-          <i class="fas fa-exclamation-circle fa-5x align-self-center"></i> 
-          Mis reservas a confirmar
-        </div>
-      </button>
-      
-    </div>
-  
-    <div class="d-flex flex-row justify-content-around align-items-stretch">
-      <!-- Tenent -->
-      <button type="button" class="btn btn-link px-2 big-button btn-outline-primary" style="color:#8181F7;" (click)= "goToRentalsLikeTenant()"> 
-        
-        <div class=" d-flex flex-column justify-content-center align-self-center">
-          <i class="fas fa-cart-arrow-down fa-5x align-self-center"></i>
-          Historial de autos que pedi en alquiler 
-        </div>
-      </button>
-      
-      <!-- Owner -->
-        <button type="button" class="btn btn-link px-2 btn-outline-success big-button" style="color:#58FA58" (click)= "goToRentalsLikeOwner()">
-          <div class=" d-flex flex-column justify-content-center align-self-center">
-            <i class="fas fa-history fa-5x align-self-center"></i> 
+
+
+
+
+<div class="d-flex flex-column flex-lg-row justify-content-between">
+    <ul class="list-group margin-top-40">
+        <li class="list-group-item btn text-left my-1" routerLink="/cuenta/misReservas" >
+            <i class="fab fa-algolia align-self-center"></i>
+            Mis reservas        
+        </li>
+        <li class="list-group-item btn text-left my-1" routerLink="/cuenta/reservasParaConfirmar">
+            <i class="fas fa-exclamation-circle align-self-center"></i> 
+            Mis reservas a confirmar
+        </li>
+        <li class="list-group-item btn text-left my-1" routerLink="/cuenta/alquileresDeMisAutos">
+            <i class="fas fa-history  align-self-center"></i> 
             Historial de alquileres de mis autos
-          </div> 
-        </button>
-      </div>
-  </div>
+        </li>
+        <li class="list-group-item btn text-left my-1" routerLink="/cuenta/alquileresDeOtrosAutos">
+            <i class="fas fa-cart-arrow-down align-self-center"></i>
+            Historial de autos que pedi en alquiler
+        </li>
+    </ul>
+    
+    <div class="main-container flex-fill">
+        <router-outlet></router-outlet>
+    
+    </div>
 </div>
-

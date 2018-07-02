@@ -1,7 +1,7 @@
 <div class=" main-container fadeIn animated">
-    <h1 *ngIf="url==='/reservasParaConfirmar'"> Reservas de mis autos </h1>
+    <h1 *ngIf="url==='/cuenta/reservasParaConfirmar'"> Reservas de mis autos </h1>
     
-    <div *ngIf="url==='/misReservas'" class=" d-flex flex-column flex-md-row justify-content-sm-between justify-content-around flex-xl-nowrap">
+    <div *ngIf="url==='/cuenta/misReservas'" class=" d-flex flex-column flex-md-row justify-content-sm-between justify-content-around flex-xl-nowrap">
         <div>
             <h1 > Reservas que solicité </h1>
         </div>
@@ -18,22 +18,22 @@
         
     <div class="col-md-12" *ngFor="let r of reservation, let i=index">
             
-        <li class="list-group-item d-flex flex-row justify-content-around">
+        <li class="list-group-item d-flex flex-column flex-lg-row justify-content-around">
                 
                 
-            <label class="d-flex " *ngIf="(url=== '/misReservas')&& (r.statusReservation=== 'Pending')">
+            <label class="d-flex " *ngIf="(url=== '/cuenta/misReservas')&& (r.statusReservation=== 'Pending')">
                 <span class="align-self-start badge badge-warning">
                     <i class="fas fa-clock"></i>
                     Pendiente de aprobación
                 </span>  
             </label>  
 
-                <span *ngIf="(url=== '/misReservas')&& (r.statusReservation=== 'Rejected')" class="mb-auto badge badge-danger">
+                <span *ngIf="(url=== '/cuenta/misReservas')&& (r.statusReservation=== 'Rejected')" class="mb-auto badge badge-danger">
                     <i class="far fa-times-circle" style="color:red"></i>
                     Reserva rechazada
                 </span> 
         
-                <div class="d-flex">
+                <div class="d-flex px-1">
                         <img class="img-fluid img-preview" [src]="r.post.vehicle.photos[0] | imagen" alt="Loading...">
                     </div>
                     
@@ -66,7 +66,7 @@
                                 {{r.post.vehicle.type}} para {{r.post.vehicle.capacity}}
                             </label>                        
                             
-                            <label *ngIf="(url=== '/reservasParaConfirmar')">
+                            <label *ngIf="(url=== '/cuenta/reservasParaConfirmar')">
                                 <i class="fas fa-star"></i>
                                 <strong>
                                     Reputacion de postulante: 
@@ -74,7 +74,7 @@
                                 <span class="badge badge-warning">{{scores[i]}}<i class="fas fa-star"></i> </span>
                             </label>  
                         </div>
-                    <div class="d-flex align-self-end" *ngIf="url=== '/reservasParaConfirmar'">
+                    <div class="d-flex align-self-end" *ngIf="url=== '/cuenta/reservasParaConfirmar'">
                         <button class="btn btn-success" (click)="confirmReservation(r.id, i)">
                             <i class="fas fa-check-circle"></i>
                             Confirmar

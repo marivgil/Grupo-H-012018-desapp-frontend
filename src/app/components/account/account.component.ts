@@ -14,7 +14,7 @@ export class AccountComponent implements OnInit {
   }
 
   goToReservationsToBeConfirmed() {
-    this._router.navigate(['/reservasParaConfirmar']);
+    this._router.navigate(['cuenta', 'reservasParaConfirmar']);
   }
 
   goToMyReservations() {
