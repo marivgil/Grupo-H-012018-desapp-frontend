@@ -6,7 +6,7 @@
 
 
 <div>
-    <form [formGroup]="forma" class="form" (ngSubmit)="registerMe()" novalidate="novalidate">
+    <form [formGroup]="forma" class="form" (ngSubmit)="registerMe()">
         <div class="form-row">
             <input formControlName="email" type="email" readonly class="form-control-plaintext bigger-bold text-center">
         </div>
@@ -15,10 +15,22 @@
             <label class= "col-md-3"for="inputPassword4">{{'NewUser.Name' | translate}}:</label>
             <input formControlName="name" [placeholder]="'NewUser.Name' | translate" type="text" class="form-control col-md-9" id="inputPassword4">
         </div>
+        <div *ngIf="( forma.controls['name'].errors?.required)
+                    && 
+                    forma.get('name').dirty" 
+              class="alert alert-danger my-2">
+            El nombre es requerido.
+        </div>
 
         <div class="form-row margin-top-20">
             <label class= "col-md-3" for="inputAddress2">{{'NewUser.LastName' | translate}}:</label>
             <input formControlName="surname" [placeholder]="'NewUser.LastName' | translate" type="text" class="form-control col-md-9" id="inputAddress2">
+        </div>
+        <div *ngIf="( forma.controls['surname'].errors?.required)
+                         && 
+                    forma.get('surname').dirty" 
+              class="alert alert-danger my-2">
+            El apellido es requerido.
         </div>
         
         <div class="form-row margin-top-20" formGroupName="CUIL">
@@ -26,6 +38,17 @@
             <input formControlName="prefix" type="number" class=" col-2 px-1 py-0 form-control" id="inputPassword4">
             <input formControlName="DNI" type="number" class="col-5 py-0 form-control" id="inputPassword4">
             <input formControlName="suffix" type="number" class="col-2 px-1 py-0 form-control" id="inputPassword4">
+        </div>
+
+        <div *ngIf="( forma.controls['CUIL'].controls['prefix'].errors?.pattern ||
+                      forma.controls['CUIL'].controls['DNI'].errors?.pattern ||
+                      forma.controls['CUIL'].controls['suffix'].errors?.pattern)
+                         ||( 
+                         forma.controls['CUIL'].controls['prefix'].touched &&
+                         forma.controls['CUIL'].controls['DNI'].touched &&
+                         forma.controls['CUIL'].controls['suffix'].touched && forma.controls['CUIL'].invalid)"
+              class="alert alert-danger my-2">
+            El CUIL es invalido
         </div>
 
         <div class="form-row margin-top-20">
@@ -45,7 +68,7 @@
         
         
 
-        <button type="submit" [disabled]="!forma.valid" class="btn btn-primary btn-right main-container">{{'SaveButton' | translate}}</button>
+        <button type="submit"  [disabled]="!forma.valid" class="btn btn-primary btn-right main-container">{{'SaveButton' | translate}}</button>
         <button type="button" class="btn btn-right main-container btn-secondary" (click)="closeModal()">{{ 'CloseButton' | translate}} </button>
     </form>
 </div>
