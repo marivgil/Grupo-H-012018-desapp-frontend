@@ -107,4 +107,8 @@ export class RentalsComponent implements OnInit {
     this.usuario = r.reservation.tenantUser;
     $('#personalData').modal('show');
   }
+
+  goBack() {
+    this.router.navigate(['account']);
+  }
 }

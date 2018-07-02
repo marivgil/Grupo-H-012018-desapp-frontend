@@ -1,6 +1,18 @@
-<div class="d-flex flex-row justify-content-between main-container fadeIn animated">
+<div class=" main-container fadeIn animated">
     <h1 *ngIf="url==='/reservasParaConfirmar'"> Reservas de mis autos </h1>
-    <h1 *ngIf="url==='/misReservas'"> Reservas que solicité </h1>
+    
+    <div *ngIf="url==='/misReservas'" class=" d-flex flex-column flex-md-row justify-content-sm-between justify-content-around flex-xl-nowrap">
+        <div>
+            <h1 > Reservas que solicité </h1>
+        </div>
+            <div [formGroup]="forma" class=" mb-3 width py-2 align-content-end">
+                    <select formControlName="filter" class="custom-select" id="inputGroupSelect02">
+                        <option value='TODOS' > Todos </option>
+                        <option value='Rejected'> Rechazadas </option>
+                        <option value='Pending'> Pendientes </option>
+                    </select>
+                </div>
+        </div>
 </div>
     <hr>
         

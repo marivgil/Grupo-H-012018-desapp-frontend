@@ -5,6 +5,7 @@ import { UserService } from '../../services/user.service';
 import { PostsService } from '../../services/posts.service';
 import { Router } from '@angular/router';
 import * as moment from 'moment';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-reservations',
@@ -18,6 +19,8 @@ export class ReservationsComponent implements OnInit {
   cost: number[];
   scores: number[];
   url;
+  forma;
+  backup;
 
   constructor(private _reservations: ReservasService,
               private _post: PostsService,
@@ -40,14 +43,25 @@ export class ReservationsComponent implements OnInit {
                   this._reservations.getAllPendingTenantReservations(localStorage.getItem('email'))
                                           .subscribe((res) => {
                                               this.reservation = res;
+                                              this.backup = res;
                                               this.calculateCost(res);
                                               console.log(res);
                                           });
                                           break;
     }// fin switch
+
+    this.forma = new FormGroup({
+     'filter': new FormControl('TODOS')
+    });
   }// fin constructor
 
   ngOnInit() {
+    this.forma.get('filter').valueChanges.subscribe( val => {
+      switch ( val ) {
+        case 'TODOS': this.reservation = this.backup; break;
+        default : this.reservation = this.backup.filter(x => x.statusReservation === val ); break;
+      }
+    });
   }
 
   calculateScores(res) {
@@ -86,6 +100,10 @@ export class ReservationsComponent implements OnInit {
       this.reservation.splice(idx, 1);
       console.log("Reserva rechazada!");
     });
+  }
+
+  goBack() {
+    this.router.navigate(['account']);
   }
 
 }
