@@ -13,7 +13,6 @@ import { ReservationsComponent } from './components/reservations/reservations.co
 import { RentalsComponent } from './components/rentals/rentals.component';
 import { CarGuard } from './services/car.guard';
 import { PostGuard } from './services/post.guard';
-import { UserGuard } from './services/user.guard';
 
 const APP_ROUTES: Routes = [
     { path: 'home', component: HomeComponent },

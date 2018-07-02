@@ -97,4 +97,11 @@ export class ReservasService {
                     });
   }
 
+  sendMonthlyReport(mail) {
+    let url = URL_SERVICIO + this.extensionUrl + "historicalMovementsByUser/" + mail;
+    return this.http.get(url).map((res) => {
+      return res;
+    });
+  }
+
 }

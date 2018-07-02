@@ -6,6 +6,7 @@ import { AuthService } from './services/auth.service';
 import { Subscription } from 'rxjs';
 import { TranslateService } from 'ng2-translate';
 import { ActivatedRoute } from '@angular/router';
+import { UserService } from './services/user.service';
 
 declare var navigator;
 
@@ -18,6 +19,7 @@ export class AppComponent implements OnInit, OnDestroy {
   private subscription: Subscription;
 
   constructor(public auth: AuthService,
+              private user: UserService,
               private translate: TranslateService,
               private activatedRoute: ActivatedRoute) {
 
