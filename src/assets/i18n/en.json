@@ -100,6 +100,12 @@
     "Modal": {
         "FullNameTxt": "Full Name"
     },
+    "Account": {
+        "MyReservations": "Reservations",
+        "PendingsReservations": "My Cars: Pendings confirmations",
+        "HistoryOfMyCars": "My cars: Rental history",
+        "HistoryOfRentals": "Rentals"
+    },
     "For": "for",
     "Persons": "persons",
     "In": "in",

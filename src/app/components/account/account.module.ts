@@ -10,6 +10,7 @@ import { CommonModule } from "@angular/common";
 import { ImagenPipe } from "../../pipes/imagen.pipe";
 import { AgmCoreModule } from "@agm/core";
 import { NeutronRatingModule } from "neutron-star-rating";
+import { TranslateModule } from "ng2-translate";
 
 
 
@@ -34,6 +35,7 @@ import { NeutronRatingModule } from "neutron-star-rating";
         FormsModule,
         CommonModule,
         NeutronRatingModule,
+        TranslateModule,
         AgmCoreModule.forRoot({
             apiKey: 'AIzaSyAx82m7KSQg0obJQYw7L5tGcEXcoM1u9sE'
           }),
