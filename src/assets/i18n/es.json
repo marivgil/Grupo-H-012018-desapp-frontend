@@ -41,6 +41,8 @@
             "AUTO": "Solo Autos",
             "CAMIONETA": "Solo Camionetas"
         },
+        "ListView": "Vista en Lista",
+        "MapView": "Vista en Mapa",
         "NoResultsTxt": "No se encontraron resultados para"
     },
     "NewCar": {

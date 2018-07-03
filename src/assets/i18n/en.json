@@ -36,6 +36,8 @@
             "AUTO": "Only Cars",
             "CAMIONETA": "Only Vans"
         },
+        "ListView": "List View",
+        "MapView": "Map View",
         "NoResultsTxt": "No results found for"
     },
     "Post": {
