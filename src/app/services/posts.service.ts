@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { Http, RequestOptions, Headers } from '@angular/http';
 
 import { URL_SERVICIO } from '../config';
 
@@ -9,6 +9,7 @@ import { Coord } from '../interfaces/coord.interface';
 @Injectable()
 export class PostsService {
     private coord1: Coord = {lat: 0, lng: 0};
+    postCar;
 
     private posts: Post[] = [
          {
@@ -85,8 +86,18 @@ export class PostsService {
          return this.posts;
      }
 
-     getPost(idx: string): Post {
-         return this.posts[idx];
+     getPost(idx: string) {
+         return this.http.get( URL_SERVICIO + this.extensionUrl + "postById/" + idx);
      }
 
+     createPost(post) {
+        let url = URL_SERVICIO + this.extensionUrl + 'createPost';
+        let header = new Headers({ 'Content-Type': 'application/json' });
+        let options = new RequestOptions ( { headers: header });
+
+           return this.http.post(url, post, options)
+                        .map((res: any) => {
+                                 return res.json();
+                        });
+    }
 }

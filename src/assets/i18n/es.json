@@ -7,6 +7,7 @@
     "WelcomeButton": "Bienvenido",
     "LoginButton": "Iniciar Sesión",
     "ProfileButton": "Mi Perfil",
+    "AccountButton": "Mi Cuenta",
     "LogoutButton": "Cerrar sesión",
     "CloseButton": " Cerrar ",
     "SaveButton": "Guardar Cambios",
@@ -30,13 +31,15 @@
     "Posts": {
         "MainTitleTxt": " Todas las publicaciones",
         "AllCategoriesTxt": "Todas las categorías",
-        "AvailableDaysTxt": "Disponible en: ",
+        "AvailableDayTxt": "Disponible el:",
+        "AvailableDaysTxt": "Disponible de: ",
         "FilterBy":{
             "TODOS": "Todas las categorías",
             "MOTO": "Solo Motos",
             "AUTO": "Solo Autos",
             "CAMIONETA": "Solo Camionetas"
-        }
+        },
+        "NoResultsTxt": "No se encontraron resultados para"
     },
     "NewCar": {
         "MainTitleTxt": "Nuevo Auto",
@@ -74,7 +77,7 @@
         "PhoneHolder": "Teléfono de contacto",
         "AvailableDates": "Indica los días en los que el auto está disponible",
         "CostPerDay": "Costo por día",
-        "ReturnsPoint": "Elige los puntos posibles de devolución"
+        "ReturnsPoint": "Elige el punto de devolución"
     },
     "Errors": {
         "NoCapacity": "Inserte la capacidad del vehículo.",
@@ -100,5 +103,6 @@
     "WalkingTxt": "a pie",
     "YoureTxt": "Estas a ",
     "FromPickUpPlaceTxt": " del lugar de retiro",
-    "EmailTxt": "Correo electrónico"
+    "EmailTxt": "Correo electrónico",
+    "To": "a"
 }

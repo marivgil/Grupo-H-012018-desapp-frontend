@@ -6,10 +6,10 @@ export function createTranslateLoader(http: Http) {
     return new TranslateStaticLoader(http, './assets/i18n', '.json');
   }
 
- const OPTIONS={
+ const OPTIONS = {
     provide: TranslateLoader,
     useFactory: (createTranslateLoader),
     deps: [Http]
   }
 
-  export const APP_TRANSLATE= TranslateModule.forRoot(OPTIONS);
+  export const APP_TRANSLATE = TranslateModule.forRoot(OPTIONS);

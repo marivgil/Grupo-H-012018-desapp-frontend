@@ -1,0 +1,219 @@
+<div class="d-flex flex-row justify-content-between main-container fadeIn animated">
+  <h1 *ngIf="url==='/cuenta/alquileresDeOtrosAutos'"> Alquileres que me aprobaron </h1>
+  <h1 *ngIf="url==='/cuenta/alquileresDeMisAutos'"> Alquileres que aprobe </h1>
+</div>
+<hr>
+
+<div class="main-container alert alert-light text-center" role="alert" *ngIf="rentals?.length === 0">
+  No se encontraron alquileres.
+</div>
+
+<div  class="main-container d-flex flex-row flex-wrap">
+
+  <div *ngFor="let r of rentals, let i=index">
+    
+    <div class="card mx-1" style="width: 18rem;">
+      <img class="card-img-top" [src]="r.reservation.post.vehicle.photos[0]" alt="Loading...">
+      <div class="card-body d-flex flex-column my-1 py-1">
+        <!--Badge de estado-->
+        <label class="d-flex justify-content-center" *ngIf="r.rentalState=== 'FinalizedRental'">
+          <span class="badge badge-success">
+                  <i class="fas fa-check"></i>
+                  Finalizado</span>
+          </label>
+          <label class="d-flex justify-content-center" *ngIf="r.rentalState=== 'ConfirmedByTheOwner' && url=== '/cuenta/alquileresDeMisAutos'">
+            <span class="badge badge-warning">
+              <i class="fas fa-clock"></i>
+              Esperando confirmacion de retiro de cliente...
+            </span>
+          </label>
+          <label class="d-flex justify-content-center" *ngIf="r.rentalState=== 'ReturnConfirmedByTheOwner'  && url=== '/cuenta/alquileresDeMisAutos'">
+            <span class="badge badge-warning">
+              <i class="fas fa-clock"></i>
+              Esperando confirmacion de retorno de cliente...
+            </span>
+          </label>
+          <label class="d-flex justify-content-center" *ngIf="r.rentalState=== 'ConfirmedByTheTenant' && url==='/cuenta/alquileresDeOtrosAutos'">
+            <span class="badge badge-warning">
+              <i class="fas fa-clock"></i>
+              Esperando confirmacion de retiro del dueño...
+            </span>
+          </label>
+          <label class="d-flex justify-content-center" *ngIf="r.rentalState=== 'ReturnConfirmedByTheTenant' && url==='/cuenta/alquileresDeOtrosAutos'">
+            <span class="badge badge-warning">
+              <i class="fas fa-clock"></i>
+              Esperando confirmacion de retorno del dueño...
+            </span>
+          </label>
+          <!--Fin Badge de estado-->
+        
+          <!--Boton datos-->
+          <div *ngIf = "url==='/cuenta/alquileresDeOtrosAutos'" class="d-flex align-content-end justify-content-end">
+            <a class="card-link btn " (click)="verDatosDuenio(r)">
+                <i class="fas fa-search"></i> Ver datos dueño...</a>
+            </div>
+          <div *ngIf = "url==='/cuenta/alquileresDeMisAutos'" class="d-flex align-content-end justify-content-end">
+            <a class="card-link btn" (click)="verDatosCliente(r)">
+                <i class="fas fa-search"></i> Ver datos cliente...</a>
+          </div>
+          <!--Fin boton datos-->
+          
+          <h5 class="card-title" *ngIf="r.reservation.reservationSinceDate === r.reservation.reservationUntilDate ">
+              <i class="fas fa-calendar-alt"></i>
+              {{r.reservation.reservationSinceDate}}</h5>
+          <h5 class="card-title" *ngIf="r.reservation.reservationSinceDate !== r.reservation.reservationUntilDate ">
+              <i class="fas fa-calendar-alt"></i>
+              {{r.reservation.reservationSinceDate}} a {{r.reservation.reservationUntilDate}} </h5>
+          <div class="d-flex flex-column">
+            <label>
+              <i class="fas fa-car"></i>
+              <strong>
+                {{r.reservation.post.vehicle.type}} 
+              </strong>  
+              para {{r.reservation.post.vehicle.capacity}}
+            </label>
+            <label>
+                <i class="fas fa-hand-holding-usd"></i>
+                <strong>
+                  Costo:         
+                </strong>
+                {{cost[i] | currency}}  
+            </label>   
+        </div>
+       
+        <div class="card-text">
+          <!--Botonera!!!!!-->
+          <!--OWNER-->
+            <div class="d-flex d-flex align-content-center justify-content-center py-2" *ngIf="url=== '/cuenta/alquileresDeMisAutos'">
+                <button *ngIf="(r.rentalState=== 'PendingRental') || (r.rentalState==='ConfirmedByTheTenant') " class="btn btn-success" (click)="confirmCarPickUpOwner(r.id,idx)">Confirmar retiro</button>
+               
+                <div *ngIf="(r.rentalState=== 'PendingReturnRental') || (r.rentalState==='ReturnConfirmedByTheTenant') ">
+                    <form [formGroup]="forma" class="form" (ngSubmit)="confirmReturnCarOwner(r.id,idx)">
+                        <label>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <strong>
+                              Direccion de devolucion:
+                            </strong>
+                          </label>
+                        <div class="map">
+                            <agm-map 
+                            [latitude]="r.reservation.post.returnCoords.lat" 
+                            [longitude]="r.reservation.post.returnCoords.lng"
+                            [zoom]=15
+                            [disableDefaultUI]=false
+                            [zoomControl]=true>
+                  
+                                <agm-marker 
+                                [latitude]="r.reservation.post.returnCoords.lat" 
+                                [longitude]="r.reservation.post.returnCoords.lng"
+                                [markerDraggable]="draggable"
+                                >
+                              <agm-info-window>
+                                <strong>Lugar de devolucion</strong>
+                              </agm-info-window>
+                              </agm-marker>
+                            </agm-map>
+                        </div>
+                      
+                      <neutron-rating class="px-2 text-center" (ratingClicked)='onRatingClicked($event)' [rating]="3" [starColour]="'#FDD835'" [starSize]="2"></neutron-rating>
+                      <small class="form-text text-muted btn-right">*Obligatorio</small> 
+                      <label>Inserte un comentario:</label>
+                      <input formControlName="comment" class="form-control">
+                      <small class="form-text text-muted btn-right">*Obligatorio</small> 
+                      <div class="margin-top-40 d-flex justify-content-center">
+                          <button type="submit" class="btn btn-success">Confirmar devolucion</button>
+                      </div>
+                    </form>
+                </div>
+                
+            </div>
+            
+            <!--Tenant-->
+            <div class="d-flex align-content-center justify-content-center py-2"  *ngIf="url==='/cuenta/alquileresDeOtrosAutos'">
+                <button *ngIf="(r.rentalState==='PendingRental') || (r.rentalState==='ConfirmedByTheOwner') " class="btn btn-success" (click)="confirmCarPickUpTenant(r.id,idx)">Confirmar retiro</button>
+                <div *ngIf="(r.rentalState=== 'PendingReturnRental') || (r.rentalState==='ReturnConfirmedByTheOwner') ">
+                    <form [formGroup]="forma" class="form" (ngSubmit)="confirmReturnCarTenant(r.id,idx)">
+                      <label>
+                        <i class="fas fa-map-marker-alt"></i>
+                        <strong>
+                          Direccion de devolucion:
+                        </strong>
+                      </label>
+                        <div class="map">
+                            <agm-map 
+                            [latitude]="r.reservation.post.returnCoords.lat" 
+                            [longitude]="r.reservation.post.returnCoords.lng"
+                            [zoom]=15
+                            [disableDefaultUI]=false
+                            [zoomControl]=true>
+                  
+                                <agm-marker 
+                                [latitude]="r.reservation.post.returnCoords.lat" 
+                                [longitude]="r.reservation.post.returnCoords.lng"
+                                [markerDraggable]="draggable"
+                                >
+                              <agm-info-window>
+                                <strong>Lugar de devolucion</strong>
+                              </agm-info-window>
+                              </agm-marker>
+                            </agm-map>
+                        </div>
+                        <neutron-rating class="px-2 text-center" (ratingClicked)='onRatingClicked($event)' [rating]="3" [starColour]="'#FDD835'" [starSize]="2"></neutron-rating>
+                        <small class="form-text text-muted btn-right">*Obligatorio</small> 
+                        <label>Inserte un comentario:</label>
+                        <input formControlName="comment" class="form-control">
+                        <small class="form-text text-muted btn-right">*Obligatorio</small> 
+                        <div class="margin-top-40 d-flex justify-content-center">
+                          <button type="submit" class="btn btn-success">Confirmar devolucion</button>
+                        </div>
+                      </form>
+                </div>
+                
+              </div>
+            <!--FIN BOTONERA-->
+          </div>
+          
+    </div>
+  </div>
+  </div>
+</div>
+
+<!-- Modal -->
+  <div class="modal fade" id="personalData" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content" *ngIf="usuario"> 
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalCenterTitle">{{usuario.name}} {{usuario.surname}}</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body d-flex flex-column">
+           <label class="px-3"> 
+              <i class="fas fa-map-marker-alt"></i> {{usuario.address}}
+           </label>             
+           <label class="px-3">
+              <i class="fas fa-at"></i> {{ usuario.email}}
+           </label>
+           <label class="px-3">
+              <i class="fas fa-phone"></i> {{reservationModal.reservation.post.phone}}
+           </label>
+          
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  
+  
+  
+  
+  
+  
+  
+
+  

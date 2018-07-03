@@ -1,27 +1,35 @@
 // src/app/app.component.ts
 
-import { Component } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AuthService } from './services/auth.service';
+// tslint:disable-next-line:import-blacklist
 import { Subscription } from 'rxjs';
 import { TranslateService } from 'ng2-translate';
 import { ActivatedRoute } from '@angular/router';
+import { UserService } from './services/user.service';
+
+declare var navigator;
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html'
 })
-export class AppComponent {
+export class AppComponent implements OnInit, OnDestroy {
 
   private subscription: Subscription;
 
-  constructor(public auth:AuthService, private translate: TranslateService, private activatedRoute: ActivatedRoute) {
-    auth.handleAuthentication();
-        translate.addLangs(["en", "es"]);
-        translate.setDefaultLang('es');
+  constructor(public auth: AuthService,
+              private user: UserService,
+              private translate: TranslateService,
+              private activatedRoute: ActivatedRoute) {
 
-        let browserLang = translate.getBrowserLang();
-        translate.use(browserLang.match(/en|es/) ? browserLang : 'en');
-      
+                auth.handleAuthentication();
+                translate.addLangs(["en", "es"]);
+                translate.setDefaultLang('es');
+
+                let browserLang = translate.getBrowserLang();
+                translate.use(browserLang.match(/en|es/) ? browserLang : 'en');
+
     }
 
     ngOnInit() {
@@ -29,7 +37,7 @@ export class AppComponent {
     this.subscription = this.activatedRoute.queryParams.subscribe(
       (param: any) => {
         let locale = param['locale'];
-        if (locale !== undefined){
+        if (locale !== undefined) {
             this.translate.use(locale);
         }
       });

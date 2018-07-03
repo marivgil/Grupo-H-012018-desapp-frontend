@@ -12,8 +12,12 @@ import { APP_ROUTING} from './app.routes';
 import { PostsService } from './services/posts.service';
 import { AuthService } from './services/auth.service';
 import { UserService } from './services/user.service';
-import { AuthGuardService } from './services/auth-guard.service';
 import { VehicleService } from './services/vehicle.service';
+
+// Guards
+import { AuthGuardService } from './services/auth-guard.service';
+import { CarGuard } from './services/car.guard';
+import { PostGuard } from './services/post.guard';
 
 // Extern Modules
 import { CarouselModule } from '../../node_modules/angular2-carousel';
@@ -44,6 +48,11 @@ import { ImagenPipe } from './pipes/imagen.pipe';
 
 // Validadores
 import { LinkValidatorDirective } from './directives/link-validator.directive';
+import { FormatterDatePipe } from './pipes/formatter-date.pipe';
+import { ReservasService } from './services/reservas.service';;
+
+// Modules
+import { AccountModule } from './components/account/account.module';
 
 
 
@@ -61,8 +70,8 @@ import { LinkValidatorDirective } from './directives/link-validator.directive';
     NewPostComponent,
     FooterComponent,
     CreditComponent,
-    ImagenPipe,
-    LinkValidatorDirective
+    LinkValidatorDirective,
+    FormatterDatePipe
   ],
   imports: [
     BrowserModule,
@@ -78,13 +87,17 @@ import { LinkValidatorDirective } from './directives/link-validator.directive';
       apiKey: 'AIzaSyAx82m7KSQg0obJQYw7L5tGcEXcoM1u9sE'
     }),
     NeutronRatingModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    AccountModule
   ],
   providers: [
+    AuthGuardService,
+    CarGuard,
+    PostGuard,
     PostsService,
     AuthService,
-    AuthGuardService,
     VehicleService,
+    ReservasService,
     UserService,
     { provide: MissingTranslationHandler,
       useClass: MyMissingTranslationHandler}

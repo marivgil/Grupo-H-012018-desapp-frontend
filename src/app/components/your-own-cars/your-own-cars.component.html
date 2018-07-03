@@ -1,4 +1,4 @@
-<div class="main-container">
+<div class="main-container animated fadeIn">
 
     <div class="d-flex flex-row justify-content-between">
         <h1>{{ 'MyCarsLink' | translate}}</h1>
@@ -16,21 +16,22 @@
             <h5 class="card-title">{{ 'VehicleType.'+car.type | translate}} {{'For' | translate}} {{car.capacity}} {{'Persons' | translate}} </h5>    
             <p class="card-text">{{car.description}}</p>
         </div>
-                <div class="d-flex flex-row align-self-end">
-                    <button (click)="makeAPost()" class="btn btn-link align-item-end justify-item-end">
-                      <i class="fas fa-money-bill-alt fa-2x py-1"></i>
-                  </button>
-                    <button (click)="editCar(car, index)" class="btn btn-link">
-                      <i class="fas fa-pencil-alt fa-2x py-1" ></i>
-                  </button>
-                    <button (click)="confirmDeleteCar(car.id, index)" class="btn btn-link">
-                      <i class="fas fa-trash-alt fa-2x py-1 px-0"></i>
-                  </button>
-                  </div>
-            
-
-
-            </div>
+                
+        <div class="d-flex flex-row align-self-end">
+          
+            <button (click)="makeAPost(car, index)" class="btn btn-link align-item-end justify-item-end">
+                <i class="fas fa-money-bill-alt fa-2x py-1"></i>
+            </button>
+          
+            <button (click)="editCar(car, index)" class="btn btn-link align-item-end justify-item-end">
+                <i class="fas fa-pencil-alt fa-2x py-1" ></i>
+            </button>
+          
+            <button (click)="confirmDeleteCar(car.id, index)" class="btn btn-link align-item-end justify-item-end">
+                <i class="fas fa-trash-alt fa-2x py-1 px-0"></i>
+            </button>
+        </div>
+      </div>
 
 
 </div>

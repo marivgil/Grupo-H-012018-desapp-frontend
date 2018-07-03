@@ -67,7 +67,7 @@ export class UserService {
   }
 
   public deleteCarLocale(i: number) {
-    this.userBD.vehicles.splice( i, 1);
+    this.userBD.vehicles.splice(i, 1);
   }
 
   public replaceCar( car: any ) {

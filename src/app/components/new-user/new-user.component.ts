@@ -49,16 +49,20 @@ export class NewUserComponent implements OnInit {
 
    ngOnInit() {
 
-    if (!this._user.nuevoUsuario) {
-        this.cargarFormExistentUser();
-     } else {
-      $('#signUpModal').modal({
-        backdrop: 'static',
-        keyboard: false
-      });
-       this.cargarFormNewUser();
-       this.map = true;
-     }
+  }
+  // tslint:disable-next-line:use-life-cycle-interface
+  ngAfterContentInit() {
+        if (!this._user.nuevoUsuario) {
+            this.cargarFormExistentUser();
+         } else {
+          $('#signUpModal').modal({
+            backdrop: 'static',
+            keyboard: false
+          });
+           this.cargarFormNewUser();
+           this.map = true;
+         }
+
   }
 
   private cargarFormNewUser() {
@@ -71,17 +75,37 @@ export class NewUserComponent implements OnInit {
 
   private cargarFormExistentUser() {
 
-   this.forma.patchValue({
-        email: this._user.userProfile.email,
-        name: this._user.userBD.name,
-        surname: this._user.userBD.surname,
-        address: this._user.userBD.address
-   });
-   this.forma.controls['CUIL'].patchValue({
-     prefix: this._user.userBD.cuil.toString().substring(0, 2) ,
-     DNI: this._user.userBD.cuil.toString().substring(2, 10),
-     suffix: this._user.userBD.cuil.toString().substring(10, 11),
-   });
+    if (!this._user.userBD ) {
+      this._auth.getProfile((err, profile) =>  {
+        this.forma.patchValue({
+             email: this._user.userProfile.email,
+             name: this._user.userBD.name,
+             surname: this._user.userBD.surname,
+             address: this._user.userBD.address
+        });
+
+        this.forma.controls['CUIL'].patchValue({
+          prefix: this._user.userBD.cuil.toString().substring(0, 2) ,
+          DNI: this._user.userBD.cuil.toString().substring(2, 10),
+          suffix: this._user.userBD.cuil.toString().substring(10, 11),
+        });
+    });
+  } else {
+    this.forma.patchValue({
+      email: this._user.userProfile.email,
+      name: this._user.userBD.name,
+      surname: this._user.userBD.surname,
+      address: this._user.userBD.address
+ });
+
+ this.forma.controls['CUIL'].patchValue({
+   prefix: this._user.userBD.cuil.toString().substring(0, 2) ,
+   DNI: this._user.userBD.cuil.toString().substring(2, 10),
+   suffix: this._user.userBD.cuil.toString().substring(10, 11),
+ });
+
+  }
+
 
    }
 
@@ -104,7 +128,7 @@ export class NewUserComponent implements OnInit {
         cuil: cuil,
         surname: this.toTitleCase(this.forma.value.surname)
       };
-
+      console.log(user);
 
       this._user.createUser(user).subscribe(res => {
         this._user.userBD = res;
@@ -157,6 +181,7 @@ export class NewUserComponent implements OnInit {
       let geocoder = new google.maps.Geocoder();
       let origin1 = new google.maps.LatLng($event.coords.lat, $event.coords.lng);
       geocoder.geocode( { location: origin1 } , (results, status) =>  {
+      // tslint:disable-next-line:triple-equals
       if (status == 'OK') {
         this.forma.patchValue({
           address: results[0].formatted_address });

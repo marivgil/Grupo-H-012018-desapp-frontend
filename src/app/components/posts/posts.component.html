@@ -1,28 +1,36 @@
 <div class="main-container">
-        <div class=" d-flex flex-column flex-md-row justify-content-sm-between flex-xl-nowrap">
+        <div class=" d-flex flex-column flex-md-row justify-content-sm-between justify-content-around flex-xl-nowrap">
             <h1>{{'Posts.MainTitleTxt'| translate}} - <small><small>{{'Posts.FilterBy.'+ forma.value.type|translate}}</small></small>
             </h1>
-            <div [formGroup]="forma" class="input-group mb-3 width btn-padding-right">
+            <div [formGroup]="forma" class=" mb-3 width d-flex flex-column py-2">
                     <select formControlName="type" class="custom-select" id="inputGroupSelect02">
                         <option value='TODOS' >{{ 'AllCategoriesTxt' | translate}}</option>
                         <option value='MOTO'>{{ 'VehicleType.MOTO' | translate}}</option>
                         <option value='AUTO'>{{ 'VehicleType.AUTO' | translate}}</option>
                         <option value='CAMIONETA'>{{ 'VehicleType.CAMIONETA' | translate}}</option>
                     </select>
+                    <select formControlName="view" class="custom-select" id="inputGroupSelect02">
+                        <option value='LIST' > Vista en lista </option>
+                        <option value='MAP'> Vista en mapa </option>
+                    </select>
                 </div>
         </div>
+
+        <div *ngIf="posts.length === 0" class="alert alert-light text-center" role="alert">
+                {{'Posts.NoResultsTxt' | translate}} {{'VehicleType.'+ this.forma.value.type | translate}}
+        </div>
     
-        <div class="card-columns">
+        <div class=" margin-top-40 card-columns">
     
             <div class="card animated fadeIn fast" *ngFor="let post of posts| paginate: { itemsPerPage: 3, currentPage: p }">
     
                 <img *ngIf= "post.vehicle.photos.length === 0 "class="card-img-top" src="../../../assets/img/Foto-no-disponible.png" [alt]="">
                 <img *ngIf= "post.vehicle.photos.length >=1 "class="card-img-top" [src]="post.vehicle.photos[0]" [alt]="">
                 <div class="card-body">
-                    <h5 class="card-title">{{ 'VehicleType.'+post.vehicle.type | translate }} {{ 'In'| translate }} {{ post.location }}- {{ post.costPerDay |currency}} {{ 'PerDayTxt' | translate}}</h5>
+                    <h5 class="card-title">{{ 'VehicleType.'+post.vehicle.type | translate }}- {{ post.costPerDay |currency}} {{ 'PerDayTxt' | translate}}</h5>
                     <p class="card-text">{{post.description}}</p>
-                    <p class="card-text"><small class="text-muted">{{'Posts.AvailableDaysTxt' | translate }} {{post.rentalDate}}</small></p>
-    
+                    <p class="card-text"><small class="text-muted">{{'Posts.AvailableDaysTxt' | translate }} {{post.sinceDate}} {{'To' | translate}} {{post.untilDate}}</small></p>
+
     
                     <button type="button" (click)="verPost(post.id)" class="btn btn-outline-primary btn-block">
                 {{ 'MoreButton' | translate}}
@@ -33,6 +41,48 @@
             
         </div>
     </div>
-                    <div class="d-flex flex-row justify-content-center">
-                        <pagination-controls (pageChange)="p = $event"></pagination-controls>
-                    </div>
+                   
+    
+                <div *ngIf="posts.length > 0" class="d-flex flex-row justify-content-center">
+                    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+                </div>
+
+<div id="mapModal" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+                <div class=" main-container d-flex flex-column flex-md-row justify-content-sm-between flex-xl-nowrap">
+                        <h3>Busqueda por Mapa</h3>
+                        <hr>
+                </div>
+                <div class="main-container margins map">
+                        <agm-map 
+                        [latitude]="lat" 
+                        [longitude]="lng"
+                        [zoom]="zoom"
+                        [disableDefaultUI]=false
+                        [zoomControl]=true>
+              
+                            <agm-marker 
+                            *ngFor= "let p of posts; let i= index"
+                            [latitude]="p.pickUpCoord.lat" 
+                            [longitude]="p.pickUpCoord.lng"
+                            [markerDraggable]= "draggable"
+                            >
+                          <agm-info-window class="window">
+                              <div class="d-flex flex-column window">
+                                  <h5 class="text-center">
+                                      {{p.vehicle.type}}
+                                  </h5>
+                                  <label class="text-center">
+                                      {{p.vehicle.description}}
+                                  </label>
+                                  <button class="btn btn-link" (click)="verPost(p.id)">Ver mas...</button>
+                                  
+                              </div>
+                          </agm-info-window>
+                          </agm-marker>
+                        </agm-map>
+                    </div>      
+        </div>
+    </div>
+</div>
