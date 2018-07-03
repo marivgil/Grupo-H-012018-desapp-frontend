@@ -77,7 +77,7 @@
         "PhoneHolder": "Teléfono de contacto",
         "AvailableDates": "Indica los días en los que el auto está disponible",
         "CostPerDay": "Costo por día",
-        "ReturnsPoint": "Elige los puntos posibles de devolución"
+        "ReturnsPoint": "Elige el punto de devolución"
     },
     "Errors": {
         "NoCapacity": "Inserte la capacidad del vehículo.",
