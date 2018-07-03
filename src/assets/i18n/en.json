@@ -18,7 +18,7 @@
     "FilterTypeTxt": "Filter by type...",
     "Home": {
         "MainTitleTxt": "Publish Your Car!",
-        "SubTxt": "Choose the car you want to publish, price it, choose the withdrawal and return points, select the available dates ... and that's it!",
+        "SubTxt": "Choose the car you want to publish, price it, choose the withdrawal and return point, select the available dates ... and that's it!",
         "BtnTxt": "Publish Your Car!"
     },
     "Footer": {
@@ -36,10 +36,14 @@
             "AUTO": "Only Cars",
             "CAMIONETA": "Only Vans"
         },
+        "ListView": "List View",
+        "MapView": "Map View",
         "NoResultsTxt": "No results found for"
     },
     "Post": {
-        "PlaceholderDistance": "Click on the map from where you go to know how far you are from your next car!"
+        "PlaceholderDistance": "Click on the map from where you go to know how far you are from your next car!",
+        "NoAvailable": "This publication is no longer available",
+        "ReturnPoint": "Return place"
     },
     "NewCar": {
         "MainTitleTxt": "New Car",
@@ -77,7 +81,7 @@
         "PhoneHolder": "Phone number",
         "AvailableDates": "Choose the availability of the car",
         "CostPerDay": "Cost per day",
-        "ReturnsPoint": "Choose the possible points of return"
+        "ReturnsPoint": "Choose the return point"
     },
     "Errors": {
         "NoCapacity": "Please, insert vehicle capacity.",
@@ -90,10 +94,17 @@
         "EnabledStatus": "Enabled",
         "CreditTxt": "Credit",
         "ReputationTxt": "Reputation",
-        "AddressTxt": "Address"
+        "AddressTxt": "Address",
+        "MonthlyReport": "Send Monthly Report"
     },
     "Modal": {
         "FullNameTxt": "Full Name"
+    },
+    "Account": {
+        "MyReservations": "Reservations",
+        "PendingsReservations": "My Cars: Pendings confirmations",
+        "HistoryOfMyCars": "My cars: Rental history",
+        "HistoryOfRentals": "Rentals"
     },
     "For": "for",
     "Persons": "persons",

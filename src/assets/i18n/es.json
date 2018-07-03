@@ -26,7 +26,9 @@
         "Sign": "12C, Inc."
     },
     "Post": {
-        "PlaceholderDistance": "Hace click en el lugar desde donde salis para saber a que distancia estas de tu proximo auto!"
+        "PlaceholderDistance": "Hace click en el lugar desde donde salis para saber a que distancia estas de tu proximo auto!",
+        "NoAvailable": "Esta publicacion ya se encuentra cerrada.",
+        "ReturnPoint": "Retorno"
     },
     "Posts": {
         "MainTitleTxt": " Todas las publicaciones",
@@ -39,6 +41,8 @@
             "AUTO": "Solo Autos",
             "CAMIONETA": "Solo Camionetas"
         },
+        "ListView": "Vista en Lista",
+        "MapView": "Vista en Mapa",
         "NoResultsTxt": "No se encontraron resultados para"
     },
     "NewCar": {
@@ -77,7 +81,7 @@
         "PhoneHolder": "Teléfono de contacto",
         "AvailableDates": "Indica los días en los que el auto está disponible",
         "CostPerDay": "Costo por día",
-        "ReturnsPoint": "Elige los puntos posibles de devolución"
+        "ReturnsPoint": "Elige el punto de devolución"
     },
     "Errors": {
         "NoCapacity": "Inserte la capacidad del vehículo.",
@@ -90,11 +94,17 @@
         "EnabledStatus": "Activo",
         "CreditTxt": "Crédito",
         "ReputationTxt": "Reputación",
-        "AddressTxt": "Dirección"
-
+        "AddressTxt": "Dirección",
+        "MonthlyReport": "Enviar reporte mensual"
     },
     "Modal": {
         "FullNameTxt": "Nombre y Apellido"
+    },
+    "Account": {
+        "MyReservations": "Reservas",
+        "PendingsReservations": "Mis Autos: Confirmaciones pendientes",
+        "HistoryOfMyCars": "Mis Autos: Historial de alquileres",
+        "HistoryOfRentals": "Alquileres"
     },
     "For": "para",
     "Persons": "personas",

@@ -32,6 +32,7 @@ export class PostComponent implements OnInit {
   distance: string;
   date = 20180629;
   user;
+  loading = false;
 
   @ViewChild('topCarousel') topCarousel: CarouselComponent;
 
@@ -66,12 +67,12 @@ export class PostComponent implements OnInit {
 
 
   reservar(id: number) {
-//    this._router.navigate(['/home']);
 
+this.loading = true;
     if (this._authService.isAuthenticated()) {
       this._reservationService.bookPost(id, this._userService.userProfile.email, this.post.sinceDate, this.post.untilDate)
                           .subscribe((res: any) => {
-                            console.log(res);
+                            this.loading = false;
                             this._router.navigate(['/cuenta/misReservas']);
                           });
     } else {
@@ -91,8 +92,6 @@ export class PostComponent implements OnInit {
       this.distance = response.rows[0].elements[0].distance.text;
       this.duration = response.rows[0].elements[0].duration.text;
     }
-    console.log(this.distance);
-    console.log(this.duration);
   }
 
   mapClicked($event: any) {

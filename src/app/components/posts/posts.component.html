@@ -9,9 +9,9 @@
                         <option value='AUTO'>{{ 'VehicleType.AUTO' | translate}}</option>
                         <option value='CAMIONETA'>{{ 'VehicleType.CAMIONETA' | translate}}</option>
                     </select>
-                    <select formControlName="view" class="custom-select" id="inputGroupSelect02">
-                        <option value='LIST' > Vista en lista </option>
-                        <option value='MAP'> Vista en mapa </option>
+                    <select formControlName="view" class="custom-select my-1" id="inputGroupSelect02">
+                        <option value='LIST' > {{'Posts.ListView' | translate}} </option>
+                        <option value='MAP'> {{'Posts.MapView' | translate}} </option>
                     </select>
                 </div>
         </div>
@@ -27,7 +27,7 @@
                 <img *ngIf= "post.vehicle.photos.length === 0 "class="card-img-top" src="../../../assets/img/Foto-no-disponible.png" [alt]="">
                 <img *ngIf= "post.vehicle.photos.length >=1 "class="card-img-top" [src]="post.vehicle.photos[0]" [alt]="">
                 <div class="card-body">
-                    <h5 class="card-title">{{ 'VehicleType.'+post.vehicle.type | translate }} {{ 'In'| translate }} {{ post.location }}- {{ post.costPerDay |currency}} {{ 'PerDayTxt' | translate}}</h5>
+                    <h5 class="card-title">{{ 'VehicleType.'+post.vehicle.type | translate }}- {{ post.costPerDay |currency}} {{ 'PerDayTxt' | translate}}</h5>
                     <p class="card-text">{{post.description}}</p>
                     <p class="card-text"><small class="text-muted">{{'Posts.AvailableDaysTxt' | translate }} {{post.sinceDate}} {{'To' | translate}} {{post.untilDate}}</small></p>
 
@@ -35,7 +35,6 @@
                     <button type="button" (click)="verPost(post.id)" class="btn btn-outline-primary btn-block">
                 {{ 'MoreButton' | translate}}
               </button>
-                    <!--          <a [routerLink]="['/heroe',i]" class="btn btn-outline-primary">Ver mas link...</a> -->
                 </div>
             </div>
             

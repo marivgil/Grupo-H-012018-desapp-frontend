@@ -30,6 +30,10 @@ export class CreditComponent implements OnInit {
   }
 
     ngOnInit() {
+
+      $('#addCreditModal').on('hidden.bs.modal', ( ) => {
+        this.forma.get('credit').setValue(this._user.userBD.account);
+    });
   }
 
   addCredit( ) {
@@ -46,6 +50,8 @@ export class CreditComponent implements OnInit {
   closeModal() {
     $('#addCreditModal').modal('hide');
   }
+
+  
 
   addOne() {
     this.forma.patchValue({credit: this.forma.value.credit + 1});
