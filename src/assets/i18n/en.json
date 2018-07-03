@@ -39,7 +39,9 @@
         "NoResultsTxt": "No results found for"
     },
     "Post": {
-        "PlaceholderDistance": "Click on the map from where you go to know how far you are from your next car!"
+        "PlaceholderDistance": "Click on the map from where you go to know how far you are from your next car!",
+        "NoAvailable": "This publication is no longer available",
+        "ReturnPoint": "Return place"
     },
     "NewCar": {
         "MainTitleTxt": "New Car",

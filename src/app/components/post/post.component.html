@@ -1,7 +1,7 @@
 <div *ngIf="post">
   
     <div class="alert alert-danger" *ngIf="post.postState === 'RESERVED'" role="alert">
-        Esta publicacion ya se encuentra cerrada.
+        {{'Post.NoAvailable' | translate}}
       </div>
   <div class="row">
       <div class= "col-md-12">
@@ -82,7 +82,7 @@
       
       <label class="d-flex align-self-center">
           <i class="fas fa-map-marker-alt"></i>
-          <strong class="px-1"> Retorno </strong></label>
+          <strong class="px-1"> {{'Post.ReturnPoint' | translate}} </strong></label>
       <div class="map px-2 py-2 postmap justify-content-center align-self-center">
           <agm-map 
           [latitude]="post.returnCoords.lat" 
