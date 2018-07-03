@@ -36,10 +36,14 @@
             "AUTO": "Only Cars",
             "CAMIONETA": "Only Vans"
         },
+        "ListView": "List View",
+        "MapView": "Map View",
         "NoResultsTxt": "No results found for"
     },
     "Post": {
-        "PlaceholderDistance": "Click on the map from where you go to know how far you are from your next car!"
+        "PlaceholderDistance": "Click on the map from where you go to know how far you are from your next car!",
+        "NoAvailable": "This publication is no longer available",
+        "ReturnPoint": "Return place"
     },
     "NewCar": {
         "MainTitleTxt": "New Car",
@@ -90,10 +94,17 @@
         "EnabledStatus": "Enabled",
         "CreditTxt": "Credit",
         "ReputationTxt": "Reputation",
-        "AddressTxt": "Address"
+        "AddressTxt": "Address",
+        "MonthlyReport": "Send Monthly Report"
     },
     "Modal": {
         "FullNameTxt": "Full Name"
+    },
+    "Account": {
+        "MyReservations": "Reservations",
+        "PendingsReservations": "My Cars: Pendings confirmations",
+        "HistoryOfMyCars": "My cars: Rental history",
+        "HistoryOfRentals": "Rentals"
     },
     "For": "for",
     "Persons": "persons",

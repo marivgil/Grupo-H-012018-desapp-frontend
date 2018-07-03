@@ -1,5 +1,8 @@
 <div *ngIf="post">
-
+  
+    <div class="alert alert-danger" *ngIf="post.postState === 'RESERVED'" role="alert">
+        {{'Post.NoAvailable' | translate}}
+      </div>
   <div class="row">
       <div class= "col-md-12">
         <div class="map">
@@ -35,7 +38,7 @@
       </div>
   
       <div class="d-flex flex-row justify-content-around">
-        <h1>{{'VehicleType.'+post.vehicle.type | translate}} {{"In" | translate}} {{post.location | uppercase}} 
+        <h1 class="text-center">{{'VehicleType.'+post.vehicle.type | translate}}
           <br>
           <small *ngIf="post.sinceDate===post.untilDate">{{'Posts.AvailableDayTxt' | translate}} {{post.sinceDate}}</small>
           <small *ngIf="post.sinceDate!==post.untilDate">{{'Posts.AvailableDaysTxt' | translate}} {{post.sinceDate}} {{'To' | translate}} {{post.untilDate}}</small>
@@ -55,9 +58,9 @@
         </carousel-component>
       </div>
       
-      <div class="d-flex flex-row">
+      <div class="d-flex flex-row justify-content-center">
         <h3 class="px-2 align-self-center">
-          {{'VehicleType.'+post.vehicle.type | translate}} {{'In' | translate}} {{post.location | uppercase}}  
+          {{'VehicleType.'+post.vehicle.type | translate}} 
         </h3>
         <span class=" px-2 badge badge-warning align-self-center">
           {{user.reputation}}
@@ -79,7 +82,7 @@
       
       <label class="d-flex align-self-center">
           <i class="fas fa-map-marker-alt"></i>
-          <strong class="px-1"> Retorno </strong></label>
+          <strong class="px-1"> {{'Post.ReturnPoint' | translate}} </strong></label>
       <div class="map px-2 py-2 postmap justify-content-center align-self-center">
           <agm-map 
           [latitude]="post.returnCoords.lat" 
@@ -100,7 +103,12 @@
           </agm-map>
       </div>      
       <div class="align-self-end px-5 py-3">
-        <button (click)= "reservar(post.id)" class="btn btn-success align-self-end">{{'ReserveButton' | translate}}</button>
+        <button (click)= "reservar(post.id)" *ngIf="post.postState==='AVAILABLE'" class="btn btn-success align-self-end d-flex flex-row">
+          <div class="px-2" *ngIf="loading">
+              <i class="fas fa-spinner fa-spin"></i>
+          </div>
+            {{'ReserveButton' | translate}}
+          </button>
       </div>
     </div>
   

@@ -1,6 +1,10 @@
 <div class="d-flex flex-row justify-content-between main-container fadeIn animated">
   <h1 *ngIf="url==='/cuenta/alquileresDeOtrosAutos'"> Alquileres que me aprobaron </h1>
   <h1 *ngIf="url==='/cuenta/alquileresDeMisAutos'"> Alquileres que aprobe </h1>
+
+  <div class="px-2" *ngIf="loading">
+      <i class="fas fa-spinner fa-spin fa-4x"></i>
+  </div>
 </div>
 <hr>
 
@@ -12,7 +16,7 @@
 
   <div *ngFor="let r of rentals, let i=index">
     
-    <div class="card mx-1" style="width: 18rem;">
+    <div class="card mx-1 my-1" style="width: 18rem;">
       <img class="card-img-top" [src]="r.reservation.post.vehicle.photos[0]" alt="Loading...">
       <div class="card-body d-flex flex-column my-1 py-1">
         <!--Badge de estado-->
@@ -121,7 +125,7 @@
                       <input formControlName="comment" class="form-control">
                       <small class="form-text text-muted btn-right">*Obligatorio</small> 
                       <div class="margin-top-40 d-flex justify-content-center">
-                          <button type="submit" class="btn btn-success">Confirmar devolucion</button>
+                          <button type="submit" [disabled]="!forma.valid" class="btn btn-success">Confirmar devolucion</button>
                       </div>
                     </form>
                 </div>
