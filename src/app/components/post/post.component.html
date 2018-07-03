@@ -1,5 +1,8 @@
 <div *ngIf="post">
-
+  
+    <div class="alert alert-danger" *ngIf="post.postState === 'RESERVED'" role="alert">
+        Esta publicacion ya se encuentra cerrada.
+      </div>
   <div class="row">
       <div class= "col-md-12">
         <div class="map">
@@ -100,7 +103,7 @@
           </agm-map>
       </div>      
       <div class="align-self-end px-5 py-3">
-        <button (click)= "reservar(post.id)" class="btn btn-success align-self-end d-flex flex-row">
+        <button (click)= "reservar(post.id)" *ngIf="post.postState==='AVAILABLE'" class="btn btn-success align-self-end d-flex flex-row">
           <div class="px-2" *ngIf="loading">
               <i class="fas fa-spinner fa-spin"></i>
           </div>
