@@ -94,8 +94,8 @@
         "EnabledStatus": "Activo",
         "CreditTxt": "Crédito",
         "ReputationTxt": "Reputación",
-        "AddressTxt": "Dirección"
-
+        "AddressTxt": "Dirección",
+        "MonthlyReport": "Enviar reporte mensual"
     },
     "Modal": {
         "FullNameTxt": "Nombre y Apellido"

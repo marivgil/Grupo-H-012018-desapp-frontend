@@ -94,7 +94,8 @@
         "EnabledStatus": "Enabled",
         "CreditTxt": "Credit",
         "ReputationTxt": "Reputation",
-        "AddressTxt": "Address"
+        "AddressTxt": "Address",
+        "MonthlyReport": "Send Monthly Report"
     },
     "Modal": {
         "FullNameTxt": "Full Name"
