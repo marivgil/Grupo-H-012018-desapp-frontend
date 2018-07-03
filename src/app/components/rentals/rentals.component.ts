@@ -20,6 +20,7 @@ export class RentalsComponent implements OnInit {
   reservationModal;
   cost;
   draggable = false;
+  loading = false;
 
   constructor(private _reservations: ReservasService,
               private _user: UserService,
@@ -64,25 +65,33 @@ export class RentalsComponent implements OnInit {
   }
 
   confirmCarPickUpOwner(id, idx) {
+    this.loading = true;
     this._reservations.confirmRentalLikeOwner(id).subscribe((res) => {
+      this.loading = false;
       this.cargarDatos();
     });
   }
 
   confirmCarPickUpTenant(id, idx) {
+    this.loading = true;
     this._reservations.confirmRentalLikeTenant(id).subscribe((res) => {
+      this.loading = false;
       this.cargarDatos();
     });
   }
 
   confirmReturnCarOwner(id, idx) {
+    this.loading = true;
      this._reservations.confirmReturnLikeOwner(id, this.forma.value.score, this.forma.value.comment).subscribe((res) => {
-       this.cargarDatos();
+      this.loading = false;
+      this.cargarDatos();
      });
   }
 
   confirmReturnCarTenant(id, idx) {
+    this.loading = true;
     this._reservations.confirmReturnLikeTenant(id, this.forma.value.score, this.forma.value.comment). subscribe((res) => {
+      this.loading = false;
       this.cargarDatos();
     });
   }
@@ -108,7 +117,4 @@ export class RentalsComponent implements OnInit {
     $('#personalData').modal('show');
   }
 
-  goBack() {
-    this.router.navigate(['account']);
-  }
 }

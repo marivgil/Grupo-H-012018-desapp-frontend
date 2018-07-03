@@ -9,7 +9,7 @@
                         <option value='AUTO'>{{ 'VehicleType.AUTO' | translate}}</option>
                         <option value='CAMIONETA'>{{ 'VehicleType.CAMIONETA' | translate}}</option>
                     </select>
-                    <select formControlName="view" class="custom-select" id="inputGroupSelect02">
+                    <select formControlName="view" class="custom-select my-1" id="inputGroupSelect02">
                         <option value='LIST' > Vista en lista </option>
                         <option value='MAP'> Vista en mapa </option>
                     </select>
@@ -35,7 +35,6 @@
                     <button type="button" (click)="verPost(post.id)" class="btn btn-outline-primary btn-block">
                 {{ 'MoreButton' | translate}}
               </button>
-                    <!--          <a [routerLink]="['/heroe',i]" class="btn btn-outline-primary">Ver mas link...</a> -->
                 </div>
             </div>
             

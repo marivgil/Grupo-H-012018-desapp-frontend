@@ -21,6 +21,7 @@ export class ReservationsComponent implements OnInit {
   url;
   forma;
   backup;
+  loading = false;
 
   constructor(private _reservations: ReservasService,
               private _post: PostsService,
@@ -36,8 +37,6 @@ export class ReservationsComponent implements OnInit {
                                               this.reservation = res;
                                               this.calculateCost(res);
                                               this.calculateScores(res);
-                                              console.log(this.scores);
-                                              console.log(res);
                                               });
                                           break;
      case "/cuenta/misReservas":
@@ -46,7 +45,6 @@ export class ReservationsComponent implements OnInit {
                                               this.reservation = res;
                                               this.backup = res;
                                               this.calculateCost(res);
-                                              console.log(res);
                                           });
                                           break;
     }// fin switch
@@ -90,16 +88,18 @@ export class ReservationsComponent implements OnInit {
   }
 
   confirmReservation(id, idx) {
+    this.loading = true;
     this._reservations.confirmReservation(id).subscribe((res) => {
+      this.loading = false;
       this.reservation.splice(idx, 1);
-      console.log("Reserva confirmada!");
     });
   }
 
   rejectReservation(id, idx) {
+    this.loading = true;
     this._reservations.rejectReservation(id).subscribe((res) => {
+      this.loading = false;
       this.reservation.splice(idx, 1);
-      console.log("Reserva rechazada!");
     });
   }
 
